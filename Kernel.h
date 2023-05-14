@@ -14,6 +14,9 @@
 //-----------------------------------------------------------------------------------------
 #include "./Interface.h"
 #include "./Runnable.h"
+#include "./Thread.h"
+#include "./InputBuffer.h"
+#include "./OutputBuffer.h"
 
 //-----------------------------------------------------------------------------------------
 
@@ -104,6 +107,41 @@ interface lang::Kernel extends virtual lang::Interface{
    *
    */
   virtual void kernelReboot(void) abstract;
+  
+  /**
+   *
+   */
+  virtual Thread* kerneAllocThread(lang::Runnable& task) abstract;
+  
+  /**
+   *
+   */
+  virtual Thread* kerneAllocThread(lang::Runnable& task, int stackSize) abstract;
+  
+  /**
+   *
+   */
+  virtual Thread* kerneGetCurrentThread(void) abstract;
+  
+  /**
+   *
+   */
+  virtual Thread* kerneGetThread(uint32_t threadID) abstract;
+  
+  /**
+   *
+   */
+  virtual InputBuffer* kernelGetInputBuffer(void) abstract;
+  
+  /**
+   *
+   */
+  virtual OutputBuffer* kernelGetOutputBuffer(void) abstract;
+  
+  /**
+   *
+   */
+  virtual uint32_t kerneGetCurrentThreadID(void) abstract;  
   
 };
 
