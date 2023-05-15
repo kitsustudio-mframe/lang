@@ -104,42 +104,58 @@ interface lang::Kernel extends virtual lang::Interface{
   virtual bool kernelWait(uint32_t timeout) const abstract;
   
   /**
+   * @brief 
    *
+   * @return
    */
   virtual void kernelReboot(void) abstract;
   
   /**
+   * @brief 
    *
+   * @return
    */
   virtual Thread* kerneAllocThread(lang::Runnable& task) abstract;
   
   /**
+   * @brief 
    *
+   * @return
    */
   virtual Thread* kerneAllocThread(lang::Runnable& task, int stackSize) abstract;
   
   /**
+   * @brief 
    *
+   * @return
    */
   virtual Thread* kerneGetCurrentThread(void) abstract;
   
   /**
+   * @brief 
    *
+   * @return
    */
   virtual Thread* kerneGetThread(uint32_t threadID) abstract;
   
   /**
+   * @brief 
    *
+   * @return
    */
   virtual InputBuffer* kernelGetInputBuffer(void) abstract;
   
   /**
+   * @brief 
    *
+   * @return
    */
   virtual OutputBuffer* kernelGetOutputBuffer(void) abstract;
   
   /**
+   * @brief 
    *
+   * @return
    */
   virtual uint32_t kerneGetCurrentThreadID(void) abstract;  
   

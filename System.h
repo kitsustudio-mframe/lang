@@ -18,7 +18,8 @@
 //-----------------------------------------------------------------------------------------
 #include "./ErrorCode.h"
 #include "./Thread.h"
-#include "./SystemConfig.h"
+#include "./Kernel.h"
+#include "./Runnable.h"
 
 
 /* ****************************************************************************************
@@ -46,7 +47,7 @@ class lang::System final extends lang::Object{
    * Variable <Private>
    */
   private: 
-    static lang::SystemConfig config;
+    static lang::Kernel* mKernel;
   /* **************************************************************************************
    * Abstract method <Public>
    */
@@ -130,6 +131,16 @@ class lang::System final extends lang::Object{
      * @return false 
      */
     static void execute(lang::Runnable& runnable);
+    
+    /**
+     *
+     */
+    static Thread& allocThread(lang::Runnable& runnable);
+    
+    /**
+     *
+     */
+    static Thread& allocThread(lang::Runnable& runnable, lang::Data& stackMemory);
   
   /* **************************************************************************************
    * Public Method <Inline Static>
