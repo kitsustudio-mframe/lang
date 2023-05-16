@@ -40,7 +40,7 @@ struct lang::CompletionHandler : public virtual lang::Interface{
    * @param result 
    * @param attachment 
    */
-  virtual void completed(V result, A attachment) = 0;
+  virtual void completed(V result, A attachment) abstract;
   
   /**
    * @brief 
@@ -48,7 +48,7 @@ struct lang::CompletionHandler : public virtual lang::Interface{
    * @param exc 
    * @param attachment 
    */
-  virtual void failed(void* exc, A attachment) = 0;
+  virtual void failed(void* exc, A attachment) abstract;
 
 };
 

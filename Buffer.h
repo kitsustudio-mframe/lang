@@ -38,7 +38,7 @@ struct lang::Buffer :public lang::WriteBuffer, lang::ReadBuffer{
    * @brief 
    * 
    */
-  virtual void flush(void) = 0;
+  virtual void flush(void) abstract;
 
 };
 

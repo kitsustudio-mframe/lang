@@ -36,7 +36,7 @@ struct lang::OutputStream : public virtual lang::Interface{
   /**
    * 
    */
-  virtual bool abortWrite(void) = 0;
+  virtual bool abortWrite(void) abstract;
   
   /**
    * @brief 
@@ -44,7 +44,7 @@ struct lang::OutputStream : public virtual lang::Interface{
    * @return true is busy.
    * @return false isn't busy.
    */
-  virtual bool writeBusy(void) = 0;
+  virtual bool writeBusy(void) abstract;
   
   /**
    * @brief write witt io mode.
@@ -54,7 +54,7 @@ struct lang::OutputStream : public virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool write(lang::ReadBuffer& outputBuffer, int timeout) = 0;  
+  virtual bool write(lang::ReadBuffer& outputBuffer, int timeout) abstract;  
   
   /**
    * @brief write with aio mode.
@@ -67,7 +67,7 @@ struct lang::OutputStream : public virtual lang::Interface{
    */
   virtual bool write(lang::ReadBuffer& outputBuffer, 
                      void* attachment,
-                     lang::CompletionHandler<int, void*>* handler) = 0;
+                     lang::CompletionHandler<int, void*>* handler) abstract;
 
   /**
    * @brief write with nio mode.
@@ -77,7 +77,7 @@ struct lang::OutputStream : public virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool write(lang::ReadBuffer& outputBuffer, lang::Future& future) = 0;
+  virtual bool write(lang::ReadBuffer& outputBuffer, lang::Future& future) abstract;
 
 };
 

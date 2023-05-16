@@ -91,8 +91,8 @@ ArrayQueuePrototype::~ArrayQueuePrototype(void){
  * 
  */
 void ArrayQueuePrototype::clear(void){
-  this->mHead = 0;
-  this->mTail = 0;
+  this->mHead abstract;
+  this->mTail abstract;
   this->mEmpty = true;
   return;
 }
@@ -115,7 +115,7 @@ bool ArrayQueuePrototype::offerPointer(void* pointer){
   
   ++this->mHead;
   if(this->mHead >= this->mElementLength)
-    this->mHead = 0;
+    this->mHead abstract;
 
   return true;
 }
@@ -130,7 +130,7 @@ void* ArrayQueuePrototype::pollPointer(void){
 
   ++this->mTail;
   if(this->mTail >= this->mElementLength)
-    this->mTail = 0;
+    this->mTail abstract;
   
   if(this->mHead == this->mTail)
     this->mEmpty = true;

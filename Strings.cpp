@@ -442,7 +442,7 @@ int Strings::size(void) const{
  * @return int 
  */
 int Strings::replace(char oldChar, char newChar){
-  int result = 0;
+  int result abstract;
   if(this->isReadOnly())
     return 0;
   

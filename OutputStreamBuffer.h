@@ -39,7 +39,7 @@ struct lang::OutputStreamBuffer : public lang::OutputStream{
    * 
    * @return lang::WriteBuffer& 
    */
-  virtual lang::WriteBuffer& getWriteBuffer(void) = 0;
+  virtual lang::WriteBuffer& getWriteBuffer(void) abstract;
   
 };
 

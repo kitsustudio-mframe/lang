@@ -41,35 +41,35 @@ struct lang::Thread : public lang::Runnable{
    * 
    * @param name 
    */
-  virtual void setThreadName(const char* name) = 0;
+  virtual void setThreadName(const char* name) abstract;
   
   /**
    * @brief Get the Thread Name object
    * 
    * @return const char* 
    */
-  virtual const char* getThreadName(void) const = 0;
+  virtual const char* getThreadName(void) const abstract;
     
   /**
    * @brief Get the Priority object
    * 
    * @return lang::ThreadPriority 
    */
-  virtual lang::ThreadPriority getPriority(void) const = 0;
+  virtual lang::ThreadPriority getPriority(void) const abstract;
 
   /**
    * @brief Get the State object
    * 
    * @return lang::ThreadState 
    */
-  virtual lang::ThreadState getState(void) const = 0;
+  virtual lang::ThreadState getState(void) const abstract;
     
   /**
    * @brief Get the Stack Size object
    * 
    * @return uint32_t 
    */
-  virtual int getStackSize(void) const = 0;
+  virtual int getStackSize(void) const abstract;
     
   /**
    * @brief 
@@ -77,7 +77,7 @@ struct lang::Thread : public lang::Runnable{
    * @return true 
    * @return false 
    */
-  virtual bool start(void) = 0;
+  virtual bool start(void) abstract;
     
   /**
    * @brief 
@@ -86,13 +86,13 @@ struct lang::Thread : public lang::Runnable{
    * @return true 
    * @return false 
    */
-  virtual bool start(lang::ThreadPriority priority) = 0;
+  virtual bool start(lang::ThreadPriority priority) abstract;
     
   /**
    * @brief 
    * 
    */
-  virtual void notify(void) = 0;
+  virtual void notify(void) abstract;
     
   /**
    * @brief Set the Priority object
@@ -101,7 +101,7 @@ struct lang::Thread : public lang::Runnable{
    * @return true 
    * @return false 
    */
-  virtual bool setPriority(lang::ThreadPriority priority) = 0;  
+  virtual bool setPriority(lang::ThreadPriority priority) abstract;  
 
   /**
    * @brief 
@@ -109,7 +109,7 @@ struct lang::Thread : public lang::Runnable{
    * @return true 
    * @return false 
    */
-  virtual bool isActive(void) = 0;
+  virtual bool isActive(void) abstract;
 };
 
 /* *****************************************************************************************

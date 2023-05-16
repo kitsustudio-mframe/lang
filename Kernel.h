@@ -43,7 +43,7 @@ struct lang::Kernel : public virtual lang::Interface{
    * @return true 初始化成功
    * @return false 初始化失敗，可能核心已經被初始化
    */
-  virtual bool kernelInitialize(void) = 0;
+  virtual bool kernelInitialize(void) abstract;
 
   /**
    * @brief 核心啟動，作業系統開始
@@ -51,42 +51,42 @@ struct lang::Kernel : public virtual lang::Interface{
    * @param runnable 主執行緒事件
    * @param stackSize 主執行緒記憶體堆疊大小
    */
-  virtual void kernelStart(lang::Runnable& runnable, uint32_t stackSize) = 0;
+  virtual void kernelStart(lang::Runnable& runnable, uint32_t stackSize) abstract;
 
   /**
    * @brief 核心鎖定，在調用kernelUnlock以前將不會進行context switch
    * 
    * @return int lock調用層數
    */
-  virtual int kernelLock(void) = 0;
+  virtual int kernelLock(void) abstract;
 
   /**
    * @brief 
    * 
    * @return int lock調用剩餘層數，當值為0時核心解鎖
    */
-  virtual int kernelUnlock(void) = 0;
+  virtual int kernelUnlock(void) abstract;
 
   /**
    * @brief 取得核心tick數
    * 
    * @return uint32_t tick數
    */
-  virtual uint32_t kernelGetTickCount(void) = 0;
+  virtual uint32_t kernelGetTickCount(void) abstract;
 
   /**
    * @brief 取得核心運作頻率
    * 
    * @return uint32_t Hz頻率
    */
-  virtual uint32_t kernelGetTickFreq(void) = 0;
+  virtual uint32_t kernelGetTickFreq(void) abstract;
   
   /**
    * @brief 取得當前執行緒ID
    * 
    * @return uint32_t Thread ID.
    */
-  virtual uint32_t kernelGetThreadId(void) = 0;
+  virtual uint32_t kernelGetThreadId(void) abstract;
   
   /**
    * @brief 執行緒延遲，並交還CPU使用權
@@ -95,7 +95,7 @@ struct lang::Kernel : public virtual lang::Interface{
    * @return true 延遲執行成功
    * @return false 延遲執行失敗，可能要求時間過長
    */
-  virtual bool kernelDelay(uint32_t milliseconds) const = 0;
+  virtual bool kernelDelay(uint32_t milliseconds) const abstract;
   
   /**
    * @brief 執行緒等待，直到超時或是被喚醒，並交還CPU使用權
@@ -104,13 +104,13 @@ struct lang::Kernel : public virtual lang::Interface{
    * @return true 執行緒進入等待
    * @return false 執行緒進入等待失敗，可能在中斷或是核心啟動失敗
    */
-  virtual bool kernelWait(uint32_t timeout) const = 0;
+  virtual bool kernelWait(uint32_t timeout) const abstract;
   
   /**
    * @brief 核心重啟
    *
    */
-  virtual void kernelReboot(void) = 0;
+  virtual void kernelReboot(void) abstract;
   
   /**
    * @brief 建立一個執行緒
@@ -119,7 +119,7 @@ struct lang::Kernel : public virtual lang::Interface{
    * @return null 建立失敗
    * @return Thread 建立成功
    */
-  virtual Thread* kerneAllocThread(lang::Runnable& task) = 0;
+  virtual Thread* kerneAllocThread(lang::Runnable& task) abstract;
   
   /**
    * @brief 建立一個執行緒，限定堆疊大小
@@ -129,7 +129,7 @@ struct lang::Kernel : public virtual lang::Interface{
    * @return null 建立失敗
    * @return Thread 建立成功
    */
-  virtual Thread* kerneAllocThread(lang::Runnable& task, uint32_t stackSize) = 0;
+  virtual Thread* kerneAllocThread(lang::Runnable& task, uint32_t stackSize) abstract;
   
   /**
    * @brief 取得當前執行緒
@@ -137,42 +137,42 @@ struct lang::Kernel : public virtual lang::Interface{
    * @return null 可能為核心尚未啟動、當前正在中斷事件
    * @return Thread 獲取成功
    */
-  virtual Thread* kerneGetCurrentThread(void) = 0;
+  virtual Thread* kerneGetCurrentThread(void) abstract;
   
   /**
    * @brief 
    *
    * @return
    */
-  virtual Thread* kerneGetThread(uint32_t threadID) = 0;
+  virtual Thread* kerneGetThread(uint32_t threadID) abstract;
   
   /**
    * @brief 
    *
    * @return
    */
-  virtual WriteBuffer* kernelGetWriteBuffer(void) = 0;
+  virtual WriteBuffer* kernelGetWriteBuffer(void) abstract;
   
   /**
    * @brief 
    *
    * @return
    */
-  virtual ReadBuffer* kernelGetReadBuffer(void) = 0;
+  virtual ReadBuffer* kernelGetReadBuffer(void) abstract;
   
   /**
    * @brief 
    *
    * @return
    */
-  virtual uint32_t kerneGetCurrentThreadID(void) = 0;  
+  virtual uint32_t kerneGetCurrentThreadID(void) abstract;  
   
   /**
    * @brief 取得核心運作頻率
    *
    * @return 
    */
-  virtual uint32_t kernelGetCoreClock(void) = 0;
+  virtual uint32_t kernelGetCoreClock(void) abstract;
   
   /**
    * @brief 該函數將控制權傳遞給處於 READY 狀態且具有相同優先級的下一個線程。
@@ -183,7 +183,7 @@ struct lang::Kernel : public virtual lang::Interface{
    * @return true 控制權已成功傳遞給下一個線程。
    * @return false 發生了未指定的錯誤。該函數不能從中斷服務程序中調用。
    */
-  virtual bool kenrelYield(void) = 0;
+  virtual bool kenrelYield(void) abstract;
   
 };
 

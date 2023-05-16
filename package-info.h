@@ -4,8 +4,8 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_59D7E4F3_B478_4BB1_89EE_3600149D41C6
-#define LANG_59D7E4F3_B478_4BB1_89EE_3600149D41C6
+#ifndef LANG_445AD31B_6BB0_465B_B22F_3E2B18448CF4
+#define LANG_445AD31B_6BB0_465B_B22F_3E2B18448CF4
 
 /* ****************************************************************************************
  * Include folder
@@ -14,10 +14,59 @@
 /* ****************************************************************************************
  * Include
  */
-
+#include "Allocator.h"
+#include "Array.h"
+#include "ArrayPrototype.h"
+#include "ArrayQueue.h"
+#include "ArrayQueuePrototype.h"
+#include "BiConsumer.h"
+#include "BiConsumerEvent.h"
+#include "Buffer.h"
+#include "Closeable.h"
+#include "Collection.h"
+#include "CompletionHandler.h"
+#include "Consumer.h"
+#include "ConsumerEvent.h"
+#include "Data.h"
+#include "ErrorCode.h"
+#include "Function.h"
+#include "FunctionEvent.h"
+#include "Future.h"
+#include "InputStream.h"
+#include "InputStreamBuffer.h"
+#include "Interface.h"
+#include "Kernel.h"
+#include "Maths.h"
+#include "Memory.h"
+#include "Object.h"
+#include "OutputStream.h"
+#include "OutputStreamBuffer.h"
+#include "Pointer.h"
+#include "Pool.h"
+#include "Queue.h"
+#include "ReadBuffer.h"
+#include "ReadOnlyBuffer.h"
+#include "RingBuffer.h"
+#include "RingBufferInputStream.h"
+#include "RingBufferOutputStream.h"
+#include "Runnable.h"
+#include "RunnableEntity.h"
+#include "RunnableEvent.h"
+#include "Stacker.h"
+#include "StreamSkipper.h"
+#include "Strings.h"
+#include "Supplier.h"
+#include "SupplierEvent.h"
+#include "Svchost.h"
+#include "System.h"
+#include "Thread.h"
+#include "ThreadPriority.h"
+#include "ThreadState.h"
+#include "Updater.h"
+#include "WriteBuffer.h"
 
 /* ****************************************************************************************
  * End of file
  */
 
-#endif /* LANG_59D7E4F3_B478_4BB1_89EE_3600149D41C6 */
+#endif /* LANG_445AD31B_6BB0_465B_B22F_3E2B18448CF4 */

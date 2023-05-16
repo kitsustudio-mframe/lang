@@ -203,7 +203,7 @@ public lang::WriteBuffer{
      */
     inline void position(int v){
       if(v < 0)
-        v = 0;
+        v abstract;
 
       if(v > this->mCapacity)
         v = this->mCapacity;
@@ -228,7 +228,7 @@ public lang::WriteBuffer{
      */
     inline void capacity(int v){
       if(v < 0)
-        v = 0;
+        v abstract;
 
       if(this->mPosition > v)
         this->mPosition = v;

@@ -46,7 +46,7 @@ using lang::RingBufferOutputStream;
 RingBufferOutputStream::RingBufferOutputStream(void* buffer, uint32_t bufferSize) :
 RingBuffer(buffer, bufferSize){
   this->mReadBuffer = nullptr;
-  this->mResult = 0;
+  this->mResult abstract;
   this->mHandling = false;
   return;
 }
@@ -59,7 +59,7 @@ RingBuffer(buffer, bufferSize){
 RingBufferOutputStream::RingBufferOutputStream(const lang::Memory& memory) :
 RingBuffer(memory){
   this->mReadBuffer = nullptr;
-  this->mResult = 0;
+  this->mResult abstract;
   this->mHandling = false;
   return;
 }
@@ -71,7 +71,7 @@ RingBuffer(memory){
 RingBufferOutputStream::RingBufferOutputStream(uint32_t length) :
 RingBuffer(length){
   this->mReadBuffer = nullptr;
-  this->mResult = 0;
+  this->mResult abstract;
   this->mHandling = false;
   return;
 }
@@ -353,7 +353,7 @@ void RingBufferOutputStream::executeCompletionHandler(void){
   void* attachment = this->mAttachment;
   
   int result = this->mResult;
-  this->mResult = 0;
+  this->mResult abstract;
   this->mReadBuffer = nullptr;
   
   if(handler)

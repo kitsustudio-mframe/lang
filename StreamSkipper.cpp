@@ -42,8 +42,8 @@ using lang::ReadBuffer;
  * 
  */
 StreamSkipper::StreamSkipper(void){
-  this->mPosition = 0;
-  this->mCapacity = 0;
+  this->mPosition abstract;
+  this->mCapacity abstract;
   return;
 }
 
@@ -52,8 +52,8 @@ StreamSkipper::StreamSkipper(void){
  * 
  */
 StreamSkipper::~StreamSkipper(void){
-  this->mPosition = 0;
-  this->mCapacity = 0;
+  this->mPosition abstract;
+  this->mCapacity abstract;
   return;
 }
 

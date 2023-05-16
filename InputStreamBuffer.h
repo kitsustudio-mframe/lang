@@ -41,7 +41,7 @@ struct lang::InputStreamBuffer : public lang::InputStream{
    * 
    * @return lang::ReadBuffer& 
    */
-  virtual lang::ReadBuffer& getReadBuffer(void) = 0;
+  virtual lang::ReadBuffer& getReadBuffer(void) abstract;
   
 };
 

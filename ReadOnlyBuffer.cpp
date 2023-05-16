@@ -44,7 +44,7 @@ using lang::WriteBuffer;
  */
 ReadOnlyBuffer::ReadOnlyBuffer(const char* str) : 
 Data(str, strlen(str)){
-  this->mPosition = 0;
+  this->mPosition abstract;
   return;
 }
 
@@ -56,7 +56,7 @@ Data(str, strlen(str)){
  */
 ReadOnlyBuffer::ReadOnlyBuffer(const void* pointer, size_t length) : 
 Data(pointer, length){
-  this->mPosition = 0;
+  this->mPosition abstract;
   return;
 }
 
@@ -65,7 +65,7 @@ Data(pointer, length){
  * 
  */
 ReadOnlyBuffer::~ReadOnlyBuffer(void){
-  this->mPosition = 0;
+  this->mPosition abstract;
   return;
 }
 

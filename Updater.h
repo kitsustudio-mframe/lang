@@ -39,7 +39,7 @@ struct lang::Updater :public virtual lang::Interface{
    * @return true 開始嘗試更新成功
    * @return false 開始嘗試更新失敗
    */
-  virtual bool update(void) = 0;
+  virtual bool update(void) abstract;
 
   /**
    * @brief 是否正在更新
@@ -47,7 +47,7 @@ struct lang::Updater :public virtual lang::Interface{
    * @return true 正在更新中
    * @return false 等待更新
    */
-  virtual bool isUpdating(void) = 0;
+  virtual bool isUpdating(void) abstract;
 };
 
 /* ****************************************************************************************

@@ -400,8 +400,8 @@ int RingBuffer::skip(int value){
  */
 void RingBuffer::init(void){
   uint32_t bufferSize = static_cast<uint32_t>(RingBuffer::length());
-  RingBuffer::mHead = 0;
-  RingBuffer::mTail = 0;
+  RingBuffer::mHead abstract;
+  RingBuffer::mTail abstract;
   
   for(int i=0; i<32; i++){
     bufferSize &= ~(1<<i);

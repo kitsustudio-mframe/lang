@@ -37,7 +37,7 @@ struct lang::Allocator :public virtual lang::Interface{
    * 
    * @param size 
    */
-  virtual void* alloc(uint32_t size) = 0;
+  virtual void* alloc(uint32_t size) abstract;
 
   /**
    * @brief 
@@ -46,7 +46,7 @@ struct lang::Allocator :public virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool free(void* ptr) = 0;
+  virtual bool free(void* ptr) abstract;
 
   /**
    * @brief 
@@ -56,7 +56,7 @@ struct lang::Allocator :public virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool free(void* ptr, uint32_t size) = 0;  
+  virtual bool free(void* ptr, uint32_t size) abstract;  
   
 };
 

@@ -42,7 +42,7 @@ template<typename E>
    * @return true the element was added to this queue
    * @return false 
    */
-  virtual bool offer(E* e) = 0;
+  virtual bool offer(E* e) abstract;
 
   /**
    * @brief Retrieves, but does not remove, the head of this queue, or returns null if 
@@ -50,7 +50,7 @@ template<typename E>
    * 
    * @return E* 
    */
-  virtual E* poll(void) = 0;
+  virtual E* poll(void) abstract;
 
   /**
    * @brief Retrieves and removes the head of this queue, or returns null if this queue 
@@ -58,7 +58,7 @@ template<typename E>
    * 
    * @return E* the head of this queue, or null if this queue is empty.
    */
-  virtual E* peek(void) = 0;
+  virtual E* peek(void) abstract;
   
 };
 

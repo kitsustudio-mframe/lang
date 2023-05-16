@@ -21,6 +21,8 @@
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wc++17-extensions" 
 
+#define abstract =0
+
 //-----------------------------------------------------------------------------------------
 #include <stdint.h>
 #include <stdarg.h>
@@ -56,7 +58,7 @@ struct lang::Interface{
   /**
    *
    */
-  virtual lang::Object& getObject(void) = 0;
+  virtual lang::Object& getObject(void) abstract;
 
 };
 

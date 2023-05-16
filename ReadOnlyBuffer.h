@@ -233,7 +233,7 @@ public lang::ReadBuffer{
      * 
      */
     virtual void rewind(void){
-      this->mPosition = 0;
+      this->mPosition abstract;
     }
     
 

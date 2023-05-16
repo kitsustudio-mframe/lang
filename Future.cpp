@@ -202,7 +202,7 @@ bool Future::get(int& result, int timeout){
 void Future::clear(void){
   this->mStatus = Status::IDLE;
   this->mThread = nullptr;
-  this->mResult = 0;
+  this->mResult abstract;
   return;
 }
   

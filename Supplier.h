@@ -39,7 +39,7 @@ struct lang::Supplier : public virtual lang::Interface{
    * 
    * @return T 
    */
-  virtual T get(void) = 0;
+  virtual T get(void) abstract;
    
 };
 

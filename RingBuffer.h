@@ -112,7 +112,7 @@ class lang::RingBuffer :public lang::Memory ,
      * 
      */
     virtual inline void flush(void) override{
-      RingBuffer::mHead = RingBuffer::mTail = 0;
+      RingBuffer::mHead = RingBuffer::mTail abstract;
     }
 
   /* **************************************************************************************

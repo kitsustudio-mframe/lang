@@ -39,7 +39,7 @@ struct lang::BiConsumer : public virtual lang::Interface{
    * @param t 
    * @param u 
    */
-  virtual void accept(T t, U u) = 0;
+  virtual void accept(T t, U u) abstract;
    
 };
 

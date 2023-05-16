@@ -16,7 +16,7 @@
  * Using
  */  
 using lang::Memory;
-using buf::Stacker;
+using lang::Stacker;
 
 /* ****************************************************************************************
  * Construct Method

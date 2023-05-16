@@ -38,7 +38,7 @@ struct lang::Consumer : public virtual lang::Interface{
    * 
    * @param t 
    */
-  virtual void accept(T t) = 0;
+  virtual void accept(T t) abstract;
    
 };
 

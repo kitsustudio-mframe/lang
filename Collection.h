@@ -51,7 +51,7 @@ template<typename T>
    *        after this method returns.
    * 
    */
-  virtual void clear(void) = 0;
+  virtual void clear(void) abstract;
 
   /**
    * @brief Returns true if this collection contains no elements.
@@ -59,14 +59,14 @@ template<typename T>
    * @return true if this collection contains no elements.
    * @return false 
    */
-  virtual bool isEmpty(void) const = 0;
+  virtual bool isEmpty(void) const abstract;
 
   /**
    * @brief Returns the number of elements in this collection.
    * 
    * @return uint32_t the number of elements in this collection.
    */
-  virtual int size(void) const = 0;
+  virtual int size(void) const abstract;
 
   /* **************************************************************************************
    * Abstract method <Protected>

@@ -22,14 +22,14 @@
 /* ****************************************************************************************
  * Namespace
  */  
-namespace buf{
+namespace lang{
   class Stacker;
 }
 
 /* ****************************************************************************************
  * Class/Interface/Struct
  */  
-class buf::Stacker :public lang::Memory , 
+class lang::Stacker :public lang::Memory , 
   public lang::Collection<lang::Memory>,
   public lang::Allocator{
 

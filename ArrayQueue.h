@@ -30,7 +30,7 @@ namespace lang{
  * Class/Interface/Struct
  */  
 template<typename E>
-class lang::ArrayQueue extends lang::ArrayQueuePrototype implements 
+class lang::ArrayQueue :public lang::ArrayQueuePrototype , 
   public lang::Queue<E>{
 
   /* **************************************************************************************

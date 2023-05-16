@@ -39,7 +39,7 @@ struct lang::Function : public virtual lang::Interface{
    * @param t 
    * @return R 
    */
-  virtual R apply(T t) = 0;
+  virtual R apply(T t) abstract;
 
 };
 

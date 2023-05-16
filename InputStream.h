@@ -40,7 +40,7 @@ struct lang::InputStream : public virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool abortRead(void) = 0;  
+  virtual bool abortRead(void) abstract;  
   
   /**
    * @brief 
@@ -48,7 +48,7 @@ struct lang::InputStream : public virtual lang::Interface{
    * @return true is busy.
    * @return false isn't busy.
    */
-  virtual bool readBusy(void) = 0;
+  virtual bool readBusy(void) abstract;
 
   /**
    * @brief 
@@ -56,7 +56,7 @@ struct lang::InputStream : public virtual lang::Interface{
    * @param outputBuffer 
    * @return int 
    */
-  virtual bool read(lang::WriteBuffer& inputBuffer, int timeout) = 0;
+  virtual bool read(lang::WriteBuffer& inputBuffer, int timeout) abstract;
   
   /**
    * @brief nonblocking
@@ -69,7 +69,7 @@ struct lang::InputStream : public virtual lang::Interface{
    */
   virtual bool read(lang::WriteBuffer& inputBuffer, 
                     void* attachment,
-                    lang::CompletionHandler<int, void*>* handler) = 0;
+                    lang::CompletionHandler<int, void*>* handler) abstract;
 
   /**
    * @brief 
@@ -79,7 +79,7 @@ struct lang::InputStream : public virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool read(lang::WriteBuffer& inputBuffer, lang::Future& future) = 0;
+  virtual bool read(lang::WriteBuffer& inputBuffer, lang::Future& future) abstract;
 
   /**
    * @brief 
@@ -92,7 +92,7 @@ struct lang::InputStream : public virtual lang::Interface{
    */
   virtual bool skip(int value, 
                     void* attachment,
-                    lang::CompletionHandler<int, void*>* handler) = 0;
+                    lang::CompletionHandler<int, void*>* handler) abstract;
 
   /**
    * @brief 
@@ -102,7 +102,7 @@ struct lang::InputStream : public virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool skip(int value, lang::Future& future) = 0;
+  virtual bool skip(int value, lang::Future& future) abstract;
 
 };
 

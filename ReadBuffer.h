@@ -39,14 +39,14 @@ struct lang::ReadBuffer :public virtual lang::Interface{
    * @return true 輸出緩存為空
    * @return false 輸出緩存不為空
    */
-  virtual bool isEmpty(void) const = 0;
+  virtual bool isEmpty(void) const abstract;
 
   /**
    * @brief 取得輸出緩存內剩餘多少位元組
    * 
    * @return int 緩存內有效位元組數量
    */
-  virtual int avariable(void) const = 0;
+  virtual int avariable(void) const abstract;
 
   /**
    * @brief 輸出一個位元組
@@ -55,7 +55,7 @@ struct lang::ReadBuffer :public virtual lang::Interface{
    * @return true 輸出成功
    * @return false 緩存內為空
    */
-  virtual bool getByte(char& result) = 0;
+  virtual bool getByte(char& result) abstract;
 
   /**
    * @brief 輸出至WriteBuffer
@@ -63,7 +63,7 @@ struct lang::ReadBuffer :public virtual lang::Interface{
    * @param inputBuffer 輸出目標緩存空間 
    * @return int 輸出至目標的位元組數量
    */
-  virtual int get(lang::WriteBuffer& inputBuffer) = 0;
+  virtual int get(lang::WriteBuffer& inputBuffer) abstract;
 
   /**
    * @brief 輸出至WriteBuffer
@@ -72,7 +72,7 @@ struct lang::ReadBuffer :public virtual lang::Interface{
    * @param length 指定最大輸出位元組數量
    * @return int 輸出至目標的位元組數量
    */
-  virtual int get(lang::WriteBuffer& inputBuffer, int length) = 0;
+  virtual int get(lang::WriteBuffer& inputBuffer, int length) abstract;
 
   /**
    * @brief 輸出目標緩存空間
@@ -81,7 +81,7 @@ struct lang::ReadBuffer :public virtual lang::Interface{
    * @param bufferSize 緩衝區大小
    * @return int 複製的位元組數量
    */
-  virtual int get(void* buffer, int bufferSize) = 0;
+  virtual int get(void* buffer, int bufferSize) abstract;
 
   /**
    * @brief 跳躍數個緩衝區內位元組
@@ -89,7 +89,7 @@ struct lang::ReadBuffer :public virtual lang::Interface{
    * @param value 期望跳躍數量
    * @return int 實際跳躍數量
    */
-  virtual int skip(int value) = 0;
+  virtual int skip(int value) abstract;
 
 };
 

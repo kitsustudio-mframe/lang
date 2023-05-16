@@ -36,7 +36,7 @@ struct lang::Runnable : public virtual lang::Interface{
    * @brief 
    * 
    */
-  virtual void run(void) = 0;
+  virtual void run(void) abstract;
   
 };
 

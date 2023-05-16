@@ -41,28 +41,28 @@ struct lang::Pool :public lang::Collection<lang::Memory>{
    * 
    * @return uint32_t element size of byte.
    */
-  virtual uint32_t elementSize(void) const = 0;
+  virtual uint32_t elementSize(void) const abstract;
   
   /**
    * @brief Returns this pool's capacity.
    * 
    * @return uint32_t The capacity of this pool.
    */
-  virtual uint32_t capacity(void) const = 0;
+  virtual uint32_t capacity(void) const abstract;
   
   /**
    * @brief Alloc memory from pool.
    * 
    * @return void* element pointer if pool not full, otherwise null pointer.
    */
-  virtual void* alloc(void) = 0;
+  virtual void* alloc(void) abstract;
 
   /**
    * @brief 
    * 
    * @return mcuf::Memory 
    */
-  virtual mcuf::Memory allocMemory(void) = 0;
+  virtual mcuf::Memory allocMemory(void) abstract;
 
   /**
    * @brief Alloc memory from pool and copy element.
@@ -70,7 +70,7 @@ struct lang::Pool :public lang::Collection<lang::Memory>{
    * @param elenemt Element pointer.
    * @return void* element pointer if pool not full, otherwise null pointer.
    */
-  virtual void* add(const void* elenemt) = 0;
+  virtual void* add(const void* elenemt) abstract;
 
   /**
    * @brief Free this element memory.  
@@ -79,7 +79,7 @@ struct lang::Pool :public lang::Collection<lang::Memory>{
    * @return true this poll found element and remove.
    * @return false element not found in this pool.
    */
-  virtual bool remove(void* element) = 0;
+  virtual bool remove(void* element) abstract;
   
 };
 

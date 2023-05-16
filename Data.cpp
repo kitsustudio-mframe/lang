@@ -41,7 +41,7 @@ using lang::Data;
  */
 Data::Data(void) :
 Pointer(){
-  Data::mLength = 0;
+  Data::mLength abstract;
   return;
 }
 
@@ -55,7 +55,7 @@ Data::Data(const void* pointer, size_t length) :
 Pointer(pointer){
   
   if(length & 0x80000000)
-    length = 0;
+    length abstract;
   
   Data::mLength = (length | 0x80000000);
   return;
@@ -70,7 +70,7 @@ Pointer(pointer){
 Data::Data(void* pointer, size_t length) : 
 Pointer(pointer){
   if(length & 0x80000000)
-    length = 0;
+    length abstract;
   
   Data::mLength = length;
 }
@@ -90,7 +90,7 @@ Data::Data(const Data& other){
  * 
  */
 Data::~Data(void){
-  Data::mLength = 0;
+  Data::mLength abstract;
   return;
 }
 

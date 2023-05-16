@@ -41,14 +41,14 @@ struct lang::WriteBuffer : public virtual lang::Interface{
    * @return true 已滿
    * @return false 未滿，仍有空間
    */
-  virtual bool isFull(void) const = 0;
+  virtual bool isFull(void) const abstract;
 
   /**
    * @brief 取得WriteBuffer內資料數量
    * 
    * @return int WriteBuffer內資料數量
    */
-  virtual int remaining(void) const = 0;
+  virtual int remaining(void) const abstract;
 
   /**
    * @brief 將data輸入至WriteBuffer
@@ -57,7 +57,7 @@ struct lang::WriteBuffer : public virtual lang::Interface{
    * @return true 成功將data輸入至WriteBuffer
    * @return false WriteBuffer已滿
    */
-  virtual bool putByte(const char data) = 0;
+  virtual bool putByte(const char data) abstract;
 
   /**
    * @brief 將outputBuffer內資料輸入至WriteBuffer
@@ -65,7 +65,7 @@ struct lang::WriteBuffer : public virtual lang::Interface{
    * @param byteBuffer 資料來源
    * @return int 移動資料數量(byte)
    */
-  virtual int put(lang::ReadBuffer& outputBuffer) = 0;
+  virtual int put(lang::ReadBuffer& outputBuffer) abstract;
   
   /**
    * @brief 將outputBuffer內資料輸入至WriteBuffer並指定輸入長度
@@ -74,7 +74,7 @@ struct lang::WriteBuffer : public virtual lang::Interface{
    * @param length 輸入長度
    * @return int 移動資料數量(byte)
    */
-  virtual int put(lang::ReadBuffer& outputBuffer, int length) = 0;  
+  virtual int put(lang::ReadBuffer& outputBuffer, int length) abstract;  
 
   /**
    * @brief 將buffer內資料輸入至WriteBuffer
@@ -83,7 +83,7 @@ struct lang::WriteBuffer : public virtual lang::Interface{
    * @param length 輸入長度
    * @return int 移動資料數量(byte)
    */
-  virtual int put(const void* buffer, int length) = 0;
+  virtual int put(const void* buffer, int length) abstract;
 };
 
 /* ****************************************************************************************
