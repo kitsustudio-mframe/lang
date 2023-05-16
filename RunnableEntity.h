@@ -31,9 +31,9 @@ namespace lang{
 
 
 /* ****************************************************************************************
- * Class/Interface/Struct/Enum
+ * Class/struct/Struct/Enum
  */  
-class lang::RunnableEntity final extends lang::Object implements
+class lang::RunnableEntity final : public lang::Object ,
 public lang::Runnable{
 
   /* **************************************************************************************

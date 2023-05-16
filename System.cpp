@@ -15,6 +15,7 @@
 
 //-----------------------------------------------------------------------------------------
 #include "./System.h"
+#include "./Svchost.h"
 
 /* ****************************************************************************************
  * Namespace
@@ -36,7 +37,8 @@ using lang::System;
 /* ****************************************************************************************
  * Static Variable
  */  
-lang::SystemConfig System::config;
+lang::Kernel* System::mKernel;
+lang::Svchost* System::mSvchost;
 
 /* ****************************************************************************************
  * Construct Method
@@ -71,7 +73,7 @@ System::~System(void){
  * 
  */
 void System::reboot(void){
-  System::config.kernel->kernelReboot();
+  System::mKernel->kernelReboot();
   return;
 }
 
@@ -79,8 +81,9 @@ void System::reboot(void){
  * @brief 
  * 
  */
-void System::setup(lang::SystemConfig& config){
-  System::config = config;
+void System::setup(lang::Kernel& kernel){
+  System::mKernel = &kernel;
+
   return;
 }
 
@@ -89,25 +92,10 @@ void System::setup(lang::SystemConfig& config){
  * 
  * @param userThread 
  */
-void System::start(void){
-  System::config.kernel->kernelInitialize();
-  System::config.kernel->kernelStart();
-  /*
-  System::sKernel->kernelInitialize();
-  
-
-  
-  
-  System::mCoreThread 
-    = new CoreThread(langCoreEcecutorTaskNumber, 
-                     &userThread);
-  
-  System::mCoreThread->start();
-  System::sKernel->kernelStart();
-  
-  delete System::mCoreThread;
-  System::mCoreThread = nullptr;
-  */
+void System::start(lang::Runnable& task, uint32_t stackSize, uint32_t svchostStackSize){
+  System::mKernel->kernelInitialize();
+  System::mSvchost = new lang::Svchost(task, stackSize);
+  System::mKernel->kernelStart(*System::mSvchost, svchostStackSize);
   return;
 }
 
@@ -131,7 +119,7 @@ void System::error(const void* address, ErrorCode code){
  *
  */
 uint32_t System::getCoreClock(void){
-  return 0;
+  return System::mKernel->kernelGetCoreClock();
 }
 
 /**
@@ -142,7 +130,11 @@ uint32_t System::getCoreClock(void){
  * @return false 
  */
 void System::execute(lang::Runnable& runnable){
-
+  if(System::mSvchost->execute(runnable))
+    return;
+  
+  runnable.run();
+  return;
 }
 
 

@@ -77,8 +77,8 @@ void Future::completed(int result, void* attachment){
   
   this->mResult = result;
   this->mStatus = Status::DONE_COMPLETED;
-  if(this->mThreadID != 0)
-    this->notify(this->mThreadID);
+  if(this->mThread != nullptr)
+    this->mThread->notify();
   
 }
     
@@ -94,8 +94,8 @@ void Future::failed(void* exc, void* attachment){
   
   this->mResult = -1;
   this->mStatus = Status::DONE_FAILED;
-  if(this->mThreadID != 0)
-    this->notify(this->mThreadID);
+  if(this->mThread != nullptr)
+    this->mThread->notify();
   
   return;
 }
@@ -148,19 +148,19 @@ void Future::waitDone(int timeout){
  * @return int 
  */
 bool Future::get(int& result){
-  if(this->mThreadID)
+  if(this->mThread != nullptr)
     return false;
   
   if(this->mStatus == Status::WAIT){
     
-    this->mThreadID = this->getThreadID();
+    this->mThread = this->currentThread();
     
-    if(this->mThreadID != 0){
+    if(this->mThread != 0){
    
       while(this->mStatus == Status::WAIT)
         this->wait();
       
-      this->mThreadID = 0;
+      this->mThread = nullptr;
     }
   }
   result = this->mResult;
@@ -174,16 +174,16 @@ bool Future::get(int& result){
  * @return int 
  */
 bool Future::get(int& result, int timeout){
-  if(this->mThreadID)
+  if(this->mThread != nullptr)
     return false;  
   
   if(this->mStatus == Status::WAIT){
-    this->mThreadID = this->getThreadID();
+    this->mThread = this->currentThread();
     
-    if(this->mThreadID != 0){
+    if(this->mThread != nullptr){
       this->wait(timeout);
       
-      this->mThreadID = 0;
+      this->mThread = nullptr;
       
       if(!this->isDone())
         return false;
@@ -201,7 +201,7 @@ bool Future::get(int& result, int timeout){
  */
 void Future::clear(void){
   this->mStatus = Status::IDLE;
-  this->mThreadID = 0;
+  this->mThread = nullptr;
   this->mResult = 0;
   return;
 }

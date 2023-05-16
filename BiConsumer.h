@@ -20,14 +20,14 @@
  * Namespace
  */  
 namespace lang{
-  template<typename T, typename U> interface BiConsumer;
+  template<typename T, typename U> struct BiConsumer;
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
 template<typename T, typename U>
-interface lang::BiConsumer extends virtual lang::Interface{
+struct lang::BiConsumer : public virtual lang::Interface{
 
   /* **************************************************************************************
    * Method 
@@ -39,7 +39,7 @@ interface lang::BiConsumer extends virtual lang::Interface{
    * @param t 
    * @param u 
    */
-  virtual void accept(T t, U u) abstract;
+  virtual void accept(T t, U u) = 0;
    
 };
 

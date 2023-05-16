@@ -16,6 +16,7 @@
 //-----------------------------------------------------------------------------------------
 #include "./CompletionHandler.h"
 #include "./Object.h"
+#include "./Thread.h"
 
 /* ****************************************************************************************
  * Namespace
@@ -26,7 +27,7 @@ namespace lang{
 
 
 /* ****************************************************************************************
- * Class/Interface/Struct/Enum
+ * Class/struct/Struct/Enum
  */  
 class lang::Future :public lang::Object,
   public CompletionHandler<int, void*>
@@ -56,7 +57,7 @@ class lang::Future :public lang::Object,
    */
   private:
     Status mStatus;
-    uint32_t mThreadID;
+    lang::Thread* mThread;
     int mResult;
 
   /* **************************************************************************************

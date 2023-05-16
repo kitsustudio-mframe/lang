@@ -25,10 +25,10 @@ namespace lang{
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
 template<class T, class U>
-class lang::BiConsumerEvent extends lang::Object implements 
+class lang::BiConsumerEvent : public lang::Object , 
   public lang::BiConsumer<T, U> {
 
   /* **************************************************************************************

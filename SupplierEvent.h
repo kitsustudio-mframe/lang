@@ -27,10 +27,10 @@ namespace lang{
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
 template<typename T>
-class lang::SupplierEvent extends lang::Object implements 
+class lang::SupplierEvent : public lang::Object , 
   public lang::Supplier<T>{
   
   typedef T (*Method)(void);

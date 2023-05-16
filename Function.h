@@ -20,14 +20,14 @@
  * Namespace
  */  
 namespace lang{
-  template<typename T, typename R> interface Function;
+  template<typename T, typename R> struct Function;
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
 template<typename T, typename R>
-interface lang::Function extends virtual lang::Interface{
+struct lang::Function : public virtual lang::Interface{
 
   /* **************************************************************************************
    * Method
@@ -39,7 +39,7 @@ interface lang::Function extends virtual lang::Interface{
    * @param t 
    * @return R 
    */
-  virtual R apply(T t) abstract;
+  virtual R apply(T t) = 0;
 
 };
 

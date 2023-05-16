@@ -10,9 +10,22 @@
 /* ****************************************************************************************
  * Include
  */
+ 
+#pragma clang diagnostic ignored "-Wnon-virtual-dtor"
+#pragma clang diagnostic ignored "-Wdeprecated-copy-dtor"
+#pragma clang diagnostic ignored "-Wc++98-compat"
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#pragma clang diagnostic ignored "-Wmissing-noreturn"
+#pragma clang diagnostic ignored "-Wformat-nonliteral"
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wc++17-extensions" 
 
 //-----------------------------------------------------------------------------------------
-#include "./lang.h"
+#include <stdint.h>
+#include <stdarg.h>
+
+//-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
 
@@ -20,22 +33,22 @@
  * Namespace
  */
 namespace lang{
-  interface Interface;
+  struct Interface;
   class Object;
 }
 
 
 /* ****************************************************************************************
- * Class/Interface/Struct/Enum
+ * Class/struct/Struct/Enum
  */
-interface lang::Interface{
+struct lang::Interface{
 
   /* **************************************************************************************
    * Method
    */
 
   /**
-   * @brief Destroy the Interface object
+   * @brief Destroy the struct object
    * 
    */
   virtual ~Interface(void) = default;
@@ -43,7 +56,7 @@ interface lang::Interface{
   /**
    *
    */
-  virtual lang::Object& getObject(void) abstract;
+  virtual lang::Object& getObject(void) = 0;
 
 };
 

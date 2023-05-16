@@ -20,13 +20,13 @@
  * Namespace
  */  
 namespace lang{
-  interface Runnable;
+  struct Runnable;
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
-interface lang::Runnable extends virtual lang::Interface{
+struct lang::Runnable : public virtual lang::Interface{
 
   /* **************************************************************************************
    * Method
@@ -36,7 +36,7 @@ interface lang::Runnable extends virtual lang::Interface{
    * @brief 
    * 
    */
-  virtual void run(void) abstract;
+  virtual void run(void) = 0;
   
 };
 

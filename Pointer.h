@@ -26,9 +26,9 @@ namespace lang{
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
-class lang::Pointer extends lang::Object{
+class lang::Pointer : public lang::Object{
   
   friend Memory;
   /* **************************************************************************************

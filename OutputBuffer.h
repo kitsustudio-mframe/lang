@@ -20,12 +20,12 @@
  * Namespace
  */
 namespace lang{
-  interface OutputBuffer;
-  interface InputBuffer;
+  struct OutputBuffer;
+  struct InputBuffer;
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct/Enum
+ * Class/struct/Struct/Enum
  */
 struct lang::OutputBuffer :public virtual lang::Interface{
 
@@ -39,14 +39,14 @@ struct lang::OutputBuffer :public virtual lang::Interface{
    * @return true 輸出緩存為空
    * @return false 輸出緩存不為空
    */
-  virtual bool isEmpty(void) const abstract;
+  virtual bool isEmpty(void) const = 0;
 
   /**
    * @brief 取得輸出緩存內剩餘多少位元組
    * 
    * @return int 緩存內有效位元組數量
    */
-  virtual int avariable(void) const abstract;
+  virtual int avariable(void) const = 0;
 
   /**
    * @brief 輸出一個位元組
@@ -55,7 +55,7 @@ struct lang::OutputBuffer :public virtual lang::Interface{
    * @return true 輸出成功
    * @return false 緩存內為空
    */
-  virtual bool getByte(char& result) abstract;
+  virtual bool getByte(char& result) = 0;
 
   /**
    * @brief 輸出至InputBuffer
@@ -63,7 +63,7 @@ struct lang::OutputBuffer :public virtual lang::Interface{
    * @param inputBuffer 輸出目標緩存空間 
    * @return int 輸出至目標的位元組數量
    */
-  virtual int get(lang::InputBuffer& inputBuffer) abstract;
+  virtual int get(lang::InputBuffer& inputBuffer) = 0;
 
   /**
    * @brief 輸出至InputBuffer
@@ -72,7 +72,7 @@ struct lang::OutputBuffer :public virtual lang::Interface{
    * @param length 指定最大輸出位元組數量
    * @return int 輸出至目標的位元組數量
    */
-  virtual int get(lang::InputBuffer& inputBuffer, int length) abstract;
+  virtual int get(lang::InputBuffer& inputBuffer, int length) = 0;
 
   /**
    * @brief 輸出目標緩存空間
@@ -81,7 +81,7 @@ struct lang::OutputBuffer :public virtual lang::Interface{
    * @param bufferSize 緩衝區大小
    * @return int 複製的位元組數量
    */
-  virtual int get(void* buffer, int bufferSize) abstract;
+  virtual int get(void* buffer, int bufferSize) = 0;
 
   /**
    * @brief 跳躍數個緩衝區內位元組
@@ -89,7 +89,7 @@ struct lang::OutputBuffer :public virtual lang::Interface{
    * @param value 期望跳躍數量
    * @return int 實際跳躍數量
    */
-  virtual int skip(int value) abstract;
+  virtual int skip(int value) = 0;
 
 };
 

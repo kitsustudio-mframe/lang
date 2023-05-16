@@ -20,14 +20,14 @@
  * Namespace
  */  
 namespace lang{
-  template<typename T> interface Consumer;
+  template<typename T> struct Consumer;
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
 template<typename T>
-interface lang::Consumer extends virtual lang::Interface{
+struct lang::Consumer : public virtual lang::Interface{
 
   /* **************************************************************************************
    * Method
@@ -38,7 +38,7 @@ interface lang::Consumer extends virtual lang::Interface{
    * 
    * @param t 
    */
-  virtual void accept(T t) abstract;
+  virtual void accept(T t) = 0;
    
 };
 

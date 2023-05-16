@@ -21,14 +21,14 @@
  * Namespace
  */  
 namespace lang{
-  template<typename V, typename A> interface CompletionHandler;
+  template<typename V, typename A> struct CompletionHandler;
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */
 template<typename V, typename A>
-interface lang::CompletionHandler extends virtual lang::Interface{
+struct lang::CompletionHandler : public virtual lang::Interface{
 
   /* **************************************************************************************
    *  Method
@@ -40,7 +40,7 @@ interface lang::CompletionHandler extends virtual lang::Interface{
    * @param result 
    * @param attachment 
    */
-  virtual void completed(V result, A attachment) abstract;
+  virtual void completed(V result, A attachment) = 0;
   
   /**
    * @brief 
@@ -48,7 +48,7 @@ interface lang::CompletionHandler extends virtual lang::Interface{
    * @param exc 
    * @param attachment 
    */
-  virtual void failed(void* exc, A attachment) abstract;
+  virtual void failed(void* exc, A attachment) = 0;
 
 };
 

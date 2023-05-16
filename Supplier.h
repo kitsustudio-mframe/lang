@@ -21,14 +21,14 @@
  * Namespace
  */  
 namespace lang{
-  template<typename T> interface Supplier;
+  template<typename T> struct Supplier;
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
 template<typename T>
-interface lang::Supplier extends virtual lang::Interface{
+struct lang::Supplier : public virtual lang::Interface{
 
   /* **************************************************************************************
    * Method
@@ -39,7 +39,7 @@ interface lang::Supplier extends virtual lang::Interface{
    * 
    * @return T 
    */
-  virtual T get(void) abstract;
+  virtual T get(void) = 0;
    
 };
 

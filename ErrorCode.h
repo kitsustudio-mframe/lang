@@ -13,7 +13,7 @@
  */  
  
 //-----------------------------------------------------------------------------------------
-#include "./Object.h"
+#include "./Interface.h"
 
 //-----------------------------------------------------------------------------------------
 
@@ -28,25 +28,25 @@ namespace lang{
  * Class Object
  */  
 enum struct lang::ErrorCode : int{
-  NONE                       = 0x00000000 + 0,
-  HARD_FAULT                 = 0x00000000 + 1,
-  SYSTEM_ERROR               = 0x00000000 + 2,
-  OUT_OF_MEMORY              = 0x00000000 + 3,
-  OUT_OF_THREAD_STACK_MEMORY = 0x00000000 + 4,
-  NULL_POINTER               = 0x00000000 + 5,
-  ILLEGAL_ARGUMENT           = 0x00000000 + 6,
-  INSUFFICIENT_MEMORY        = 0x00000000 + 7,
-  WRITE_TO_READONLY_MEMORY   = 0x00000000 + 8,
-  MEMORY_NOT_ALIGNMENT_32BIT = 0x00000000 + 9,
-  MEMORY_NOT_ALIGNMENT_64BIT = 0x00000000 + 10,
+  NONE                       = 0x00000000 + 0,  ///<預設無異常
+  HARD_FAULT                 = 0x00000000 + 1,  ///<HARD_FAULT
+  SYSTEM_ERROR               = 0x00000000 + 2,  ///<SYSTEM_ERROR
+  OUT_OF_MEMORY              = 0x00000000 + 3,  ///<OUT_OF_MEMORY
+  OUT_OF_THREAD_STACK_MEMORY = 0x00000000 + 4,  ///<OUT_OF_THREAD_STACK_MEMORY
+  NULL_POINTER               = 0x00000000 + 5,  ///<NULL_POINTER
+  ILLEGAL_ARGUMENT           = 0x00000000 + 6,  ///<ILLEGAL_ARGUMENT
+  INSUFFICIENT_MEMORY        = 0x00000000 + 7,  ///<INSUFFICIENT_MEMORY
+  WRITE_TO_READONLY_MEMORY   = 0x00000000 + 8,  ///<WRITE_TO_READONLY_MEMORY
+  MEMORY_NOT_ALIGNMENT_32BIT = 0x00000000 + 9,  ///<MEMORY_NOT_ALIGNMENT_32BIT
+  MEMORY_NOT_ALIGNMENT_64BIT = 0x00000000 + 10, ///<MEMORY_NOT_ALIGNMENT_64BIT
     
-  RTX_STACK_UNDERFLOW        = 0x10000000 + 0,
-  RTX_ISR_QUEUE_OVERFLOW     = 0x10000000 + 1,
-  RTX_TIMER_QUEUE_OVERFLOW   = 0x10000000 + 2,
-  RTX_CLIB_SPACE             = 0x10000000 + 3,
-  RTX_CLIB_MUTEX             = 0x10000000 + 4,
+  RTX_STACK_UNDERFLOW        = 0x10000000 + 0,  ///<RTX_STACK_UNDERFLOW
+  RTX_ISR_QUEUE_OVERFLOW     = 0x10000000 + 1,  ///<RTX_ISR_QUEUE_OVERFLOW
+  RTX_TIMER_QUEUE_OVERFLOW   = 0x10000000 + 2,  ///<RTX_TIMER_QUEUE_OVERFLOW
+  RTX_CLIB_SPACE             = 0x10000000 + 3,  ///<RTX_CLIB_SPACE
+  RTX_CLIB_MUTEX             = 0x10000000 + 4,  ///<RTX_CLIB_MUTEX
   
-  RESERVED                   = 0x7FFFFFFF
+  RESERVED                   = 0x7FFFFFFF       ///<RESERVED
 };
 
 /* *****************************************************************************************

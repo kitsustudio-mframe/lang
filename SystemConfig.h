@@ -29,7 +29,7 @@ namespace lang{
 
 
 /* ****************************************************************************************
- * Class/Interface/Struct/Enum
+ * Class/struct/Struct/Enum
  */
 struct lang::SystemConfig{
   lang::OutputBuffer* out;

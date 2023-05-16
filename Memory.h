@@ -26,9 +26,9 @@ namespace lang{
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
-class lang::Memory extends lang::Data{
+class lang::Memory : public lang::Data{
 
   /* **************************************************************************************
    * Variable <Public>

@@ -26,10 +26,10 @@ namespace lang{
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
 template<typename T>
-class lang::ConsumerEvent extends lang::Object implements 
+class lang::ConsumerEvent : public lang::Object , 
   public lang::Consumer<T>{
 
   typedef void (*Method)(T);

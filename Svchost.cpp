@@ -44,9 +44,23 @@ using lang::Svchost;
  */
 
 /* ****************************************************************************************
- * Public Method <Override>
+ * Public Method <Override> lang::Runnable
  */
-
+/**
+ * @brief 
+ * svchost程式進入點
+ * 
+ */
+void Svchost::run(void){
+  this->mThread = *this->currentThread();
+  this->mStart = true;
+  this->mUserThread.start();
+  
+  while(this->mStart){
+  
+  
+  }
+}
 /* ****************************************************************************************
  * Public Method
  */

@@ -24,59 +24,52 @@
  * Namespace
  */  
 namespace lang{
-  interface Thread;
+  struct Thread;
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
-interface lang::Thread extends lang::Runnable{
+struct lang::Thread : public lang::Runnable{
 
   /* **************************************************************************************
    * Method
    */
   
   /**
-   * @brief 
-   * 
-   * @return uint32_t 
-   */
-  virtual uint32_t getID(void) const abstract;
-  
-  /**
    * @brief Set the Name object
    * 
    * @param name 
    */
-  virtual void setThreadName(const char* name) abstract;
+  virtual void setThreadName(const char* name) = 0;
   
   /**
    * @brief Get the Thread Name object
    * 
    * @return const char* 
    */
-  virtual const char* getThreadName(void) const abstract;
+  virtual const char* getThreadName(void) const = 0;
     
   /**
    * @brief Get the Priority object
    * 
    * @return lang::ThreadPriority 
    */
-  virtual lang::ThreadPriority getPriority(void) const abstract;
+  virtual lang::ThreadPriority getPriority(void) const = 0;
 
   /**
    * @brief Get the State object
    * 
    * @return lang::ThreadState 
    */
-  virtual lang::ThreadState getState(void) const abstract;
+  virtual lang::ThreadState getState(void) const = 0;
     
   /**
    * @brief Get the Stack Size object
    * 
    * @return uint32_t 
    */
-  virtual int getStackSize(void) const abstract;
+  virtual int getStackSize(void) const = 0;
     
   /**
    * @brief 
@@ -84,7 +77,7 @@ interface lang::Thread extends lang::Runnable{
    * @return true 
    * @return false 
    */
-  virtual bool start(void) abstract;
+  virtual bool start(void) = 0;
     
   /**
    * @brief 
@@ -93,13 +86,13 @@ interface lang::Thread extends lang::Runnable{
    * @return true 
    * @return false 
    */
-  virtual bool start(lang::ThreadPriority priority) abstract;
+  virtual bool start(lang::ThreadPriority priority) = 0;
     
   /**
    * @brief 
    * 
    */
-  virtual void notify(void) abstract;
+  virtual void notify(void) = 0;
     
   /**
    * @brief Set the Priority object
@@ -108,7 +101,7 @@ interface lang::Thread extends lang::Runnable{
    * @return true 
    * @return false 
    */
-  virtual bool setPriority(lang::ThreadPriority priority) abstract;  
+  virtual bool setPriority(lang::ThreadPriority priority) = 0;  
 
   /**
    * @brief 
@@ -116,7 +109,7 @@ interface lang::Thread extends lang::Runnable{
    * @return true 
    * @return false 
    */
-  virtual bool isActive(void) abstract;
+  virtual bool isActive(void) = 0;
 };
 
 /* *****************************************************************************************

@@ -22,13 +22,13 @@
  * Namespace
  */  
 namespace lang{
-  interface InputStream;
+  struct InputStream;
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */
-interface lang::InputStream extends virtual lang::Interface{
+struct lang::InputStream : public virtual lang::Interface{
 
   /* **************************************************************************************
    *  Method <Public>
@@ -40,7 +40,7 @@ interface lang::InputStream extends virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool abortRead(void) abstract;  
+  virtual bool abortRead(void) = 0;  
   
   /**
    * @brief 
@@ -48,7 +48,7 @@ interface lang::InputStream extends virtual lang::Interface{
    * @return true is busy.
    * @return false isn't busy.
    */
-  virtual bool readBusy(void) abstract;
+  virtual bool readBusy(void) = 0;
 
   /**
    * @brief 
@@ -56,7 +56,7 @@ interface lang::InputStream extends virtual lang::Interface{
    * @param outputBuffer 
    * @return int 
    */
-  virtual bool read(lang::InputBuffer& inputBuffer, int timeout) abstract;
+  virtual bool read(lang::InputBuffer& inputBuffer, int timeout) = 0;
   
   /**
    * @brief nonblocking
@@ -69,7 +69,7 @@ interface lang::InputStream extends virtual lang::Interface{
    */
   virtual bool read(lang::InputBuffer& inputBuffer, 
                     void* attachment,
-                    lang::CompletionHandler<int, void*>* handler) abstract;
+                    lang::CompletionHandler<int, void*>* handler) = 0;
 
   /**
    * @brief 
@@ -79,7 +79,7 @@ interface lang::InputStream extends virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool read(lang::InputBuffer& inputBuffer, lang::Future& future) abstract;
+  virtual bool read(lang::InputBuffer& inputBuffer, lang::Future& future) = 0;
 
   /**
    * @brief 
@@ -92,7 +92,7 @@ interface lang::InputStream extends virtual lang::Interface{
    */
   virtual bool skip(int value, 
                     void* attachment,
-                    lang::CompletionHandler<int, void*>* handler) abstract;
+                    lang::CompletionHandler<int, void*>* handler) = 0;
 
   /**
    * @brief 
@@ -102,7 +102,7 @@ interface lang::InputStream extends virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool skip(int value, lang::Future& future) abstract;
+  virtual bool skip(int value, lang::Future& future) = 0;
 
 };
 

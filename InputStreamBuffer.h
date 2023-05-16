@@ -23,14 +23,14 @@
  * Namespace
  */
 namespace lang{
-  interface InputStreamBuffer;
+  struct InputStreamBuffer;
 }
 
 
 /* ****************************************************************************************
- * Class/Interface/Struct/Enum
+ * Class/struct/Struct/Enum
  */
-interface lang::InputStreamBuffer extends lang::InputStream{
+struct lang::InputStreamBuffer : public lang::InputStream{
 
   /* **************************************************************************************
    * Method
@@ -41,7 +41,7 @@ interface lang::InputStreamBuffer extends lang::InputStream{
    * 
    * @return lang::OutputBuffer& 
    */
-  virtual lang::OutputBuffer& getOutputBuffer(void) abstract;
+  virtual lang::OutputBuffer& getOutputBuffer(void) = 0;
   
 };
 

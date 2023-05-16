@@ -25,10 +25,10 @@ namespace lang{
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
 template<typename T, typename R>
-class lang::FunctionEvent extends lang::Object implements 
+class lang::FunctionEvent : public lang::Object , 
   public lang::Function<T, R>{
 
   typedef R (*Method)(T);

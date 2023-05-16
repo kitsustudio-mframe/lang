@@ -20,19 +20,20 @@
 #include "./Thread.h"
 #include "./Kernel.h"
 #include "./Runnable.h"
+#include "./Svchost.h"
 
 
 /* ****************************************************************************************
  * Namespace
  */  
 namespace lang{
-  class System;
+  class System; 
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
-class lang::System final extends lang::Object{
+class lang::System final : public lang::Object{
   friend Object;
   
   /* **************************************************************************************
@@ -48,6 +49,7 @@ class lang::System final extends lang::Object{
    */
   private: 
     static lang::Kernel* mKernel;
+    static lang::Svchost* mSvchost;
   /* **************************************************************************************
    * Abstract method <Public>
    */
@@ -83,7 +85,7 @@ class lang::System final extends lang::Object{
   public:
 
     /**
-     * @brief 
+     * @brief 設備重新啟動
      * 
      */
     static void reboot(void);
@@ -92,17 +94,17 @@ class lang::System final extends lang::Object{
      * @brief 
      * 
      */
-    static void setup(lang::SystemConfig& config);    
+   static void setup(lang::Kernel& kernel);    
       
     /**
-     * @brief 
+     * @brief 系統初始化核心
      * 
-     * @param userThread 
+     * @param kernel 核心方法，建議使用CMSIS-RTOS2 
      */
-    static void start();
+   static void start(lang::Runnable& task, uint32_t stackSize, uint32_t svchostStackSize);
 
     /**
-     * @brief 
+     * @brief 核心啟動
      * 
      * @param address 
      * @param code
@@ -141,7 +143,7 @@ class lang::System final extends lang::Object{
      *
      */
     static Thread& allocThread(lang::Runnable& runnable, lang::Data& stackMemory);
-  
+    
   /* **************************************************************************************
    * Public Method <Inline Static>
    */

@@ -13,6 +13,7 @@
 
 //-----------------------------------------------------------------------------------------
 #include "./Object.h"
+#include "./System.h"
 
 /* ****************************************************************************************
  * Using
@@ -86,6 +87,7 @@ void* Object::operator new(size_t n, void* const p){
  * @param milliseconds 
  */
 void Object::delay(int milliseconds) const{
+  System::mKernel->kernelDelay(milliseconds);
   return;
 }
 
@@ -96,8 +98,11 @@ void Object::delay(int milliseconds) const{
  * @return true 
  * @return false 
  */
-bool Object::equal(Object* object) const{
-  return (this == object);
+bool Object::equals(Object* object) const{
+  if(object == nullptr)
+    return false;
+  
+  return (this->hashcode() == object->hashcode());
 }
 
 /**
@@ -107,16 +112,8 @@ bool Object::equal(Object* object) const{
  * @return true 
  * @return false 
  */
-bool Object::equal(Object& object) const{
-  return (this == &object);
-}
-
-/**
- * @brief 
- * 
- */
-void Object::finalize(void){
-  return;
+bool Object::equals(Object& object) const{
+  return (this->hashcode() == object.hashcode());
 }
 
 /**
@@ -124,6 +121,7 @@ void Object::finalize(void){
  * 
  */
 void Object::wait(void) const{
+  System::mKernel->kernelWait(0);
   return;
 }
 
@@ -135,7 +133,7 @@ void Object::wait(void) const{
  * @return false 
  */
 bool Object::wait(int timeout) const{
-  return false;
+  return System::mKernel->kernelWait(timeout);
 }
 
 /**
@@ -145,7 +143,7 @@ bool Object::wait(int timeout) const{
  * @return false 
  */
 bool Object::yield(void) const{
-  return false;
+  return System::mKernel->kenrelYield();
 }
 
 /**
@@ -154,8 +152,8 @@ bool Object::yield(void) const{
  * @return true 
  * @return false 
  */
-bool Object::systemLock(void) const{
-  return false;
+int Object::systemLock(void) const{
+  return System::mKernel->kernelLock();
 }
 
 /**
@@ -164,10 +162,22 @@ bool Object::systemLock(void) const{
  * @return true 
  * @return false 
  */
-bool Object::systemUnlock(void) const{
-  return false;
+int Object::systemUnlock(void) const{
+  return System::mKernel->kernelUnlock();
 }
 
+/**
+ * @brief 返回對象的哈希碼值。支持這種方法是為了散列表，如HashMap提供的那樣。
+ * 
+ * @return uint32_t 該對象的哈希碼值。
+ */
+uint32_t Object::hashcode(void) const{
+  return reinterpret_cast<uint32_t>(this);
+}
+
+/* **************************************************************************************
+ * Public Method <Override> - lang::Interface
+ */
 /**
  * @brief 
  * 

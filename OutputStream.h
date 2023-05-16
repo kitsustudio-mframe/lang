@@ -19,15 +19,15 @@
  * Namespace
  */  
 namespace lang{
-  interface OutputStream;
+  struct OutputStream;
 }
 
 
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */
-interface lang::OutputStream extends virtual lang::Interface{
+struct lang::OutputStream : public virtual lang::Interface{
 
   /* **************************************************************************************
    *  Method <Public>
@@ -36,7 +36,7 @@ interface lang::OutputStream extends virtual lang::Interface{
   /**
    * 
    */
-  virtual bool abortWrite(void) abstract;
+  virtual bool abortWrite(void) = 0;
   
   /**
    * @brief 
@@ -44,7 +44,7 @@ interface lang::OutputStream extends virtual lang::Interface{
    * @return true is busy.
    * @return false isn't busy.
    */
-  virtual bool writeBusy(void) abstract;
+  virtual bool writeBusy(void) = 0;
   
   /**
    * @brief write witt io mode.
@@ -54,7 +54,7 @@ interface lang::OutputStream extends virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool write(lang::OutputBuffer& outputBuffer, int timeout) abstract;  
+  virtual bool write(lang::OutputBuffer& outputBuffer, int timeout) = 0;  
   
   /**
    * @brief write with aio mode.
@@ -67,7 +67,7 @@ interface lang::OutputStream extends virtual lang::Interface{
    */
   virtual bool write(lang::OutputBuffer& outputBuffer, 
                      void* attachment,
-                     lang::CompletionHandler<int, void*>* handler) abstract;
+                     lang::CompletionHandler<int, void*>* handler) = 0;
 
   /**
    * @brief write with nio mode.
@@ -77,7 +77,7 @@ interface lang::OutputStream extends virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool write(lang::OutputBuffer& outputBuffer, lang::Future& future) abstract;
+  virtual bool write(lang::OutputBuffer& outputBuffer, lang::Future& future) = 0;
 
 };
 

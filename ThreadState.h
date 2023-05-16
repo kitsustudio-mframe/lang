@@ -24,7 +24,7 @@ namespace lang{
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
 enum struct lang::ThreadState : char{
   /**

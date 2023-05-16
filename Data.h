@@ -26,9 +26,9 @@ namespace lang{
 
 
 /* ****************************************************************************************
- * Class/Interface/Struct/Enum
+ * Class/struct/Struct/Enum
  */  
-class lang::Data extends lang::Pointer{
+class lang::Data : public lang::Pointer{
 
   friend Memory;
   /* **************************************************************************************

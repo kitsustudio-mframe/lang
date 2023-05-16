@@ -21,15 +21,15 @@
  * Namespace
  */
 namespace lang{
-  interface InputBuffer;
-  interface OutputBuffer;
+  struct InputBuffer;
+  struct OutputBuffer;
 }
 
 
 /* ****************************************************************************************
- * Class/Interface/Struct/Enum
+ * Class/struct/Struct/Enum
  */
-interface lang::InputBuffer extends virtual lang::Interface{
+struct lang::InputBuffer : public virtual lang::Interface{
 
   /* **************************************************************************************
    * Method
@@ -41,14 +41,14 @@ interface lang::InputBuffer extends virtual lang::Interface{
    * @return true 已滿
    * @return false 未滿，仍有空間
    */
-  virtual bool isFull(void) const abstract;
+  virtual bool isFull(void) const = 0;
 
   /**
    * @brief 取得InputBuffer內資料數量
    * 
    * @return int InputBuffer內資料數量
    */
-  virtual int remaining(void) const abstract;
+  virtual int remaining(void) const = 0;
 
   /**
    * @brief 將data輸入至InputBuffer
@@ -57,7 +57,7 @@ interface lang::InputBuffer extends virtual lang::Interface{
    * @return true 成功將data輸入至InputBuffer
    * @return false InputBuffer已滿
    */
-  virtual bool putByte(const char data) abstract;
+  virtual bool putByte(const char data) = 0;
 
   /**
    * @brief 將outputBuffer內資料輸入至InputBuffer
@@ -65,7 +65,7 @@ interface lang::InputBuffer extends virtual lang::Interface{
    * @param byteBuffer 資料來源
    * @return int 移動資料數量(byte)
    */
-  virtual int put(lang::OutputBuffer& outputBuffer) abstract;
+  virtual int put(lang::OutputBuffer& outputBuffer) = 0;
   
   /**
    * @brief 將outputBuffer內資料輸入至InputBuffer並指定輸入長度
@@ -74,7 +74,7 @@ interface lang::InputBuffer extends virtual lang::Interface{
    * @param length 輸入長度
    * @return int 移動資料數量(byte)
    */
-  virtual int put(lang::OutputBuffer& outputBuffer, int length) abstract;  
+  virtual int put(lang::OutputBuffer& outputBuffer, int length) = 0;  
 
   /**
    * @brief 將buffer內資料輸入至InputBuffer
@@ -83,7 +83,7 @@ interface lang::InputBuffer extends virtual lang::Interface{
    * @param length 輸入長度
    * @return int 移動資料數量(byte)
    */
-  virtual int put(const void* buffer, int length) abstract;
+  virtual int put(const void* buffer, int length) = 0;
 };
 
 /* ****************************************************************************************

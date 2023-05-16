@@ -26,9 +26,9 @@ namespace lang{
 }
 
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/struct/Struct
  */  
-class lang::RunnableEvent final extends lang::Object implements 
+class lang::RunnableEvent final : public lang::Object , 
 public lang::Runnable{
 
   /* **************************************************************************************

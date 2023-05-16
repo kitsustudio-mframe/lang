@@ -27,9 +27,9 @@ namespace lang{
 
 
 /* ****************************************************************************************
- * Class/Interface/Struct/Enum
+ * Class/struct/Struct/Enum
  */  
-class lang::Svchost extends lang::Object implements lang::Runnable{
+class lang::Svchost : public lang::Object , public lang::Runnable{
 
   /* **************************************************************************************
    * Variable <Public>
@@ -43,7 +43,9 @@ class lang::Svchost extends lang::Object implements lang::Runnable{
    * Variable <Private>
    */
   private:
+    lang::Thread& mUserThread;
     lang::Thread& mThread;
+    bool mStart;
   
   /* **************************************************************************************
    * Abstract method <Public>
@@ -60,7 +62,7 @@ class lang::Svchost extends lang::Object implements lang::Runnable{
     /**
      *
      */
-    Svchost(lang::Thread& thread);
+    Svchost(lang::Thread& userThread);
     
     /**
      *
@@ -80,7 +82,9 @@ class lang::Svchost extends lang::Object implements lang::Runnable{
    */
   public:
     /**
-     *
+     * @brief 
+     * svchost程式進入點
+     * 
      */
     virtual void run(void); 
 
@@ -88,9 +92,20 @@ class lang::Svchost extends lang::Object implements lang::Runnable{
    * Public Method
    */
   public:
+    /**
+     * @brief 停止執行svchost
+     *
+     */
     void stop(void);
   
-    bool execute(lang::Runnable);
+    /**
+     * @brief 執行使用者事件
+     *
+     * @param task 使用者指定事件
+     * @return true 只用者事件排定成功
+     * @return false 使用者事件排定失敗
+     */
+    bool execute(lang::Runnable& task);
 
   /* **************************************************************************************
    * Protected Method <Static>
