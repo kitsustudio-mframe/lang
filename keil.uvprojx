@@ -385,6 +385,41 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
+              <FileName>Allocator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Allocator.h</FilePath>
+            </File>
+            <File>
+              <FileName>Array.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Array.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayPrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayPrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayPrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayPrototype.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayQueue.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueuePrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayQueuePrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueuePrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayQueuePrototype.h</FilePath>
+            </File>
+            <File>
               <FileName>BiConsumer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\BiConsumer.h</FilePath>
@@ -393,6 +428,21 @@
               <FileName>BiConsumerEvent.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\BiConsumerEvent.h</FilePath>
+            </File>
+            <File>
+              <FileName>Buffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Buffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Closeable.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Closeable.h</FilePath>
+            </File>
+            <File>
+              <FileName>Collection.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Collection.h</FilePath>
             </File>
             <File>
               <FileName>CompletionHandler.h</FileName>
@@ -445,11 +495,6 @@
               <FilePath>.\Future.h</FilePath>
             </File>
             <File>
-              <FileName>InputBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\InputBuffer.h</FilePath>
-            </File>
-            <File>
               <FileName>InputStream.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\InputStream.h</FilePath>
@@ -500,11 +545,6 @@
               <FilePath>.\Object.h</FilePath>
             </File>
             <File>
-              <FileName>OutputBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\OutputBuffer.h</FilePath>
-            </File>
-            <File>
               <FileName>OutputStream.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\OutputStream.h</FilePath>
@@ -525,9 +565,54 @@
               <FilePath>.\Pointer.h</FilePath>
             </File>
             <File>
+              <FileName>ReadBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ReadBuffer.h</FilePath>
+            </File>
+            <File>
               <FileName>README.md</FileName>
               <FileType>5</FileType>
               <FilePath>.\README.md</FilePath>
+            </File>
+            <File>
+              <FileName>ReadOnlyBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ReadOnlyBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ReadOnlyBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ReadOnlyBuffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>RingBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\RingBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>RingBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RingBuffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>RingBufferInputStream.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\RingBufferInputStream.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>RingBufferInputStream.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RingBufferInputStream.h</FilePath>
+            </File>
+            <File>
+              <FileName>RingBufferOutputStream.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\RingBufferOutputStream.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>RingBufferOutputStream.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RingBufferOutputStream.h</FilePath>
             </File>
             <File>
               <FileName>Runnable.h</FileName>
@@ -555,6 +640,36 @@
               <FilePath>.\RunnableEvent.h</FilePath>
             </File>
             <File>
+              <FileName>Stacker.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Stacker.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Stacker.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Stacker.h</FilePath>
+            </File>
+            <File>
+              <FileName>StreamSkipper.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\StreamSkipper.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>StreamSkipper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\StreamSkipper.h</FilePath>
+            </File>
+            <File>
+              <FileName>Strings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Strings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Strings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Strings.h</FilePath>
+            </File>
+            <File>
               <FileName>Supplier.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Supplier.h</FilePath>
@@ -565,6 +680,16 @@
               <FilePath>.\SupplierEvent.h</FilePath>
             </File>
             <File>
+              <FileName>Svchost.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Svchost.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Svchost.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Svchost.h</FilePath>
+            </File>
+            <File>
               <FileName>System.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\System.cpp</FilePath>
@@ -573,11 +698,6 @@
               <FileName>System.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\System.h</FilePath>
-            </File>
-            <File>
-              <FileName>SystemConfig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\SystemConfig.h</FilePath>
             </File>
             <File>
               <FileName>Thread.h</FileName>
@@ -595,14 +715,19 @@
               <FilePath>.\ThreadState.h</FilePath>
             </File>
             <File>
-              <FileName>Svchost.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Svchost.cpp</FilePath>
+              <FileName>WriteBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\WriteBuffer.h</FilePath>
             </File>
             <File>
-              <FileName>Svchost.h</FileName>
+              <FileName>Updater.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Svchost.h</FilePath>
+              <FilePath>.\Updater.h</FilePath>
+            </File>
+            <File>
+              <FileName>Queue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Queue.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -987,6 +1112,41 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
+              <FileName>Allocator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Allocator.h</FilePath>
+            </File>
+            <File>
+              <FileName>Array.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Array.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayPrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayPrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayPrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayPrototype.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayQueue.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueuePrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayQueuePrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueuePrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayQueuePrototype.h</FilePath>
+            </File>
+            <File>
               <FileName>BiConsumer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\BiConsumer.h</FilePath>
@@ -995,6 +1155,21 @@
               <FileName>BiConsumerEvent.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\BiConsumerEvent.h</FilePath>
+            </File>
+            <File>
+              <FileName>Buffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Buffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Closeable.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Closeable.h</FilePath>
+            </File>
+            <File>
+              <FileName>Collection.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Collection.h</FilePath>
             </File>
             <File>
               <FileName>CompletionHandler.h</FileName>
@@ -1047,11 +1222,6 @@
               <FilePath>.\Future.h</FilePath>
             </File>
             <File>
-              <FileName>InputBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\InputBuffer.h</FilePath>
-            </File>
-            <File>
               <FileName>InputStream.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\InputStream.h</FilePath>
@@ -1102,11 +1272,6 @@
               <FilePath>.\Object.h</FilePath>
             </File>
             <File>
-              <FileName>OutputBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\OutputBuffer.h</FilePath>
-            </File>
-            <File>
               <FileName>OutputStream.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\OutputStream.h</FilePath>
@@ -1127,9 +1292,54 @@
               <FilePath>.\Pointer.h</FilePath>
             </File>
             <File>
+              <FileName>ReadBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ReadBuffer.h</FilePath>
+            </File>
+            <File>
               <FileName>README.md</FileName>
               <FileType>5</FileType>
               <FilePath>.\README.md</FilePath>
+            </File>
+            <File>
+              <FileName>ReadOnlyBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ReadOnlyBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ReadOnlyBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ReadOnlyBuffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>RingBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\RingBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>RingBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RingBuffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>RingBufferInputStream.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\RingBufferInputStream.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>RingBufferInputStream.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RingBufferInputStream.h</FilePath>
+            </File>
+            <File>
+              <FileName>RingBufferOutputStream.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\RingBufferOutputStream.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>RingBufferOutputStream.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RingBufferOutputStream.h</FilePath>
             </File>
             <File>
               <FileName>Runnable.h</FileName>
@@ -1157,6 +1367,36 @@
               <FilePath>.\RunnableEvent.h</FilePath>
             </File>
             <File>
+              <FileName>Stacker.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Stacker.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Stacker.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Stacker.h</FilePath>
+            </File>
+            <File>
+              <FileName>StreamSkipper.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\StreamSkipper.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>StreamSkipper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\StreamSkipper.h</FilePath>
+            </File>
+            <File>
+              <FileName>Strings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Strings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Strings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Strings.h</FilePath>
+            </File>
+            <File>
               <FileName>Supplier.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Supplier.h</FilePath>
@@ -1167,6 +1407,16 @@
               <FilePath>.\SupplierEvent.h</FilePath>
             </File>
             <File>
+              <FileName>Svchost.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Svchost.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Svchost.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Svchost.h</FilePath>
+            </File>
+            <File>
               <FileName>System.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\System.cpp</FilePath>
@@ -1175,11 +1425,6 @@
               <FileName>System.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\System.h</FilePath>
-            </File>
-            <File>
-              <FileName>SystemConfig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\SystemConfig.h</FilePath>
             </File>
             <File>
               <FileName>Thread.h</FileName>
@@ -1197,14 +1442,19 @@
               <FilePath>.\ThreadState.h</FilePath>
             </File>
             <File>
-              <FileName>Svchost.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Svchost.cpp</FilePath>
+              <FileName>WriteBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\WriteBuffer.h</FilePath>
             </File>
             <File>
-              <FileName>Svchost.h</FileName>
+              <FileName>Updater.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Svchost.h</FilePath>
+              <FilePath>.\Updater.h</FilePath>
+            </File>
+            <File>
+              <FileName>Queue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Queue.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1589,6 +1839,41 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
+              <FileName>Allocator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Allocator.h</FilePath>
+            </File>
+            <File>
+              <FileName>Array.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Array.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayPrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayPrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayPrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayPrototype.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayQueue.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueuePrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayQueuePrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueuePrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayQueuePrototype.h</FilePath>
+            </File>
+            <File>
               <FileName>BiConsumer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\BiConsumer.h</FilePath>
@@ -1597,6 +1882,21 @@
               <FileName>BiConsumerEvent.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\BiConsumerEvent.h</FilePath>
+            </File>
+            <File>
+              <FileName>Buffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Buffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Closeable.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Closeable.h</FilePath>
+            </File>
+            <File>
+              <FileName>Collection.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Collection.h</FilePath>
             </File>
             <File>
               <FileName>CompletionHandler.h</FileName>
@@ -1649,11 +1949,6 @@
               <FilePath>.\Future.h</FilePath>
             </File>
             <File>
-              <FileName>InputBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\InputBuffer.h</FilePath>
-            </File>
-            <File>
               <FileName>InputStream.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\InputStream.h</FilePath>
@@ -1704,11 +1999,6 @@
               <FilePath>.\Object.h</FilePath>
             </File>
             <File>
-              <FileName>OutputBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\OutputBuffer.h</FilePath>
-            </File>
-            <File>
               <FileName>OutputStream.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\OutputStream.h</FilePath>
@@ -1729,9 +2019,54 @@
               <FilePath>.\Pointer.h</FilePath>
             </File>
             <File>
+              <FileName>ReadBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ReadBuffer.h</FilePath>
+            </File>
+            <File>
               <FileName>README.md</FileName>
               <FileType>5</FileType>
               <FilePath>.\README.md</FilePath>
+            </File>
+            <File>
+              <FileName>ReadOnlyBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ReadOnlyBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ReadOnlyBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ReadOnlyBuffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>RingBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\RingBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>RingBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RingBuffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>RingBufferInputStream.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\RingBufferInputStream.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>RingBufferInputStream.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RingBufferInputStream.h</FilePath>
+            </File>
+            <File>
+              <FileName>RingBufferOutputStream.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\RingBufferOutputStream.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>RingBufferOutputStream.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RingBufferOutputStream.h</FilePath>
             </File>
             <File>
               <FileName>Runnable.h</FileName>
@@ -1759,6 +2094,36 @@
               <FilePath>.\RunnableEvent.h</FilePath>
             </File>
             <File>
+              <FileName>Stacker.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Stacker.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Stacker.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Stacker.h</FilePath>
+            </File>
+            <File>
+              <FileName>StreamSkipper.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\StreamSkipper.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>StreamSkipper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\StreamSkipper.h</FilePath>
+            </File>
+            <File>
+              <FileName>Strings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Strings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Strings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Strings.h</FilePath>
+            </File>
+            <File>
               <FileName>Supplier.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Supplier.h</FilePath>
@@ -1769,6 +2134,16 @@
               <FilePath>.\SupplierEvent.h</FilePath>
             </File>
             <File>
+              <FileName>Svchost.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Svchost.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Svchost.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Svchost.h</FilePath>
+            </File>
+            <File>
               <FileName>System.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\System.cpp</FilePath>
@@ -1777,11 +2152,6 @@
               <FileName>System.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\System.h</FilePath>
-            </File>
-            <File>
-              <FileName>SystemConfig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\SystemConfig.h</FilePath>
             </File>
             <File>
               <FileName>Thread.h</FileName>
@@ -1799,14 +2169,19 @@
               <FilePath>.\ThreadState.h</FilePath>
             </File>
             <File>
-              <FileName>Svchost.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Svchost.cpp</FilePath>
+              <FileName>WriteBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\WriteBuffer.h</FilePath>
             </File>
             <File>
-              <FileName>Svchost.h</FileName>
+              <FileName>Updater.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Svchost.h</FilePath>
+              <FilePath>.\Updater.h</FilePath>
+            </File>
+            <File>
+              <FileName>Queue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Queue.h</FilePath>
             </File>
           </Files>
         </Group>

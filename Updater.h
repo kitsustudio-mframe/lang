@@ -4,47 +4,54 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_33288B9C_6095_4B26_9F88_332BF138D71A
-#define LANG_33288B9C_6095_4B26_9F88_332BF138D71A
+#ifndef LANG_CF8A21F0_A644_4EE4_A29D_B76F28A9FD43
+#define LANG_CF8A21F0_A644_4EE4_A29D_B76F28A9FD43
 
 /* ****************************************************************************************
  * Include
  */
 
 //-----------------------------------------------------------------------------------------
+#include "./Interface.h"
 
 //-----------------------------------------------------------------------------------------
-#include "./WriteBuffer.h"
-#include "./OutputStream.h"
 
 /* ****************************************************************************************
  * Namespace
  */
 namespace lang{
-  struct OutputStreamBuffer;
+  struct Updater;
 }
 
 
 /* ****************************************************************************************
- * Class/struct/Struct/Enum
+ * Class/Interface/Struct/Enum
  */
-struct lang::OutputStreamBuffer : public lang::OutputStream{
+struct lang::Updater :public virtual lang::Interface{
 
   /* **************************************************************************************
    * Method
    */
 
   /**
-   * @brief Get the Input Buffer object
+   * @brief 更新資源
    * 
-   * @return lang::WriteBuffer& 
+   * @return true 開始嘗試更新成功
+   * @return false 開始嘗試更新失敗
    */
-  virtual lang::WriteBuffer& getWriteBuffer(void) = 0;
-  
+  virtual bool update(void) = 0;
+
+  /**
+   * @brief 是否正在更新
+   * 
+   * @return true 正在更新中
+   * @return false 等待更新
+   */
+  virtual bool isUpdating(void) = 0;
 };
 
 /* ****************************************************************************************
  * End of file
  */
 
-#endif /* LANG_33288B9C_6095_4B26_9F88_332BF138D71A */
+#endif /* LANG_CF8A21F0_A644_4EE4_A29D_B76F28A9FD43 */

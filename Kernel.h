@@ -15,8 +15,8 @@
 #include "./Interface.h"
 #include "./Runnable.h"
 #include "./Thread.h"
-#include "./InputBuffer.h"
-#include "./OutputBuffer.h"
+#include "./WriteBuffer.h"
+#include "./ReadBuffer.h"
 
 //-----------------------------------------------------------------------------------------
 
@@ -151,14 +151,14 @@ struct lang::Kernel : public virtual lang::Interface{
    *
    * @return
    */
-  virtual InputBuffer* kernelGetInputBuffer(void) = 0;
+  virtual WriteBuffer* kernelGetWriteBuffer(void) = 0;
   
   /**
    * @brief 
    *
    * @return
    */
-  virtual OutputBuffer* kernelGetOutputBuffer(void) = 0;
+  virtual ReadBuffer* kernelGetReadBuffer(void) = 0;
   
   /**
    * @brief 

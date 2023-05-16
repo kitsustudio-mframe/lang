@@ -4,32 +4,34 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_90F75476_6982_4BDD_B9ED_0A250FE9C324
-#define LANG_90F75476_6982_4BDD_B9ED_0A250FE9C324
+
+#ifndef LANG_FCCC3E6F_E524_4464_BA6F_FF9492970DA8
+#define LANG_FCCC3E6F_E524_4464_BA6F_FF9492970DA8
 
 /* ****************************************************************************************
  * Include
- */  
+ */
 
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-#include "Object.h"
-#include "Runnable.h"
-#include "Thread.h"
+#include "./ArrayPrototype.h"
+#include "./Memory.h"
 
 /* ****************************************************************************************
  * Namespace
  */  
 namespace lang{
-  class Svchost;
+  template<typename E> class Array;
 }
 
 
+
 /* ****************************************************************************************
- * Class/struct/Struct/Enum
+ * Class/Interface/Struct
  */  
-class lang::Svchost : public lang::Object , public lang::Runnable{
+template<typename E>
+  class lang::Array :public lang::ArrayPrototype{
 
   /* **************************************************************************************
    * Variable <Public>
@@ -42,15 +44,11 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
   /* **************************************************************************************
    * Variable <Private>
    */
-  private:
-    lang::Thread& mUserThread;
-    lang::Thread* mThread;
-    bool mStart;
-  
+
   /* **************************************************************************************
    * Abstract method <Public>
    */
-
+   
   /* **************************************************************************************
    * Abstract method <Protected>
    */
@@ -58,55 +56,126 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
   /* **************************************************************************************
    * Construct Method
    */
-  public: 
+  public:
+
     /**
-     *
+     * @brief Construct a new Array object
+     * 
+     * @param memory 
      */
-    Svchost(lang::Thread& userThread);
+    Array(const lang::Memory& memory) : lang::ArrayPrototype(memory, sizeof(E)){
+      return;
+    }
+
+    /**
+     * @brief Construct a new Array object
+     * 
+     * @param e 
+     * @param length 
+     */
+    Array(E* e, size_t length) : lang::ArrayPrototype(lang::Memory(e, sizeof(E) * length), sizeof(E)){
+      return;
+    }
     
     /**
-     *
+     * @brief Construct a new Array object
+     * 
+     * @param e 
+     * @param length 
      */
-    virtual ~Svchost(void);
+    Array(const E* e, size_t length) : lang::ArrayPrototype(lang::Memory(e, sizeof(E) * length), sizeof(E)){
+      return;
+    }
 
+    /**
+     * @brief Construct a new Array object
+     * 
+     * @param length 
+     */
+    Array(size_t length) : lang::ArrayPrototype(length, sizeof(E)){
+      return;
+    }
+
+    /**
+     * @brief Destroy the Array object
+     * 
+     */
+    virtual ~Array(void) override {
+      return;
+    }
+  
   /* **************************************************************************************
    * Operator Method
    */
+  public:
 
+    /**
+     * @brief 
+     * 
+     * @param index 
+     * @return E 
+     */
+    E operator[](int index) const{
+      return static_cast<E*>(this->pointer())[index];
+    }
+
+    /**
+     * @brief 
+     * 
+     * @param index 
+     * @return E& 
+     */
+    E& operator[](int index){
+      return static_cast<E*>(this->pointer())[index];
+    }
+  
   /* **************************************************************************************
    * Public Method <Static>
    */
 
   /* **************************************************************************************
-   * Public Method <Override> lang::Runnable
+   * Public Method <Override>
    */
-  public:
-    /**
-     * @brief 
-     * svchost程式進入點
-     * 
-     */
-    virtual void run(void); 
 
-  /* **************************************************************************************
+    /* **************************************************************************************
    * Public Method
    */
-  public:
-    /**
-     * @brief 停止執行svchost
-     *
-     */
-    void stop(void);
   
-    /**
-     * @brief 執行使用者事件
-     *
-     * @param task 使用者指定事件
-     * @return true 只用者事件排定成功
-     * @return false 使用者事件排定失敗
-     */
-    bool execute(lang::Runnable& task);
+  /* **************************************************************************************
+   * Public Method <Inline>
+   */
+  public:
 
+    /**
+     * @brief 
+     * 
+     * @return uint32_t 
+     */
+    inline int length(void) const{
+      return this->mElementLength;
+    }
+    
+    /**
+     * @brief 
+     * 
+     * @param e 
+     * @return int 
+     */
+    inline int indexOf(const E& e) const{
+      return this->ArrayPrototype::indexOf(&e);
+    }
+    
+    /**
+     * @brief 
+     * 
+     * @param e 
+     * @return true 
+     * @return false 
+     */
+    inline bool contains(const E& e) const{
+      return (this->ArrayPrototype::indexOf(&e) != -1);
+    }
+  
   /* **************************************************************************************
    * Protected Method <Static>
    */
@@ -126,15 +195,16 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
   /* **************************************************************************************
    * Private Method <Override>
    */
-
+   
   /* **************************************************************************************
    * Private Method
    */
-
+    
 };
-
+ 
 /* ****************************************************************************************
  * End of file
  */ 
 
-#endif /* LANG_90F75476_6982_4BDD_B9ED_0A250FE9C324 */
+
+#endif /* LANG_FCCC3E6F_E524_4464_BA6F_FF9492970DA8 */

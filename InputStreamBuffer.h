@@ -15,7 +15,7 @@
 
 
 //-----------------------------------------------------------------------------------------
-#include "./OutputBuffer.h"
+#include "./ReadBuffer.h"
 #include "./InputStream.h"
 
 
@@ -39,9 +39,9 @@ struct lang::InputStreamBuffer : public lang::InputStream{
   /**
    * @brief Get the Output Buffer object
    * 
-   * @return lang::OutputBuffer& 
+   * @return lang::ReadBuffer& 
    */
-  virtual lang::OutputBuffer& getOutputBuffer(void) = 0;
+  virtual lang::ReadBuffer& getReadBuffer(void) = 0;
   
 };
 

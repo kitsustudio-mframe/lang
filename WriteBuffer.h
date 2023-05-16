@@ -21,22 +21,22 @@
  * Namespace
  */
 namespace lang{
-  struct InputBuffer;
-  struct OutputBuffer;
+  struct WriteBuffer;
+  struct ReadBuffer;
 }
 
 
 /* ****************************************************************************************
  * Class/struct/Struct/Enum
  */
-struct lang::InputBuffer : public virtual lang::Interface{
+struct lang::WriteBuffer : public virtual lang::Interface{
 
   /* **************************************************************************************
    * Method
    */
   
   /**
-   * @brief 取得InputBuffer是否已滿
+   * @brief 取得WriteBuffer是否已滿
    * 
    * @return true 已滿
    * @return false 未滿，仍有空間
@@ -44,40 +44,40 @@ struct lang::InputBuffer : public virtual lang::Interface{
   virtual bool isFull(void) const = 0;
 
   /**
-   * @brief 取得InputBuffer內資料數量
+   * @brief 取得WriteBuffer內資料數量
    * 
-   * @return int InputBuffer內資料數量
+   * @return int WriteBuffer內資料數量
    */
   virtual int remaining(void) const = 0;
 
   /**
-   * @brief 將data輸入至InputBuffer
+   * @brief 將data輸入至WriteBuffer
    * 
    * @param data 資料來源
-   * @return true 成功將data輸入至InputBuffer
-   * @return false InputBuffer已滿
+   * @return true 成功將data輸入至WriteBuffer
+   * @return false WriteBuffer已滿
    */
   virtual bool putByte(const char data) = 0;
 
   /**
-   * @brief 將outputBuffer內資料輸入至InputBuffer
+   * @brief 將outputBuffer內資料輸入至WriteBuffer
    * 
    * @param byteBuffer 資料來源
    * @return int 移動資料數量(byte)
    */
-  virtual int put(lang::OutputBuffer& outputBuffer) = 0;
+  virtual int put(lang::ReadBuffer& outputBuffer) = 0;
   
   /**
-   * @brief 將outputBuffer內資料輸入至InputBuffer並指定輸入長度
+   * @brief 將outputBuffer內資料輸入至WriteBuffer並指定輸入長度
    * 
    * @param byteBuffer 資料來源
    * @param length 輸入長度
    * @return int 移動資料數量(byte)
    */
-  virtual int put(lang::OutputBuffer& outputBuffer, int length) = 0;  
+  virtual int put(lang::ReadBuffer& outputBuffer, int length) = 0;  
 
   /**
-   * @brief 將buffer內資料輸入至InputBuffer
+   * @brief 將buffer內資料輸入至WriteBuffer
    * 
    * @param buffer 資料來源
    * @param length 輸入長度

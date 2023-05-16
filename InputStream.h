@@ -12,7 +12,7 @@
  * Include
  */
 
-#include "./InputBuffer.h"
+#include "./WriteBuffer.h"
 #include "./CompletionHandler.h"
 #include "./Future.h"
 #include "./Object.h"
@@ -56,7 +56,7 @@ struct lang::InputStream : public virtual lang::Interface{
    * @param outputBuffer 
    * @return int 
    */
-  virtual bool read(lang::InputBuffer& inputBuffer, int timeout) = 0;
+  virtual bool read(lang::WriteBuffer& inputBuffer, int timeout) = 0;
   
   /**
    * @brief nonblocking
@@ -67,7 +67,7 @@ struct lang::InputStream : public virtual lang::Interface{
    * @return true successful.
    * @return false fail.
    */
-  virtual bool read(lang::InputBuffer& inputBuffer, 
+  virtual bool read(lang::WriteBuffer& inputBuffer, 
                     void* attachment,
                     lang::CompletionHandler<int, void*>* handler) = 0;
 
@@ -79,7 +79,7 @@ struct lang::InputStream : public virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool read(lang::InputBuffer& inputBuffer, lang::Future& future) = 0;
+  virtual bool read(lang::WriteBuffer& inputBuffer, lang::Future& future) = 0;
 
   /**
    * @brief 

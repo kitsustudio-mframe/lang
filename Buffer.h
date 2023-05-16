@@ -4,8 +4,8 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_41FE73A3_C4A1_430A_BDAC_308916D3FDDC
-#define LANG_41FE73A3_C4A1_430A_BDAC_308916D3FDDC
+#ifndef LANG_574AD0C2_CCFB_47E3_8947_EF72B95F966B
+#define LANG_574AD0C2_CCFB_47E3_8947_EF72B95F966B
 
 /* ****************************************************************************************
  * Include
@@ -14,32 +14,36 @@
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-#include "./Object.h"
-#include "./OutputBuffer.h"
-#include "./InputBuffer.h"
-#include "./Kernel.h"
-#include "./Thread.h"
+#include "./WriteBuffer.h"
+#include "./ReadBuffer.h"
 
 /* ****************************************************************************************
  * Namespace
  */
 namespace lang{
-  struct SystemConfig;
+  struct Buffer;
 }
 
 
 /* ****************************************************************************************
- * Class/struct/Struct/Enum
+ * Class/Interface/Struct/Enum
  */
-struct lang::SystemConfig{
-  lang::OutputBuffer* out;
-  lang::InputBuffer* in;
-  lang::Kernel* kernel;
-  lang::Thread* userThread;
+struct lang::Buffer :public lang::WriteBuffer, lang::ReadBuffer{
+
+  /* **************************************************************************************
+   * Method
+   */
+  
+  /**
+   * @brief 
+   * 
+   */
+  virtual void flush(void) = 0;
+
 };
 
 /* ****************************************************************************************
  * End of file
  */
 
-#endif /* LANG_41FE73A3_C4A1_430A_BDAC_308916D3FDDC */
+#endif /* LANG_574AD0C2_CCFB_47E3_8947_EF72B95F966B */

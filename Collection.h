@@ -4,8 +4,9 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_90F75476_6982_4BDD_B9ED_0A250FE9C324
-#define LANG_90F75476_6982_4BDD_B9ED_0A250FE9C324
+
+#ifndef LANG_B4E61D80_F9A1_469D_84FD_FBB3D8FC11E4
+#define LANG_B4E61D80_F9A1_469D_84FD_FBB3D8FC11E4
 
 /* ****************************************************************************************
  * Include
@@ -14,23 +15,21 @@
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-#include "Object.h"
-#include "Runnable.h"
-#include "Thread.h"
+#include "./Interface.h"
 
 /* ****************************************************************************************
  * Namespace
  */  
 namespace lang{
-  class Svchost;
+  template<typename T> struct Collection;
 }
 
-
 /* ****************************************************************************************
- * Class/struct/Struct/Enum
+ * Class/Interface/Struct
  */  
-class lang::Svchost : public lang::Object , public lang::Runnable{
-
+template<typename T>
+  struct lang::Collection :public virtual lang::Interface{
+  
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -42,14 +41,32 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
   /* **************************************************************************************
    * Variable <Private>
    */
-  private:
-    lang::Thread& mUserThread;
-    lang::Thread* mThread;
-    bool mStart;
-  
+
   /* **************************************************************************************
    * Abstract method <Public>
    */
+
+  /**
+   * @brief Removes all of the elements from this collection. The collection will be empty 
+   *        after this method returns.
+   * 
+   */
+  virtual void clear(void) = 0;
+
+  /**
+   * @brief Returns true if this collection contains no elements.
+   * 
+   * @return true if this collection contains no elements.
+   * @return false 
+   */
+  virtual bool isEmpty(void) const = 0;
+
+  /**
+   * @brief Returns the number of elements in this collection.
+   * 
+   * @return uint32_t the number of elements in this collection.
+   */
+  virtual int size(void) const = 0;
 
   /* **************************************************************************************
    * Abstract method <Protected>
@@ -58,16 +75,6 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
   /* **************************************************************************************
    * Construct Method
    */
-  public: 
-    /**
-     *
-     */
-    Svchost(lang::Thread& userThread);
-    
-    /**
-     *
-     */
-    virtual ~Svchost(void);
 
   /* **************************************************************************************
    * Operator Method
@@ -78,34 +85,12 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
    */
 
   /* **************************************************************************************
-   * Public Method <Override> lang::Runnable
+   * Public Method <Override>
    */
-  public:
-    /**
-     * @brief 
-     * svchost程式進入點
-     * 
-     */
-    virtual void run(void); 
 
   /* **************************************************************************************
    * Public Method
    */
-  public:
-    /**
-     * @brief 停止執行svchost
-     *
-     */
-    void stop(void);
-  
-    /**
-     * @brief 執行使用者事件
-     *
-     * @param task 使用者指定事件
-     * @return true 只用者事件排定成功
-     * @return false 使用者事件排定失敗
-     */
-    bool execute(lang::Runnable& task);
 
   /* **************************************************************************************
    * Protected Method <Static>
@@ -126,15 +111,14 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
   /* **************************************************************************************
    * Private Method <Override>
    */
-
+   
   /* **************************************************************************************
    * Private Method
    */
-
 };
 
-/* ****************************************************************************************
+/* *****************************************************************************************
  * End of file
  */ 
 
-#endif /* LANG_90F75476_6982_4BDD_B9ED_0A250FE9C324 */
+#endif /* LANG_.B4E61D80_F9A1_469D_84FD_FBB3D8FC11E4 */

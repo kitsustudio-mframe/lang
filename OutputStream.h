@@ -11,7 +11,7 @@
 /* ****************************************************************************************
  * Include
  */
-#include "./OutputBuffer.h"
+#include "./ReadBuffer.h"
 #include "./CompletionHandler.h"
 #include "./Future.h"
 
@@ -54,7 +54,7 @@ struct lang::OutputStream : public virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool write(lang::OutputBuffer& outputBuffer, int timeout) = 0;  
+  virtual bool write(lang::ReadBuffer& outputBuffer, int timeout) = 0;  
   
   /**
    * @brief write with aio mode.
@@ -65,7 +65,7 @@ struct lang::OutputStream : public virtual lang::Interface{
    * @return true successful.
    * @return false fail.
    */
-  virtual bool write(lang::OutputBuffer& outputBuffer, 
+  virtual bool write(lang::ReadBuffer& outputBuffer, 
                      void* attachment,
                      lang::CompletionHandler<int, void*>* handler) = 0;
 
@@ -77,7 +77,7 @@ struct lang::OutputStream : public virtual lang::Interface{
    * @return true 
    * @return false 
    */
-  virtual bool write(lang::OutputBuffer& outputBuffer, lang::Future& future) = 0;
+  virtual bool write(lang::ReadBuffer& outputBuffer, lang::Future& future) = 0;
 
 };
 

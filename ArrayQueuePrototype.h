@@ -4,32 +4,36 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_90F75476_6982_4BDD_B9ED_0A250FE9C324
-#define LANG_90F75476_6982_4BDD_B9ED_0A250FE9C324
+
+#ifndef LANG_BBEA45DB_2443_4AD0_8532_619E2BDE4831
+#define LANG_BBEA45DB_2443_4AD0_8532_619E2BDE4831
 
 /* ****************************************************************************************
  * Include
  */  
 
 //-----------------------------------------------------------------------------------------
+#include "./Consumer.h"
 
 //-----------------------------------------------------------------------------------------
-#include "Object.h"
-#include "Runnable.h"
-#include "Thread.h"
+#include "./Array.h"
+
 
 /* ****************************************************************************************
  * Namespace
  */  
 namespace lang{
-  class Svchost;
+  class ArrayQueuePrototype;
 }
 
-
 /* ****************************************************************************************
- * Class/struct/Struct/Enum
+ * Class Object
  */  
-class lang::Svchost : public lang::Object , public lang::Runnable{
+class lang::ArrayQueuePrototype :public lang::Array<void*>{
+
+  /* **************************************************************************************
+   * Subclass
+   */
 
   /* **************************************************************************************
    * Variable <Public>
@@ -38,15 +42,15 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
   /* **************************************************************************************
    * Variable <Protected>
    */
-
+  protected: 
+    uint16_t mHead;
+    uint16_t mTail;
+    bool mEmpty;
+  
   /* **************************************************************************************
    * Variable <Private>
    */
-  private:
-    lang::Thread& mUserThread;
-    lang::Thread* mThread;
-    bool mStart;
-  
+
   /* **************************************************************************************
    * Abstract method <Public>
    */
@@ -58,16 +62,27 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
   /* **************************************************************************************
    * Construct Method
    */
-  public: 
-    /**
-     *
-     */
-    Svchost(lang::Thread& userThread);
+  public:
     
     /**
-     *
+     * @brief Construct a new Array Queue Prototype object
+     * 
+     * @param memory 
      */
-    virtual ~Svchost(void);
+    ArrayQueuePrototype(const lang::Memory& memory);
+  
+    /**
+     * @brief Construct a new Array Queue Prototype object
+     * 
+     * @param size
+     */
+    ArrayQueuePrototype(uint32_t size);
+
+    /**
+     * @brief Destroy the Array Queue Prototype object
+     * 
+     */
+    virtual ~ArrayQueuePrototype(void) override;
 
   /* **************************************************************************************
    * Operator Method
@@ -78,46 +93,93 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
    */
 
   /* **************************************************************************************
-   * Public Method <Override> lang::Runnable
+   * Public Method <Override>
    */
-  public:
-    /**
-     * @brief 
-     * svchost程式進入點
-     * 
-     */
-    virtual void run(void); 
 
   /* **************************************************************************************
    * Public Method
    */
-  public:
-    /**
-     * @brief 停止執行svchost
-     *
-     */
-    void stop(void);
-  
-    /**
-     * @brief 執行使用者事件
-     *
-     * @param task 使用者指定事件
-     * @return true 只用者事件排定成功
-     * @return false 使用者事件排定失敗
-     */
-    bool execute(lang::Runnable& task);
 
+  /* **************************************************************************************
+   * Public Method <Inline>
+   */
+  public: 
+    /**
+     * @brief 
+     * 
+     * @return true 
+     * @return false 
+     */
+    inline bool isEmpty(void) const{
+      return this->mEmpty;
+    }
+
+    /**
+     * @brief 
+     * 
+     * @return true 
+     * @return false 
+     */
+    inline bool isFull(void) const{
+      return ((this->mHead == this->mTail) && (!this->mEmpty));
+    }
+   
   /* **************************************************************************************
    * Protected Method <Static>
    */
 
   /* **************************************************************************************
-   * Protected Method <Override>
+   * Protected Method <Override> - lang::Memroy
    */
-
+  
   /* **************************************************************************************
    * Protected Method
    */
+  protected:
+    
+    /**
+     * @brief 
+     * 
+     */
+    void clear(void);
+  
+    /**
+     * @brief 
+     * 
+     * @param pointer 
+     * @return true 
+     * @return false 
+     */
+    bool offerPointer(void* pointer);
+
+    /**
+     * @brief 
+     * 
+     * @return void* 
+     */
+    void* pollPointer(void);  
+    
+    /**
+     * @brief 
+     * 
+     * @return void* 
+     */
+    void* peekPointer(void);    
+    
+    /**
+     * @brief 
+     * 
+     * @return int 
+     */
+    int size(void) const;
+
+    /**
+     * @brief 
+     * 
+     * @param attachment 
+     * @param action 
+     */
+    void foreachPrototype(lang::Consumer<void*>& action) const;
 
   /* **************************************************************************************
    * Private Method <Static>
@@ -126,15 +188,15 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
   /* **************************************************************************************
    * Private Method <Override>
    */
-
+   
   /* **************************************************************************************
    * Private Method
-   */
+   */  
 
 };
 
-/* ****************************************************************************************
+/* *****************************************************************************************
  * End of file
  */ 
 
-#endif /* LANG_90F75476_6982_4BDD_B9ED_0A250FE9C324 */
+#endif /* LANG_BBEA45DB_2443_4AD0_8532_619E2BDE4831 */

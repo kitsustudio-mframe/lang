@@ -20,14 +20,14 @@
  * Namespace
  */
 namespace lang{
-  struct OutputBuffer;
-  struct InputBuffer;
+  struct ReadBuffer;
+  struct WriteBuffer;
 }
 
 /* ****************************************************************************************
  * Class/struct/Struct/Enum
  */
-struct lang::OutputBuffer :public virtual lang::Interface{
+struct lang::ReadBuffer :public virtual lang::Interface{
 
   /* **************************************************************************************
    * Method
@@ -58,21 +58,21 @@ struct lang::OutputBuffer :public virtual lang::Interface{
   virtual bool getByte(char& result) = 0;
 
   /**
-   * @brief 輸出至InputBuffer
+   * @brief 輸出至WriteBuffer
    * 
    * @param inputBuffer 輸出目標緩存空間 
    * @return int 輸出至目標的位元組數量
    */
-  virtual int get(lang::InputBuffer& inputBuffer) = 0;
+  virtual int get(lang::WriteBuffer& inputBuffer) = 0;
 
   /**
-   * @brief 輸出至InputBuffer
+   * @brief 輸出至WriteBuffer
    * 
    * @param inputBuffer 輸出目標緩存空間
    * @param length 指定最大輸出位元組數量
    * @return int 輸出至目標的位元組數量
    */
-  virtual int get(lang::InputBuffer& inputBuffer, int length) = 0;
+  virtual int get(lang::WriteBuffer& inputBuffer, int length) = 0;
 
   /**
    * @brief 輸出目標緩存空間

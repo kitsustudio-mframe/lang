@@ -4,47 +4,64 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_33288B9C_6095_4B26_9F88_332BF138D71A
-#define LANG_33288B9C_6095_4B26_9F88_332BF138D71A
+
+#ifndef LANG_A640D444_DED9_463A_8F4A_E407A682DBAC
+#define LANG_A640D444_DED9_463A_8F4A_E407A682DBAC
 
 /* ****************************************************************************************
  * Include
- */
+ */  
 
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-#include "./WriteBuffer.h"
-#include "./OutputStream.h"
+#include "./Interface.h"
 
 /* ****************************************************************************************
  * Namespace
- */
+ */  
 namespace lang{
-  struct OutputStreamBuffer;
+  struct Allocator;
 }
 
-
 /* ****************************************************************************************
- * Class/struct/Struct/Enum
- */
-struct lang::OutputStreamBuffer : public lang::OutputStream{
-
+ * Class/Interface/Struct
+ */  
+struct lang::Allocator :public virtual lang::Interface{
   /* **************************************************************************************
    * Method
    */
+  
+  /**
+   * @brief 
+   * 
+   * @param size 
+   */
+  virtual void* alloc(uint32_t size) = 0;
 
   /**
-   * @brief Get the Input Buffer object
+   * @brief 
    * 
-   * @return lang::WriteBuffer& 
+   * @param ptr 
+   * @return true 
+   * @return false 
    */
-  virtual lang::WriteBuffer& getWriteBuffer(void) = 0;
+  virtual bool free(void* ptr) = 0;
+
+  /**
+   * @brief 
+   * 
+   * @param ptr 
+   * @param size 
+   * @return true 
+   * @return false 
+   */
+  virtual bool free(void* ptr, uint32_t size) = 0;  
   
 };
 
-/* ****************************************************************************************
+/* *****************************************************************************************
  * End of file
- */
+ */ 
 
-#endif /* LANG_33288B9C_6095_4B26_9F88_332BF138D71A */
+#endif /* LANG_A640D444_DED9_463A_8F4A_E407A682DBAC */

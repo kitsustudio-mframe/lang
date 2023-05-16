@@ -4,47 +4,54 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_33288B9C_6095_4B26_9F88_332BF138D71A
-#define LANG_33288B9C_6095_4B26_9F88_332BF138D71A
+
+#ifndef LANG_B08DB2A3_7AA4_4166_A88E_E997AA2B0BAD
+#define LANG_B08DB2A3_7AA4_4166_A88E_E997AA2B0BAD
+
 
 /* ****************************************************************************************
  * Include
- */
+ */  
 
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-#include "./WriteBuffer.h"
-#include "./OutputStream.h"
+#include "./Interface.h"
 
 /* ****************************************************************************************
  * Namespace
- */
+ */  
 namespace lang{
-  struct OutputStreamBuffer;
+  struct Closeable;
 }
 
-
 /* ****************************************************************************************
- * Class/struct/Struct/Enum
- */
-struct lang::OutputStreamBuffer : public lang::OutputStream{
+ * Class/Interface/Struct
+ */  
+struct lang::Closeable :public virtual lang::Interface{
 
   /* **************************************************************************************
    * Method
    */
 
   /**
-   * @brief Get the Input Buffer object
+   * @brief 關閉通道
    * 
-   * @return lang::WriteBuffer& 
    */
-  virtual lang::WriteBuffer& getWriteBuffer(void) = 0;
-  
+  virtual void close(void) abstract;
+
+  /**
+   * @brief 通道是否被開啟
+   * 
+   * @return true 通道是開啟的
+   * @return false 通道是關閉的
+   */
+  virtual bool isOpen(void) abstract;  
+
 };
 
-/* ****************************************************************************************
+/* *****************************************************************************************
  * End of file
- */
+ */ 
 
-#endif /* LANG_33288B9C_6095_4B26_9F88_332BF138D71A */
+#endif /* LANG_B08DB2A3_7AA4_4166_A88E_E997AA2B0BAD */
