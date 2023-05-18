@@ -119,7 +119,7 @@ public lang::Runnable{
      * @param byteBuffer 
      * @return int 
      */
-    virtual int get(lang::WriteBuffer& inputBuffer) override;
+    virtual int get(lang::WriteBuffer& writeBuffer) override;
   
 	  /**
 	   * @brief 
@@ -127,7 +127,7 @@ public lang::Runnable{
 	   * @param byteBuffer 
 	   * @return int 
 	   */
-	  virtual int get(lang::WriteBuffer& inputBuffer, int length) override;
+	  virtual int get(lang::WriteBuffer& writeBuffer, int length) override;
 
     /**
      * @brief 
@@ -181,12 +181,12 @@ public lang::Runnable{
     /**
      * @brief 
      * 
-     * @param outputBuffer
+     * @param readBuffer
      * @param future 
      * @return true 
      * @return false 
      */
-    virtual bool write(lang::ReadBuffer& outputBuffer, int timeout) override;
+    virtual bool write(lang::ReadBuffer& readBuffer, int timeout) override;
   
     /**
      * @brief 

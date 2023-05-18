@@ -166,12 +166,12 @@ public lang::WriteBuffer{
     virtual bool putByte(const char data) override;
 
     /**
-     * @brief 將outputBuffer內資料輸入至InputBuffer
+     * @brief 將readBuffer內資料輸入至InputBuffer
      * 
      * @param byteBuffer 資料來源
      * @return int 移動資料數量(byte)
      */
-    virtual int put(lang::ReadBuffer& outputBuffer) override;
+    virtual int put(lang::ReadBuffer& readBuffer) override;
 
     /**
      * @brief 將buffer內資料輸入至InputBuffer
@@ -180,7 +180,7 @@ public lang::WriteBuffer{
      * @param length 輸入長度
      * @return int 移動資料數量(byte)
      */
-    virtual int put(lang::ReadBuffer& outputBuffer, int length) override;      
+    virtual int put(lang::ReadBuffer& readBuffer, int length) override;      
     
     /**
      * @brief 將buffer內資料輸入至InputBuffer

@@ -82,13 +82,6 @@ struct lang::Kernel : public virtual lang::Interface{
   virtual uint32_t kernelGetTickFreq(void) abstract;
   
   /**
-   * @brief 取得當前執行緒ID
-   * 
-   * @return uint32_t Thread ID.
-   */
-  virtual uint32_t kernelGetThreadId(void) abstract;
-  
-  /**
    * @brief 執行緒延遲，並交還CPU使用權
    * 
    * @param milliseconds 延遲時間，毫秒 
@@ -119,7 +112,7 @@ struct lang::Kernel : public virtual lang::Interface{
    * @return null 建立失敗
    * @return Thread 建立成功
    */
-  virtual Thread* kerneAllocThread(lang::Runnable& task) abstract;
+  virtual Thread* kernelAllocThread(lang::Data& stackMemory, lang::Runnable& task) abstract;
   
   /**
    * @brief 建立一個執行緒，限定堆疊大小
@@ -129,7 +122,7 @@ struct lang::Kernel : public virtual lang::Interface{
    * @return null 建立失敗
    * @return Thread 建立成功
    */
-  virtual Thread* kerneAllocThread(lang::Runnable& task, uint32_t stackSize) abstract;
+  virtual Thread* kernelAllocThread(uint32_t stackSize, lang::Runnable& task) abstract;
   
   /**
    * @brief 取得當前執行緒
@@ -137,14 +130,7 @@ struct lang::Kernel : public virtual lang::Interface{
    * @return null 可能為核心尚未啟動、當前正在中斷事件
    * @return Thread 獲取成功
    */
-  virtual Thread* kerneGetCurrentThread(void) abstract;
-  
-  /**
-   * @brief 
-   *
-   * @return
-   */
-  virtual Thread* kerneGetThread(uint32_t threadID) abstract;
+  virtual Thread* kernelGetCurrentThread(void) abstract;
   
   /**
    * @brief 
@@ -159,13 +145,6 @@ struct lang::Kernel : public virtual lang::Interface{
    * @return
    */
   virtual ReadBuffer* kernelGetReadBuffer(void) abstract;
-  
-  /**
-   * @brief 
-   *
-   * @return
-   */
-  virtual uint32_t kerneGetCurrentThreadID(void) abstract;  
   
   /**
    * @brief 取得核心運作頻率

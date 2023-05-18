@@ -53,40 +53,39 @@ struct lang::InputStream : public virtual lang::Interface{
   /**
    * @brief 
    * 
-   * @param outputBuffer 
+   * @param readBuffer 
    * @return int 
    */
-  virtual bool read(lang::WriteBuffer& inputBuffer, int timeout) abstract;
+  virtual bool read(lang::WriteBuffer& writeBuffer, int timeout) abstract;
   
   /**
    * @brief nonblocking
    * 
-   * @param outputBuffer 
+   * @param writeBuffer 
    * @param attachment 
    * @param handler 
    * @return true successful.
    * @return false fail.
    */
-  virtual bool read(lang::WriteBuffer& inputBuffer, 
+  virtual bool read(lang::WriteBuffer& writeBuffer, 
                     void* attachment,
                     lang::CompletionHandler<int, void*>* handler) abstract;
 
   /**
    * @brief 
    * 
-   * @param outputBuffer 
+   * @param writeBuffer 
    * @param future 
    * @return true 
    * @return false 
    */
-  virtual bool read(lang::WriteBuffer& inputBuffer, lang::Future& future) abstract;
+  virtual bool read(lang::WriteBuffer& writeBuffer, lang::Future& future) abstract;
 
   /**
    * @brief 
    * 
-   * @param value 
-   * @param attachment 
-   * @param handler 
+   * @param writeBuffer 
+   * @param future 
    * @return true 
    * @return false 
    */

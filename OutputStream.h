@@ -49,35 +49,35 @@ struct lang::OutputStream : public virtual lang::Interface{
   /**
    * @brief write witt io mode.
    * 
-   * @param outputBuffer
+   * @param readBuffer
    * @param future 
    * @return true 
    * @return false 
    */
-  virtual bool write(lang::ReadBuffer& outputBuffer, int timeout) abstract;  
+  virtual bool write(lang::ReadBuffer& readBuffer, int timeout) abstract;  
   
   /**
    * @brief write with aio mode.
    * 
-   * @param outputBuffer
+   * @param readBuffer
    * @param attachment 
    * @param handler 
    * @return true successful.
    * @return false fail.
    */
-  virtual bool write(lang::ReadBuffer& outputBuffer, 
+  virtual bool write(lang::ReadBuffer& readBuffer, 
                      void* attachment,
                      lang::CompletionHandler<int, void*>* handler) abstract;
 
   /**
    * @brief write with nio mode.
    * 
-   * @param outputBuffer
+   * @param readBuffer
    * @param future 
    * @return true 
    * @return false 
    */
-  virtual bool write(lang::ReadBuffer& outputBuffer, lang::Future& future) abstract;
+  virtual bool write(lang::ReadBuffer& readBuffer, lang::Future& future) abstract;
 
 };
 

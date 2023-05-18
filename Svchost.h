@@ -67,7 +67,7 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
     /**
      *
      */
-    virtual ~Svchost(void);
+    virtual ~Svchost(void) override;
 
   /* **************************************************************************************
    * Operator Method
@@ -86,7 +86,7 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
      * svchost程式進入點
      * 
      */
-    virtual void run(void); 
+    virtual void run(void) override;
 
   /* **************************************************************************************
    * Public Method

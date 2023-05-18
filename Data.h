@@ -167,6 +167,15 @@ class lang::Data : public lang::Pointer{
       return static_cast<int>(Data::mLength & 0x7FFFFFFF);
     }
     
+    /**
+     * @brief 
+     * 
+     * @return int 
+     */
+    inline unsigned int lengthUnsigned(void) const{
+      return (Data::mLength & 0x7FFFFFFF);
+    }
+    
   /* **************************************************************************************
    * Public Method
    */

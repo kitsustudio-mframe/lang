@@ -60,21 +60,21 @@ struct lang::WriteBuffer : public virtual lang::Interface{
   virtual bool putByte(const char data) abstract;
 
   /**
-   * @brief 將outputBuffer內資料輸入至WriteBuffer
+   * @brief 將readBuffer內資料輸入至WriteBuffer
    * 
    * @param byteBuffer 資料來源
    * @return int 移動資料數量(byte)
    */
-  virtual int put(lang::ReadBuffer& outputBuffer) abstract;
+  virtual int put(lang::ReadBuffer& readBuffer) abstract;
   
   /**
-   * @brief 將outputBuffer內資料輸入至WriteBuffer並指定輸入長度
+   * @brief 將readBuffer內資料輸入至WriteBuffer並指定輸入長度
    * 
    * @param byteBuffer 資料來源
    * @param length 輸入長度
    * @return int 移動資料數量(byte)
    */
-  virtual int put(lang::ReadBuffer& outputBuffer, int length) abstract;  
+  virtual int put(lang::ReadBuffer& readBuffer, int length) abstract;  
 
   /**
    * @brief 將buffer內資料輸入至WriteBuffer

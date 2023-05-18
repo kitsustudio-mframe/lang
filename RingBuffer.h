@@ -154,7 +154,7 @@ class lang::RingBuffer :public lang::Memory ,
      * @param byteBuffer 
      * @return int 
      */
-    virtual int get(lang::WriteBuffer& inputBuffer) override;
+    virtual int get(lang::WriteBuffer& writeBuffer) override;
 
 	  /**
 	   * @brief 
@@ -162,7 +162,7 @@ class lang::RingBuffer :public lang::Memory ,
 	   * @param byteBuffer 
 	   * @return int 
 	   */
-	  virtual int get(lang::WriteBuffer& inputBuffer, int length) override;    
+	  virtual int get(lang::WriteBuffer& writeBuffer, int length) override;    
     
     /**
      * @brief 
@@ -214,21 +214,21 @@ class lang::RingBuffer :public lang::Memory ,
     virtual bool putByte(const char data) override;
 
     /**
-     * @brief 將outputBuffer內資料輸入至WriteBuffer
+     * @brief 將readBuffer內資料輸入至WriteBuffer
      * 
      * @param byteBuffer 資料來源
      * @return int 移動資料數量(byte)
      */
-    virtual int put(lang::ReadBuffer& outputBuffer) override;
+    virtual int put(lang::ReadBuffer& readBuffer) override;
     
     /**
-     * @brief 將outputBuffer內資料輸入至WriteBuffer並指定輸入長度
+     * @brief 將readBuffer內資料輸入至WriteBuffer並指定輸入長度
      * 
      * @param byteBuffer 資料來源
      * @param length 輸入長度
      * @return int 移動資料數量(byte)
      */
-    virtual int put(lang::ReadBuffer& outputBuffer, int length) override;  
+    virtual int put(lang::ReadBuffer& readBuffer, int length) override;  
 
     /**
      * @brief 將buffer內資料輸入至WriteBuffer

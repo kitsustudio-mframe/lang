@@ -13,7 +13,7 @@
  */  
 
 //-----------------------------------------------------------------------------------------
-#include "./../func/Consumer.h"
+#include "./Consumer.h"
 
 //-----------------------------------------------------------------------------------------
 #include "./Array.h"
@@ -60,9 +60,9 @@ struct lang::Pool :public lang::Collection<lang::Memory>{
   /**
    * @brief 
    * 
-   * @return mcuf::Memory 
+   * @return lang::Memory 
    */
-  virtual mcuf::Memory allocMemory(void) abstract;
+  virtual lang::Memory allocMemory(void) abstract;
 
   /**
    * @brief Alloc memory from pool and copy element.

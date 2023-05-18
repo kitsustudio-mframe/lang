@@ -30,19 +30,11 @@ namespace lang{
 /* ****************************************************************************************
  * Class/struct/Struct
  */  
-struct lang::Thread : public lang::Runnable{
+struct lang::Thread : public virtual lang::Interface{
 
   /* **************************************************************************************
    * Method
    */
-  
-  /**
-   * @brief Set the Name object
-   * 
-   * @param name 
-   */
-  virtual void setThreadName(const char* name) abstract;
-  
   /**
    * @brief Get the Thread Name object
    * 
@@ -77,7 +69,7 @@ struct lang::Thread : public lang::Runnable{
    * @return true 
    * @return false 
    */
-  virtual bool start(void) abstract;
+  virtual bool start(const char* name) abstract;
     
   /**
    * @brief 
@@ -86,7 +78,7 @@ struct lang::Thread : public lang::Runnable{
    * @return true 
    * @return false 
    */
-  virtual bool start(lang::ThreadPriority priority) abstract;
+  virtual bool start(const char* name, lang::ThreadPriority priority) abstract;
     
   /**
    * @brief 

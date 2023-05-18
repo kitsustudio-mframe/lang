@@ -60,19 +60,19 @@ struct lang::ReadBuffer :public virtual lang::Interface{
   /**
    * @brief 輸出至WriteBuffer
    * 
-   * @param inputBuffer 輸出目標緩存空間 
+   * @param writeBuffer 輸出目標緩存空間 
    * @return int 輸出至目標的位元組數量
    */
-  virtual int get(lang::WriteBuffer& inputBuffer) abstract;
+  virtual int get(lang::WriteBuffer& writeBuffer) abstract;
 
   /**
    * @brief 輸出至WriteBuffer
    * 
-   * @param inputBuffer 輸出目標緩存空間
+   * @param writeBuffer 輸出目標緩存空間
    * @param length 指定最大輸出位元組數量
    * @return int 輸出至目標的位元組數量
    */
-  virtual int get(lang::WriteBuffer& inputBuffer, int length) abstract;
+  virtual int get(lang::WriteBuffer& writeBuffer, int length) abstract;
 
   /**
    * @brief 輸出目標緩存空間

@@ -119,21 +119,21 @@ public lang::Runnable{
     virtual bool putByte(const char data) override;   
    
     /**
-     * @brief 將outputBuffer內資料輸入至WriteBuffer
+     * @brief 將readBuffer內資料輸入至WriteBuffer
      * 
      * @param byteBuffer 資料來源
      * @return int 移動資料數量(byte)
      */
-    virtual int put(lang::ReadBuffer& outputBuffer) override;
+    virtual int put(lang::ReadBuffer& readBuffer) override;
 
     /**
-     * @brief 將outputBuffer內資料輸入至WriteBuffer並指定輸入長度
+     * @brief 將readBuffer內資料輸入至WriteBuffer並指定輸入長度
      * 
      * @param byteBuffer 資料來源
      * @param length 輸入長度
      * @return int 移動資料數量(byte)
      */
-    virtual int put(lang::ReadBuffer& outputBuffer, int length) override;  
+    virtual int put(lang::ReadBuffer& readBuffer, int length) override;  
 
     /**
      * @brief 將buffer內資料輸入至WriteBuffer
@@ -179,33 +179,33 @@ public lang::Runnable{
     /**
      * @brief 
      * 
-     * @param inputBuffer 
+     * @param writeBuffer 
      * @return int 
      */
-    virtual bool read(lang::WriteBuffer& inputBuffer, int timeout) override;        
+    virtual bool read(lang::WriteBuffer& writeBuffer, int timeout) override;        
     
     /**
      * @brief nonblocking
      * 
-     * @param inputBuffer 
+     * @param writeBuffer 
      * @param attachment 
      * @param handler 
      * @return true successful.
      * @return false fail.
      */
-    virtual bool read(lang::WriteBuffer& inputBuffer, 
+    virtual bool read(lang::WriteBuffer& writeBuffer, 
                       void* attachment,
                       lang::CompletionHandler<int, void*>* handler) override;
 
     /**
      * @brief 
      * 
-     * @param inputBuffer 
+     * @param writeBuffer 
      * @param future 
      * @return true 
      * @return false 
      */
-    virtual bool read(lang::WriteBuffer& inputBuffer, lang::Future& future) override;
+    virtual bool read(lang::WriteBuffer& writeBuffer, lang::Future& future) override;
 
     /**
      * @brief 
