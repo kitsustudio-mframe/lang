@@ -12,7 +12,8 @@
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-#include "./Svchost.h"
+#include "./EntryPoint.h"
+#include "./System.h"
 
 /* ****************************************************************************************
  * Macro
@@ -25,7 +26,7 @@
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-using lang::Svchost;
+using lang::EntryPoint;
 
 /* ****************************************************************************************
  * Variable <Static>
@@ -37,14 +38,17 @@ using lang::Svchost;
 /**
  *
  */
-Svchost::Svchost(lang::Thread& userThread) : mUserThread(userThread){
-  this->mThread = nullptr;
+EntryPoint::EntryPoint(void (*setup)(lang::Thread*), void (*loop)(lang::Thread*)){
+  this->mLoop = loop;
+  this->mSetup = setup;
+  return;
 }
-
+    
 /**
  *
  */
-Svchost::~Svchost(void){
+EntryPoint::~EntryPoint(void){
+  return;
 }
 /* ****************************************************************************************
  * Operator Method
@@ -55,44 +59,24 @@ Svchost::~Svchost(void){
  */
 
 /* ****************************************************************************************
- * Public Method <Override> lang::Runnable
+ * Public Method <Override> - lang::Runnable
  */
 /**
- * @brief 
- * svchost程式進入點
- * 
+ *
  */
-void Svchost::run(void){
-  this->mThread = this->currentThread();
-  this->mStart = true;
-  this->mUserThread.start("user thread");
+void EntryPoint::run(void){
+  Thread* thread = this->currentThread();
+  this->mSetup(thread);
   
-  while(this->mStart){
-    this->wait(1000);
-  
+  while(true){
+    this->mLoop(thread);
   }
 }
+
 /* ****************************************************************************************
  * Public Method
  */
-/**
- * @brief 停止執行svchost
- *
- */
-void Svchost::stop(void){
-  this->mStart = false;
-}
-  
-/**
- * @brief 執行使用者事件
- *
- * @param task 使用者指定事件
- * @return true 只用者事件排定成功
- * @return false 使用者事件排定失敗
- */
-bool Svchost::execute(lang::Runnable& task){
-  return false;
-}
+
 /* ****************************************************************************************
  * Protected Method <Static>
  */

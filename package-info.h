@@ -28,6 +28,7 @@
 #include "Consumer.h"
 #include "ConsumerEvent.h"
 #include "Data.h"
+#include "EntryPoint.h"
 #include "ErrorCode.h"
 #include "Function.h"
 #include "FunctionEvent.h"

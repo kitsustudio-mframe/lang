@@ -55,7 +55,11 @@ Object::~Object(void){
  * @return void* 
  */
 void* Object::operator new(size_t n){
-  return ::operator new(n);
+  void* result = ::operator new(n);
+  if(result == nullptr)
+    System::error("Object new", ErrorCode::OUT_OF_MEMORY);
+  
+  return result;
 }
 
 /**
@@ -85,7 +89,7 @@ void* Object::operator new(size_t n, void* const p){
  *
  */
 void Object::delay(int milliseconds) const{
-  System::mKernel->kernelDelay(milliseconds);
+  System::mKernel->kernelDelay(static_cast<uint32_t>(milliseconds));
   return;
 }
 
@@ -118,7 +122,7 @@ void Object::wait(void) const{
  *
  */
 bool Object::wait(int timeout) const{
-  return System::mKernel->kernelWait(timeout);
+  return System::mKernel->kernelWait(static_cast<uint32_t>(timeout));
 }
 
 /**
@@ -147,6 +151,13 @@ int Object::systemUnlock(void) const{
  */
 uint32_t Object::hashcode(void) const{
   return reinterpret_cast<uint32_t>(this);
+}
+
+/**
+ *
+ */
+lang::Thread* Object::currentThread(void) const{
+  return System::mKernel->kernelGetCurrentThread();
 }
 
 /* **************************************************************************************

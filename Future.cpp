@@ -155,7 +155,7 @@ bool Future::get(int& result){
     
     this->mThread = this->currentThread();
     
-    if(this->mThread != 0){
+    if(this->mThread != nullptr){
    
       while(this->mStatus == Status::WAIT)
         this->wait();

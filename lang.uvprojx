@@ -10,13 +10,13 @@
       <TargetName>lang_cm0</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
+      <pCCUsed>6180000::V6.18::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>ARMCM0</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.8.0</PackID>
+          <PackID>ARM.CMSIS.5.9.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M0") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -186,6 +186,7 @@
             <RvdsVP>0</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
+            <nBranchProt>0</nBranchProt>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -748,6 +749,21 @@
               <FileType>5</FileType>
               <FilePath>.\WriteBuffer.h</FilePath>
             </File>
+            <File>
+              <FileName>Pointer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Pointer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EntryPoint.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\EntryPoint.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EntryPoint.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EntryPoint.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -756,13 +772,14 @@
       <TargetName>lang_cm3</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
+      <pArmCC>6180000::V6.18::ARMCLANG</pArmCC>
+      <pCCUsed>6180000::V6.18::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>ARMCM3</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.8.0</PackID>
+          <PackID>ARM.CMSIS.5.9.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M3") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -835,7 +852,7 @@
             <nStopA1X>0</nStopA1X>
             <nStopA2X>0</nStopA2X>
           </AfterMake>
-          <SelectedForBatchBuild>0</SelectedForBatchBuild>
+          <SelectedForBatchBuild>1</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
         </TargetCommonOption>
         <CommonProperty>
@@ -884,7 +901,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -932,6 +949,7 @@
             <RvdsVP>0</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
+            <nBranchProt>0</nBranchProt>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -951,12 +969,12 @@
             <Ro1Chk>0</Ro1Chk>
             <Ro2Chk>0</Ro2Chk>
             <Ro3Chk>0</Ro3Chk>
-            <Ir1Chk>1</Ir1Chk>
+            <Ir1Chk>0</Ir1Chk>
             <Ir2Chk>0</Ir2Chk>
             <Ra1Chk>0</Ra1Chk>
             <Ra2Chk>0</Ra2Chk>
             <Ra3Chk>0</Ra3Chk>
-            <Im1Chk>1</Im1Chk>
+            <Im1Chk>0</Im1Chk>
             <Im2Chk>0</Im2Chk>
             <OnChipMemories>
               <Ocm1>
@@ -1068,7 +1086,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>3</wLevel>
+            <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
@@ -1494,6 +1512,21 @@
               <FileType>5</FileType>
               <FilePath>.\WriteBuffer.h</FilePath>
             </File>
+            <File>
+              <FileName>Pointer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Pointer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EntryPoint.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\EntryPoint.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EntryPoint.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EntryPoint.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -1508,7 +1541,7 @@
         <TargetCommonOption>
           <Device>ARMCM4_FP</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.8.0</PackID>
+          <PackID>ARM.CMSIS.5.9.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -1678,6 +1711,7 @@
             <RvdsVP>2</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
+            <nBranchProt>0</nBranchProt>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -2240,6 +2274,21 @@
               <FileType>5</FileType>
               <FilePath>.\WriteBuffer.h</FilePath>
             </File>
+            <File>
+              <FileName>Pointer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Pointer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EntryPoint.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\EntryPoint.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EntryPoint.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EntryPoint.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -2255,7 +2304,7 @@
   <LayerInfo>
     <Layers>
       <Layer>
-        <LayName>bsp_arterytek_at32f415</LayName>
+        <LayName>lang</LayName>
         <LayPrjMark>1</LayPrjMark>
       </Layer>
     </Layers>

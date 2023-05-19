@@ -94,7 +94,7 @@ void System::setup(lang::Kernel& kernel){
  */
 void System::start(lang::Runnable& task, uint32_t stackSize, uint32_t svchostStackSize){
   System::mKernel->kernelInitialize();
-  System::mSvchost = new lang::Svchost(*System::mKernel->kerneAllocThread(task, stackSize));
+  System::mSvchost = new lang::Svchost(*System::mKernel->kernelAllocThread(stackSize, task));
   System::mKernel->kernelStart(*System::mSvchost, svchostStackSize);
   return;
 }
