@@ -5,33 +5,45 @@
  * SPDX-License-Identifier: MIT
  */
 
-#ifndef LANG_EABFB0E9_4CE7_4009_A990_B20F60799B41
-#define LANG_EABFB0E9_4CE7_4009_A990_B20F60799B41
+#ifndef MCUF_C6CF2DB4_1F61_4562_8698_C0C22D0C69FA
+#define MCUF_C6CF2DB4_1F61_4562_8698_C0C22D0C69FA
 
 /* ****************************************************************************************
  * Include
  */  
 
 //-----------------------------------------------------------------------------------------
+#include "./Object.h"
 
 //-----------------------------------------------------------------------------------------
-#include "./ArrayQueuePrototype.h"
-#include "./Collection.h"
-#include "./Queue.h"
 
 /* ****************************************************************************************
  * Namespace
  */  
 namespace lang{
-  template<typename E> class ArrayQueue;
+  class Number;
 }
 
+
+
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class Integer
  */  
-template<typename E>
-class lang::ArrayQueue :public lang::ArrayQueuePrototype , 
-  public lang::Queue<E>{
+class lang::Number :public lang::Object{
+
+  /* **************************************************************************************
+   * Subclass
+   */
+  protected:
+    union Value{
+      bool     b;
+      uint8_t  u8[4];
+      char     s8[4];
+      uint16_t u16[2];
+      short    s16[2];
+      uint32_t u32;
+      int      s32;
+    };
 
   /* **************************************************************************************
    * Variable <Public>
@@ -40,7 +52,9 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
   /* **************************************************************************************
    * Variable <Protected>
    */
-
+  protected: 
+    Value mValue;
+  
   /* **************************************************************************************
    * Variable <Private>
    */
@@ -48,7 +62,7 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
   /* **************************************************************************************
    * Abstract method <Public>
    */
-
+  
   /* **************************************************************************************
    * Abstract method <Protected>
    */
@@ -56,79 +70,53 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
   /* **************************************************************************************
    * Construct Method
    */
-
-  public: 
+  public:
+    /**
+     * @brief Construct a new Number object
+     * 
+     */
+    Number(void);
   
     /**
-     * @brief Construct a new Array Queue object
-     * 
-     * @param memory 
-     */
-    ArrayQueue(const Memory& memory) : lang::ArrayQueuePrototype(memory){
-      return;
-    }
-
-    /**
-     * @brief Construct a new Array Queue object
-     * 
-     * @param length 
-     */
-    ArrayQueue(uint32_t length) : lang::ArrayQueuePrototype(length){
-      return;
-    }
-
-    /**
-     * @brief Destroy the Array Queue object
+     * @brief Destroy the Number object
      * 
      */
-    virtual ~ArrayQueue(void) override {
-      return;
-    }
+    virtual ~Number(void) override;
 
   /* **************************************************************************************
    * Operator Method
    */
-
+  public:
+    
+    /**
+     * @brief 
+     * 
+     * @param v 
+     * @return true 
+     * @return false 
+     */
+    inline bool operator==(Number& v){
+      return (Number::mValue.u32  == v.mValue.u32);
+    }
+    
   /* **************************************************************************************
    * Public Method <Static>
    */
 
   /* **************************************************************************************
-   * Public Method <Override> - lang::Queue<E>
+   * Public Method <Override> - lang::Object
    */
-  public: 
-    virtual bool offer(E* e) override{
-      return this->ArrayQueuePrototype::offerPointer(e);
-    }
-
-    virtual E* poll(void) override{
-      return static_cast<E*>(this->ArrayQueuePrototype::pollPointer());
-    }
-
-    virtual E* peek(void) override{
-      return static_cast<E*>(this->ArrayQueuePrototype::peekPointer());
-    }
-  
-  /* **************************************************************************************
-   * Public Method <Override> - lang::Collection<E>
-   */  
   public:
-    virtual void clear(void) override{
-      return this->ArrayQueuePrototype::clear();
-    }
-
-    virtual bool isEmpty(void) const override{
-      return this->ArrayQueuePrototype::isEmpty();
-    }
-    
-    virtual int size(void) const override{
-      return this->ArrayQueuePrototype::size();
-    }
-
+    /**
+     * @brief 返回對象的哈希碼值。支持這種方法是為了散列表，如HashMap提供的那樣。
+     * 
+     * @return uint32_t 該對象的哈希碼值。
+     */
+    virtual int hashcode(void) const override;
   /* **************************************************************************************
    * Public Method
    */
-
+  
   /* **************************************************************************************
    * Protected Method <Static>
    */
@@ -151,12 +139,15 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
    
   /* **************************************************************************************
    * Private Method
-   */  
-
+   */
+    
 };
 
+
+
 /* *****************************************************************************************
- * End of file
+ *  End of file
  */ 
 
-#endif /* LANG_EABFB0E9_4CE7_4009_A990_B20F60799B41 */
+
+#endif/* MCUF_C6CF2DB4_1F61_4562_8698_C0C22D0C69FA */

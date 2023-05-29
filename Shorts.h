@@ -4,34 +4,30 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-
-#ifndef LANG_EABFB0E9_4CE7_4009_A990_B20F60799B41
-#define LANG_EABFB0E9_4CE7_4009_A990_B20F60799B41
+#ifndef LANG_6B6AAADD_762E_4D84_956A_0B5030792CA6
+#define LANG_6B6AAADD_762E_4D84_956A_0B5030792CA6
 
 /* ****************************************************************************************
  * Include
  */  
 
 //-----------------------------------------------------------------------------------------
+#include "./Object.h"
 
 //-----------------------------------------------------------------------------------------
-#include "./ArrayQueuePrototype.h"
-#include "./Collection.h"
-#include "./Queue.h"
 
 /* ****************************************************************************************
  * Namespace
  */  
 namespace lang{
-  template<typename E> class ArrayQueue;
+  class Shorts;
 }
 
+
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/Interface/Struct/Enum
  */  
-template<typename E>
-class lang::ArrayQueue :public lang::ArrayQueuePrototype , 
-  public lang::Queue<E>{
+class lang::Shorts :public lang::Object{
 
   /* **************************************************************************************
    * Variable <Public>
@@ -56,74 +52,61 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
   /* **************************************************************************************
    * Construct Method
    */
-
-  public: 
+  private: 
+    /**
+     *
+     */
+    Shorts(void);
   
+  public: 
     /**
-     * @brief Construct a new Array Queue object
-     * 
-     * @param memory 
+     *
      */
-    ArrayQueue(const Memory& memory) : lang::ArrayQueuePrototype(memory){
-      return;
-    }
-
-    /**
-     * @brief Construct a new Array Queue object
-     * 
-     * @param length 
-     */
-    ArrayQueue(uint32_t length) : lang::ArrayQueuePrototype(length){
-      return;
-    }
-
-    /**
-     * @brief Destroy the Array Queue object
-     * 
-     */
-    virtual ~ArrayQueue(void) override {
-      return;
-    }
+    virtual ~Shorts(void) override;
 
   /* **************************************************************************************
    * Operator Method
    */
-
+  /* **************************************************************************************
+   * Public Method <Static Inline>
+   */
+  public:
+    /**
+     * @brief 
+     * 
+     * @param value
+     * @return short 
+     */
+    static inline unsigned short castUnsigned(short value){
+      return static_cast<unsigned short>(value);
+    }
+    
+    /**
+     * @brief 
+     * 
+     * @param value
+     * @return short 
+     */
+    static inline short castSigned(unsigned short value){
+      return static_cast<short>(value);
+    }
+    
   /* **************************************************************************************
    * Public Method <Static>
    */
-
-  /* **************************************************************************************
-   * Public Method <Override> - lang::Queue<E>
-   */
-  public: 
-    virtual bool offer(E* e) override{
-      return this->ArrayQueuePrototype::offerPointer(e);
-    }
-
-    virtual E* poll(void) override{
-      return static_cast<E*>(this->ArrayQueuePrototype::pollPointer());
-    }
-
-    virtual E* peek(void) override{
-      return static_cast<E*>(this->ArrayQueuePrototype::peekPointer());
-    }
+  public:
+    
+    /**
+     * @brief 
+     * 
+     * @param str 
+     * @return short 
+     */
+    static short valueOf(const char* str);
   
   /* **************************************************************************************
-   * Public Method <Override> - lang::Collection<E>
-   */  
-  public:
-    virtual void clear(void) override{
-      return this->ArrayQueuePrototype::clear();
-    }
-
-    virtual bool isEmpty(void) const override{
-      return this->ArrayQueuePrototype::isEmpty();
-    }
-    
-    virtual int size(void) const override{
-      return this->ArrayQueuePrototype::size();
-    }
+   * Public Method <Override>
+   */
 
   /* **************************************************************************************
    * Public Method
@@ -148,15 +131,15 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
   /* **************************************************************************************
    * Private Method <Override>
    */
-   
+
   /* **************************************************************************************
    * Private Method
-   */  
+   */
 
 };
 
-/* *****************************************************************************************
+/* ****************************************************************************************
  * End of file
  */ 
 
-#endif /* LANG_EABFB0E9_4CE7_4009_A990_B20F60799B41 */
+#endif /* LANG_6B6AAADD_762E_4D84_956A_0B5030792CA6 */

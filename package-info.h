@@ -22,6 +22,7 @@
 #include "BiConsumer.h"
 #include "BiConsumerEvent.h"
 #include "Buffer.h"
+#include "Class.h"
 #include "Closeable.h"
 #include "Collection.h"
 #include "CompletionHandler.h"
@@ -43,6 +44,7 @@
 #include "OutputStream.h"
 #include "OutputStreamBuffer.h"
 #include "Pointer.h"
+#include "Pointers.h"
 #include "Pool.h"
 #include "Queue.h"
 #include "ReadBuffer.h"
@@ -66,6 +68,13 @@
 #include "Updater.h"
 #include "WriteBuffer.h"
 
+/* ****************************************************************************************
+ * Macro
+ */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wheader-hygiene"
+using namespace lang;
+#pragma clang diagnostic pop
 /* ****************************************************************************************
  * End of file
  */

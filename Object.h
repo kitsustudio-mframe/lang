@@ -25,7 +25,7 @@
  */  
 namespace lang{
   class Object;
-  struct Thread;
+  class Thread;
 }
 
 
@@ -247,7 +247,6 @@ class lang::Object : virtual public lang::Interface{
      */
     bool wait(int timeout) const;
     
-    
     /**
      * @brief 
      * 函數yield()將控制權傳遞給處於READY狀態且具有相同優先級的下一個線程。
@@ -272,14 +271,14 @@ class lang::Object : virtual public lang::Interface{
      * 
      * @return int lock調用層數
      */
-    int systemLock(void) const;
+    int lock(void) const;
     
     /**
      * @brief 
      * 
      * @return int lock調用剩餘層數，當值為0時核心解鎖，開始執行緒切換
      */
-    int systemUnlock(void) const;
+    int unlock(void) const;
     
     /**
      * @brief 取得當前的執行緒 
@@ -294,7 +293,7 @@ class lang::Object : virtual public lang::Interface{
      * 
      * @return uint32_t 該對象的哈希碼值。
      */
-    virtual uint32_t hashcode(void) const;
+    virtual int hashcode(void) const;
    
     
   /* **************************************************************************************

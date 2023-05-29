@@ -4,9 +4,8 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-
-#ifndef LANG_EABFB0E9_4CE7_4009_A990_B20F60799B41
-#define LANG_EABFB0E9_4CE7_4009_A990_B20F60799B41
+#ifndef LANG_60057875_FE93_41DE_9CC0_DDB71826A752
+#define LANG_60057875_FE93_41DE_9CC0_DDB71826A752
 
 /* ****************************************************************************************
  * Include
@@ -15,23 +14,19 @@
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-#include "./ArrayQueuePrototype.h"
-#include "./Collection.h"
-#include "./Queue.h"
 
 /* ****************************************************************************************
  * Namespace
  */  
 namespace lang{
-  template<typename E> class ArrayQueue;
+  class Enum;
 }
 
+
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/Interface/Struct/Enum
  */  
-template<typename E>
-class lang::ArrayQueue :public lang::ArrayQueuePrototype , 
-  public lang::Queue<E>{
+class lang::Enum{
 
   /* **************************************************************************************
    * Variable <Public>
@@ -56,34 +51,10 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
   /* **************************************************************************************
    * Construct Method
    */
-
   public: 
-  
-    /**
-     * @brief Construct a new Array Queue object
-     * 
-     * @param memory 
-     */
-    ArrayQueue(const Memory& memory) : lang::ArrayQueuePrototype(memory){
-      return;
-    }
+	Enum(void) = default;
 
-    /**
-     * @brief Construct a new Array Queue object
-     * 
-     * @param length 
-     */
-    ArrayQueue(uint32_t length) : lang::ArrayQueuePrototype(length){
-      return;
-    }
-
-    /**
-     * @brief Destroy the Array Queue object
-     * 
-     */
-    virtual ~ArrayQueue(void) override {
-      return;
-    }
+	virtual ~Enum(void) = default;
 
   /* **************************************************************************************
    * Operator Method
@@ -94,36 +65,8 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
    */
 
   /* **************************************************************************************
-   * Public Method <Override> - lang::Queue<E>
+   * Public Method <Override>
    */
-  public: 
-    virtual bool offer(E* e) override{
-      return this->ArrayQueuePrototype::offerPointer(e);
-    }
-
-    virtual E* poll(void) override{
-      return static_cast<E*>(this->ArrayQueuePrototype::pollPointer());
-    }
-
-    virtual E* peek(void) override{
-      return static_cast<E*>(this->ArrayQueuePrototype::peekPointer());
-    }
-  
-  /* **************************************************************************************
-   * Public Method <Override> - lang::Collection<E>
-   */  
-  public:
-    virtual void clear(void) override{
-      return this->ArrayQueuePrototype::clear();
-    }
-
-    virtual bool isEmpty(void) const override{
-      return this->ArrayQueuePrototype::isEmpty();
-    }
-    
-    virtual int size(void) const override{
-      return this->ArrayQueuePrototype::size();
-    }
 
   /* **************************************************************************************
    * Public Method
@@ -148,15 +91,15 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
   /* **************************************************************************************
    * Private Method <Override>
    */
-   
+
   /* **************************************************************************************
    * Private Method
-   */  
+   */
 
 };
 
-/* *****************************************************************************************
+/* ****************************************************************************************
  * End of file
  */ 
 
-#endif /* LANG_EABFB0E9_4CE7_4009_A990_B20F60799B41 */
+#endif /* LANG_60057875_FE93_41DE_9CC0_DDB71826A752 */

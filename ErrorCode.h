@@ -28,23 +28,15 @@ namespace lang{
  * Class Object
  */  
 enum struct lang::ErrorCode : int{
-  NONE                       = 0x00000000 + 0,  ///<預設無異常
-  HARD_FAULT                 = 0x00000000 + 1,  ///<HARD_FAULT
-  SYSTEM_ERROR               = 0x00000000 + 2,  ///<SYSTEM_ERROR
-  OUT_OF_MEMORY              = 0x00000000 + 3,  ///<OUT_OF_MEMORY
-  OUT_OF_THREAD_STACK_MEMORY = 0x00000000 + 4,  ///<OUT_OF_THREAD_STACK_MEMORY
-  NULL_POINTER               = 0x00000000 + 5,  ///<NULL_POINTER
-  ILLEGAL_ARGUMENT           = 0x00000000 + 6,  ///<ILLEGAL_ARGUMENT
-  INSUFFICIENT_MEMORY        = 0x00000000 + 7,  ///<INSUFFICIENT_MEMORY
-  WRITE_TO_READONLY_MEMORY   = 0x00000000 + 8,  ///<WRITE_TO_READONLY_MEMORY
-  MEMORY_NOT_ALIGNMENT_32BIT = 0x00000000 + 9,  ///<MEMORY_NOT_ALIGNMENT_32BIT
-  MEMORY_NOT_ALIGNMENT_64BIT = 0x00000000 + 10, ///<MEMORY_NOT_ALIGNMENT_64BIT
-    
-  RTX_STACK_UNDERFLOW        = 0x10000000 + 0,  ///<RTX_STACK_UNDERFLOW
-  RTX_ISR_QUEUE_OVERFLOW     = 0x10000000 + 1,  ///<RTX_ISR_QUEUE_OVERFLOW
-  RTX_TIMER_QUEUE_OVERFLOW   = 0x10000000 + 2,  ///<RTX_TIMER_QUEUE_OVERFLOW
-  RTX_CLIB_SPACE             = 0x10000000 + 3,  ///<RTX_CLIB_SPACE
-  RTX_CLIB_MUTEX             = 0x10000000 + 4,  ///<RTX_CLIB_MUTEX
+  NONE                          = 0x00000000 + 0,  ///<預設無異常
+  HARD_FAULT,                                      ///<硬體錯誤
+  SYSTEM_ERROR,                                    ///<系統錯誤
+  INSUFFICIENT_MEMORY,                             ///<系統內存不足
+  INSUFFICIENT_STACK_MEMORY,                       ///<執行緒內存不足
+  NULL_POINTER,                                    ///<物件值為null
+  ILLEGAL_ARGUMENT,                                ///<方法呼叫時參數型態不同
+  WRITE_TO_READONLY_MEMORY,                        ///<寫入至唯讀記憶體
+  ARRAY_INDEX_OUT_OF_BOUNDS,                       ///<陣列索引值小於0或超過陣列邊界
   
   RESERVED                   = 0x7FFFFFFF       ///<RESERVED
 };

@@ -15,6 +15,9 @@
 
 //-----------------------------------------------------------------------------------------
 #include "./Strings.h"
+#include "./HashGen.h"
+#include "./System.h"
+#include "./Class.h"
 
 /* ****************************************************************************************
  * Macro
@@ -25,6 +28,7 @@
  */  
 using lang::Strings;
 using lang::Memory;
+using lang::Class;
 
 /* ****************************************************************************************
  * Variable
@@ -90,70 +94,6 @@ Strings::~Strings(void){
 /**
  * @brief 
  * 
- * @param buffer 
- * @param bufferSize 
- * @param format 
- * @param arg 
- * @return int 
- */
-int Strings::format(void* buffer, size_t bufferSize, const char* format, va_list args){
-  return vsnprintf(static_cast<char*>(buffer), bufferSize, format, args);
-}
-
-/**
- * @brief 
- * 
- * @param memory 
- * @param format 
- * @param arg 
- * @return int 
- */
-int Strings::format(const lang::Memory& memory, const char* format, va_list args){
-  if(memory.isReadOnly())
-    return 0;
-
-  return vsnprintf(static_cast<char*>(memory.pointer()), static_cast<size_t>(memory.length()), format, args);
-}
-
-/**
- * @brief 
- * 
- * @param buffer 
- * @param bufferSize 
- * @param format 
- * @param ... 
- * @return int 
- */
-int Strings::format(void* buffer, uint32_t bufferSize, const char* format, ...){
-  va_list args;
-  va_start(args, format);
-  int result = vsnprintf(static_cast<char*>(buffer), bufferSize, format, args);
-  va_end(args);
-  return result;
-}
-
-/**
- * @brief 
- * 
- * @param memory 
- * @param format 
- * @param ... 
- * @return int 
- */
-int Strings::format(const lang::Memory& memory, const char* format, ...){
-  if(memory.isReadOnly())
-    return 0;
-  
-  va_list args;
-  va_start(args, format);
-  int result = vsnprintf(static_cast<char*>(memory.pointer()), static_cast<size_t>(memory.length()), format, args);
-  va_end(args);
-  return result;
-}
-
-/**
- * @brief 
- * 
  * @param bufferSize 
  * @param format 
  * @param ... 
@@ -178,34 +118,6 @@ Strings Strings::format(int bufferSize, const char* format, ...){
 /**
  * @brief 
  * 
- * @param src 
- * @param format 
- * @param args 
- * @return int 
- */
-int Strings::scanFormat(const char* src, const char* format, va_list args){
-  return vsscanf(src, format, args);
-}
-
-/**
- * @brief 
- * 
- * @param src 
- * @param format 
- * @param ... 
- * @return int 
- */
-int Strings::scanFormat(const char* src, const char* format, ...){
-  va_list args;
-  va_start(args, format);
-  int result = vsscanf(src, format, args);
-  va_end(args);
-  return result;  
-}
-
-/**
- * @brief 
- * 
  * @return Strings 
  */
 Strings Strings::empty(void){
@@ -218,7 +130,7 @@ Strings Strings::empty(void){
  * @param src 
  * @return int 
  */
-int Strings::stringLength(const char* src){
+int Strings::getLength(const char* src){
   return static_cast<int>(strlen(src));
 }
 
@@ -236,6 +148,19 @@ int Strings::stringLength(const char* src){
  */
 int Strings::indexOfData(const void* destination, int destinationLen, int start) const{
   return Pointer::indexOfData(destination, destinationLen, start, this->size());
+}
+
+/* ****************************************************************************************
+ * Public Method <Override> - lang::Object
+ */
+
+/**
+ * @brief 返回對象的哈希碼值。支持這種方法是為了散列表，如HashMap提供的那樣。
+ * 
+ * @return uint32_t 該對象的哈希碼值。
+ */
+int Strings::hashcode(void) const{
+  return lang::HashGen::getHashcode(this->pointer(Class<const char>::cast()));
 }
 
 /* ****************************************************************************************
@@ -442,7 +367,7 @@ int Strings::size(void) const{
  * @return int 
  */
 int Strings::replace(char oldChar, char newChar){
-  int result abstract;
+  int result = 0;
   if(this->isReadOnly())
     return 0;
   
@@ -465,7 +390,7 @@ int Strings::replace(char oldChar, char newChar){
  * @return int 
  */
 Strings& Strings::append(const char* str){
-  int len = Strings::stringLength(str);
+  int len = Strings::getLength(str);
   int entityLen = this->size();
   this->copy(str, entityLen ,0, (len + 1));
   return *this;
@@ -478,7 +403,7 @@ Strings& Strings::append(const char* str){
  * @return int 
  */
 Strings& Strings::set(const char* str){
-  int len = Strings::stringLength(str);
+  int len = Strings::getLength(str);
   this->copy(str, 0 ,0, (len + 1));
   return *this;
 }

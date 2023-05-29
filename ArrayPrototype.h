@@ -97,16 +97,18 @@ class lang::ArrayPrototype :public lang::Memory{
   public:
 
     /**
-     * @brief Get the Element Length object
+     * @brief 
+     * 返回此陣列的長度。  
      * 
-     * @return int 
+     * @return uint32_t 由該對象表示的陣列的長度。
      */
     int getElementLength(void) const;
 
     /**
-     * @brief Get the Element Size object
+     * @brief 
+     * 返回陣列元素的尺寸大小。
      * 
-     * @return uint32_t 
+     * @return int 元素的尺寸大小。
      */
     int getElementSize(void) const;
 
@@ -126,9 +128,10 @@ class lang::ArrayPrototype :public lang::Memory{
   
     /**
      * @brief 
-     * 
-     * @param element 
-     * @return int 
+     * 返回此列表中指定元素的第一次出現的索引，如果此列表不包含元素，則返回-1。 
+     *
+     * @param e - 要搜索的元素 
+     * @return int 此列表中指定元素的首次出現的索引，如果此列表不包含元素，則為-1 
      */
     int indexOf(const void* element) const;
 

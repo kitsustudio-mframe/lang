@@ -12,6 +12,7 @@
 #include <stdio.h>
 //-----------------------------------------------------------------------------------------
 #include "./ByteBuffer.h"
+#include "./StringFormat.h"
 
 /* ****************************************************************************************
  * Using
@@ -333,7 +334,7 @@ int ByteBuffer::putFormat(const char* format, ...){
   
   va_list args;
   va_start(args, format);
-  int result = Strings::format(ByteBuffer::pointer(ByteBuffer::mPosition), static_cast<size_t>(ByteBuffer::remaining()), format, args);
+  int result = StringFormat::pointerVa(ByteBuffer::pointer(ByteBuffer::mPosition), static_cast<size_t>(ByteBuffer::remaining()), format, args);
   
   va_end(args);
   
@@ -349,7 +350,7 @@ int ByteBuffer::putFormat(const char* format, ...){
  * @return int 
  */
 int ByteBuffer::putFormat(const char* format, va_list args){
-  int result = Strings::format(ByteBuffer::pointer(ByteBuffer::mPosition), static_cast<size_t>(ByteBuffer::remaining()), format, args);
+  int result = StringFormat::pointerVa(ByteBuffer::pointer(ByteBuffer::mPosition), static_cast<size_t>(ByteBuffer::remaining()), format, args);
   ByteBuffer::mPosition += result;
   return result; 
 }

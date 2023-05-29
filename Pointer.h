@@ -180,89 +180,10 @@ class lang::Pointer : public lang::Object{
   /* **************************************************************************************
    * Public Method <Static Inline>
    */
-  public:
-    /**
-     * @brief 
-     * 
-     * @param point 
-     * @param shift 
-     * @return void* 
-     */
-    static void* pointShift(void* pointer, int shift){
-      return static_cast<char*>(pointer) + shift;
-    }
     
-    /**
-     * @brief 
-     * 
-     * @param point 
-     * @param shift 
-     * @return void* 
-     */
-    static const void* pointShift(const void* pointer, int shift){
-      return static_cast<const char*>(pointer) + shift;
-    }    
-
   /* **************************************************************************************
    * Public Method <Static>
    */
-  public: 
-
-    /**
-     * @brief 
-     * 
-     * @return Pointer 
-     */
-    static Pointer nullPointer(void);
-
-    /**
-     * @brief Copies the values of num bytes from the location pointed to by source 
-     *        directly to the memory block pointed to by destination.
-     * 
-     *        he underlying type of the objects pointed to by both the source and 
-     *        destination pointers are irrelevant for this function; The result is a 
-     *         binary copy of the data.
-     *  
-     *        The function does not check for any terminating null character in source - 
-     *        it always copies exactly num bytes.
-     * 
-     *        To avoid overflows, the size of the arrays pointed to by both the 
-     *        destination and source parameters, shall be at least num bytes, and should 
-     *        not overlap(for overlapping memory blocks, move is a safer approach).
-     * 
-     * @param destination Pointer to the destination array where the content is to be copied, 
-     *                    type-casted to a pointer of type void*.
-     * 
-     * @param source Pointer to the source of data to be copied, type-casted to a pointer of 
-     *               type const void*.
-     * 
-     * @param length Number of bytes to copy.
-     */
-    static void copy(void* destination, const void* source, int length);
-
-    /**
-     * @brief Copies the values of num bytes from the location pointed by source to the memory 
-     *        block pointed by destination. Copying takes place as if an intermediate buffer 
-     *        were used, allowing the destination and source to overlap.
-     *        
-     *        The underlying type of the objects pointed by both the source and destination 
-     *        pointers are irrelevant for this function; The result is a binary copy of the data.
-     * 
-     *        The function does not check for any terminating null character in source - it always 
-     *        copies exactly num bytes.
-     * 
-     *        To avoid overflows, the size of the arrays pointed by both the destination and source 
-     *        parameters, shall be at least num bytes.
-     * 
-     * @param destination Pointer to the destination array where the content is to be copied, 
-     *                    type-casted to a pointer of type void*.
-     * 
-     * @param source Pointer to the source of data to be copied, type-casted to a pointer of 
-     *               type const void*.
-     * 
-     * @param length Number of bytes to copy.
-     */
-    static void move(void* destination, const void* source, int length);
 
   /* **************************************************************************************
    * Public Method <Override>
@@ -527,6 +448,13 @@ class lang::Pointer : public lang::Object{
     }
     
     /**
+     *
+     */
+    template<class T> inline T* pointer(const T *cast) const{
+      return static_cast<T*>(Pointer::mPointer);
+    }    
+    
+    /**
      * @brief 
      * 
      * @param offset 
@@ -535,7 +463,17 @@ class lang::Pointer : public lang::Object{
     inline void* pointer(uint32_t offset) const{
       return static_cast<char*>(Pointer::mPointer) + offset;
     }
-
+    
+    /**
+     * @brief 
+     * 
+     * @param offset 
+     * @return void* 
+     */
+    template<class T> inline T* pointer(uint32_t offset, const T *a) const{
+      return static_cast<T*>(pointer(offset));
+    }
+    
     /**
      * @brief 
      * 
@@ -544,6 +482,16 @@ class lang::Pointer : public lang::Object{
      */
     inline void* pointer(int offset) const{
       return static_cast<char*>(Pointer::mPointer) + offset;
+    }
+    
+    /**
+     * @brief 
+     * 
+     * @param offset 
+     * @return void* 
+     */
+    template<class T> inline T* pointer(int offset, const T *a) const{
+      return static_cast<T*>(pointer(offset));
     }
 
   /* **************************************************************************************

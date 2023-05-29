@@ -7,18 +7,25 @@
 
 /* ****************************************************************************************
  * Include
- */  
+ */
 
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-#include "./Object.h"
-#include "./System.h"
+#include "./Thread.h"
+
+/* ****************************************************************************************
+ * Macro
+ */
 
 /* ****************************************************************************************
  * Using
- */  
-using lang::Object;
+ */
+
+//-----------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------
+using lang::Thread;
 
 /* ****************************************************************************************
  * Variable <Static>
@@ -27,56 +34,27 @@ using lang::Object;
 /* ****************************************************************************************
  * Construct Method
  */
-
 /**
- * @brief Construct a new Object:: Object object
- * 
+ *
  */
-Object::Object(void){
+Thread::Thread(void){
   return;
 }
-
+    
 /**
- * @brief Destroy the Object:: Object object
- * 
+ *
  */
-Object::~Object(void){
+Thread::~Thread(void){
   return;
 }
-
 /* ****************************************************************************************
  * Operator Method
  */
 
-/**
- * @brief 
- * 
- * @param n 
- * @return void* 
- */
-void* Object::operator new(size_t n){
-  void* result = ::operator new(n);
-  if(result == nullptr)
-    System::error("Object new", ErrorCode::INSUFFICIENT_MEMORY);
-  
-  return result;
-}
-
-/**
- * @brief 
- * 
- * @param n 
- * @param p 
- * @return void* 
- */
-void* Object::operator new(size_t n, void* const p){
-  return p;
-}
-
 /* ****************************************************************************************
  * Public Method <Static>
  */
- 
+
 /* ****************************************************************************************
  * Public Method <Override>
  */
@@ -86,99 +64,44 @@ void* Object::operator new(size_t n, void* const p){
  */
 
 /**
- *
+ * @brief 
+ * 
+ * @return true 
+ * @return false 
  */
-void Object::delay(int milliseconds) const{
-  System::delay(milliseconds);
-  return;
+bool Thread::start(const char* name){
+  return this->start(name, lang::ThreadPriority::NORMAL);
 }
 
-/**
- *
- */
-bool Object::equals(Object* object) const{
-  if(object == nullptr)
-    return false;
-  
-  return (this->hashcode() == object->hashcode());
-}
-
-/**
- *
- */
-bool Object::equals(Object& object) const{
-  return (this->hashcode() == object.hashcode());
-}
-
-/**
- *
- */
-void Object::wait(void) const{
-  System::wait(0);
-  return;
-}
-
-/**
- *
- */
-bool Object::wait(int timeout) const{
-  return System::wait(timeout);
-}
-
-/**
- *
- */
-bool Object::yield(void) const{
-  return System::yield();
-}
-
-/**
- *
- */
-int Object::lock(void) const{
-  return System::lock();
-}
-
-/**
- *
- */
-int Object::unlock(void) const{
-  return System::unlock();
-}
-
-/**
- *
- */
-int Object::hashcode(void) const{
-  return reinterpret_cast<int>(this);
-}
-
-/**
- *
- */
-lang::Thread* Object::currentThread(void) const{
-  return System::currentThread();
-}
-
-/* **************************************************************************************
- * Public Method <Override> - lang::Interface
- */
 /**
  * @brief 
  * 
- * @return lang::Object& 
+ * @return true 
+ * @return false 
  */
-lang::Object& Object::getObject(void){
-  return *this;
+bool Thread::isActive(void){
+  lang::ThreadState state = this->getState();
+  
+  switch(state){
+    case lang::ThreadState::INACTIVE:
+    case lang::ThreadState::ERROR:
+      return false;
+    
+    case lang::ThreadState::BLOCKED:
+    case lang::ThreadState::READY:
+    case lang::ThreadState::RUNNING:
+    case lang::ThreadState::TERMINATED:
+      return true;
+      
+  }
 }
-
 /* ****************************************************************************************
  * Protected Method <Static>
  */
- 
+
 /* ****************************************************************************************
  * Protected Method <Override>
- */ 
+ */
 
 /* ****************************************************************************************
  * Protected Method
@@ -187,7 +110,7 @@ lang::Object& Object::getObject(void){
 /* ****************************************************************************************
  * Private Method
  */
- 
+
 /* ****************************************************************************************
  * End of file
- */ 
+ */

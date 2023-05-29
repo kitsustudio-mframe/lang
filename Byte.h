@@ -5,31 +5,36 @@
  * SPDX-License-Identifier: MIT
  */
 
-#ifndef LANG_B4E61D80_F9A1_469D_84FD_FBB3D8FC11E4
-#define LANG_B4E61D80_F9A1_469D_84FD_FBB3D8FC11E4
+#ifndef MCUF_F9B57639_6FC2_4ABB_B8EB_618F2228B096
+#define MCUF_F9B57639_6FC2_4ABB_B8EB_618F2228B096
 
 /* ****************************************************************************************
  * Include
  */  
-
+ 
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-#include "./Interface.h"
+#include "./Number.h"
 
 /* ****************************************************************************************
  * Namespace
  */  
 namespace lang{
-  template<typename T> struct Collection;
+  class Byte;
 }
 
+
+
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class Byte
  */  
-template<typename T>
-  struct lang::Collection :public virtual lang::Interface{
-  
+class lang::Byte final :public lang::Number{
+      
+  /* **************************************************************************************
+   * Subclass
+   */
+   
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -45,32 +50,7 @@ template<typename T>
   /* **************************************************************************************
    * Abstract method <Public>
    */
-
-  /**
-   * @brief 
-   * 從此集合中刪除所有元素(可選操作)。此方法返回後，集合將為空。 
-   * 
-   */
-  virtual void clear(void) abstract;
-
-  /**
-   * @brief 
-   * 如果此集合不包含元素，則返回true。 
-   * 
-   * @return 
-   * true如果此集合不包含元素 
-   */
-  virtual bool isEmpty(void) const abstract;
-
-  /**
-   * @brief 
-   * 返回此集合中的元素數。
-   * 如果此收藏包含超過 Integer.MAX_VALUE個元素，則返回Integer.MAX_VALUE。 
-   * 
-   * @return uint32_t - 此集合中的元素数 
-   */
-  virtual int size(void) const abstract;
-
+   
   /* **************************************************************************************
    * Abstract method <Protected>
    */
@@ -78,11 +58,157 @@ template<typename T>
   /* **************************************************************************************
    * Construct Method
    */
+  public:
+    /**
+     * @brief Construct a new Byte object
+     * 
+     */
+    Byte(void);
+
+    /**
+     * @brief Construct a new Byte object
+     * 
+     * @param value 
+     */
+    Byte(char value);
+    
+    /**
+     * @brief Destroy the Byte object
+     * 
+     */
+    virtual ~Byte(void) override;
 
   /* **************************************************************************************
    * Operator Method
    */
+  public:
+    /**
+     * @brief Construct a new Byte::operator char object
+     * 
+     */
+    inline operator char(void){
+      return this->mValue.s8[0];
+    }
 
+    /**
+     * @brief 
+     * 
+     * @param v 
+     * @return true 
+     * @return false 
+     */
+    bool operator==(char v){
+      return (this->mValue.s8[0] == static_cast<char>(v));
+    }
+
+    /**
+     * @brief 
+     * 
+     * @param v 
+     * @return true 
+     * @return false 
+     */
+    bool operator==(Byte& v){
+      return (this->mValue.s8[0] == v.mValue.s8[0]);
+    }
+
+    /**
+     * @brief 
+     * 
+     * @param v 
+     * @return char 
+     */
+    char operator=(char v){
+      this->mValue.s8[0] = v;
+      return this->mValue.s8[0];
+    }
+
+    /**
+     * @brief 
+     * 
+     * @param v 
+     * @return Byte 
+     */
+    Byte operator+=(int v){
+      this->mValue.s8[0] += v;
+      return *this;
+    }
+
+    /**
+     * @brief 
+     * 
+     * @param v 
+     * @return Byte 
+     */
+    Byte operator-=(int v){
+      this->mValue.s8[0] -= v;
+      return *this;
+    }
+
+    /**
+     * @brief 
+     * 
+     * @param v 
+     * @return Byte 
+     */
+    Byte operator*=(int v){
+      this->mValue.s8[0] *= v;
+      return *this;
+    }
+
+    /**
+     * @brief 
+     * 
+     * @param v 
+     * @return Byte 
+     */
+    Byte operator/=(int v){
+      this->mValue.s8[0] /= v;
+      return *this;
+    }
+
+    /**
+     * @brief 
+     * 
+     * @return Byte 
+     */
+    Byte operator++(int){
+      Byte tmp = *this;
+      ++this->mValue.s8[0];
+      return tmp;
+    }
+
+    /**
+     * @brief 
+     * 
+     * @return Byte 
+     */
+    Byte operator++(){
+      ++this->mValue.s8[0];
+      return *this;
+    }
+
+    /**
+     * @brief 
+     * 
+     * @return Byte 
+     */
+    Byte operator--(int){
+      Byte tmp = *this;
+      --this->mValue.s8[0];
+      return tmp;
+    }
+
+    /**
+     * @brief 
+     * 
+     * @return Byte& 
+     */
+    Byte& operator--(void){
+      --this->mValue.s8[0];
+      return *this;
+    }
+  
   /* **************************************************************************************
    * Public Method <Static>
    */
@@ -90,7 +216,7 @@ template<typename T>
   /* **************************************************************************************
    * Public Method <Override>
    */
-
+             
   /* **************************************************************************************
    * Public Method
    */
@@ -118,10 +244,14 @@ template<typename T>
   /* **************************************************************************************
    * Private Method
    */
+    
 };
 
+
+
 /* *****************************************************************************************
- * End of file
+ *  End of file
  */ 
 
-#endif /* LANG_.B4E61D80_F9A1_469D_84FD_FBB3D8FC11E4 */
+
+#endif/* MCUF_F9B57639_6FC2_4ABB_B8EB_618F2228B096 */

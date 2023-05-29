@@ -37,14 +37,13 @@ using lang::System;
 /* ****************************************************************************************
  * Static Variable
  */  
-lang::Kernel* System::mKernel;
 lang::Svchost* System::mSvchost;
 
 /* ****************************************************************************************
  * Construct Method
  */
 
-/**
+/** ---------------------------------------------------------------------------------------
  * @brief Construct a new System object
  * 
  */
@@ -68,38 +67,56 @@ System::~System(void){
  * Public Method <Static>
  */
 
-/**
- * @brief 
+/** ---------------------------------------------------------------------------------------
+ * 
+ */
+lang::PrintBuffer& System::out(void){
+  return System::mSvchost->mPrintBuffer;
+}
+
+/** ---------------------------------------------------------------------------------------
+ * 
+ */
+lang::RingBuffer& System::in(void){
+  return System::mSvchost->mRingBuffer;
+}
+
+/** ---------------------------------------------------------------------------------------
  * 
  */
 void System::reboot(void){
-  System::mKernel->kernelReboot();
+  System::mSvchost->mKernel.kernelReboot();
   return;
 }
 
-/**
- * @brief 
+/** ---------------------------------------------------------------------------------------
  * 
  */
 void System::setup(lang::Kernel& kernel){
-  System::mKernel = &kernel;
+  System::setup(kernel, 128, 128);
+}
 
+/** ---------------------------------------------------------------------------------------
+ * 
+ */
+void System::setup(lang::Kernel& kernel, uint32_t outSize, uint32_t inSize){
+  System::mSvchost = new lang::Svchost(kernel, outSize, inSize, 32);
+  if(System::mSvchost->mKernel.kernelInitialize() == false)
+    System::error("SYSTEM", lang::ErrorCode::SYSTEM_ERROR);
+  
   return;
 }
 
-/**
- * @brief 
+/** ---------------------------------------------------------------------------------------
  * 
- * @param userThread 
  */
 void System::start(lang::Runnable& task, uint32_t stackSize, uint32_t svchostStackSize){
-  System::mKernel->kernelInitialize();
-  System::mSvchost = new lang::Svchost(*System::mKernel->kernelAllocThread(stackSize, task));
-  System::mKernel->kernelStart(*System::mSvchost, svchostStackSize);
+  System::mSvchost->start(task, stackSize);
+  System::mSvchost->mKernel.kernelStart(*System::mSvchost, svchostStackSize);
   return;
 }
 
-/**
+/** ---------------------------------------------------------------------------------------
  * 
  */
 void System::error(const void* address, ErrorCode code){
@@ -115,19 +132,15 @@ void System::error(const void* address, ErrorCode code){
   while(1);
 }
 
-/**
- *
+/** ---------------------------------------------------------------------------------------
+ * 
  */
 uint32_t System::getCoreClock(void){
-  return System::mKernel->kernelGetCoreClock();
+  return System::mSvchost->mKernel.kernelGetCoreClock();
 }
 
-/**
- * @brief 
+/** ---------------------------------------------------------------------------------------
  * 
- * @param runnable 
- * @return true 
- * @return false 
  */
 void System::execute(lang::Runnable& runnable){
   if(System::mSvchost->execute(runnable))
@@ -137,11 +150,32 @@ void System::execute(lang::Runnable& runnable){
   return;
 }
 
-
-/**
- * @brief 
+/** ---------------------------------------------------------------------------------------
  * 
- * @param times 
+ */
+lang::Thread& System::allocThread(lang::Runnable& runnable, uint32_t stackSize){
+  lang::Thread* result = System::mSvchost->mKernel.kernelAllocThread(runnable, stackSize);
+  
+  if(result == nullptr)
+    System::error("SYSTEM", lang::ErrorCode::SYSTEM_ERROR);
+  
+  return *result;
+}
+    
+/** ---------------------------------------------------------------------------------------
+ * 
+ */
+lang::Thread& System::allocThread(lang::Runnable& runnable, lang::Data& stackMemory){
+  lang::Thread* result = System::mSvchost->mKernel.kernelAllocThread(runnable, stackMemory);
+  
+  if(result == nullptr)
+    System::error("SYSTEM", lang::ErrorCode::SYSTEM_ERROR);
+  
+  return *result;
+}
+
+/** ---------------------------------------------------------------------------------------
+ * 
  */
 void System::lowerDelay(uint32_t times){
 #pragma clang optimize off
@@ -151,6 +185,54 @@ void System::lowerDelay(uint32_t times){
 #pragma clang optimize on
 }
 
+/** ---------------------------------------------------------------------------------------
+ * 
+ */
+bool System::delay(int milliseconds){
+  return System::mSvchost->mKernel.kernelDelay(static_cast<uint32_t>(milliseconds));
+}
+
+/** ---------------------------------------------------------------------------------------
+ * 
+ */
+void System::wait(void){
+  System::wait(0);
+}
+    
+/** ---------------------------------------------------------------------------------------
+ * 
+ */
+bool System::wait(int timeout){
+  return System::mSvchost->mKernel.kernelWait(static_cast<uint32_t>(timeout));
+}
+    
+/** ---------------------------------------------------------------------------------------
+ * 
+ */
+bool System::yield(void){
+  return System::mSvchost->mKernel.kenrelYield();
+}
+    
+/** ---------------------------------------------------------------------------------------
+ * 
+ */
+lang::Thread* System::currentThread(void){
+  return System::mSvchost->mKernel.kernelGetCurrentThread();
+}
+
+/** ---------------------------------------------------------------------------------------
+ * 
+ */
+int System::lock(void){
+  return System::mSvchost->mKernel.kernelLock();
+}
+
+/** ---------------------------------------------------------------------------------------
+ * 
+ */
+int System::unlock(void){
+  return System::mSvchost->mKernel.kernelUnlock();
+}
 
 /* ****************************************************************************************
  * Public Method <Override>

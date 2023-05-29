@@ -4,34 +4,30 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-
-#ifndef LANG_EABFB0E9_4CE7_4009_A990_B20F60799B41
-#define LANG_EABFB0E9_4CE7_4009_A990_B20F60799B41
+#ifndef LANG_21696933_3B6B_4512_922C_4B04E4B28F72
+#define LANG_21696933_3B6B_4512_922C_4B04E4B28F72
 
 /* ****************************************************************************************
  * Include
  */  
 
 //-----------------------------------------------------------------------------------------
+#include "./Object.h"
 
 //-----------------------------------------------------------------------------------------
-#include "./ArrayQueuePrototype.h"
-#include "./Collection.h"
-#include "./Queue.h"
 
 /* ****************************************************************************************
  * Namespace
  */  
 namespace lang{
-  template<typename E> class ArrayQueue;
+  class HashGen;
 }
 
+
 /* ****************************************************************************************
- * Class/Interface/Struct
+ * Class/Interface/Struct/Enum
  */  
-template<typename E>
-class lang::ArrayQueue :public lang::ArrayQueuePrototype , 
-  public lang::Queue<E>{
+class lang::HashGen :public lang::Object{
 
   /* **************************************************************************************
    * Variable <Public>
@@ -56,34 +52,17 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
   /* **************************************************************************************
    * Construct Method
    */
-
-  public: 
+  private: 
+    /**
+     *
+     */
+    HashGen(void);
   
+  public:
     /**
-     * @brief Construct a new Array Queue object
-     * 
-     * @param memory 
+     *
      */
-    ArrayQueue(const Memory& memory) : lang::ArrayQueuePrototype(memory){
-      return;
-    }
-
-    /**
-     * @brief Construct a new Array Queue object
-     * 
-     * @param length 
-     */
-    ArrayQueue(uint32_t length) : lang::ArrayQueuePrototype(length){
-      return;
-    }
-
-    /**
-     * @brief Destroy the Array Queue object
-     * 
-     */
-    virtual ~ArrayQueue(void) override {
-      return;
-    }
+    virtual ~HashGen(void) override;
 
   /* **************************************************************************************
    * Operator Method
@@ -92,38 +71,20 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
   /* **************************************************************************************
    * Public Method <Static>
    */
-
-  /* **************************************************************************************
-   * Public Method <Override> - lang::Queue<E>
-   */
-  public: 
-    virtual bool offer(E* e) override{
-      return this->ArrayQueuePrototype::offerPointer(e);
-    }
-
-    virtual E* poll(void) override{
-      return static_cast<E*>(this->ArrayQueuePrototype::pollPointer());
-    }
-
-    virtual E* peek(void) override{
-      return static_cast<E*>(this->ArrayQueuePrototype::peekPointer());
-    }
-  
-  /* **************************************************************************************
-   * Public Method <Override> - lang::Collection<E>
-   */  
   public:
-    virtual void clear(void) override{
-      return this->ArrayQueuePrototype::clear();
-    }
-
-    virtual bool isEmpty(void) const override{
-      return this->ArrayQueuePrototype::isEmpty();
-    }
+    /**
+     *
+     */
+    static int getHashcode(const void* src, int len);
     
-    virtual int size(void) const override{
-      return this->ArrayQueuePrototype::size();
-    }
+   /**
+     *
+     */
+    static int getHashcode(const char* src);
+
+  /* **************************************************************************************
+   * Public Method <Override>
+   */
 
   /* **************************************************************************************
    * Public Method
@@ -148,15 +109,15 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
   /* **************************************************************************************
    * Private Method <Override>
    */
-   
+
   /* **************************************************************************************
    * Private Method
-   */  
+   */
 
 };
 
-/* *****************************************************************************************
+/* ****************************************************************************************
  * End of file
  */ 
 
-#endif /* LANG_EABFB0E9_4CE7_4009_A990_B20F60799B41 */
+#endif /* LANG_21696933_3B6B_4512_922C_4B04E4B28F72 */

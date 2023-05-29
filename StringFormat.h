@@ -4,9 +4,8 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-
-#ifndef LANG_AC7E7A3E_E6D3_4355_B4DE_6B28DF198293
-#define LANG_AC7E7A3E_E6D3_4355_B4DE_6B28DF198293
+#ifndef LANG_5F596881_5E43_4F42_97D0_4B6E1F7ED311
+#define LANG_5F596881_5E43_4F42_97D0_4B6E1F7ED311
 
 /* ****************************************************************************************
  * Include
@@ -16,21 +15,21 @@
 
 //-----------------------------------------------------------------------------------------
 #include "./Object.h"
-#include "./Runnable.h"
-#include "./ThreadPriority.h"
-#include "./ThreadState.h"
+#include "./Memory.h"
+#include "./WriteBuffer.h"
 
 /* ****************************************************************************************
  * Namespace
  */  
 namespace lang{
-  class Thread;
+  class StringFormat;
 }
 
+
 /* ****************************************************************************************
- * Class/struct/Struct
+ * Class/Interface/Struct/Enum
  */  
-class lang::Thread : public lang::Object{
+class lang::StringFormat :public lang::Object{
 
   /* **************************************************************************************
    * Variable <Public>
@@ -43,7 +42,8 @@ class lang::Thread : public lang::Object{
   /* **************************************************************************************
    * Variable <Private>
    */
-  
+  private:
+    static char mFormatBuffer[];
   /* **************************************************************************************
    * Abstract method <Public>
    */
@@ -55,16 +55,11 @@ class lang::Thread : public lang::Object{
   /* **************************************************************************************
    * Construct Method
    */
-  public: 
-    /**
-     *
-     */
-    Thread(void);
-    
-    /**
-     *
-     */
-    virtual ~Thread(void) override;
+  private: 
+    StringFormat(void);
+  
+  public:
+    virtual ~StringFormat(void) override;
 
   /* **************************************************************************************
    * Operator Method
@@ -73,83 +68,96 @@ class lang::Thread : public lang::Object{
   /* **************************************************************************************
    * Public Method <Static>
    */
-
-  /* **************************************************************************************
-   * Public Method <Abstract>
-   */
   public:
     /**
-     * @brief Get the Thread Name object
+     * @brief 
      * 
-     * @return const char* 
+     * @param buffer 
+     * @param bufferSize 
+     * @param format 
+     * @param arg 
+     * @return int 
      */
-    virtual const char* getThreadName(void) const abstract;
-      
-    /**
-     * @brief Get the Priority object
-     * 
-     * @return lang::ThreadPriority 
-     */
-    virtual lang::ThreadPriority getPriority(void) const abstract;
+    static int pointerVa(void* buffer, size_t bufferSize, const char* format, va_list args);
 
     /**
-     * @brief Get the State object
+     * @brief 
      * 
-     * @return lang::ThreadState 
+     * @param memory 
+     * @param format 
+     * @param arg 
+     * @return int 
      */
-    virtual lang::ThreadState getState(void) const abstract;
-      
-    /**
-     * @brief Get the Stack Size object
-     * 
-     * @return uint32_t 
-     */
-    virtual int getStackSize(void) const abstract;
-      
+    static int memoryVa(const lang::Memory& memory, const char* format, va_list args);
+
     /**
      * @brief 
      * 
-     * @param priority 
-     * @return true 
-     * @return false 
+     * @param writeBuffer 
+     * @param format 
+     * @param arg 
+     * @return int 
      */
-    virtual bool start(const char* name, lang::ThreadPriority priority) abstract;
-      
+    static int writeBufferVa(lang::WriteBuffer& writeBuffer, const char* format, va_list args);
+
     /**
      * @brief 
      * 
+     * @param buffer 
+     * @param bufferSize 
+     * @param format 
+     * @param ... 
+     * @return int 
      */
-    virtual void notify(void) abstract;
-      
+    static int pointer(void* buffer, unsigned int bufferSize, const char* format, ...);
+
     /**
-     * @brief Set the Priority object
+     * @brief 
      * 
-     * @param priority 
-     * @return true 
-     * @return false 
+     * @param memory 
+     * @param format 
+     * @param ... 
+     * @return int 
      */
-    virtual bool setPriority(lang::ThreadPriority priority) abstract;  
+    static int memory(const lang::Memory& memory, const char* format, ...);
     
+    /**
+     * @brief 
+     * 
+     * @param writeBuffer 
+     * @param format 
+     * @param ... 
+     * @return int 
+     */
+    static int writeBuffer(lang::WriteBuffer& writeBuffer, const char* format, ...);
+    
+    /**
+     * @brief 
+     * 
+     * @param src 
+     * @param format 
+     * @param args 
+     * @return int 
+     */
+    static int scanVa(const char* src, const char* format, va_list args);
+    
+    /**
+     * @brief 
+     * 
+     * @param src 
+     * @param format 
+     * @param ... 
+     * @return int 
+     */
+    static int scan(const char* src, const char* format, ...);
   /* **************************************************************************************
-   * Public Method 
+   * Public Method <Override>
    */
-  public:
-    /**
-     * @brief 
-     * 
-     * @return true 
-     * @return false 
-     */
-    bool start(const char* name);
-  
-    /**
-     * @brief 
-     * 
-     * @return true 
-     * @return false 
-     */
-    bool isActive(void);
-  
+
+  /* **************************************************************************************
+   * Public Method
+   */
+
   /* **************************************************************************************
    * Protected Method <Static>
    */
@@ -173,10 +181,11 @@ class lang::Thread : public lang::Object{
   /* **************************************************************************************
    * Private Method
    */
+
 };
 
-/* *****************************************************************************************
+/* ****************************************************************************************
  * End of file
  */ 
 
-#endif /* LANG_AC7E7A3E_E6D3_4355_B4DE_6B28DF198293 */
+#endif /* LANG_5F596881_5E43_4F42_97D0_4B6E1F7ED311 */

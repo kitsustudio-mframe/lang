@@ -16,6 +16,7 @@
 
 //-----------------------------------------------------------------------------------------
 #include "./Memory.h"
+#include "./WriteBuffer.h"
 
 /* ****************************************************************************************
  * Namespace
@@ -40,7 +41,7 @@ class lang::Strings final :public lang::Memory{
   /* **************************************************************************************
    * Variable <Private>
    */
-  
+
   /* **************************************************************************************
    * Abstract method <Public>
    */
@@ -139,81 +140,24 @@ class lang::Strings final :public lang::Memory{
     /**
      * @brief 
      * 
-     * @param buffer 
-     * @param bufferSize 
-     * @param format 
-     * @param arg 
-     * @return int 
-     */
-    static int format(void* buffer, size_t bufferSize, const char* format, va_list args);
-
-    /**
-     * @brief 
-     * 
-     * @param memory 
-     * @param format 
-     * @param arg 
-     * @return int 
-     */
-    static int format(const lang::Memory& memory, const char* format, va_list args);
-
-    /**
-     * @brief 
-     * 
-     * @param buffer 
-     * @param bufferSize 
-     * @param format 
-     * @param ... 
-     * @return int 
-     */
-    static int format(void* buffer, unsigned int bufferSize, const char* format, ...);
-
-    /**
-     * @brief 
-     * 
-     * @param memory 
-     * @param format 
-     * @param ... 
-     * @return int 
-     */
-    static int format(const lang::Memory& memory, const char* format, ...);
-    
-    /**
-     * @brief 
-     * 
      * @param format 
      * @param ... 
      * @return Strings 
      */
-    static Strings format(int bufferSize, const char* format, ...);    
+    static Strings format(int bufferSize, const char* format, ...);      
+  
+    /**
+     * @brief 
+     * 
+     * @param src 
+     * @return int 
+     */
+    static int getLength(const char* src);
     
     /**
-     * @brief 
-     * 
-     * @param src 
-     * @param format 
-     * @param args 
-     * @return int 
+     *
      */
-    static int scanFormat(const char* src, const char* format, va_list args);
-    
-    /**
-     * @brief 
-     * 
-     * @param src 
-     * @param format 
-     * @param ... 
-     * @return int 
-     */
-    static int scanFormat(const char* src, const char* format, ...);
-
-    /**
-     * @brief 
-     * 
-     * @param src 
-     * @return int 
-     */
-    static int stringLength(const char* src);
+    static int getHashcode(const char* src);
 
   /* **************************************************************************************
    * Public Method <Override> - lang::Memory
@@ -230,6 +174,16 @@ class lang::Strings final :public lang::Memory{
      * @return int 
      */
     virtual int indexOfData(const void* destination, int destinationLen, int start) const override;
+  /* **************************************************************************************
+   * Public Method <Override> - lang::Object
+   */
+  public:
+    /**
+     * @brief 返回對象的哈希碼值。支持這種方法是為了散列表，如HashMap提供的那樣。
+     * 
+     * @return int 該對象的哈希碼值。
+     */
+    virtual int hashcode(void) const override;
   
   /* **************************************************************************************
    * Public Method

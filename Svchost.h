@@ -14,9 +14,15 @@
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-#include "Object.h"
-#include "Runnable.h"
-#include "Thread.h"
+#include "./Object.h"
+#include "./Runnable.h"
+#include "./Thread.h"
+#include "./Data.h"
+#include "./PrintBuffer.h"
+#include "./RingBuffer.h"
+#include "./Kernel.h"
+#include "./ArrayQueue.h"
+#include "./Future.h"
 
 /* ****************************************************************************************
  * Namespace
@@ -29,12 +35,17 @@ namespace lang{
 /* ****************************************************************************************
  * Class/struct/Struct/Enum
  */  
-class lang::Svchost : public lang::Object , public lang::Runnable{
+class lang::Svchost : public lang::Object, public lang::Runnable, lang::CompletionHandler<int, void*>{
 
   /* **************************************************************************************
    * Variable <Public>
    */
-
+  public:
+    lang::Kernel& mKernel;
+    lang::PrintBuffer mPrintBuffer;
+    lang::RingBuffer mRingBuffer;
+    lang::ArrayQueue<lang::Runnable> mArrayQueue;
+    
   /* **************************************************************************************
    * Variable <Protected>
    */
@@ -43,9 +54,11 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
    * Variable <Private>
    */
   private:
-    lang::Thread& mUserThread;
     lang::Thread* mThread;
+    lang::Thread* mUserThread;
     bool mStart;
+    bool mAction;
+    bool mStream;
   
   /* **************************************************************************************
    * Abstract method <Public>
@@ -62,8 +75,8 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
     /**
      *
      */
-    Svchost(lang::Thread& userThread);
-    
+    Svchost(lang::Kernel& kernel, uint32_t outSize, uint32_t inSize, uint32_t taskQuanity);
+  
     /**
      *
      */
@@ -78,20 +91,28 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
    */
 
   /* **************************************************************************************
-   * Public Method <Override> lang::Runnable
+   * Public Method <Override> - lang::Runnable
    */
   public:
-    /**
-     * @brief 
-     * svchost程式進入點
-     * 
-     */
     virtual void run(void) override;
 
+  /* **************************************************************************************
+   * Public Method <Override> - lang::CompletionHandler<int, void*>
+   */
+  public:  
+    virtual void completed(int result, void* attachment) override;
+    virtual void failed(void* exc, void* attachment) override;
+  
   /* **************************************************************************************
    * Public Method
    */
   public:
+    
+    /**
+     *
+     */
+    bool start(lang::Runnable& task, uint32_t stackSize);
+  
     /**
      * @brief 停止執行svchost
      *
@@ -106,6 +127,11 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
      * @return false 使用者事件排定失敗
      */
     bool execute(lang::Runnable& task);
+  
+    /**
+     *
+     */
+    bool action(void);
 
   /* **************************************************************************************
    * Protected Method <Static>
@@ -130,6 +156,9 @@ class lang::Svchost : public lang::Object , public lang::Runnable{
   /* **************************************************************************************
    * Private Method
    */
+  private:
+    bool checkOutputStream(void);
+    bool checkInputStream(void);
 
 };
 

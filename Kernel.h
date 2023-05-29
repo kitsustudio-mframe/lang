@@ -15,8 +15,8 @@
 #include "./Interface.h"
 #include "./Runnable.h"
 #include "./Thread.h"
-#include "./WriteBuffer.h"
-#include "./ReadBuffer.h"
+#include "./OutputStream.h"
+#include "./InputStream.h"
 
 //-----------------------------------------------------------------------------------------
 
@@ -112,7 +112,7 @@ struct lang::Kernel : public virtual lang::Interface{
    * @return null 建立失敗
    * @return Thread 建立成功
    */
-  virtual Thread* kernelAllocThread(lang::Data& stackMemory, lang::Runnable& task) abstract;
+  virtual Thread* kernelAllocThread(lang::Runnable& task, lang::Data& stackMemory) abstract;
   
   /**
    * @brief 建立一個執行緒，限定堆疊大小
@@ -122,7 +122,7 @@ struct lang::Kernel : public virtual lang::Interface{
    * @return null 建立失敗
    * @return Thread 建立成功
    */
-  virtual Thread* kernelAllocThread(uint32_t stackSize, lang::Runnable& task) abstract;
+  virtual Thread* kernelAllocThread(lang::Runnable& task, uint32_t stackSize) abstract;
   
   /**
    * @brief 取得當前執行緒
@@ -130,21 +130,21 @@ struct lang::Kernel : public virtual lang::Interface{
    * @return null 可能為核心尚未啟動、當前正在中斷事件
    * @return Thread 獲取成功
    */
-  virtual Thread* kernelGetCurrentThread(void) abstract;
+  virtual lang::Thread* kernelGetCurrentThread(void) abstract;
   
   /**
    * @brief 
    *
    * @return
    */
-  virtual WriteBuffer* kernelGetWriteBuffer(void) abstract;
+  virtual lang::OutputStream* kernelGetOutputStream(void) abstract;
   
   /**
    * @brief 
    *
    * @return
    */
-  virtual ReadBuffer* kernelGetReadBuffer(void) abstract;
+  virtual lang::InputStream* kernelGetInputStream(void) abstract;
   
   /**
    * @brief 取得核心運作頻率
