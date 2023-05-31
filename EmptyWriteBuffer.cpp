@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
@@ -12,7 +12,7 @@
 //-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
-#include "./Thread.h"
+#include "./EmptyWriteBuffer.h"
 
 /* ******************************************************************************
  * Macro
@@ -25,7 +25,7 @@
 //-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
-using lang::Thread;
+using lang::EmptyWriteBuffer;
 
 /* ******************************************************************************
  * Variable <Static>
@@ -34,17 +34,14 @@ using lang::Thread;
 /* ******************************************************************************
  * Construct Method
  */
-/**
- *
- */
-Thread::Thread(void){
+
+//-------------------------------------------------------------------------------
+EmptyWriteBuffer::EmptyWriteBuffer(void) {
   return;
 }
-    
-/**
- *
- */
-Thread::~Thread(void){
+
+//-------------------------------------------------------------------------------
+EmptyWriteBuffer::~EmptyWriteBuffer(void) {
   return;
 }
 /* ******************************************************************************
@@ -59,42 +56,40 @@ Thread::~Thread(void){
  * Public Method <Override>
  */
 
+//-------------------------------------------------------------------------------
+bool EmptyWriteBuffer::isFull(void) const {
+  return true;
+}
+
+//-------------------------------------------------------------------------------
+int EmptyWriteBuffer::remaining(void) const {
+  return 0;
+}
+
+//-------------------------------------------------------------------------------
+bool EmptyWriteBuffer::putByte(const char data) {
+  return false;
+}
+
+//-------------------------------------------------------------------------------
+int EmptyWriteBuffer::put(lang::ReadBuffer& readBuffer) {
+  return 0;
+}
+
+//-------------------------------------------------------------------------------
+int EmptyWriteBuffer::put(lang::ReadBuffer& readBuffer, int length) {
+  return 0;
+}
+
+//-------------------------------------------------------------------------------
+int EmptyWriteBuffer::put(const void* buffer, int length) {
+  return 0;
+}
+
 /* ******************************************************************************
  * Public Method
  */
 
-/**
- * @brief 
- * 
- * @return true 
- * @return false 
- */
-bool Thread::start(const char* name){
-  return this->start(name, lang::ThreadPriority::NORMAL);
-}
-
-/**
- * @brief 
- * 
- * @return true 
- * @return false 
- */
-bool Thread::isActive(void){
-  lang::ThreadState state = this->getState();
-  
-  switch(state){
-    case lang::ThreadState::INACTIVE:
-    case lang::ThreadState::ERROR:
-      return false;
-    
-    case lang::ThreadState::BLOCKED:
-    case lang::ThreadState::READY:
-    case lang::ThreadState::RUNNING:
-    case lang::ThreadState::TERMINATED:
-      return true;
-      
-  }
-}
 /* ******************************************************************************
  * Protected Method <Static>
  */

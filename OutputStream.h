@@ -1,98 +1,187 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
+#ifndef LANG_70D3F441_6A18_4924_BBD9_227663933296
+#define LANG_70D3F441_6A18_4924_BBD9_227663933296
 
-#ifndef LANG_CE4E94B8_1588_4FED_8DB8_1C22B3E8CDB4
-#define LANG_CE4E94B8_1588_4FED_8DB8_1C22B3E8CDB4
-
-/* ****************************************************************************************
+/* ******************************************************************************
  * Include
  */
-#include "./ReadBuffer.h"
+
+//-------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------
 #include "./CompletionHandler.h"
 #include "./Future.h"
+#include "./ReadBuffer.h"
 
-/* ****************************************************************************************
+/* ******************************************************************************
  * Namespace
- */  
-namespace lang{
-  struct OutputStream;
+ */
+namespace lang {
+  class OutputStream;
 }
 
-
-
-/* ****************************************************************************************
- * Class/struct/Struct
+/* ******************************************************************************
+ * Class/Interface/Struct/Enum
  */
-struct lang::OutputStream : public virtual lang::Interface{
-
-  /* **************************************************************************************
-   *  Method <Public>
+class lang::OutputStream : public lang::Object {
+  /* ****************************************************************************
+   * Variable <Public>
    */
-  
+
+  /* ****************************************************************************
+   * Variable <Protected>
+   */
+ protected:
+  lang::ReadBuffer* mReadBuffer;
+  lang::CompletionHandler<int, void*>* mCompletionHandler;
+  void* mAttachment;
+
+  /* ****************************************************************************
+   * Variable <Private>
+   */
+
+  /* ****************************************************************************
+   * Abstract method <Public>
+   */
+
+  /* ****************************************************************************
+   * Abstract method <Protected>
+   */
+
+  /* ****************************************************************************
+   * Construct Method
+   */
+ protected:
   /**
-   * @brief 
-   * 取消當前的輸出串流寫入
+   * @brief Construct a new Output Stream object
    *
-   * @return true為成功終止當前的輸出至OutputStream，false則否，有可能當前輸出串流並未忙碌
    */
-  virtual bool abortWrite(void) abstract;
-  
+  OutputStream(void);
+
+ public:
   /**
-   * @brief 
-   * 取得輸出串流是否為寫入忙碌
-   * 
-   * @return true為輸出串流忙碌中，無法接受新的寫入，false則否
+   * @brief Destroy the Output Stream object
+   *
    */
-  virtual bool writeBusy(void) abstract;
-  
+  virtual ~OutputStream(void) override;
+
+  /* ****************************************************************************
+   * Operator Method
+   */
+
+  /* ****************************************************************************
+   * Public Method <Static>
+   */
+
+  /* ****************************************************************************
+   * Public Method <Override>
+   */
+
+  /* ****************************************************************************
+   * Public Method
+   */
+ public:
   /**
-   * @brief write witt io mode.
-   * 
-   * @param readBuffer
-   * @param future 
-   * @return true 
-   * @return false 
+   * @brief 取消當前的輸出串流寫入
+   *
+   * @return
+   *  - true : 為成功終止當前的輸出至OutputStream
+   *  - false : 終止失敗，有可能當前輸出串流並未忙碌
    */
-  virtual bool write(lang::ReadBuffer& readBuffer, int timeout) abstract;  
-  
-  /**
-   * @brief write with aio mode.
-   * 
-   * @param readBuffer
-   * @param attachment 
-   * @param handler 
-   * @return true successful.
-   * @return false fail.
-   */
-  virtual bool write(lang::ReadBuffer& readBuffer, 
-                     void* attachment,
-                     lang::CompletionHandler<int, void*>* handler) abstract;
+  virtual bool abortWrite(void);
 
   /**
-   * @brief 
+   * @brief 取得輸出串流是否為寫入忙碌
+   *
+   * @return
+   *  - true: 輸出串流忙碌中，無法接受新的寫入
+   *  - false: 輸出串流閒置中
+   */
+  virtual bool writeBusy(void);
+
+  /**
+   * @brief IO 寫入模式
+   *
+   * @param readBuffer
+   * @param timeout
+   * @return
+   *  - true: 建立寫入成功
+   *  - false: 建立寫入失敗，串流可能正在忙碌中
+   */
+  virtual bool write(lang::ReadBuffer& readBuffer, int timeout);
+
+  /**
+   * @brief AIO 寫入模式
+   *
+   * @param readBuffer
+   * @param attachment
+   * @param handler
+   * @return
+   *  - true : 建立寫入成功
+   *  - false : 建立寫入失敗，串流可能正在忙碌中
+   */
+  virtual bool write(lang::ReadBuffer& readBuffer,
+                     void* attachment,
+                     lang::CompletionHandler<int, void*>* handler);
+
+  /**
+   * @brief NIO 寫入模式
+   *
    * 從給定的緩衝區向該通道寫入一個字節序列。
    * 該方法啟動異步寫入操作，以從給定的緩衝區向該通道寫入字節序列。
-   * 該方法的行為方式與 write(ReadBuffer,void*,CompletionHandler)方法完全相同，不同的是，該方法不是指定完成處理程序，
+   * 
+   * 該方法的行為方式與 write(ReadBuffer,void*,CompletionHandler)方法完全相同，不同的是，
+   * 該方法不是指定完成處理程序，
    * 而是返回一個Future待處理結果的Future。Future的get方法返回寫入的字節數。
    *
-   * 
-   * @param readBuffer - 要檢索字節的緩衝區 
+   *
+   * @param readBuffer - 要檢索字節的緩衝區
    * @param future - 代表操作結果的未來
-   * @return true為建立寫入成功，false則否
+   * 
+   * @return
+   *  - true : 建立寫入成功
+   *  - false : 建立寫入失敗，串流可能正在忙碌中
    */
-  virtual bool write(lang::ReadBuffer& readBuffer, lang::Future& future) abstract;
+  virtual bool write(lang::ReadBuffer& readBuffer, lang::Future& future);
 
+  /* ****************************************************************************
+   * Protected Method <Static>
+   */
+
+  /* ****************************************************************************
+   * Protected Method <Override>
+   */
+
+  /* ****************************************************************************
+   * Protected Method
+   */
+ protected:
+  /**
+   * @brief
+   *
+   * @param result
+   */
+  void execute(int result);
+  /* ****************************************************************************
+   * Private Method <Static>
+   */
+
+  /* ****************************************************************************
+   * Private Method <Override>
+   */
+
+  /* ****************************************************************************
+   * Private Method
+   */
 };
 
-
-
-/* *****************************************************************************************
+/* ******************************************************************************
  * End of file
- */ 
+ */
 
-
-#endif /* LANG_CE4E94B8_1588_4FED_8DB8_1C22B3E8CDB4 */
+#endif /* LANG_70D3F441_6A18_4924_BBD9_227663933296 */

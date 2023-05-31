@@ -1,38 +1,33 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_D2D64DF4_37AF_4608_A7A7_C551E3231977
-#define LANG_D2D64DF4_37AF_4608_A7A7_C551E3231977
+#ifndef LANG_9211D576_B0C2_4C52_93CE_C47BB00192E1
+#define LANG_9211D576_B0C2_4C52_93CE_C47BB00192E1
 
 /* ******************************************************************************
  * Include
- */  
- 
+ */
+
+//-------------------------------------------------------------------------------
+
 //-------------------------------------------------------------------------------
 #include "./Object.h"
-
-//-------------------------------------------------------------------------------
-#include "./Consumer.h"
-
+#include "./ReadBuffer.h"
 
 /* ******************************************************************************
  * Namespace
- */  
-namespace lang{
-  template<typename T> class ConsumerEvent;
+ */
+namespace lang {
+  class EmptyReadBuffer;
 }
 
 /* ******************************************************************************
- * Class/struct/Struct
- */  
-template<typename T>
-class lang::ConsumerEvent : public lang::Object , 
-  public lang::Consumer<T>{
-
-  typedef void (*Method)(T);
+ * Class/Interface/Struct/Enum
+ */
+class lang::EmptyReadBuffer : public lang::Object, public lang::ReadBuffer {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -44,13 +39,11 @@ class lang::ConsumerEvent : public lang::Object ,
   /* ****************************************************************************
    * Variable <Private>
    */
-  private: 
-    Method mMethod;
 
   /* ****************************************************************************
    * Abstract method <Public>
    */
-  
+
   /* ****************************************************************************
    * Abstract method <Protected>
    */
@@ -58,25 +51,18 @@ class lang::ConsumerEvent : public lang::Object ,
   /* ****************************************************************************
    * Construct Method
    */
-  public: 
+ public:
+  /**
+   * @brief Construct a new Empty Read Buffer object
+   *
+   */
+  EmptyReadBuffer(void);
 
-    /**
-     * @brief Construct a new Consumer Event object
-     * 
-     * @param event 
-     */
-    ConsumerEvent(Method method){
-      this->mMethod = method;
-      return;
-    }
-  
-    /**
-     * @brief Destroy the Consumer Event object
-     * 
-     */
-    virtual ~ConsumerEvent(void) override {
-      return;
-    }
+  /**
+   * @brief Destroy the Empty Read Buffer object
+   *
+   */
+  virtual ~EmptyReadBuffer(void) override;
 
   /* ****************************************************************************
    * Operator Method
@@ -87,9 +73,22 @@ class lang::ConsumerEvent : public lang::Object ,
    */
 
   /* ****************************************************************************
-   * Public Method <Override>
+   * Public Method <Override> - lang::ReadBuffer
    */
+ public:
+  virtual bool isEmpty(void) const override;
 
+  virtual int avariable(void) const override;
+
+  virtual bool getByte(char& result) override;
+
+  virtual int get(lang::WriteBuffer& writeBuffer) override;
+
+  virtual int get(lang::WriteBuffer& writeBuffer, int length) override;
+
+  virtual int get(void* buffer, int bufferSize) override;
+
+  virtual int skip(int value) override;
   /* ****************************************************************************
    * Public Method
    */
@@ -101,16 +100,6 @@ class lang::ConsumerEvent : public lang::Object ,
   /* ****************************************************************************
    * Protected Method <Override>
    */
-  public:
-
-    /**
-     * @brief 
-     * 
-     * @param t 
-     */
-    virtual void accept(T t){
-      this->mMethod(t);
-    }
 
   /* ****************************************************************************
    * Protected Method
@@ -123,15 +112,14 @@ class lang::ConsumerEvent : public lang::Object ,
   /* ****************************************************************************
    * Private Method <Override>
    */
-   
+
   /* ****************************************************************************
    * Private Method
    */
-   
 };
 
-/* *******************************************************************************
+/* ******************************************************************************
  * End of file
- */ 
+ */
 
-#endif /* LANG_D2D64DF4_37AF_4608_A7A7_C551E3231977 */
+#endif /* LANG_9211D576_B0C2_4C52_93CE_C47BB00192E1 */

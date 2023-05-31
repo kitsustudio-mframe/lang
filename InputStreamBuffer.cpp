@@ -12,7 +12,7 @@
 //-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
-#include "./Thread.h"
+#include "lang/InputStreamBuffer.h"
 
 /* ******************************************************************************
  * Macro
@@ -25,7 +25,7 @@
 //-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
-using lang::Thread;
+using lang::InputStreamBuffer;
 
 /* ******************************************************************************
  * Variable <Static>
@@ -34,19 +34,7 @@ using lang::Thread;
 /* ******************************************************************************
  * Construct Method
  */
-/**
- *
- */
-Thread::Thread(void){
-  return;
-}
-    
-/**
- *
- */
-Thread::~Thread(void){
-  return;
-}
+
 /* ******************************************************************************
  * Operator Method
  */
@@ -63,38 +51,6 @@ Thread::~Thread(void){
  * Public Method
  */
 
-/**
- * @brief 
- * 
- * @return true 
- * @return false 
- */
-bool Thread::start(const char* name){
-  return this->start(name, lang::ThreadPriority::NORMAL);
-}
-
-/**
- * @brief 
- * 
- * @return true 
- * @return false 
- */
-bool Thread::isActive(void){
-  lang::ThreadState state = this->getState();
-  
-  switch(state){
-    case lang::ThreadState::INACTIVE:
-    case lang::ThreadState::ERROR:
-      return false;
-    
-    case lang::ThreadState::BLOCKED:
-    case lang::ThreadState::READY:
-    case lang::ThreadState::RUNNING:
-    case lang::ThreadState::TERMINATED:
-      return true;
-      
-  }
-}
 /* ******************************************************************************
  * Protected Method <Static>
  */

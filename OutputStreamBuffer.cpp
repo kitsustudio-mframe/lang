@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
@@ -12,7 +12,7 @@
 //-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
-#include "./Thread.h"
+#include "lang/OutputStreamBuffer.h"
 
 /* ******************************************************************************
  * Macro
@@ -25,7 +25,7 @@
 //-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
-using lang::Thread;
+using lang::OutputStreamBuffer;
 
 /* ******************************************************************************
  * Variable <Static>
@@ -34,19 +34,18 @@ using lang::Thread;
 /* ******************************************************************************
  * Construct Method
  */
-/**
- *
- */
-Thread::Thread(void){
+
+//-------------------------------------------------------------------------------
+OutputStreamBuffer::OutputStreamBuffer(void){
+  this->mResult = 0;
   return;
 }
-    
-/**
- *
- */
-Thread::~Thread(void){
+
+//-------------------------------------------------------------------------------
+OutputStreamBuffer::~OutputStreamBuffer(void){
   return;
 }
+
 /* ******************************************************************************
  * Operator Method
  */
@@ -56,45 +55,52 @@ Thread::~Thread(void){
  */
 
 /* ******************************************************************************
- * Public Method <Override>
+ * Public Method <Override> - lang::ReadBuffer
  */
 
+//-------------------------------------------------------------------------------
+bool OutputStreamBuffer::isEmpty(void) const {
+  return this->mReadBuffer->isEmpty();
+}
+
+//-------------------------------------------------------------------------------
+int OutputStreamBuffer::avariable(void) const {
+  return this->mReadBuffer->avariable();
+}
+
+//-------------------------------------------------------------------------------
+bool OutputStreamBuffer::getByte(char& result) {
+  bool status = this->mReadBuffer->getByte(result);
+
+  if (this->mReadBuffer->isEmpty()) {
+  }
+
+  return status;
+}
+
+//-------------------------------------------------------------------------------
+int OutputStreamBuffer::get(lang::WriteBuffer& writeBuffer) {
+  return 0;
+}
+
+//-------------------------------------------------------------------------------
+int OutputStreamBuffer::get(lang::WriteBuffer& writeBuffer, int length) {
+  return 0;
+}
+
+//-------------------------------------------------------------------------------
+int OutputStreamBuffer::get(void* buffer, int bufferSize) {
+  return 0;
+}
+
+//-------------------------------------------------------------------------------
+int OutputStreamBuffer::skip(int value) {
+  return 0;
+}
 /* ******************************************************************************
  * Public Method
  */
 
-/**
- * @brief 
- * 
- * @return true 
- * @return false 
- */
-bool Thread::start(const char* name){
-  return this->start(name, lang::ThreadPriority::NORMAL);
-}
-
-/**
- * @brief 
- * 
- * @return true 
- * @return false 
- */
-bool Thread::isActive(void){
-  lang::ThreadState state = this->getState();
-  
-  switch(state){
-    case lang::ThreadState::INACTIVE:
-    case lang::ThreadState::ERROR:
-      return false;
-    
-    case lang::ThreadState::BLOCKED:
-    case lang::ThreadState::READY:
-    case lang::ThreadState::RUNNING:
-    case lang::ThreadState::TERMINATED:
-      return true;
-      
-  }
-}
 /* ******************************************************************************
  * Protected Method <Static>
  */

@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
@@ -12,7 +12,7 @@
 //-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
-#include "./Thread.h"
+#include "lang/EmptyReadBuffer.h"
 
 /* ******************************************************************************
  * Macro
@@ -25,7 +25,7 @@
 //-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
-using lang::Thread;
+using lang::EmptyReadBuffer;
 
 /* ******************************************************************************
  * Variable <Static>
@@ -34,19 +34,17 @@ using lang::Thread;
 /* ******************************************************************************
  * Construct Method
  */
-/**
- *
- */
-Thread::Thread(void){
+
+//-------------------------------------------------------------------------------
+EmptyReadBuffer::EmptyReadBuffer(void){
   return;
 }
-    
-/**
- *
- */
-Thread::~Thread(void){
+
+//-------------------------------------------------------------------------------
+EmptyReadBuffer::~EmptyReadBuffer(void){
   return;
 }
+
 /* ******************************************************************************
  * Operator Method
  */
@@ -56,45 +54,48 @@ Thread::~Thread(void){
  */
 
 /* ******************************************************************************
- * Public Method <Override>
+ * Public Method <Override> - lang::ReadBuffer
  */
+
+//-------------------------------------------------------------------------------
+bool EmptyReadBuffer::isEmpty(void) const {
+  return true;
+}
+
+//-------------------------------------------------------------------------------
+int EmptyReadBuffer::avariable(void) const {
+  return 0;
+}
+
+//-------------------------------------------------------------------------------
+bool EmptyReadBuffer::getByte(char& result) {
+  return false;
+}
+
+//-------------------------------------------------------------------------------
+int EmptyReadBuffer::get(lang::WriteBuffer& writeBuffer) {
+  return 0;
+}
+
+//-------------------------------------------------------------------------------
+int EmptyReadBuffer::get(lang::WriteBuffer& writeBuffer, int length) {
+  return 0;
+}
+
+//-------------------------------------------------------------------------------
+int EmptyReadBuffer::get(void* buffer, int bufferSize) {
+  return 0;
+}
+
+//-------------------------------------------------------------------------------
+int EmptyReadBuffer::skip(int value) {
+  return 0;
+}
 
 /* ******************************************************************************
  * Public Method
  */
 
-/**
- * @brief 
- * 
- * @return true 
- * @return false 
- */
-bool Thread::start(const char* name){
-  return this->start(name, lang::ThreadPriority::NORMAL);
-}
-
-/**
- * @brief 
- * 
- * @return true 
- * @return false 
- */
-bool Thread::isActive(void){
-  lang::ThreadState state = this->getState();
-  
-  switch(state){
-    case lang::ThreadState::INACTIVE:
-    case lang::ThreadState::ERROR:
-      return false;
-    
-    case lang::ThreadState::BLOCKED:
-    case lang::ThreadState::READY:
-    case lang::ThreadState::RUNNING:
-    case lang::ThreadState::TERMINATED:
-      return true;
-      
-  }
-}
 /* ******************************************************************************
  * Protected Method <Static>
  */

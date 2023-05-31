@@ -1,50 +1,127 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_33288B9C_6095_4B26_9F88_332BF138D71A
-#define LANG_33288B9C_6095_4B26_9F88_332BF138D71A
+#ifndef LANG_F33833E8_A946_4AD2_B467_0E7FD2EE8911
+#define LANG_F33833E8_A946_4AD2_B467_0E7FD2EE8911
 
-/* ****************************************************************************************
+/* ******************************************************************************
  * Include
  */
 
-//-----------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 
-//-----------------------------------------------------------------------------------------
-#include "./WriteBuffer.h"
+//-------------------------------------------------------------------------------
 #include "./OutputStream.h"
+#include "./ReadBuffer.h"
 
-/* ****************************************************************************************
+/* ******************************************************************************
  * Namespace
  */
-namespace lang{
-  struct OutputStreamBuffer;
+namespace lang {
+  class OutputStreamBuffer;
 }
 
-
-/* ****************************************************************************************
- * Class/struct/Struct/Enum
+/* ******************************************************************************
+ * Class/Interface/Struct/Enum
  */
-struct lang::OutputStreamBuffer : public lang::OutputStream{
-
-  /* **************************************************************************************
-   * Method
+class lang::OutputStreamBuffer : public lang::OutputStream, public lang::ReadBuffer {
+  /* ****************************************************************************
+   * Variable <Public>
    */
+
+  /* ****************************************************************************
+   * Variable <Protected>
+   */
+
+  /* ****************************************************************************
+   * Variable <Private>
+   */
+  private:
+    int mResult;
+
+  /* ****************************************************************************
+   * Abstract method <Public>
+   */
+
+  /* ****************************************************************************
+   * Abstract method <Protected>
+   */
+
+  /* ****************************************************************************
+   * Construct Method
+   */
+ public:
+  /**
+   * @brief Construct a new Output Stream Buffer object
+   *
+   */
+  OutputStreamBuffer(void);
 
   /**
-   * @brief Get the Input Buffer object
-   * 
-   * @return lang::WriteBuffer& 
+   * @brief Destroy the Output Stream Buffer object
+   *
    */
-  virtual lang::WriteBuffer& getWriteBuffer(void) abstract;
-  
+  virtual ~OutputStreamBuffer(void) override;
+
+  /* ****************************************************************************
+   * Operator Method
+   */
+
+  /* ****************************************************************************
+   * Public Method <Static>
+   */
+
+  /* ****************************************************************************
+   * Public Method <Override>
+   */
+ public:
+  virtual bool isEmpty(void) const override;
+
+  virtual int avariable(void) const override;
+
+  virtual bool getByte(char& result) override;
+
+  virtual int get(lang::WriteBuffer& writeBuffer) override;
+
+  virtual int get(lang::WriteBuffer& writeBuffer, int length) override;
+
+  virtual int get(void* buffer, int bufferSize) override;
+
+  virtual int skip(int value) override;
+  /* ****************************************************************************
+   * Public Method
+   */
+
+  /* ****************************************************************************
+   * Protected Method <Static>
+   */
+
+  /* ****************************************************************************
+   * Protected Method <Override>
+   */
+
+  /* ****************************************************************************
+   * Protected Method
+   */
+
+  /* ****************************************************************************
+   * Private Method <Static>
+   */
+
+  /* ****************************************************************************
+   * Private Method <Override>
+   */
+
+  /* ****************************************************************************
+   * Private Method
+   */
 };
 
-/* ****************************************************************************************
+/* ******************************************************************************
  * End of file
  */
 
-#endif /* LANG_33288B9C_6095_4B26_9F88_332BF138D71A */
+#endif /* LANG_F33833E8_A946_4AD2_B467_0E7FD2EE8911 */

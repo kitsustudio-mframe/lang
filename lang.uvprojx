@@ -10,7 +10,7 @@
       <TargetName>lang_cm0</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6180000::V6.18::ARMCLANG</pCCUsed>
+      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -524,6 +524,26 @@
               <FilePath>.\Data.h</FilePath>
             </File>
             <File>
+              <FileName>EmptyReadBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\EmptyReadBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EmptyReadBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EmptyReadBuffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>EmptyWriteBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\EmptyWriteBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EmptyWriteBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EmptyWriteBuffer.h</FilePath>
+            </File>
+            <File>
               <FileName>EntryPoint.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\EntryPoint.cpp</FilePath>
@@ -569,9 +589,19 @@
               <FilePath>.\HashGen.h</FilePath>
             </File>
             <File>
+              <FileName>InputStream.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\InputStream.cpp</FilePath>
+            </File>
+            <File>
               <FileName>InputStream.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\InputStream.h</FilePath>
+            </File>
+            <File>
+              <FileName>InputStreamBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\InputStreamBuffer.cpp</FilePath>
             </File>
             <File>
               <FileName>InputStreamBuffer.h</FileName>
@@ -654,9 +684,19 @@
               <FilePath>.\Object.h</FilePath>
             </File>
             <File>
+              <FileName>OutputStream.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\OutputStream.cpp</FilePath>
+            </File>
+            <File>
               <FileName>OutputStream.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\OutputStream.h</FilePath>
+            </File>
+            <File>
+              <FileName>OutputStreamBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\OutputStreamBuffer.cpp</FilePath>
             </File>
             <File>
               <FileName>OutputStreamBuffer.h</FileName>
@@ -694,6 +734,16 @@
               <FilePath>.\Pool.h</FilePath>
             </File>
             <File>
+              <FileName>PrintBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\PrintBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PrintBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\PrintBuffer.h</FilePath>
+            </File>
+            <File>
               <FileName>Queue.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Queue.h</FilePath>
@@ -727,26 +777,6 @@
               <FileName>RingBuffer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\RingBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>RingBufferInputStream.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\RingBufferInputStream.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>RingBufferInputStream.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\RingBufferInputStream.h</FilePath>
-            </File>
-            <File>
-              <FileName>RingBufferOutputStream.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\RingBufferOutputStream.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>RingBufferOutputStream.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\RingBufferOutputStream.h</FilePath>
             </File>
             <File>
               <FileName>Runnable.h</FileName>
@@ -814,6 +844,16 @@
               <FilePath>.\StreamSkipper.h</FilePath>
             </File>
             <File>
+              <FileName>StringFormat.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\StringFormat.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>StringFormat.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\StringFormat.h</FilePath>
+            </File>
+            <File>
               <FileName>Strings.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Strings.cpp</FilePath>
@@ -854,6 +894,11 @@
               <FilePath>.\System.h</FilePath>
             </File>
             <File>
+              <FileName>Thread.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Thread.cpp</FilePath>
+            </File>
+            <File>
               <FileName>Thread.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Thread.h</FilePath>
@@ -878,31 +923,6 @@
               <FileType>5</FileType>
               <FilePath>.\WriteBuffer.h</FilePath>
             </File>
-            <File>
-              <FileName>Thread.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Thread.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>StringFormat.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\StringFormat.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>StringFormat.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\StringFormat.h</FilePath>
-            </File>
-            <File>
-              <FileName>PrintBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\PrintBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PrintBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\PrintBuffer.h</FilePath>
-            </File>
           </Files>
         </Group>
       </Groups>
@@ -911,7 +931,7 @@
       <TargetName>lang_cm3</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6180000::V6.18::ARMCLANG</pCCUsed>
+      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -1425,6 +1445,26 @@
               <FilePath>.\Data.h</FilePath>
             </File>
             <File>
+              <FileName>EmptyReadBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\EmptyReadBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EmptyReadBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EmptyReadBuffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>EmptyWriteBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\EmptyWriteBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EmptyWriteBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EmptyWriteBuffer.h</FilePath>
+            </File>
+            <File>
               <FileName>EntryPoint.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\EntryPoint.cpp</FilePath>
@@ -1470,9 +1510,19 @@
               <FilePath>.\HashGen.h</FilePath>
             </File>
             <File>
+              <FileName>InputStream.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\InputStream.cpp</FilePath>
+            </File>
+            <File>
               <FileName>InputStream.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\InputStream.h</FilePath>
+            </File>
+            <File>
+              <FileName>InputStreamBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\InputStreamBuffer.cpp</FilePath>
             </File>
             <File>
               <FileName>InputStreamBuffer.h</FileName>
@@ -1555,9 +1605,19 @@
               <FilePath>.\Object.h</FilePath>
             </File>
             <File>
+              <FileName>OutputStream.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\OutputStream.cpp</FilePath>
+            </File>
+            <File>
               <FileName>OutputStream.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\OutputStream.h</FilePath>
+            </File>
+            <File>
+              <FileName>OutputStreamBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\OutputStreamBuffer.cpp</FilePath>
             </File>
             <File>
               <FileName>OutputStreamBuffer.h</FileName>
@@ -1595,6 +1655,16 @@
               <FilePath>.\Pool.h</FilePath>
             </File>
             <File>
+              <FileName>PrintBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\PrintBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PrintBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\PrintBuffer.h</FilePath>
+            </File>
+            <File>
               <FileName>Queue.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Queue.h</FilePath>
@@ -1628,26 +1698,6 @@
               <FileName>RingBuffer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\RingBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>RingBufferInputStream.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\RingBufferInputStream.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>RingBufferInputStream.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\RingBufferInputStream.h</FilePath>
-            </File>
-            <File>
-              <FileName>RingBufferOutputStream.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\RingBufferOutputStream.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>RingBufferOutputStream.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\RingBufferOutputStream.h</FilePath>
             </File>
             <File>
               <FileName>Runnable.h</FileName>
@@ -1715,6 +1765,16 @@
               <FilePath>.\StreamSkipper.h</FilePath>
             </File>
             <File>
+              <FileName>StringFormat.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\StringFormat.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>StringFormat.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\StringFormat.h</FilePath>
+            </File>
+            <File>
               <FileName>Strings.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Strings.cpp</FilePath>
@@ -1755,6 +1815,11 @@
               <FilePath>.\System.h</FilePath>
             </File>
             <File>
+              <FileName>Thread.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Thread.cpp</FilePath>
+            </File>
+            <File>
               <FileName>Thread.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Thread.h</FilePath>
@@ -1778,31 +1843,6 @@
               <FileName>WriteBuffer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\WriteBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>Thread.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Thread.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>StringFormat.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\StringFormat.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>StringFormat.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\StringFormat.h</FilePath>
-            </File>
-            <File>
-              <FileName>PrintBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\PrintBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PrintBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\PrintBuffer.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2326,6 +2366,26 @@
               <FilePath>.\Data.h</FilePath>
             </File>
             <File>
+              <FileName>EmptyReadBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\EmptyReadBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EmptyReadBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EmptyReadBuffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>EmptyWriteBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\EmptyWriteBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EmptyWriteBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EmptyWriteBuffer.h</FilePath>
+            </File>
+            <File>
               <FileName>EntryPoint.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\EntryPoint.cpp</FilePath>
@@ -2371,9 +2431,19 @@
               <FilePath>.\HashGen.h</FilePath>
             </File>
             <File>
+              <FileName>InputStream.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\InputStream.cpp</FilePath>
+            </File>
+            <File>
               <FileName>InputStream.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\InputStream.h</FilePath>
+            </File>
+            <File>
+              <FileName>InputStreamBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\InputStreamBuffer.cpp</FilePath>
             </File>
             <File>
               <FileName>InputStreamBuffer.h</FileName>
@@ -2456,9 +2526,19 @@
               <FilePath>.\Object.h</FilePath>
             </File>
             <File>
+              <FileName>OutputStream.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\OutputStream.cpp</FilePath>
+            </File>
+            <File>
               <FileName>OutputStream.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\OutputStream.h</FilePath>
+            </File>
+            <File>
+              <FileName>OutputStreamBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\OutputStreamBuffer.cpp</FilePath>
             </File>
             <File>
               <FileName>OutputStreamBuffer.h</FileName>
@@ -2496,6 +2576,16 @@
               <FilePath>.\Pool.h</FilePath>
             </File>
             <File>
+              <FileName>PrintBuffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\PrintBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PrintBuffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\PrintBuffer.h</FilePath>
+            </File>
+            <File>
               <FileName>Queue.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Queue.h</FilePath>
@@ -2529,26 +2619,6 @@
               <FileName>RingBuffer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\RingBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>RingBufferInputStream.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\RingBufferInputStream.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>RingBufferInputStream.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\RingBufferInputStream.h</FilePath>
-            </File>
-            <File>
-              <FileName>RingBufferOutputStream.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\RingBufferOutputStream.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>RingBufferOutputStream.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\RingBufferOutputStream.h</FilePath>
             </File>
             <File>
               <FileName>Runnable.h</FileName>
@@ -2616,6 +2686,16 @@
               <FilePath>.\StreamSkipper.h</FilePath>
             </File>
             <File>
+              <FileName>StringFormat.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\StringFormat.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>StringFormat.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\StringFormat.h</FilePath>
+            </File>
+            <File>
               <FileName>Strings.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Strings.cpp</FilePath>
@@ -2656,6 +2736,11 @@
               <FilePath>.\System.h</FilePath>
             </File>
             <File>
+              <FileName>Thread.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Thread.cpp</FilePath>
+            </File>
+            <File>
               <FileName>Thread.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Thread.h</FilePath>
@@ -2680,31 +2765,6 @@
               <FileType>5</FileType>
               <FilePath>.\WriteBuffer.h</FilePath>
             </File>
-            <File>
-              <FileName>Thread.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Thread.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>StringFormat.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\StringFormat.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>StringFormat.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\StringFormat.h</FilePath>
-            </File>
-            <File>
-              <FileName>PrintBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\PrintBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PrintBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\PrintBuffer.h</FilePath>
-            </File>
           </Files>
         </Group>
       </Groups>
@@ -2716,5 +2776,14 @@
     <components/>
     <files/>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>lang</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>

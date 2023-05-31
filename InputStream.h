@@ -1,112 +1,175 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
+#ifndef LANG_1A551970_54AE_4519_9794_2271AD01B24B
+#define LANG_1A551970_54AE_4519_9794_2271AD01B24B
 
-#ifndef LANG_C4AC526D_9A52_4C98_93F6_8C1F0EB6CB55
-#define LANG_C4AC526D_9A52_4C98_93F6_8C1F0EB6CB55
-
-/* ****************************************************************************************
+/* ******************************************************************************
  * Include
  */
 
-#include "./WriteBuffer.h"
+//-------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------
 #include "./CompletionHandler.h"
 #include "./Future.h"
-#include "./Object.h"
 #include "./Interface.h"
+#include "./Object.h"
+#include "./WriteBuffer.h"
 
-/* ****************************************************************************************
+/* ******************************************************************************
  * Namespace
- */  
-namespace lang{
-  struct InputStream;
+ */
+namespace lang {
+  class InputStream;
 }
 
-/* ****************************************************************************************
- * Class/struct/Struct
+/* ******************************************************************************
+ * Class/Interface/Struct/Enum
  */
-struct lang::InputStream : public virtual lang::Interface{
+class lang::InputStream : public lang::Object {
+  /* ****************************************************************************
+   * Variable <Public>
+   */
 
-  /* **************************************************************************************
-   *  Method <Public>
+  /* ****************************************************************************
+   * Variable <Protected>
    */
-  
-  /**
-   * @brief 
-   * 
-   * @return true 
-   * @return false 
+ protected:
+  lang::WriteBuffer* mWriteBuffer;
+  lang::CompletionHandler<int, void*>* mCompletionHandler;
+  void* mAttachment;
+  int mResult;
+
+  /* ****************************************************************************
+   * Variable <Private>
    */
-  virtual bool abortRead(void) abstract;  
-  
+
+  /* ****************************************************************************
+   * Abstract method <Public>
+   */
+
+  /* ****************************************************************************
+   * Abstract method <Protected>
+   */
+
+  /* ****************************************************************************
+   * Construct Method
+   */
+ protected:
   /**
-   * @brief 
-   * 
+   * @brief Construct a new Input Stream object
+   *
+   */
+  InputStream(void);
+
+ public:
+  /**
+   * @brief Destroy the Input Stream object
+   *
+   */
+  virtual ~InputStream(void) override;
+
+  /* ****************************************************************************
+   * Operator Method
+   */
+
+  /* ****************************************************************************
+   * Public Method <Static>
+   */
+
+  /* ****************************************************************************
+   * Public Method <Override>
+   */
+
+  /* ****************************************************************************
+   * Public Method
+   */
+ public:
+  /**
+   * @brief
+   *
+   * @return true
+   * @return false
+   */
+  virtual bool abortRead(void);
+
+  /**
+   * @brief
+   *
    * @return true is busy.
    * @return false isn't busy.
    */
-  virtual bool readBusy(void) abstract;
+  virtual bool readBusy(void);
 
   /**
-   * @brief 
-   * 
-   * @param readBuffer 
-   * @return int 
+   * @brief
+   *
+   * @param readBuffer
+   * @return int
    */
-  virtual bool read(lang::WriteBuffer& writeBuffer, int timeout) abstract;
-  
+  virtual bool read(lang::WriteBuffer& writeBuffer, int timeout);
+
   /**
    * @brief nonblocking
-   * 
-   * @param writeBuffer 
-   * @param attachment 
-   * @param handler 
+   *
+   * @param writeBuffer
+   * @param attachment
+   * @param handler
    * @return true successful.
    * @return false fail.
    */
-  virtual bool read(lang::WriteBuffer& writeBuffer, 
+  virtual bool read(lang::WriteBuffer& writeBuffer,
                     void* attachment,
-                    lang::CompletionHandler<int, void*>* handler) abstract;
+                    lang::CompletionHandler<int, void*>* handler);
 
   /**
-   * @brief 
-   * 
-   * @param writeBuffer 
-   * @param future 
-   * @return true 
-   * @return false 
+   * @brief
+   *
+   * @param writeBuffer
+   * @param future
+   * @return true
+   * @return false
    */
-  virtual bool read(lang::WriteBuffer& writeBuffer, lang::Future& future) abstract;
+  virtual bool read(lang::WriteBuffer& writeBuffer, lang::Future& future);
 
+  /* ****************************************************************************
+   * Protected Method <Static>
+   */
+
+  /* ****************************************************************************
+   * Protected Method <Override>
+   */
+
+  /* ****************************************************************************
+   * Protected Method
+   */
+ protected:
   /**
-   * @brief 
-   * 
-   * @param writeBuffer 
-   * @param future 
-   * @return true 
-   * @return false 
+   * @brief
+   *
+   * @param result
    */
-  virtual bool skip(int value, 
-                    void* attachment,
-                    lang::CompletionHandler<int, void*>* handler) abstract;
+  void execute(int result);
 
-  /**
-   * @brief 
-   * 
-   * @param value 
-   * @param future 
-   * @return true 
-   * @return false 
+  /* ****************************************************************************
+   * Private Method <Static>
    */
-  virtual bool skip(int value, lang::Future& future) abstract;
 
+  /* ****************************************************************************
+   * Private Method <Override>
+   */
+
+  /* ****************************************************************************
+   * Private Method
+   */
 };
 
-/* *****************************************************************************************
- *    End of file
- */ 
+/* ******************************************************************************
+ * End of file
+ */
 
-#endif /* LANG_C4AC526D_9A52_4C98_93F6_8C1F0EB6CB55 */
+#endif /* LANG_1A551970_54AE_4519_9794_2271AD01B24B */
