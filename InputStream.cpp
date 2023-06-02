@@ -13,8 +13,8 @@
 
 //-------------------------------------------------------------------------------
 #include "./InputStream.h"
-#include "./System.h"
 
+#include "./System.h"
 
 /* ******************************************************************************
  * Macro
@@ -66,7 +66,7 @@ InputStream::~InputStream(void) {
  */
 
 //-------------------------------------------------------------------------------
-void InputStream::run(void){
+void InputStream::run(void) {
   CompletionHandler<int, void*>* handler = this->mCompletionHandler;
   void* attachment = this->mAttachment;
   int result = this->mResult;
@@ -74,7 +74,7 @@ void InputStream::run(void){
   this->mResult = 0;
   this->mWriteBuffer = nullptr;
   this->mHandling = false;
-  
+
   if (handler)
     handler->completed(result, attachment);
 
@@ -166,7 +166,7 @@ void InputStream::execute(void) {
   if (!this->readBusy())
     return;
 
-  if(this->mHandling)
+  if (this->mHandling)
     return;
 
   this->mHandling = true;

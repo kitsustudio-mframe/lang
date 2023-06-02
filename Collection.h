@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
@@ -10,7 +10,7 @@
 
 /* ******************************************************************************
  * Include
- */  
+ */
 
 //-------------------------------------------------------------------------------
 
@@ -19,17 +19,17 @@
 
 /* ******************************************************************************
  * Namespace
- */  
-namespace lang{
-  template<typename T> struct Collection;
+ */
+namespace lang {
+  template <typename T>
+  struct Collection;
 }
 
 /* ******************************************************************************
  * Class/Interface/Struct
- */  
-template<typename T>
-  struct lang::Collection :public virtual lang::Interface{
-  
+ */
+template <typename T>
+struct lang::Collection : public virtual lang::Interface {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -47,27 +47,27 @@ template<typename T>
    */
 
   /**
-   * @brief 
-   * 從此集合中刪除所有元素(可選操作)。此方法返回後，集合將為空。 
-   * 
+   * @brief
+   * 從此集合中刪除所有元素(可選操作)。此方法返回後，集合將為空。
+   *
    */
   virtual void clear(void) abstract;
 
   /**
-   * @brief 
-   * 如果此集合不包含元素，則返回true。 
-   * 
-   * @return 
-   * true如果此集合不包含元素 
+   * @brief
+   * 如果此集合不包含元素，則返回true。
+   *
+   * @return
+   * true如果此集合不包含元素
    */
   virtual bool isEmpty(void) const abstract;
 
   /**
-   * @brief 
+   * @brief
    * 返回此集合中的元素數。
-   * 如果此收藏包含超過 Integer.MAX_VALUE個元素，則返回Integer.MAX_VALUE。 
-   * 
-   * @return uint32_t - 此集合中的元素数 
+   * 如果此收藏包含超過 Integer.MAX_VALUE個元素，則返回Integer.MAX_VALUE。
+   *
+   * @return uint32_t - 此集合中的元素数
    */
   virtual int size(void) const abstract;
 
@@ -114,7 +114,7 @@ template<typename T>
   /* ****************************************************************************
    * Private Method <Override>
    */
-   
+
   /* ****************************************************************************
    * Private Method
    */
@@ -122,6 +122,6 @@ template<typename T>
 
 /* *******************************************************************************
  * End of file
- */ 
+ */
 
 #endif /* LANG_.B4E61D80_F9A1_469D_84FD_FBB3D8FC11E4 */

@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
@@ -36,12 +36,12 @@ using lang::Character;
  */
 
 //-------------------------------------------------------------------------------
-Character::Character(void){
+Character::Character(void) {
   return;
 }
 
 //-------------------------------------------------------------------------------
-Character::~Character(void){
+Character::~Character(void) {
   return;
 }
 
@@ -54,37 +54,37 @@ Character::~Character(void){
  */
 
 //-------------------------------------------------------------------------------
-char Character::toUpperCase(char ch){
-  if((ch >= 'a') && (ch <= 'z'))
+char Character::toUpperCase(char ch) {
+  if ((ch >= 'a') && (ch <= 'z'))
     return (ch - 32);
-  
+
   return ch;
 }
 
 //-------------------------------------------------------------------------------
-char Character::toLowerCase(char ch){
-  if((ch >= 'A') && (ch <= 'Z'))
+char Character::toLowerCase(char ch) {
+  if ((ch >= 'A') && (ch <= 'Z'))
     return (ch + 32);
-  
+
   return ch;
 }
 
 //-------------------------------------------------------------------------------
-char Character::hexCharToChar(char highChar, char lowChar){
+char Character::hexCharToChar(char highChar, char lowChar) {
   char result = Character::hexCharToChar(lowChar);
   return static_cast<char>(result + (Character::hexCharToChar(highChar) << 4));
 }
 
 //-------------------------------------------------------------------------------
-char Character::hexCharToChar(char ch){
+char Character::hexCharToChar(char ch) {
   ch = Character::toUpperCase(ch);
-  
-  if((ch >= '0') && (ch <= '9'))
+
+  if ((ch >= '0') && (ch <= '9'))
     return (ch - '0');
-  
-  if((ch >= 'A') && (ch <= 'F'))
+
+  if ((ch >= 'A') && (ch <= 'F'))
     return (ch - 'A' + 10);
-  
+
   return 0;
 }
 

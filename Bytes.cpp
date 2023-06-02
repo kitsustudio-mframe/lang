@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
@@ -36,14 +36,14 @@ using lang::Bytes;
 /* ******************************************************************************
  * Construct Method
  */
- 
+
 //-------------------------------------------------------------------------------
-Bytes::Bytes(void){
+Bytes::Bytes(void) {
   return;
 }
-  
+
 //-------------------------------------------------------------------------------
-Bytes::~Bytes(void){
+Bytes::~Bytes(void) {
   return;
 }
 
@@ -56,7 +56,7 @@ Bytes::~Bytes(void){
  */
 
 //-------------------------------------------------------------------------------
-char Bytes::valueOf(const char* str){
+char Bytes::valueOf(const char* str) {
   return static_cast<char>(atoi(str));
 }
 

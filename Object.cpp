@@ -1,23 +1,24 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
 /* ******************************************************************************
  * Include
- */  
+ */
 
 //-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
 #include "./Object.h"
+
 #include "./System.h"
 
 /* ******************************************************************************
  * Using
- */  
+ */
 using lang::Object;
 
 /* ******************************************************************************
@@ -29,12 +30,12 @@ using lang::Object;
  */
 
 //-------------------------------------------------------------------------------
-Object::Object(void){
+Object::Object(void) {
   return;
 }
 
 //-------------------------------------------------------------------------------
-Object::~Object(void){
+Object::~Object(void) {
   return;
 }
 
@@ -43,23 +44,23 @@ Object::~Object(void){
  */
 
 //-------------------------------------------------------------------------------
-void* Object::operator new(size_t n){
+void* Object::operator new(size_t n) {
   void* result = ::operator new(n);
-  if(result == nullptr)
+  if (result == nullptr)
     System::error("Object new", ErrorCode::INSUFFICIENT_MEMORY);
-  
+
   return result;
 }
 
 //-------------------------------------------------------------------------------
-void* Object::operator new(size_t n, void* const p){
+void* Object::operator new(size_t n, void* const p) {
   return p;
 }
 
 /* ******************************************************************************
  * Public Method <Static>
  */
- 
+
 /* ******************************************************************************
  * Public Method <Override>
  */
@@ -69,57 +70,57 @@ void* Object::operator new(size_t n, void* const p){
  */
 
 //-------------------------------------------------------------------------------
-void Object::delay(int milliseconds) const{
+void Object::delay(int milliseconds) const {
   System::delay(milliseconds);
   return;
 }
 
 //-------------------------------------------------------------------------------
-bool Object::equals(Object* object) const{
-  if(object == nullptr)
+bool Object::equals(Object* object) const {
+  if (object == nullptr)
     return false;
-  
+
   return (this->hashcode() == object->hashcode());
 }
 
 //-------------------------------------------------------------------------------
-bool Object::equals(Object& object) const{
+bool Object::equals(Object& object) const {
   return (this->hashcode() == object.hashcode());
 }
 
 //-------------------------------------------------------------------------------
-void Object::wait(void) const{
+void Object::wait(void) const {
   System::wait(0);
   return;
 }
 
 //-------------------------------------------------------------------------------
-bool Object::wait(int timeout) const{
+bool Object::wait(int timeout) const {
   return System::wait(timeout);
 }
 
 //-------------------------------------------------------------------------------
-bool Object::yield(void) const{
+bool Object::yield(void) const {
   return System::yield();
 }
 
 //-------------------------------------------------------------------------------
-int Object::lock(void) const{
+int Object::lock(void) const {
   return System::lock();
 }
 
 //-------------------------------------------------------------------------------
-int Object::unlock(void) const{
+int Object::unlock(void) const {
   return System::unlock();
 }
 
 //-------------------------------------------------------------------------------
-int Object::hashcode(void) const{
+int Object::hashcode(void) const {
   return reinterpret_cast<int>(this);
 }
 
 //-------------------------------------------------------------------------------
-lang::Thread* Object::currentThread(void) const{
+lang::Thread* Object::currentThread(void) const {
   return System::currentThread();
 }
 
@@ -128,17 +129,17 @@ lang::Thread* Object::currentThread(void) const{
  */
 
 //-------------------------------------------------------------------------------
-lang::Object& Object::getObject(void){
+lang::Object& Object::getObject(void) {
   return *this;
 }
 
 /* ******************************************************************************
  * Protected Method <Static>
  */
- 
+
 /* ******************************************************************************
  * Protected Method <Override>
- */ 
+ */
 
 /* ******************************************************************************
  * Protected Method
@@ -147,7 +148,7 @@ lang::Object& Object::getObject(void){
 /* ******************************************************************************
  * Private Method
  */
- 
+
 /* ******************************************************************************
  * End of file
- */ 
+ */

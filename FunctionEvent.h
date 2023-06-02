@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 #ifndef LANG_F730676C_6AFB_43FF_A269_0F8D00511C5D
@@ -19,18 +19,18 @@
 
 /* ******************************************************************************
  * Namespace
- */  
-namespace lang{
-  template<typename T, typename R> class FunctionEvent;
+ */
+namespace lang {
+  template <typename T, typename R>
+  class FunctionEvent;
 }
 
 /* ******************************************************************************
  * Class/struct/Struct
- */  
-template<typename T, typename R>
-class lang::FunctionEvent : public lang::Object , 
-  public lang::Function<T, R>{
-
+ */
+template <typename T, typename R>
+class lang::FunctionEvent : public lang::Object,
+                            public lang::Function<T, R> {
   typedef R (*Method)(T);
   /* ****************************************************************************
    * Variable <Public>
@@ -43,13 +43,13 @@ class lang::FunctionEvent : public lang::Object ,
   /* ****************************************************************************
    * Variable <Private>
    */
-  private:
-    Method mMethod;
+ private:
+  Method mMethod;
 
   /* ****************************************************************************
    * Abstract method <Public>
    */
-  
+
   /* ****************************************************************************
    * Abstract method <Protected>
    */
@@ -57,25 +57,24 @@ class lang::FunctionEvent : public lang::Object ,
   /* ****************************************************************************
    * Construct Method
    */
-  public:
+ public:
+  /**
+   * @brief Construct a new Function Event object
+   *
+   * @param event
+   */
+  FunctionEvent(Method method) {
+    this->mMethod = method;
+    return;
+  }
 
-    /**
-     * @brief Construct a new Function Event object
-     * 
-     * @param event 
-     */
-    FunctionEvent(Method method){
-      this->mMethod = method;
-      return;
-    }
-  
-    /**
-     * @brief Destroy the Function Event object
-     * 
-     */
-    virtual ~FunctionEvent(void) override{
-      return;
-    }
+  /**
+   * @brief Destroy the Function Event object
+   *
+   */
+  virtual ~FunctionEvent(void) override {
+    return;
+  }
 
   /* ****************************************************************************
    * Operator Method
@@ -88,17 +87,16 @@ class lang::FunctionEvent : public lang::Object ,
   /* ****************************************************************************
    * Public Method <Override>
    */
-  public:
-
-    /**
-     * @brief 
-     * 
-     * @param t 
-     * @return R 
-     */
-    virtual R apply(T t){
-      return this->mMethod(t);
-    }
+ public:
+  /**
+   * @brief
+   *
+   * @param t
+   * @return R
+   */
+  virtual R apply(T t) {
+    return this->mMethod(t);
+  }
 
   /* ****************************************************************************
    * Public Method
@@ -123,15 +121,14 @@ class lang::FunctionEvent : public lang::Object ,
   /* ****************************************************************************
    * Private Method <Override>
    */
-   
+
   /* ****************************************************************************
    * Private Method
    */
-   
 };
 
 /* *******************************************************************************
  * End of file
- */ 
+ */
 
 #endif /* LANG_F730676C_6AFB_43FF_A269_0F8D00511C5D */

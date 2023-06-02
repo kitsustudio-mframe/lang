@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 #ifndef MCUF_5098703C_A1D7_4D60_9E2D_E5F648A0C629
@@ -9,7 +9,7 @@
 
 /* ******************************************************************************
  * Include
- */  
+ */
 
 //-------------------------------------------------------------------------------
 #include "./Object.h"
@@ -18,17 +18,15 @@
 
 /* ******************************************************************************
  * Namespace
- */  
-namespace lang{
+ */
+namespace lang {
   class Character;
 }
 
-
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
- */  
-class lang::Character :public lang::Object{
-
+ */
+class lang::Character : public lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -52,19 +50,19 @@ class lang::Character :public lang::Object{
   /* ****************************************************************************
    * Construct Method
    */
-  private: 
-    /**
-     * @brief Construct a new Character object
-     * 
-     */
-    Character(void);
+ private:
+  /**
+   * @brief Construct a new Character object
+   *
+   */
+  Character(void);
 
-  public: 
-    /**
-     * @brief Destroy the Character object
-     * 
-     */
-    virtual ~Character(void) override;
+ public:
+  /**
+   * @brief Destroy the Character object
+   *
+   */
+  virtual ~Character(void) override;
 
   /* ****************************************************************************
    * Operator Method
@@ -73,40 +71,40 @@ class lang::Character :public lang::Object{
   /* ****************************************************************************
    * Public Method <Static>
    */
-  public:
-    /**
-     * @brief 
-     * 
-     * @param ch 
-     * @return char 
-     */
-    static char toUpperCase(char ch);
-  
-    /**
-     * @brief 
-     * 
-     * @param ch 
-     * @return char 
-     */
-    static char toLowerCase(char ch);
-  
-    /**
-     * @brief 
-     * 
-     * @param highChar 
-     * @param lowChar 
-     * @return char 
-     */
-    static char hexCharToChar(char highChar, char lowChar);
-    
-    /**
-     * @brief 
-     * 
-     * @param ch 
-     * @return char 
-     */
-    static char hexCharToChar(char ch);     
-  
+ public:
+  /**
+   * @brief
+   *
+   * @param ch
+   * @return char
+   */
+  static char toUpperCase(char ch);
+
+  /**
+   * @brief
+   *
+   * @param ch
+   * @return char
+   */
+  static char toLowerCase(char ch);
+
+  /**
+   * @brief
+   *
+   * @param highChar
+   * @param lowChar
+   * @return char
+   */
+  static char hexCharToChar(char highChar, char lowChar);
+
+  /**
+   * @brief
+   *
+   * @param ch
+   * @return char
+   */
+  static char hexCharToChar(char ch);
+
   /* ****************************************************************************
    * Public Method <Override>
    */
@@ -138,11 +136,10 @@ class lang::Character :public lang::Object{
   /* ****************************************************************************
    * Private Method
    */
-
 };
 
 /* ******************************************************************************
  * End of file
- */ 
+ */
 
 #endif /* MCUF_5098703C_A1D7_4D60_9E2D_E5F648A0C629 */

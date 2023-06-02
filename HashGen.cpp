@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
@@ -36,11 +36,13 @@ using lang::HashGen;
  */
 
 //-------------------------------------------------------------------------------
-HashGen::HashGen(void){
+HashGen::HashGen(void) {
+  return;
 }
-  
+
 //-------------------------------------------------------------------------------
-HashGen::~HashGen(void){
+HashGen::~HashGen(void) {
+  return;
 }
 
 /* ******************************************************************************
@@ -52,20 +54,20 @@ HashGen::~HashGen(void){
  */
 
 //-------------------------------------------------------------------------------
-int HashGen::getHashcode(const void* src, int len){
+int HashGen::getHashcode(const void* src, int len) {
   int result = 0;
-  for(int i=0; i<len; ++i)
+  for (int i = 0; i < len; ++i)
     result = 31 * result + reinterpret_cast<const unsigned char*>(src)[i];
-    
+
   return result;
 }
-    
+
 //-------------------------------------------------------------------------------
-int HashGen::getHashcode(const char* src){
+int HashGen::getHashcode(const char* src) {
   int result = 0;
-  for(int i=0; src[i]!=0; ++i)
+  for (int i = 0; src[i] != 0; ++i)
     result = 31 * result + reinterpret_cast<const unsigned char*>(src)[i];
-    
+
   return result;
 }
 

@@ -26,13 +26,13 @@
 
 #define abstract = 0
 
-#define enum_operator(e, t, o) \
-  static inline e operator o (e a, e b) { return static_cast<e>((static_cast<t>(a) o static_cast<t>(b))); } \
-  static inline e operator o (e a, t b) { return static_cast<e>((static_cast<t>(a) o b)); }
+#define enum_operator(e, t, o)                                                                             \
+  static inline e operator o(e a, e b) { return static_cast<e>((static_cast<t>(a) o static_cast<t>(b))); } \
+  static inline e operator o(e a, t b) { return static_cast<e>((static_cast<t>(a) o b)); }
 
-#define enum_auto_operator(e, t)       \
-  enum_operator(e, t, |)               \
-  enum_operator(e, t, &)           
+#define enum_auto_operator(e, t) \
+  enum_operator(e, t, |)         \
+      enum_operator(e, t, &)
 
 //-------------------------------------------------------------------------------
 #include <stdarg.h>

@@ -87,7 +87,6 @@ class lang::InputStream : public lang::Object,
    * Public Method <Override> - lang::Runnable
    */
  public:
-
   virtual void run(void) override;
 
   /* ****************************************************************************

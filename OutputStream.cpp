@@ -13,6 +13,7 @@
 
 //-------------------------------------------------------------------------------
 #include "./OutputStream.h"
+
 #include "./System.h"
 
 /* ******************************************************************************
@@ -65,7 +66,7 @@ OutputStream::~OutputStream(void) {
  */
 
 //-------------------------------------------------------------------------------
-void OutputStream::run(void){
+void OutputStream::run(void) {
   CompletionHandler<int, void*>* handler = this->mCompletionHandler;
   void* attachment = this->mAttachment;
   int result = this->mResult;
@@ -73,7 +74,7 @@ void OutputStream::run(void){
   this->mResult = 0;
   this->mReadBuffer = nullptr;
   this->mHandling = false;
-  
+
   if (handler)
     handler->completed(result, attachment);
 
@@ -116,7 +117,6 @@ bool OutputStream::write(lang::ReadBuffer& readBuffer, int timeout) {
 bool OutputStream::write(lang::ReadBuffer& readBuffer,
                          void* attachment,
                          lang::CompletionHandler<int, void*>* handler) {
-
   if (this->writeBusy())
     return false;
 
@@ -165,7 +165,7 @@ void OutputStream::execute(void) {
   if (!this->writeBusy())
     return;
 
-  if(this->mHandling)
+  if (this->mHandling)
     return;
 
   this->mHandling = true;
@@ -174,7 +174,7 @@ void OutputStream::execute(void) {
 }
 
 //-------------------------------------------------------------------------------
-void OutputStream::onWriteEvent(void){
+void OutputStream::onWriteEvent(void) {
   return;
 }
 

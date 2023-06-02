@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
@@ -40,12 +40,12 @@ using lang::Integers;
  */
 
 //-------------------------------------------------------------------------------
-Integers::Integers(void){
+Integers::Integers(void) {
   return;
 }
-  
+
 //-------------------------------------------------------------------------------
-Integers::~Integers(void){
+Integers::~Integers(void) {
   return;
 }
 
@@ -58,7 +58,7 @@ Integers::~Integers(void){
  */
 
 //-------------------------------------------------------------------------------
-int Integers::valueOf(const char* str){
+int Integers::valueOf(const char* str) {
   return atoi(str);
 }
 

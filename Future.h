@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 #ifndef LANG_858D7963_BBA9_4496_8D4B_B2D77E1330CC
@@ -9,7 +9,7 @@
 
 /* ******************************************************************************
  * Include
- */  
+ */
 
 //-------------------------------------------------------------------------------
 
@@ -20,29 +20,26 @@
 
 /* ******************************************************************************
  * Namespace
- */  
-namespace lang{
+ */
+namespace lang {
   class Future;
 }
 
-
 /* ******************************************************************************
  * Class/struct/Struct/Enum
- */  
-class lang::Future :public lang::Object,
-  public CompletionHandler<int, void*>
-{
-
+ */
+class lang::Future : public lang::Object,
+                     public CompletionHandler<int, void*> {
   /* ****************************************************************************
    * Enum
    */
-  public:
-    enum struct Status : uint32_t{
-      IDLE,
-      WAIT,
-      DONE_COMPLETED,
-      DONE_FAILED
-    };
+ public:
+  enum struct Status : uint32_t {
+    IDLE,
+    WAIT,
+    DONE_COMPLETED,
+    DONE_FAILED
+  };
 
   /* ****************************************************************************
    * Variable <Public>
@@ -55,10 +52,10 @@ class lang::Future :public lang::Object,
   /* ****************************************************************************
    * Variable <Private>
    */
-  private:
-    Status mStatus;
-    lang::Thread* mThread;
-    int mResult;
+ private:
+  Status mStatus;
+  lang::Thread* mThread;
+  int mResult;
 
   /* ****************************************************************************
    * Abstract method <Public>
@@ -71,19 +68,18 @@ class lang::Future :public lang::Object,
   /* ****************************************************************************
    * Construct Method
    */
-  public: 
+ public:
+  /**
+   * @brief Construct a new Future object
+   *
+   */
+  Future(void);
 
-    /**
-     * @brief Construct a new Future object
-     * 
-     */
-    Future(void);
-
-    /**
-     * @brief Destroy the Future object
-     * 
-     */
-    virtual ~Future(void) override;
+  /**
+   * @brief Destroy the Future object
+   *
+   */
+  virtual ~Future(void) override;
 
   /* ****************************************************************************
    * Operator Method
@@ -96,110 +92,108 @@ class lang::Future :public lang::Object,
   /* ****************************************************************************
    * Public Method <Override> - lang::CompletionHandler<int ,void*>
    */
-  public:
-  
-    /**
-     * @brief 
-     * 
-     * @param result 
-     * @param attachment 
-     */
-    virtual void completed(int result, void* attachment) override;
-    
-    /**
-     * @brief 
-     * 
-     * @param exc 
-     * @param attachment 
-     */
-    virtual void failed(void* exc, void* attachment) override;
+ public:
+  /**
+   * @brief
+   *
+   * @param result
+   * @param attachment
+   */
+  virtual void completed(int result, void* attachment) override;
+
+  /**
+   * @brief
+   *
+   * @param exc
+   * @param attachment
+   */
+  virtual void failed(void* exc, void* attachment) override;
 
   /* ****************************************************************************
    * Public Method
    */
-  public:
-    
-    /**
-     * @brief 
-     * 
-     * @return true 
-     * @return false 
-     */
-    bool setWait(void);
-  
-    /**
-     * @brief 
-     * 
-     */
-    void waitDone(void);
+ public:
+  /**
+   * @brief
+   *
+   * @return true
+   * @return false
+   */
+  bool setWait(void);
 
-    /**
-     * @brief 
-     * 
-     * @param timeout 
-     */
-    void waitDone(int timeout);
+  /**
+   * @brief
+   *
+   */
+  void waitDone(void);
 
-    /**
-     * @brief 
-     * 
-     * @return int 
-     */
-    bool get(int& result);
-  
-    /**
-     * @brief 
-     * 
-     * @param timeout 
-     * @return int 
-     */
-    bool get(int& result, int timeout);
-  
-    /**
-     * @brief 
-     * 
-     */
-    void clear(void);
-  
-    /**
-     * @brief 
-     * 
-     * @return true 
-     * @return false 
-     */
-    bool isDone(void);
-    
-    /**
-     * @brief 
-     * 
-     * @return true 
-     * @return false 
-     */
-    bool isCompleted(void);
+  /**
+   * @brief
+   *
+   * @param timeout
+   */
+  void waitDone(int timeout);
 
-    /**
-     * @brief 
-     * 
-     * @return true 
-     * @return false 
-     */
-    bool isFailed(void);
-    
-    /**
-     * @brief 
-     * 
-     * @return true 
-     * @return false 
-     */
-    bool isIdle(void);
+  /**
+   * @brief
+   *
+   * @return int
+   */
+  bool get(int& result);
 
-    /**
-     * @brief 
-     * 
-     * @return true 
-     * @return false 
-     */
-    bool isBusy(void);
+  /**
+   * @brief
+   *
+   * @param timeout
+   * @return int
+   */
+  bool get(int& result, int timeout);
+
+  /**
+   * @brief
+   *
+   */
+  void clear(void);
+
+  /**
+   * @brief
+   *
+   * @return true
+   * @return false
+   */
+  bool isDone(void);
+
+  /**
+   * @brief
+   *
+   * @return true
+   * @return false
+   */
+  bool isCompleted(void);
+
+  /**
+   * @brief
+   *
+   * @return true
+   * @return false
+   */
+  bool isFailed(void);
+
+  /**
+   * @brief
+   *
+   * @return true
+   * @return false
+   */
+  bool isIdle(void);
+
+  /**
+   * @brief
+   *
+   * @return true
+   * @return false
+   */
+  bool isBusy(void);
 
   /* ****************************************************************************
    * Protected Method <Static>
@@ -224,11 +218,10 @@ class lang::Future :public lang::Object,
   /* ****************************************************************************
    * Private Method
    */
-
 };
 
 /* ******************************************************************************
  * End of file
- */ 
+ */
 
 #endif /* LANG_858D7963_BBA9_4496_8D4B_B2D77E1330CC */

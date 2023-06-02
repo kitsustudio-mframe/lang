@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 #ifndef LANG_E8463782_967B_46FF_930C_98A3EB2CAF31
@@ -9,7 +9,7 @@
 
 /* ******************************************************************************
  * Include
- */  
+ */
 
 //-------------------------------------------------------------------------------
 #include "./Object.h"
@@ -19,18 +19,16 @@
 
 /* ******************************************************************************
  * Namespace
- */  
-namespace lang{
+ */
+namespace lang {
   class EntryPoint;
 }
 
-
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
- */  
-class lang::EntryPoint :public lang::Object, 
-public lang::Runnable{
-
+ */
+class lang::EntryPoint : public lang::Object,
+                         public lang::Runnable {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -42,10 +40,10 @@ public lang::Runnable{
   /* ****************************************************************************
    * Variable <Private>
    */
-  private:
-    void (*mSetup)(lang::Thread*);
-    void (*mLoop)(lang::Thread*);
-  
+ private:
+  void (*mSetup)(lang::Thread*);
+  void (*mLoop)(lang::Thread*);
+
   /* ****************************************************************************
    * Abstract method <Public>
    */
@@ -57,16 +55,16 @@ public lang::Runnable{
   /* ****************************************************************************
    * Construct Method
    */
-  public: 
-    /**
-     *
-     */
-    EntryPoint(void (*setup)(lang::Thread*), void (*loop)(lang::Thread*));
-    
-    /**
-     *
-     */
-    virtual ~EntryPoint(void) override;
+ public:
+  /**
+   *
+   */
+  EntryPoint(void (*setup)(lang::Thread*), void (*loop)(lang::Thread*));
+
+  /**
+   *
+   */
+  virtual ~EntryPoint(void) override;
 
   /* ****************************************************************************
    * Operator Method
@@ -79,11 +77,11 @@ public lang::Runnable{
   /* ****************************************************************************
    * Public Method <Override>- lang::Runnable
    */
-  public:
-    /**
-     *
-     */
-    virtual void run(void) override;
+ public:
+  /**
+   *
+   */
+  virtual void run(void) override;
 
   /* ****************************************************************************
    * Public Method
@@ -112,11 +110,10 @@ public lang::Runnable{
   /* ****************************************************************************
    * Private Method
    */
-
 };
 
 /* ******************************************************************************
  * End of file
- */ 
+ */
 
 #endif /* LANG_E8463782_967B_46FF_930C_98A3EB2CAF31 */

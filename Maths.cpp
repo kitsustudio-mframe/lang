@@ -1,36 +1,36 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
 /* ******************************************************************************
  * Include
- */  
+ */
 
 //-------------------------------------------------------------------------------
 #include <math.h>
 
 //-------------------------------------------------------------------------------
 #include "./Maths.h"
- 
+
 /* ******************************************************************************
  * Using
- */  
+ */
 using lang::Maths;
- 
+
 /* ******************************************************************************
  * Construct Method
  */
- 
+
 //-------------------------------------------------------------------------------
-Maths::Maths(void){
+Maths::Maths(void) {
   return;
 }
 
 //-------------------------------------------------------------------------------
-Maths::~Maths(void){
+Maths::~Maths(void) {
   return;
 }
 
@@ -43,102 +43,102 @@ Maths::~Maths(void){
  */
 
 //-------------------------------------------------------------------------------
-double Maths::acos(double x){
+double Maths::acos(double x) {
   return std::acos(x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::asin(double x){
+double Maths::asin(double x) {
   return std::asin(x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::atan(double x){
+double Maths::atan(double x) {
   return std::atan(x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::atan2(double y, double x){
+double Maths::atan2(double y, double x) {
   return std::atan2(y, x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::cos(double x){
+double Maths::cos(double x) {
   return std::cos(x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::cosh(double x){
+double Maths::cosh(double x) {
   return std::cosh(x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::sin(double x){
+double Maths::sin(double x) {
   return std::sin(x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::sinh(double x){
+double Maths::sinh(double x) {
   return std::sinh(x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::tanh(double x){
+double Maths::tanh(double x) {
   return std::tanh(x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::frexp(double x, int *exponent){
+double Maths::frexp(double x, int *exponent) {
   return std::frexp(x, exponent);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::ldexp(double x, int exponent){
+double Maths::ldexp(double x, int exponent) {
   return std::ldexp(x, exponent);
 }
-  
+
 //-------------------------------------------------------------------------------
-double Maths::log(double x){
+double Maths::log(double x) {
   return std::log(x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::log10(double x){
+double Maths::log10(double x) {
   return std::log10(x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::modf(double x, double *integer){
+double Maths::modf(double x, double *integer) {
   return std::modf(x, integer);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::pow(double x, double y){
+double Maths::pow(double x, double y) {
   return std::pow(x, y);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::sqrt(double x){
+double Maths::sqrt(double x) {
   return std::sqrt(x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::ceil(double x){
+double Maths::ceil(double x) {
   return std::ceil(x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::fabs(double x){
+double Maths::fabs(double x) {
   return std::fabs(x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::floor(double x){
+double Maths::floor(double x) {
   return std::floor(x);
 }
 
 //-------------------------------------------------------------------------------
-double Maths::fmod(double x, double y){
+double Maths::fmod(double x, double y) {
   return std::fmod(x, y);
 }
 
@@ -153,10 +153,10 @@ double Maths::fmod(double x, double y){
 /* ******************************************************************************
  * Protected Method <Static>
  */
- 
+
 /* ******************************************************************************
  * Protected Method <Override>
- */ 
+ */
 
 /* ******************************************************************************
  * Protected Method
@@ -165,7 +165,7 @@ double Maths::fmod(double x, double y){
 /* ******************************************************************************
  * Private Method
  */
- 
+
 /* ******************************************************************************
  * End of file
- */ 
+ */

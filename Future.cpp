@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
@@ -11,9 +11,9 @@
 
 //-------------------------------------------------------------------------------
 
-
 //-------------------------------------------------------------------------------
 #include "./Future.h"
+
 #include "./System.h"
 
 /* ******************************************************************************
@@ -36,15 +36,15 @@ using lang::Future;
 /* ******************************************************************************
  * Construct Method
  */
- 
+
 //-------------------------------------------------------------------------------
-Future::Future(void){
+Future::Future(void) {
   this->clear();
   return;
 }
 
 //-------------------------------------------------------------------------------
-Future::~Future(void){
+Future::~Future(void) {
   return;
 }
 
@@ -61,27 +61,26 @@ Future::~Future(void){
  */
 
 //-------------------------------------------------------------------------------
-void Future::completed(int result, void* attachment){
-  if(this->mStatus != Status::WAIT)
+void Future::completed(int result, void* attachment) {
+  if (this->mStatus != Status::WAIT)
     return;
-  
+
   this->mResult = result;
   this->mStatus = Status::DONE_COMPLETED;
-  if(this->mThread != nullptr)
+  if (this->mThread != nullptr)
     this->mThread->notify();
-  
 }
-    
+
 //-------------------------------------------------------------------------------
-void Future::failed(void* exc, void* attachment){
-  if(this->mStatus != Status::WAIT)
+void Future::failed(void* exc, void* attachment) {
+  if (this->mStatus != Status::WAIT)
     return;
-  
+
   this->mResult = -1;
   this->mStatus = Status::DONE_FAILED;
-  if(this->mThread != nullptr)
+  if (this->mThread != nullptr)
     this->mThread->notify();
-  
+
   return;
 }
 
@@ -90,105 +89,101 @@ void Future::failed(void* exc, void* attachment){
  */
 
 //-------------------------------------------------------------------------------
-bool Future::setWait(void){
-  if(this->mStatus == Status::IDLE){
+bool Future::setWait(void) {
+  if (this->mStatus == Status::IDLE) {
     this->mStatus = Status::WAIT;
     return true;
-    
-  }else{
+
+  } else {
     return false;
-    
   }
 }
 
 //-------------------------------------------------------------------------------
-void Future::waitDone(void){
+void Future::waitDone(void) {
   int result;
   this->get(result);
   return;
 }
 
 //-------------------------------------------------------------------------------
-void Future::waitDone(int timeout){
+void Future::waitDone(int timeout) {
   int result;
   this->get(result, timeout);
   return;
 }
 
 //-------------------------------------------------------------------------------
-bool Future::get(int& result){
-  if(this->mThread != nullptr)
+bool Future::get(int& result) {
+  if (this->mThread != nullptr)
     return false;
-  
-  if(this->mStatus == Status::WAIT){
-    
+
+  if (this->mStatus == Status::WAIT) {
     this->mThread = this->currentThread();
-    
-    if(this->mThread != nullptr){
-   
-      while(this->mStatus == Status::WAIT)
+
+    if (this->mThread != nullptr) {
+      while (this->mStatus == Status::WAIT)
         this->wait();
-      
+
       this->mThread = nullptr;
     }
   }
   result = this->mResult;
   return true;
 }
-  
+
 //-------------------------------------------------------------------------------
-bool Future::get(int& result, int timeout){
-  if(this->mThread != nullptr)
-    return false;  
-  
-  if(this->mStatus == Status::WAIT){
+bool Future::get(int& result, int timeout) {
+  if (this->mThread != nullptr)
+    return false;
+
+  if (this->mStatus == Status::WAIT) {
     this->mThread = this->currentThread();
-    
-    if(this->mThread != nullptr){
+
+    if (this->mThread != nullptr) {
       this->wait(timeout);
-      
+
       this->mThread = nullptr;
-      
-      if(!this->isDone())
+
+      if (!this->isDone())
         return false;
-      
     }
   }
-  
+
   result = this->mResult;
   return true;
 }
-  
+
 //-------------------------------------------------------------------------------
-void Future::clear(void){
+void Future::clear(void) {
   this->mStatus = Status::IDLE;
   this->mThread = nullptr;
   this->mResult abstract;
   return;
 }
-  
+
 //-------------------------------------------------------------------------------
-bool Future::isDone(void){
+bool Future::isDone(void) {
   return ((this->mStatus == Status::DONE_COMPLETED) || (this->mStatus == Status::DONE_FAILED));
 }
 
 //-------------------------------------------------------------------------------
-bool Future::isCompleted(void){
+bool Future::isCompleted(void) {
   return (this->mStatus == Status::DONE_COMPLETED);
 }
 
 //-------------------------------------------------------------------------------
-bool Future::isFailed(void){
+bool Future::isFailed(void) {
   return (this->mStatus == Status::DONE_FAILED);
 }
 
 //-------------------------------------------------------------------------------
-bool Future::isIdle(void){
-   return (this->mStatus == Status::IDLE);
+bool Future::isIdle(void) {
+  return (this->mStatus == Status::IDLE);
 }
 
 //-------------------------------------------------------------------------------
-bool Future::isBusy(void){
+bool Future::isBusy(void) {
   return (this->mStatus == Status::WAIT);
 }
 

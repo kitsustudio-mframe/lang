@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 #ifndef LANG_E2DC1ED1_7C31_4A99_AF60_2B859E6190C9
@@ -9,26 +9,24 @@
 
 /* ******************************************************************************
  * Include
- */  
+ */
 
 //-------------------------------------------------------------------------------
-#include "./Object.h"
 #include "./Integer.h"
+#include "./Object.h"
 //-------------------------------------------------------------------------------
 
 /* ******************************************************************************
  * Namespace
- */  
-namespace lang{
+ */
+namespace lang {
   class Integers;
-}
-
+};
 
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
- */  
-class lang::Integers :public lang::Object{
-
+ */
+class lang::Integers : public lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -52,17 +50,17 @@ class lang::Integers :public lang::Object{
   /* ****************************************************************************
    * Construct Method
    */
-  private: 
-    /**
-     *
-     */
-    Integers(void);
-  
-  public: 
-    /**
-     *
-     */
-    virtual ~Integers(void) override;
+ private:
+  /**
+   *
+   */
+  Integers(void);
+
+ public:
+  /**
+   *
+   */
+  virtual ~Integers(void) override;
 
   /* ****************************************************************************
    * Operator Method
@@ -70,41 +68,38 @@ class lang::Integers :public lang::Object{
   /* ****************************************************************************
    * Public Method <Static Inline>
    */
-  public:
-    /**
-     * @brief 
-     * 
-     * @param value
-     * @return Integer 
-     */
-    static inline unsigned int castUnsigned(int value){
-      return static_cast<unsigned int>(value);
-    }
-    
-    /**
-     * @brief 
-     * 
-     * @param value
-     * @return Integer 
-     */
-    static inline int castSigned(unsigned int value){
-      return static_cast<int>(value);
-    }
-  
+ public:
+  /**
+   * @brief
+   *
+   * @param value
+   * @return Integer
+   */
+  static inline unsigned int castUnsigned(int value) {
+    return static_cast<unsigned int>(value);
+  }
+
+  /**
+   * @brief
+   *
+   * @param value
+   * @return Integer
+   */
+  static inline int castSigned(unsigned int value) {
+    return static_cast<int>(value);
+  }
+
   /* ****************************************************************************
    * Public Method <Static>
    */
-  public:
-    
-    /**
-     * @brief 
-     * 
-     * @param str 
-     * @return int 
-     */
-    static int valueOf(const char* str);
-
-
+ public:
+  /**
+   * @brief
+   *
+   * @param str
+   * @return int
+   */
+  static int valueOf(const char* str);
 
   /* ****************************************************************************
    * Public Method <Override>
@@ -137,11 +132,10 @@ class lang::Integers :public lang::Object{
   /* ****************************************************************************
    * Private Method
    */
-
 };
 
 /* ******************************************************************************
  * End of file
- */ 
+ */
 
 #endif /* LANG_E2DC1ED1_7C31_4A99_AF60_2B859E6190C9 */

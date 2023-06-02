@@ -36,12 +36,12 @@ using lang::EmptyReadBuffer;
  */
 
 //-------------------------------------------------------------------------------
-EmptyReadBuffer::EmptyReadBuffer(void){
+EmptyReadBuffer::EmptyReadBuffer(void) {
   return;
 }
 
 //-------------------------------------------------------------------------------
-EmptyReadBuffer::~EmptyReadBuffer(void){
+EmptyReadBuffer::~EmptyReadBuffer(void) {
   return;
 }
 

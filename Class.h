@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 #ifndef LANG_6C39B857_3E97_4D9E_9DF2_8A9C032C2B09
@@ -9,7 +9,7 @@
 
 /* ******************************************************************************
  * Include
- */  
+ */
 
 //-------------------------------------------------------------------------------
 #include "./Object.h"
@@ -18,17 +18,17 @@
 
 /* ******************************************************************************
  * Namespace
- */  
-namespace lang{
-  template<class T> class Class;
+ */
+namespace lang {
+  template <class T>
+  class Class;
 }
-
 
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
- */ 
-template<class T> class lang::Class : public lang::Object{
-
+ */
+template <class T>
+class lang::Class : public lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -52,21 +52,21 @@ template<class T> class lang::Class : public lang::Object{
   /* ****************************************************************************
    * Construct Method
    */
-  private:
-    /**
-     *
-     */
-    Class(void){
-      return;
-    }
-  
-  public: 
-    /**
-     *
-     */
-    virtual ~Class(void) override{
-      return;
-    }
+ private:
+  /**
+   *
+   */
+  Class(void) {
+    return;
+  }
+
+ public:
+  /**
+   *
+   */
+  virtual ~Class(void) override {
+    return;
+  }
 
   /* ****************************************************************************
    * Operator Method
@@ -75,14 +75,14 @@ template<class T> class lang::Class : public lang::Object{
   /* ****************************************************************************
    * Public Method <Static>
    */
-  public:
-    /**
-     *
-     */
-    static T* cast(void){
-      return static_cast<T*>(nullptr);
-    }
-    
+ public:
+  /**
+   *
+   */
+  static T* cast(void) {
+    return static_cast<T*>(nullptr);
+  }
+
   /* ****************************************************************************
    * Public Method <Override>
    */
@@ -114,11 +114,10 @@ template<class T> class lang::Class : public lang::Object{
   /* ****************************************************************************
    * Private Method
    */
-
 };
 
 /* ******************************************************************************
  * End of file
- */ 
+ */
 
 #endif /* LANG_6C39B857_3E97_4D9E_9DF2_8A9C032C2B09 */

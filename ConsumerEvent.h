@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 #ifndef LANG_D2D64DF4_37AF_4608_A7A7_C551E3231977
@@ -9,29 +9,28 @@
 
 /* ******************************************************************************
  * Include
- */  
- 
+ */
+
 //-------------------------------------------------------------------------------
 #include "./Object.h"
 
 //-------------------------------------------------------------------------------
 #include "./Consumer.h"
 
-
 /* ******************************************************************************
  * Namespace
- */  
-namespace lang{
-  template<typename T> class ConsumerEvent;
+ */
+namespace lang {
+  template <typename T>
+  class ConsumerEvent;
 }
 
 /* ******************************************************************************
  * Class/struct/Struct
- */  
-template<typename T>
-class lang::ConsumerEvent : public lang::Object , 
-  public lang::Consumer<T>{
-
+ */
+template <typename T>
+class lang::ConsumerEvent : public lang::Object,
+                            public lang::Consumer<T> {
   typedef void (*Method)(T);
   /* ****************************************************************************
    * Variable <Public>
@@ -44,13 +43,13 @@ class lang::ConsumerEvent : public lang::Object ,
   /* ****************************************************************************
    * Variable <Private>
    */
-  private: 
-    Method mMethod;
+ private:
+  Method mMethod;
 
   /* ****************************************************************************
    * Abstract method <Public>
    */
-  
+
   /* ****************************************************************************
    * Abstract method <Protected>
    */
@@ -58,25 +57,24 @@ class lang::ConsumerEvent : public lang::Object ,
   /* ****************************************************************************
    * Construct Method
    */
-  public: 
+ public:
+  /**
+   * @brief Construct a new Consumer Event object
+   *
+   * @param event
+   */
+  ConsumerEvent(Method method) {
+    this->mMethod = method;
+    return;
+  }
 
-    /**
-     * @brief Construct a new Consumer Event object
-     * 
-     * @param event 
-     */
-    ConsumerEvent(Method method){
-      this->mMethod = method;
-      return;
-    }
-  
-    /**
-     * @brief Destroy the Consumer Event object
-     * 
-     */
-    virtual ~ConsumerEvent(void) override {
-      return;
-    }
+  /**
+   * @brief Destroy the Consumer Event object
+   *
+   */
+  virtual ~ConsumerEvent(void) override {
+    return;
+  }
 
   /* ****************************************************************************
    * Operator Method
@@ -101,16 +99,15 @@ class lang::ConsumerEvent : public lang::Object ,
   /* ****************************************************************************
    * Protected Method <Override>
    */
-  public:
-
-    /**
-     * @brief 
-     * 
-     * @param t 
-     */
-    virtual void accept(T t){
-      this->mMethod(t);
-    }
+ public:
+  /**
+   * @brief
+   *
+   * @param t
+   */
+  virtual void accept(T t) {
+    this->mMethod(t);
+  }
 
   /* ****************************************************************************
    * Protected Method
@@ -123,15 +120,14 @@ class lang::ConsumerEvent : public lang::Object ,
   /* ****************************************************************************
    * Private Method <Override>
    */
-   
+
   /* ****************************************************************************
    * Private Method
    */
-   
 };
 
 /* *******************************************************************************
  * End of file
- */ 
+ */
 
 #endif /* LANG_D2D64DF4_37AF_4608_A7A7_C551E3231977 */

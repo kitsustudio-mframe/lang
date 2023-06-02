@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
@@ -10,7 +10,7 @@
 
 /* ******************************************************************************
  * Include
- */  
+ */
 
 //-------------------------------------------------------------------------------
 #include "./Object.h"
@@ -19,31 +19,28 @@
 
 /* ******************************************************************************
  * Namespace
- */  
-namespace lang{
+ */
+namespace lang {
   class Number;
-}
-
-
+};
 
 /* ******************************************************************************
  * Class Integer
- */  
-class lang::Number :public lang::Object{
-
+ */
+class lang::Number : public lang::Object {
   /* ****************************************************************************
    * Subclass
    */
-  protected:
-    union Value{
-      bool     b;
-      uint8_t  u8[4];
-      char     s8[4];
-      uint16_t u16[2];
-      short    s16[2];
-      uint32_t u32;
-      int      s32;
-    };
+ protected:
+  union Value {
+    bool b;
+    uint8_t u8[4];
+    char s8[4];
+    uint16_t u16[2];
+    short s16[2];
+    uint32_t u32;
+    int s32;
+  };
 
   /* ****************************************************************************
    * Variable <Public>
@@ -52,9 +49,9 @@ class lang::Number :public lang::Object{
   /* ****************************************************************************
    * Variable <Protected>
    */
-  protected: 
-    Value mValue;
-  
+ protected:
+  Value mValue;
+
   /* ****************************************************************************
    * Variable <Private>
    */
@@ -62,7 +59,7 @@ class lang::Number :public lang::Object{
   /* ****************************************************************************
    * Abstract method <Public>
    */
-  
+
   /* ****************************************************************************
    * Abstract method <Protected>
    */
@@ -70,35 +67,34 @@ class lang::Number :public lang::Object{
   /* ****************************************************************************
    * Construct Method
    */
-  public:
-    /**
-     * @brief Construct a new Number object
-     * 
-     */
-    Number(void);
-  
-    /**
-     * @brief Destroy the Number object
-     * 
-     */
-    virtual ~Number(void) override;
+ public:
+  /**
+   * @brief Construct a new Number object
+   *
+   */
+  Number(void);
+
+  /**
+   * @brief Destroy the Number object
+   *
+   */
+  virtual ~Number(void) override;
 
   /* ****************************************************************************
    * Operator Method
    */
-  public:
-    
-    /**
-     * @brief 
-     * 
-     * @param v 
-     * @return true 
-     * @return false 
-     */
-    inline bool operator==(Number& v){
-      return (Number::mValue.u32  == v.mValue.u32);
-    }
-    
+ public:
+  /**
+   * @brief
+   *
+   * @param v
+   * @return true
+   * @return false
+   */
+  inline bool operator==(Number& v) {
+    return (Number::mValue.u32 == v.mValue.u32);
+  }
+
   /* ****************************************************************************
    * Public Method <Static>
    */
@@ -106,17 +102,17 @@ class lang::Number :public lang::Object{
   /* ****************************************************************************
    * Public Method <Override> - lang::Object
    */
-  public:
-    /**
-     * @brief 返回對象的哈希碼值。支持這種方法是為了散列表，如HashMap提供的那樣。
-     * 
-     * @return uint32_t 該對象的哈希碼值。
-     */
-    virtual int hashcode(void) const override;
+ public:
+  /**
+   * @brief 返回對象的哈希碼值。支持這種方法是為了散列表，如HashMap提供的那樣。
+   *
+   * @return uint32_t 該對象的哈希碼值。
+   */
+  virtual int hashcode(void) const override;
   /* ****************************************************************************
    * Public Method
    */
-  
+
   /* ****************************************************************************
    * Protected Method <Static>
    */
@@ -136,18 +132,14 @@ class lang::Number :public lang::Object{
   /* ****************************************************************************
    * Private Method <Override>
    */
-   
+
   /* ****************************************************************************
    * Private Method
    */
-    
 };
-
-
 
 /* *******************************************************************************
  *  End of file
- */ 
+ */
 
-
-#endif/* MCUF_C6CF2DB4_1F61_4562_8698_C0C22D0C69FA */
+#endif /* MCUF_C6CF2DB4_1F61_4562_8698_C0C22D0C69FA */

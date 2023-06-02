@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
@@ -13,6 +13,7 @@
 
 //-------------------------------------------------------------------------------
 #include "./EntryPoint.h"
+
 #include "./System.h"
 
 /* ******************************************************************************
@@ -37,14 +38,14 @@ using lang::EntryPoint;
  */
 
 //-------------------------------------------------------------------------------
-EntryPoint::EntryPoint(void (*setup)(lang::Thread*), void (*loop)(lang::Thread*)){
+EntryPoint::EntryPoint(void (*setup)(lang::Thread*), void (*loop)(lang::Thread*)) {
   this->mLoop = loop;
   this->mSetup = setup;
   return;
 }
-    
+
 //-------------------------------------------------------------------------------
-EntryPoint::~EntryPoint(void){
+EntryPoint::~EntryPoint(void) {
   return;
 }
 
@@ -61,11 +62,11 @@ EntryPoint::~EntryPoint(void){
  */
 
 //-------------------------------------------------------------------------------
-void EntryPoint::run(void){
+void EntryPoint::run(void) {
   Thread* thread = this->currentThread();
   this->mSetup(thread);
-  
-  while(true){
+
+  while (true) {
     this->mLoop(thread);
   }
 }
