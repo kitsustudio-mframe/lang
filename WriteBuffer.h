@@ -1,0 +1,90 @@
+/**
+ * Copyright (c) 2020 ZxyKira
+ * All rights reserved.
+ *
+ * SPDX-License-Identifier: MIT
+ */
+#ifndef LANG_866C8352_DB87_4C00_A483_93113124908D
+#define LANG_866C8352_DB87_4C00_A483_93113124908D
+
+/* ******************************************************************************
+ * Include
+ */
+
+//-------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------
+#include "./Data.h"
+#include "./Interface.h"
+
+/* ******************************************************************************
+ * Namespace
+ */
+namespace lang {
+  struct WriteBuffer;
+  struct ReadBuffer;
+}  // namespace lang
+
+/* ******************************************************************************
+ * Class/struct/Struct/Enum
+ */
+struct lang::WriteBuffer : public virtual lang::Interface {
+  /* ****************************************************************************
+   * Method
+   */
+
+  /**
+   * @brief 取得WriteBuffer是否已滿
+   *
+   * @return true 已滿
+   * @return false 未滿，仍有空間
+   */
+  virtual bool isFull(void) const abstract;
+
+  /**
+   * @brief 取得WriteBuffer內資料數量
+   *
+   * @return int WriteBuffer內資料數量
+   */
+  virtual int remaining(void) const abstract;
+
+  /**
+   * @brief 將data輸入至WriteBuffer
+   *
+   * @param data 資料來源
+   * @return int WriteBuffer內資料數量
+   */
+  virtual int putByte(const char data) abstract;
+
+  /**
+   * @brief 將readBuffer內資料輸入至WriteBuffer
+   *
+   * @param byteBuffer 資料來源
+   * @return int 移動資料數量(byte)
+   */
+  virtual int put(lang::ReadBuffer& readBuffer) abstract;
+
+  /**
+   * @brief 將readBuffer內資料輸入至WriteBuffer並指定輸入長度
+   *
+   * @param byteBuffer 資料來源
+   * @param length 輸入長度
+   * @return int 移動資料數量(byte)
+   */
+  virtual int put(lang::ReadBuffer& readBuffer, int length) abstract;
+
+  /**
+   * @brief 將buffer內資料輸入至WriteBuffer
+   *
+   * @param buffer 資料來源
+   * @param length 輸入長度
+   * @return int 移動資料數量(byte)
+   */
+  virtual int put(const void* buffer, int length) abstract;
+};
+
+/* ******************************************************************************
+ * End of file
+ */
+
+#endif /* LANG_866C8352_DB87_4C00_A483_93113124908D */
