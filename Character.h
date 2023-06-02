@@ -26,7 +26,7 @@ namespace lang {
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
  */
-class lang::Character : public lang::Object {
+class lang::Character final : public lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */

@@ -28,7 +28,7 @@ namespace lang{
 /* ******************************************************************************
  * Class Math
  */  
-class lang::Maths : public lang::Object{
+class lang::Maths final : public lang::Object{
 
   /* ****************************************************************************
    * Subclass

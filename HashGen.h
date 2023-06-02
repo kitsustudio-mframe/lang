@@ -26,7 +26,7 @@ namespace lang {
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
  */
-class lang::HashGen : public lang::Object {
+class lang::HashGen final : public lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */

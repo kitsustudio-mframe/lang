@@ -28,7 +28,7 @@ namespace lang {
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
  */
-class lang::StringFormat : public lang::Object {
+class lang::StringFormat final : public lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */
