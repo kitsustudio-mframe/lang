@@ -13,6 +13,7 @@
 
 //-------------------------------------------------------------------------------
 #include "./Data.h"
+#include "./HashGen.h"
 
 /* ******************************************************************************
  * Macro
@@ -266,6 +267,12 @@ int Data::indexOfData(const void* destination, int destinationLen, int start) co
 int Data::indexOfStrings(const char* str) const {
   return Pointer::indexOfStrings(str, Data::length());
 }
+
+//-------------------------------------------------------------------------------
+int Data::hashdata(void) const{
+  return HashGen::getHashcode(this->pointer(), this->length());
+}
+
 
 /* ******************************************************************************
  * Protected Method <Static>

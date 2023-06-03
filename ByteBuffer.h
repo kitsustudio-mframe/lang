@@ -369,7 +369,7 @@ class lang::ByteBuffer : public lang::Memory,
    *
    * @return unsigned int
    */
-  virtual inline int limit(void) const {
+  inline int limit(void) const {
     return ByteBuffer::mLimit;
   }
 
@@ -378,7 +378,7 @@ class lang::ByteBuffer : public lang::Memory,
    *
    * @return unsigned int
    */
-  virtual inline int capacity(void) const {
+  inline int capacity(void) const {
     return ByteBuffer::length();
   }
 
@@ -387,7 +387,7 @@ class lang::ByteBuffer : public lang::Memory,
    *
    * @return unsigned int
    */
-  virtual inline int position(void) const {
+  inline int position(void) const {
     return ByteBuffer::mPosition;
   }
 
@@ -395,7 +395,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @brief
    *
    */
-  virtual inline void reset(void) {
+  inline void reset(void) {
     ByteBuffer::position(ByteBuffer::mMark);
     return;
   }
@@ -404,7 +404,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @brief
    *
    */
-  virtual inline void mark(void) {
+  inline void mark(void) {
     ByteBuffer::mMark = mPosition;
     return;
   }
@@ -413,7 +413,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @brief
    *
    */
-  virtual inline void rewind(void) {
+  inline void rewind(void) {
     ByteBuffer::mPosition = 0;
     ByteBuffer::mMark = 0;
     return;
@@ -426,7 +426,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  virtual inline bool getByte(uint8_t& result) {
+  inline bool getByte(uint8_t& result) {
     return ByteBuffer::getByte(reinterpret_cast<char&>(result));
   }
 
@@ -437,7 +437,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  virtual inline bool getShort(uint16_t& result) {
+  inline bool getShort(uint16_t& result) {
     return ByteBuffer::getShort(reinterpret_cast<short&>(result));
   }
 
@@ -448,7 +448,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  virtual inline bool getShortMsb(uint16_t& result) {
+  inline bool getShortMsb(uint16_t& result) {
     return ByteBuffer::getShortMsb(reinterpret_cast<short&>(result));
   }
 
@@ -459,7 +459,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  virtual inline bool getInt(unsigned int& result) {
+  inline bool getInt(unsigned int& result) {
     return ByteBuffer::getInt(reinterpret_cast<int&>(result));
   }
 
@@ -470,7 +470,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  virtual inline bool getIntMsb(unsigned int& result) {
+  inline bool getIntMsb(unsigned int& result) {
     return ByteBuffer::getIntMsb(reinterpret_cast<int&>(result));
   }
 

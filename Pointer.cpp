@@ -75,16 +75,6 @@ Pointer::~Pointer(void){
  */
 
 //-------------------------------------------------------------------------------
-int Pointer::copy(const void* source, int length){
-  return this->copy(source, 0, 0, length);
-}
-
-//-------------------------------------------------------------------------------
-int Pointer::copy(const void* source, int start, int length){
-  return this->copy(source, 0, start, length);
-}
-
-//-------------------------------------------------------------------------------
 int Pointer::copy(const void* source, int offset, int start, int length){
   if(length <= 0)
     return 0;  

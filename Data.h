@@ -279,7 +279,7 @@ class lang::Data : public lang::Pointer {
   int indexOfStrings(const char* str) const;
 
   /* ****************************************************************************
-   * Public Method <Vitrual>
+   * Public Method
    */
  public:
   /**
@@ -333,6 +333,13 @@ class lang::Data : public lang::Pointer {
    * @return int
    */
   virtual int indexOfData(const void* destination, int destinationLen, int start) const;
+
+  /**
+   * @brief 
+   * 
+   * @return int 
+   */
+  virtual int hashdata(void) const;
 
   /* ****************************************************************************
    * Protected Method <Static>

@@ -99,7 +99,7 @@ class lang::OutputStream : public lang::Object,
    *  - true : 為成功終止當前的輸出至OutputStream
    *  - false : 終止失敗，有可能當前輸出串流並未忙碌
    */
-  virtual bool abortWrite(void);
+  bool abortWrite(void);
 
   /**
    * @brief 取得輸出串流是否為寫入忙碌
@@ -108,7 +108,7 @@ class lang::OutputStream : public lang::Object,
    *  - true: 輸出串流忙碌中，無法接受新的寫入
    *  - false: 輸出串流閒置中
    */
-  virtual bool writeBusy(void);
+  bool writeBusy(void);
 
   /**
    * @brief IO 寫入模式
@@ -119,21 +119,7 @@ class lang::OutputStream : public lang::Object,
    *  - true: 建立寫入成功
    *  - false: 建立寫入失敗，串流可能正在忙碌中
    */
-  virtual bool write(lang::ReadBuffer& readBuffer, int timeout);
-
-  /**
-   * @brief AIO 寫入模式
-   *
-   * @param readBuffer
-   * @param attachment
-   * @param handler
-   * @return
-   *  - true : 建立寫入成功
-   *  - false : 建立寫入失敗，串流可能正在忙碌中
-   */
-  virtual bool write(lang::ReadBuffer& readBuffer,
-                     void* attachment,
-                     lang::CompletionHandler<int, void*>* handler);
+  bool write(lang::ReadBuffer& readBuffer, int timeout);
 
   /**
    * @brief NIO 寫入模式
@@ -153,8 +139,26 @@ class lang::OutputStream : public lang::Object,
    *  - true : 建立寫入成功
    *  - false : 建立寫入失敗，串流可能正在忙碌中
    */
-  virtual bool write(lang::ReadBuffer& readBuffer, lang::Future& future);
+  bool write(lang::ReadBuffer& readBuffer, lang::Future& future);
 
+  /* ****************************************************************************
+   * Public Method <Virtual>
+   */
+ public:
+  /**
+   * @brief AIO 寫入模式
+   *
+   * @param readBuffer
+   * @param attachment
+   * @param handler
+   * @return
+   *  - true : 建立寫入成功
+   *  - false : 建立寫入失敗，串流可能正在忙碌中
+   */
+  virtual bool write(lang::ReadBuffer& readBuffer,
+                     void* attachment,
+                     lang::CompletionHandler<int, void*>* handler);
+                     
   /* ****************************************************************************
    * Protected Method <Static>
    */
