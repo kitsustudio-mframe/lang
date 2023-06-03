@@ -21,7 +21,7 @@
  */
 namespace lang {
   class Integers;
-};
+}
 
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
