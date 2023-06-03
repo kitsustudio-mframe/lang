@@ -86,7 +86,7 @@ class lang::Memory : public lang::Data {
   Memory(size_t length);
 
   /**
-   * @brief Construct a new Memory object
+   * @brief 淺層克隆建構子
    *
    * @param other
    */

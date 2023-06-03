@@ -102,7 +102,6 @@ class lang::Strings final : public lang::Memory {
     return static_cast<const char*>(this->pointer());
   }
 
-
   /**
    * @brief
    *
@@ -134,12 +133,12 @@ class lang::Strings final : public lang::Memory {
   }
 
   /**
-   * @brief 
-   * 
-   * @param value 
-   * @return Strings& 
+   * @brief
+   *
+   * @param value
+   * @return Strings&
    */
-  inline Strings& operator+=(double d){
+  inline Strings& operator+=(double d) {
     return this->append(d);
   }
 
@@ -164,22 +163,22 @@ class lang::Strings final : public lang::Memory {
   }
 
   /**
-   * @brief 
-   * 
-   * @param value 
-   * @return Strings& 
+   * @brief
+   *
+   * @param value
+   * @return Strings&
    */
   inline Strings& operator+(int i) {
     return this->append(i);
   }
 
   /**
-   * @brief 
-   * 
-   * @param value 
-   * @return Strings& 
+   * @brief
+   *
+   * @param value
+   * @return Strings&
    */
-  inline Strings& operator+(double d){
+  inline Strings& operator+(double d) {
     return this->append(d);
   }
 
@@ -241,6 +240,7 @@ class lang::Strings final : public lang::Memory {
    * @return int
    */
   virtual int indexOfData(const void* destination, int destinationLen, int start) const override;
+
   /* ****************************************************************************
    * Public Method <Override> - lang::Object
    */
@@ -250,26 +250,31 @@ class lang::Strings final : public lang::Memory {
    *
    * @return int 該對象的哈希碼值。
    */
-  virtual int hashcode(void) const override;
+  virtual int hashdata(void) const override;
 
   /* ****************************************************************************
    * Public Method
    */
  public:
-   
-  void clear(void);
- 
   /**
-   * @brief
+   * @brief 清除字串空間
    *
-   * @return uint32_t
+   */
+  void clear(void);
+
+  /**
+   * @brief 取得字串長度
+   *
+   * @return int 字串有效長度
    */
   int size(void) const;
 
   /**
-   * @brief 取的String原始空間大小
+   * @brief 取的字串原始空間大小
    *
-   * @return int
+   * 來自於Memory::size
+   * 
+   * @return int 空間大小
    */
   int bufferSize(void);
 
@@ -383,18 +388,18 @@ class lang::Strings final : public lang::Memory {
   Strings& append(int value);
 
   /**
-   * @brief 
-   * 
-   * @param value 
-   * @return Strings& 
+   * @brief
+   *
+   * @param value
+   * @return Strings&
    */
   Strings& append(double value);
 
   /**
-   * @brief 
-   * 
-   * @param boolena 
-   * @return Strings& 
+   * @brief
+   *
+   * @param boolena
+   * @return Strings&
    */
   Strings& append(bool boolena);
 

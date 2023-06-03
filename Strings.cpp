@@ -112,7 +112,7 @@ int Strings::indexOfData(const void* destination, int destinationLen, int start)
  */
 
 //-------------------------------------------------------------------------------
-int Strings::hashcode(void) const {
+int Strings::hashdata(void) const {
   return lang::HashGen::getHashcode(this->pointer(Class<const char>::cast()));
 }
 

@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
@@ -13,6 +13,7 @@
 
 //-------------------------------------------------------------------------------
 #include "./PrintBuffer.h"
+
 #include "./StringFormat.h"
 
 /* ******************************************************************************
@@ -37,24 +38,24 @@ using lang::StringFormat;
 /* ******************************************************************************
  * Construct Method
  */
- 
+
 //-------------------------------------------------------------------------------
-PrintBuffer::PrintBuffer(void* buffer, uint32_t bufferSize) :RingBuffer(buffer, bufferSize){
-  return;
-}
-      
-//-------------------------------------------------------------------------------
-PrintBuffer::PrintBuffer(const lang::Memory& memory) :RingBuffer(memory){
+PrintBuffer::PrintBuffer(void* buffer, uint32_t bufferSize) : RingBuffer(buffer, bufferSize) {
   return;
 }
 
 //-------------------------------------------------------------------------------
-PrintBuffer::PrintBuffer(uint32_t length) :RingBuffer(length){
+PrintBuffer::PrintBuffer(const lang::Memory& memory) : RingBuffer(memory) {
   return;
 }
 
 //-------------------------------------------------------------------------------
-PrintBuffer::~PrintBuffer(void){
+PrintBuffer::PrintBuffer(uint32_t length) : RingBuffer(length) {
+  return;
+}
+
+//-------------------------------------------------------------------------------
+PrintBuffer::~PrintBuffer(void) {
   return;
 }
 
@@ -71,88 +72,108 @@ PrintBuffer::~PrintBuffer(void){
  */
 
 //-------------------------------------------------------------------------------
-void PrintBuffer::print(bool b, bool newLine){
-  if(b)
+PrintBuffer& PrintBuffer::print(bool b, bool newLine) {
+  if (b)
     this->put("True", 4);
-  
+
   else
     this->put("False", 5);
-  
-  if(newLine)
+
+  if (newLine)
     this->putByte('\n');
+
+  return *this;
 }
 
 //-------------------------------------------------------------------------------
-void PrintBuffer::print(char c, bool newLine){
+PrintBuffer& PrintBuffer::print(char c, bool newLine) {
   this->putByte(c);
-  
-  if(newLine)
+
+  if (newLine)
     this->putByte('\n');
+
+  return *this;
 }
 
 //-------------------------------------------------------------------------------
-void PrintBuffer::print(double d, bool newLine){
+PrintBuffer& PrintBuffer::print(double d, bool newLine) {
   lang::StringFormat::writeBuffer(*this, "%f", d);
-  
-  if(newLine)
+
+  if (newLine)
     this->putByte('\n');
+
+  return *this;
 }
 
 //-------------------------------------------------------------------------------
-void PrintBuffer::print(float f, bool newLine){
+PrintBuffer& PrintBuffer::print(float f, bool newLine) {
   lang::StringFormat::writeBuffer(*this, "%f", static_cast<double>(f));
-  
-  if(newLine)
+
+  if (newLine)
     this->putByte('\n');
+
+  return *this;
 }
 
 //-------------------------------------------------------------------------------
-void PrintBuffer::print(int i, bool newLine, bool unsign){
-  if(unsign)
+PrintBuffer& PrintBuffer::print(int i, bool newLine, bool unsign) {
+  if (unsign)
     lang::StringFormat::writeBuffer(*this, "%d", static_cast<unsigned int>(i));
-  
+
   else
     lang::StringFormat::writeBuffer(*this, "%d", i);
-  
-  if(newLine)
+
+  if (newLine)
     this->putByte('\n');
+
+  return *this;
 }
 
 //-------------------------------------------------------------------------------
-void PrintBuffer::print(const lang::Strings& string, bool newLine){
+PrintBuffer& PrintBuffer::print(const lang::Strings& string, bool newLine) {
   this->put(string, string.size());
-  
-  if(newLine)
+
+  if (newLine)
     this->putByte('\n');
+
+  return *this;
 }
 
 //-------------------------------------------------------------------------------
-void PrintBuffer::print(const char* string, bool newLine){
+PrintBuffer& PrintBuffer::print(const char* string, bool newLine) {
   this->put(string, Strings::getLength(string));
-  
-  if(newLine)
+
+  if (newLine)
     this->putByte('\n');
+
+  return *this;
 }
 
 //-------------------------------------------------------------------------------
-void PrintBuffer::print(ReadBuffer& readBuffer, bool newLine){
+PrintBuffer& PrintBuffer::print(ReadBuffer& readBuffer, bool newLine) {
   this->put(readBuffer);
-  
-  if(newLine)
+
+  if (newLine)
     this->putByte('\n');
+
+  return *this;
 }
 
 //-------------------------------------------------------------------------------
-void PrintBuffer::println(void){
+PrintBuffer& PrintBuffer::println(void) {
   this->putByte('\n');
+
+  return *this;
 }
 
 //-------------------------------------------------------------------------------
-void PrintBuffer::format(const char* format, ...){
+PrintBuffer& PrintBuffer::format(const char* format, ...) {
   va_list args;
   va_start(args, format);
   StringFormat::writeBufferVa(*this, format, args);
   va_end(args);
+
+  return *this;
 }
 
 /* ******************************************************************************
