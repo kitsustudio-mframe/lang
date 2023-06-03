@@ -91,11 +91,13 @@ void Svchost::run(void) {
 
 //-------------------------------------------------------------------------------
 void Svchost::completed(int result, void* attachment) {
+  this->mStream = false;
   this->mThread->notify();
 }
 
 //-------------------------------------------------------------------------------
 void Svchost::failed(void* exc, void* attachment) {
+  this->mStream = false;
   this->mThread->notify();
 }
 
