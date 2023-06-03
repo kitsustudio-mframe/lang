@@ -16,6 +16,7 @@
 
 //-------------------------------------------------------------------------------
 #include "./Memory.h"
+#include "./ReadBuffer.h"
 #include "./WriteBuffer.h"
 
 /* ******************************************************************************
@@ -101,6 +102,7 @@ class lang::Strings final : public lang::Memory {
     return static_cast<const char*>(this->pointer());
   }
 
+
   /**
    * @brief
    *
@@ -108,8 +110,77 @@ class lang::Strings final : public lang::Memory {
    * @return Strings&
    */
   inline Strings& operator+=(const char* str) {
-    this->append(str);
-    return *this;
+    return this->append(str);
+  }
+
+  /**
+   * @brief
+   *
+   * @param WriteBuffer
+   * @return Strings&
+   */
+  inline Strings& operator+=(lang::ReadBuffer& readBuffer) {
+    return this->append(readBuffer);
+  }
+
+  /**
+   * @brief
+   *
+   * @param value
+   * @return Strings&
+   */
+  inline Strings& operator+=(int i) {
+    return this->append(i);
+  }
+
+  /**
+   * @brief 
+   * 
+   * @param value 
+   * @return Strings& 
+   */
+  inline Strings& operator+=(double d){
+    return this->append(d);
+  }
+
+  /**
+   * @brief
+   *
+   * @param str
+   * @return Strings&
+   */
+  inline Strings& operator+(const char* str) {
+    return this->append(str);
+  }
+
+  /**
+   * @brief
+   *
+   * @param readBuffer
+   * @return Strings&
+   */
+  inline Strings& operator+(lang::ReadBuffer& readBuffer) {
+    return this->append(readBuffer);
+  }
+
+  /**
+   * @brief 
+   * 
+   * @param value 
+   * @return Strings& 
+   */
+  inline Strings& operator+(int i) {
+    return this->append(i);
+  }
+
+  /**
+   * @brief 
+   * 
+   * @param value 
+   * @return Strings& 
+   */
+  inline Strings& operator+(double d){
+    return this->append(d);
   }
 
   /**
@@ -185,6 +256,9 @@ class lang::Strings final : public lang::Memory {
    * Public Method
    */
  public:
+   
+  void clear(void);
+ 
   /**
    * @brief
    *
@@ -291,6 +365,38 @@ class lang::Strings final : public lang::Memory {
    * @return int
    */
   Strings& append(const char* str);
+
+  /**
+   * @brief
+   *
+   * @param readBuffer
+   * @return String&
+   */
+  Strings& append(lang::ReadBuffer& readBuffer);
+
+  /**
+   * @brief
+   *
+   * @param value
+   * @return String&
+   */
+  Strings& append(int value);
+
+  /**
+   * @brief 
+   * 
+   * @param value 
+   * @return Strings& 
+   */
+  Strings& append(double value);
+
+  /**
+   * @brief 
+   * 
+   * @param boolena 
+   * @return Strings& 
+   */
+  Strings& append(bool boolena);
 
   /**
    * @brief

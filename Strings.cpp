@@ -121,6 +121,12 @@ int Strings::hashcode(void) const {
  */
 
 //-------------------------------------------------------------------------------
+void Strings::clear(void) {
+  this->pointer(Class<char>::cast())[0] = 0x00;
+  return;
+}
+
+//-------------------------------------------------------------------------------
 int Strings::bufferSize(void) {
   return Memory::length();
 }
@@ -276,10 +282,73 @@ int Strings::replace(char oldChar, char newChar) {
 
 //-------------------------------------------------------------------------------
 Strings& Strings::append(const char* str) {
+  if(this->isReadOnly())
+    return *this;
+
   int len = Strings::getLength(str);
-  int entityLen = this->size();
-  this->copy(str, entityLen, 0, (len + 1));
+  int start = this->size();
+  start += this->copy(str, 0, start, len);
+
+  this->pointer(Class<char>::cast())[start] = 0x00;
   return *this;
+}
+
+//-------------------------------------------------------------------------------
+Strings& Strings::append(lang::ReadBuffer& readBuffer){
+  if(this->isReadOnly())
+    return *this;
+
+  int i = this->size();
+  int max = this->bufferSize() - 1;
+  char* ch = this->pointer(Class<char>::cast());
+  
+  for(; i<max; ++i){
+    char cache;
+    if(readBuffer.getByte(cache) < 0)
+      break;
+    
+    if(cache == 0)
+      cache = '.';
+
+    ch[i] = cache;
+  }
+
+  ch[i] = 0x00;
+
+
+  return *this;
+}
+
+//-------------------------------------------------------------------------------
+Strings& Strings::append(int value){
+  if(this->isReadOnly())
+    return *this;
+
+  int i = this->size();
+  int max = this->bufferSize();
+
+  snprintf(this->pointer(i, Class<char>::cast()), static_cast<size_t>(max), "%d", value);  
+  return *this;
+}
+
+//-------------------------------------------------------------------------------
+Strings& Strings::append(double value){
+  if(this->isReadOnly())
+    return *this;
+
+  int i = this->size();
+  int max = this->bufferSize();
+
+  snprintf(this->pointer(i, Class<char>::cast()), static_cast<size_t>(max), "%f", value);  
+  return *this;
+}
+
+//-------------------------------------------------------------------------------
+Strings& Strings::append(bool boolean){
+  if(boolean)
+    return this->append("TRUE");
+
+  return this->append("FALSE");
 }
 
 //-------------------------------------------------------------------------------
