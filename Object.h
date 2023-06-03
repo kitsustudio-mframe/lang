@@ -297,7 +297,7 @@ class lang::Object : virtual public lang::Interface {
   /**
    *
    */
-  virtual lang::Object& getObject(void) override;
+  lang::Object& getObject(void) override;
 
   /* ****************************************************************************
    * Public Method <Inline>
