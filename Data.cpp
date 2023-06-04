@@ -13,6 +13,7 @@
 
 //-------------------------------------------------------------------------------
 #include "./Data.h"
+
 #include "./HashGen.h"
 
 /* ******************************************************************************
@@ -122,21 +123,6 @@ int Data::copy(const void* source, int shift, int start, int length) {
  */
 
 //-------------------------------------------------------------------------------
-int Data::wipe(void) {
-  return Data::wipe(0x00, 0, 0);
-}
-
-//-------------------------------------------------------------------------------
-int Data::wipe(uint8_t value) {
-  return Data::wipe(value, 0, 0);
-}
-
-//-------------------------------------------------------------------------------
-int Data::wipe(uint8_t value, int length) {
-  return Data::wipe(value, 0, length);
-}
-
-//-------------------------------------------------------------------------------
 int Data::wipe(uint8_t value, int start, int length) {
   if (Data::isReadOnly())
     return 0;
@@ -165,18 +151,6 @@ bool Data::inRange(void* address) const {
 }
 
 //-------------------------------------------------------------------------------
-Data Data::subData(uint32_t beginIndex) const {
-  uint32_t max = static_cast<size_t>(Data::length());
-
-  if (beginIndex >= max)
-    return Data();
-
-  uint32_t length = max - beginIndex;
-
-  return Data(Data::pointer(static_cast<int>(beginIndex)), length);
-}
-
-//-------------------------------------------------------------------------------
 Data Data::subData(uint32_t beginIndex, uint32_t length) const {
   uint32_t max = static_cast<size_t>(Data::length());
 
@@ -188,11 +162,6 @@ Data Data::subData(uint32_t beginIndex, uint32_t length) const {
     length = remainingLength;
 
   return Data(Data::pointer(static_cast<int>(beginIndex)), length);
-}
-
-//-------------------------------------------------------------------------------
-int Data::insertArray(const void* source, int start, int length) {
-  return Data::insertArray(source, 0, start, length);
 }
 
 //-------------------------------------------------------------------------------
@@ -213,16 +182,6 @@ int Data::insertArray(const void* source, int shift, int start, int length) {
   Data::copy(source, 0, start, length);
 
   return 0;
-}
-
-//-------------------------------------------------------------------------------
-int Data::popArray(int start, int length) {
-  return Data::popArray(nullptr, 0, start, length);
-}
-
-//-------------------------------------------------------------------------------
-int Data::popArray(void* source, int start, int length) {
-  return Data::popArray(source, 0, start, length);
 }
 
 //-------------------------------------------------------------------------------
@@ -269,10 +228,9 @@ int Data::indexOfStrings(const char* str) const {
 }
 
 //-------------------------------------------------------------------------------
-int Data::hashdata(void) const{
+int Data::hashdata(void) const {
   return HashGen::getHashcode(this->pointer(), this->length());
 }
-
 
 /* ******************************************************************************
  * Protected Method <Static>

@@ -172,6 +172,70 @@ class lang::Data : public lang::Pointer {
     return (Data::mLength & 0x7FFFFFFF);
   }
 
+  /**
+   * @brief
+   *
+   * @return int
+   */
+  inline int wipe(void) {
+    return Data::wipe(0x00, 0, 0);
+  }
+
+  /**
+   * @brief
+   *
+   * @param value
+   * @return int
+   */
+  inline int wipe(uint8_t value) {
+    return Data::wipe(value, 0, 0);
+  }
+
+  /**
+   * @brief
+   *
+   * @param value
+   * @param length
+   * @return int
+   */
+  inline int wipe(uint8_t value, int length) {
+    return Data::wipe(value, 0, length);
+  }
+
+  /**
+   * @brief
+   *
+   * @param start
+   * @param length
+   * @return int32_t
+   */
+  inline int popArray(int start, int length) {
+    return Data::popArray(nullptr, 0, start, length);
+  }
+
+  /**
+   * @brief
+   *
+   * @param source
+   * @param start
+   * @param length
+   * @return int32_t
+   */
+  inline int popArray(void* source, int start, int length) {
+    return Data::popArray(source, 0, start, length);
+  }
+
+  /**
+   * @brief 插入陣列至Data
+   * 
+   * @param source 來源
+   * @param start 
+   * @param length 
+   * @return int 
+   */
+  inline int insertArray(const void* source, int start, int length) {
+    return Data::insertArray(source, 0, start, length);
+  }
   /* ****************************************************************************
    * Public Method
    */
@@ -193,74 +257,12 @@ class lang::Data : public lang::Pointer {
   /**
    * @brief
    *
-   * @return int
-   */
-  int wipe(void);
-
-  /**
-   * @brief
-   *
-   * @param value
-   * @return int
-   */
-  int wipe(uint8_t value);
-
-  /**
-   * @brief
-   *
-   * @param value
-   * @param length
-   * @return int
-   */
-  int wipe(uint8_t value, int length);
-
-  /**
-   * @brief
-   *
    * @param value
    * @param start
    * @param length
    * @return int
    */
   int wipe(uint8_t value, int start, int length);
-
-  /**
-   * @brief
-   *
-   * @param beginIndex
-   * @return lang::Memory
-   */
-  lang::Data subData(uint32_t beginIndex) const;
-
-  /**
-   * @brief
-   *
-   * @param source
-   * @param shift
-   * @param start
-   * @param length
-   * @return int32_t
-   */
-  int insertArray(const void* source, int start, int length);
-
-  /**
-   * @brief
-   *
-   * @param start
-   * @param length
-   * @return int32_t
-   */
-  int popArray(int start, int length);
-
-  /**
-   * @brief
-   *
-   * @param source
-   * @param start
-   * @param length
-   * @return int32_t
-   */
-  int popArray(void* source, int start, int length);
 
   /**
    * @brief
@@ -292,10 +294,10 @@ class lang::Data : public lang::Pointer {
   virtual lang::Data subData(uint32_t beginIndex, uint32_t length) const;
 
   /**
-   * @brief
+   * @brief 複製陣列至Data
    *
-   * @param source
-   * @param shift
+   * @param source 來源
+   * @param shift 
    * @param start
    * @param length
    * @return int32_t
@@ -335,9 +337,9 @@ class lang::Data : public lang::Pointer {
   virtual int indexOfData(const void* destination, int destinationLen, int start) const;
 
   /**
-   * @brief 
-   * 
-   * @return int 
+   * @brief
+   *
+   * @return int
    */
   virtual int hashdata(void) const;
 
