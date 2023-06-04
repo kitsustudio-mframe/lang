@@ -291,7 +291,7 @@ int Strings::replace(char oldChar, char newChar) {
 
 //-------------------------------------------------------------------------------
 Strings& Strings::append(const char* str) {
-  if(this->isReadOnly())
+  if (this->isReadOnly())
     return *this;
 
   int len = Strings::getLength(str);
@@ -303,20 +303,20 @@ Strings& Strings::append(const char* str) {
 }
 
 //-------------------------------------------------------------------------------
-Strings& Strings::append(lang::ReadBuffer& readBuffer){
-  if(this->isReadOnly())
+Strings& Strings::append(lang::ReadBuffer& readBuffer) {
+  if (this->isReadOnly())
     return *this;
 
   int i = this->size();
   int max = this->bufferSize() - 1;
   char* ch = this->pointer(Class<char>::cast());
-  
-  for(; i<max; ++i){
+
+  for (; i < max; ++i) {
     char cache;
-    if(readBuffer.getByte(cache) < 0)
+    if (readBuffer.getByte(cache) < 0)
       break;
-    
-    if(cache == 0)
+
+    if (cache == 0)
       cache = '.';
 
     ch[i] = cache;
@@ -324,37 +324,36 @@ Strings& Strings::append(lang::ReadBuffer& readBuffer){
 
   ch[i] = 0x00;
 
-
   return *this;
 }
 
 //-------------------------------------------------------------------------------
-Strings& Strings::append(int value){
-  if(this->isReadOnly())
+Strings& Strings::append(int value) {
+  if (this->isReadOnly())
     return *this;
 
   int i = this->size();
   int max = this->bufferSize();
 
-  snprintf(this->pointer(i, Class<char>::cast()), static_cast<size_t>(max), "%d", value);  
+  snprintf(this->pointer(i, Class<char>::cast()), static_cast<size_t>(max), "%d", value);
   return *this;
 }
 
 //-------------------------------------------------------------------------------
-Strings& Strings::append(double value){
-  if(this->isReadOnly())
+Strings& Strings::append(double value) {
+  if (this->isReadOnly())
     return *this;
 
   int i = this->size();
   int max = this->bufferSize();
 
-  snprintf(this->pointer(i, Class<char>::cast()), static_cast<size_t>(max), "%f", value);  
+  snprintf(this->pointer(i, Class<char>::cast()), static_cast<size_t>(max), "%f", value);
   return *this;
 }
 
 //-------------------------------------------------------------------------------
-Strings& Strings::append(bool boolean){
-  if(boolean)
+Strings& Strings::append(bool boolean) {
+  if (boolean)
     return this->append("TRUE");
 
   return this->append("FALSE");
@@ -365,6 +364,16 @@ Strings& Strings::set(const char* str) {
   int len = Strings::getLength(str);
   this->copy(str, 0, 0, (len + 1));
   return *this;
+}
+
+//-------------------------------------------------------------------------------
+int Strings::hashcodeLowerCast(void){
+  return lang::HashGen::getHashcodeLowerCast(this->pointer(Class<const char>::cast()));
+}
+
+//-------------------------------------------------------------------------------
+int Strings::hashcodeUpperCast(void){
+  return lang::HashGen::getHashcodeUpperCast(this->pointer(Class<const char>::cast()));
 }
 
 /* ******************************************************************************

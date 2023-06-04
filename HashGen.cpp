@@ -71,6 +71,35 @@ int HashGen::getHashcode(const char* src) {
   return result;
 }
 
+//-------------------------------------------------------------------------------
+int HashGen::getHashcodeUpperCast(const char* src){
+  int result = 0;
+  for (int i = 0; src[i] != 0; ++i){
+    
+    if((src[i] >= 'a') && (src[i] >= 'z')){
+      result = 31 * result + (reinterpret_cast<const unsigned char*>(src)[i] - ('a' - 'A'));
+    }else{
+      result = 31 * result + reinterpret_cast<const unsigned char*>(src)[i];
+    }
+  }
+    
+  return result;
+}
+
+//-------------------------------------------------------------------------------
+int HashGen::getHashcodeLowerCast(const char* src){
+  int result = 0;
+  for (int i = 0; src[i] != 0; ++i){
+    
+    if((src[i] >= 'A') && (src[i] >= 'Z')){
+      result = 31 * result + (reinterpret_cast<const unsigned char*>(src)[i] + ('a' - 'A'));
+    }else{
+      result = 31 * result + reinterpret_cast<const unsigned char*>(src)[i];
+    }
+  }
+    
+  return result;
+}
 /* ******************************************************************************
  * Public Method <Override>
  */

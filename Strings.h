@@ -422,6 +422,20 @@ class lang::Strings final : public lang::Memory {
    */
   Strings& set(const char* str);
 
+  /**
+   * @brief 以全小寫的形式取得哈希碼
+   * 
+   * @return int 哈希碼
+   */
+  int hashcodeLowerCast(void);
+
+  /**
+   * @brief 以全大寫的形式取得哈希碼
+   * 
+   * @return int 哈希碼
+   */
+  int hashcodeUpperCast(void);
+
   /* ****************************************************************************
    * Public Method <Inline>
    */
