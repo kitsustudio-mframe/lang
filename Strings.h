@@ -250,6 +250,17 @@ class lang::Strings final : public lang::Memory {
    *
    * @return int 該對象的哈希碼值。
    */
+  virtual int hashcode(void) const override;
+
+  /* ****************************************************************************
+   * Public Method <Override> - lang::Data
+   */
+ public:
+  /**
+   * @brief 返回對象的哈希碼值。支持這種方法是為了散列表，如HashMap提供的那樣。
+   *
+   * @return int 該對象的哈希碼值。
+   */
   virtual int hashdata(void) const override;
 
   /* ****************************************************************************

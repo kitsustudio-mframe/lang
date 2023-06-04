@@ -112,6 +112,15 @@ int Strings::indexOfData(const void* destination, int destinationLen, int start)
  */
 
 //-------------------------------------------------------------------------------
+int Strings::hashcode(void) const {
+  return lang::HashGen::getHashcode(this->pointer(Class<const char>::cast()));
+}
+
+/* ******************************************************************************
+ * Public Method <Override> - lang::Object
+ */
+
+//-------------------------------------------------------------------------------
 int Strings::hashdata(void) const {
   return lang::HashGen::getHashcode(this->pointer(Class<const char>::cast()));
 }
