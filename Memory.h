@@ -134,28 +134,11 @@ class lang::Memory : public lang::Data {
   /**
    * @brief
    *
-   * @param beginIndex
-   * @return lang::Memory
-   */
-  virtual lang::Memory subMemory(uint32_t beginIndex) const;
-
-  /**
-   * @brief
-   *
-   * @param beginIndex
-   * @param length
-   * @return lang::Memory
-   */
-  virtual lang::Memory subMemory(uint32_t beginIndex, uint32_t length) const;
-
-  /**
-   * @brief
-   *
    * @param size
    * @return true
    * @return false
    */
-  virtual bool resize(int size);
+  bool resize(int size);
 
   /* ****************************************************************************
    * Protected Method <Static>

@@ -139,43 +139,6 @@ Memory Memory::nullMemory(void) {
 /**
  * @brief
  *
- * @param beginIndex
- * @return Memory
- */
-Memory Memory::subMemory(uint32_t beginIndex) const {
-  uint32_t max = static_cast<size_t>(Memory::length());
-
-  if (beginIndex >= max)
-    return Memory::nullMemory();
-
-  uint32_t length = max - beginIndex;
-
-  return Memory(Memory::pointer(static_cast<int>(beginIndex)), length);
-}
-
-/**
- * @brief
- *
- * @param beginIndex
- * @param length
- * @return Memory
- */
-Memory Memory::subMemory(uint32_t beginIndex, uint32_t length) const {
-  uint32_t max = static_cast<size_t>(Memory::length());
-
-  if (beginIndex >= max)
-    return Memory::nullMemory();
-
-  uint32_t remainingLength = (max - beginIndex);
-  if (length >= remainingLength)
-    length = remainingLength;
-
-  return Memory(Memory::pointer(static_cast<int>(beginIndex)), length);
-}
-
-/**
- * @brief
- *
  * @param size
  * @return true
  * @return false
@@ -191,6 +154,7 @@ bool Memory::resize(int size) {
   if (newMemory == nullptr)
     return false;
 
+  this->lock();
   Pointers::move(newMemory, Memory::pointer(), Maths::min(size, Memory::length()));
   char* oldPointer = static_cast<char*>(Memory::pointer());
   Memory* next = this;
@@ -205,6 +169,8 @@ bool Memory::resize(int size) {
   }
 
   delete[] oldPointer;
+  
+  this->unlock();
   return true;
 }
 
