@@ -23,6 +23,7 @@
 #pragma clang diagnostic ignored "-Wnested-anon-types"
 #pragma clang diagnostic ignored "-Wcovered-switch-default"
 #pragma clang diagnostic ignored "-Wswitch-enum"
+#pragma clang diagnostic ignored "-Wmissing-prototypes"
 
 #define abstract = 0
 
