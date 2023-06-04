@@ -4,8 +4,8 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_0423FA2F_4DA3_492A_9256_F5C571FD488F
-#define LANG_0423FA2F_4DA3_492A_9256_F5C571FD488F
+#ifndef MCUF_E8D00D0D_C144_4467_ACFE_AFE1E76370B5
+#define MCUF_E8D00D0D_C144_4467_ACFE_AFE1E76370B5
 
 /* ****************************************************************************************
  * Include folder
@@ -16,6 +16,8 @@
  */
 #include "Allocator.h"
 #include "Array.h"
+#include "ArrayMap.h"
+#include "ArrayMapPrototype.h"
 #include "ArrayPrototype.h"
 #include "ArrayQueue.h"
 #include "ArrayQueuePrototype.h"
@@ -48,7 +50,7 @@
 #include "Integers.h"
 #include "Interface.h"
 #include "Kernel.h"
-//#include "Map.h"
+#include "Map.h"
 #include "Maths.h"
 #include "Memory.h"
 #include "Number.h"
@@ -86,4 +88,4 @@
  * End of file
  */
 
-#endif /* LANG_0423FA2F_4DA3_492A_9256_F5C571FD488F */
+#endif /* MCUF_E8D00D0D_C144_4467_ACFE_AFE1E76370B5 */
