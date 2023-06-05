@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- *
+ * 
  * SPDX-License-Identifier: MIT
  */
-#ifndef MCUF_E8D00D0D_C144_4467_ACFE_AFE1E76370B5
-#define MCUF_E8D00D0D_C144_4467_ACFE_AFE1E76370B5
+#ifndef MCUF_3149B83B_64A4_41BB_8563_F633EB5C7F1A
+#define MCUF_3149B83B_64A4_41BB_8563_F633EB5C7F1A
 
 /* ****************************************************************************************
  * Include folder
@@ -23,6 +23,7 @@
 #include "ArrayQueuePrototype.h"
 #include "BiConsumer.h"
 #include "BiConsumerEvent.h"
+#include "BiConsumerMethod.h"
 #include "Boolean.h"
 #include "Buffer.h"
 #include "Byte.h"
@@ -35,6 +36,7 @@
 #include "CompletionHandler.h"
 #include "Consumer.h"
 #include "ConsumerEvent.h"
+#include "ConsumerMethod.h"
 #include "Data.h"
 #include "EmptyReadBuffer.h"
 #include "EmptyWriteBuffer.h"
@@ -43,6 +45,7 @@
 #include "Executor.h"
 #include "Function.h"
 #include "FunctionEvent.h"
+#include "FunctionMethod.h"
 #include "Future.h"
 #include "HashGen.h"
 #include "InputStream.h"
@@ -69,6 +72,7 @@
 #include "Runnable.h"
 #include "RunnableEntity.h"
 #include "RunnableEvent.h"
+#include "RunnableMethod.h"
 #include "Short.h"
 #include "Shorts.h"
 #include "Stacker.h"
@@ -77,6 +81,7 @@
 #include "Strings.h"
 #include "Supplier.h"
 #include "SupplierEvent.h"
+#include "SupplierMethod.h"
 #include "Svchost.h"
 #include "System.h"
 #include "Thread.h"
@@ -89,4 +94,4 @@
  * End of file
  */
 
-#endif /* MCUF_E8D00D0D_C144_4467_ACFE_AFE1E76370B5 */
+#endif /* MCUF_3149B83B_64A4_41BB_8563_F633EB5C7F1A */

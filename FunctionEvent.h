@@ -31,7 +31,6 @@ namespace lang {
 template <typename T, typename R>
 class lang::FunctionEvent : public lang::Object,
                             public lang::Function<T, R> {
-  typedef R (*Method)(T);
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -44,7 +43,8 @@ class lang::FunctionEvent : public lang::Object,
    * Variable <Private>
    */
  private:
-  Method mMethod;
+  R(*mMethod)
+  (T);
 
   /* ****************************************************************************
    * Abstract method <Public>
@@ -63,7 +63,7 @@ class lang::FunctionEvent : public lang::Object,
    *
    * @param event
    */
-  FunctionEvent(Method method) {
+  FunctionEvent(R (*method)(T)) {
     this->mMethod = method;
     return;
   }

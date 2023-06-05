@@ -20,14 +20,14 @@
  * Namespace
  */
 namespace lang {
-  template <typename T>
+  template <class R>
   struct Supplier;
 }
 
 /* ******************************************************************************
  * Class/struct/Struct
  */
-template <typename T>
+template <class R>
 struct lang::Supplier : public virtual lang::Interface {
   /* ****************************************************************************
    * Method
@@ -36,9 +36,9 @@ struct lang::Supplier : public virtual lang::Interface {
   /**
    * @brief
    *
-   * @return T
+   * @return R
    */
-  virtual T get(void) abstract;
+  virtual R get(void) abstract;
 };
 
 /* *******************************************************************************
