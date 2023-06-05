@@ -90,13 +90,12 @@ ArrayMapPrototype::~ArrayMapPrototype(void) {
  */
 
 //-----------------------------------------------------------------------------------------
-bool ArrayMapPrototype::prototypeContainsKey(Interface& key) {
-  int hash = key.getObject().hashcode();
+bool ArrayMapPrototype::containsKeyHash(int hashcode) {
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
 
   for (int i = 0; i < this->mSize; ++i) {
     if (p[i].key) {
-      if (p[i].key == hash)
+      if (p[i].key == hashcode)
         return true;
     }
   }
@@ -105,8 +104,11 @@ bool ArrayMapPrototype::prototypeContainsKey(Interface& key) {
 }
 
 //-----------------------------------------------------------------------------------------
-bool ArrayMapPrototype::prototypeContainsValue(void* value) {
-  int len = this->prototypeSize();
+bool ArrayMapPrototype::containsValue(void* value) {
+  if(value == nullptr)
+    return false;
+
+  int len = this->size();
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
 
   for (int i = 0; i < len; ++i) {
@@ -120,13 +122,12 @@ bool ArrayMapPrototype::prototypeContainsValue(void* value) {
 }
 
 //-----------------------------------------------------------------------------------------
-void* ArrayMapPrototype::prototypeGet(Interface& key) {
-  int hash = key.getObject().hashcode();
-  int len = this->prototypeSize();
+void* ArrayMapPrototype::getHash(int hashcode) {
+  int len = this->size();
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
 
   for (int i = 0; i < len; ++i) {
-    if (p[i].key == hash) {
+    if (p[i].key == hashcode) {
       return p[i].value;
     }
   }
@@ -135,12 +136,11 @@ void* ArrayMapPrototype::prototypeGet(Interface& key) {
 }
 
 //-----------------------------------------------------------------------------------------
-void* ArrayMapPrototype::prototypePut(Interface& key, void* value) {
-  int hash = key.getObject().hashcode();
+void* ArrayMapPrototype::putHash(int hashcode, void* value) {
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
 
   for (int i = 0; i < this->mSize; ++i) {
-    if (p[i].key == hash) {
+    if (p[i].key == hashcode) {
       void* result = p[i].value;
       p[i].value = value;
 
@@ -148,13 +148,13 @@ void* ArrayMapPrototype::prototypePut(Interface& key, void* value) {
     }
   }
   
-  if(this->mSize >= this->prototypeLength()){// over length
+  if(this->mSize >= this->length()){// over length
     bool status = this->mMemory.resize(8 + static_cast<int>(this->mMemory.length() * 1.5));
     if(!status)
       return value;
   }
 
-  p[this->mSize].key = hash;
+  p[this->mSize].key = hashcode;
   p[this->mSize].value = value;
   
   ++this->mSize;
@@ -162,12 +162,11 @@ void* ArrayMapPrototype::prototypePut(Interface& key, void* value) {
 }
 
 //-----------------------------------------------------------------------------------------
-void* ArrayMapPrototype::prototypeRemove(Interface& key) {
-  int hash = key.getObject().hashcode();
+void* ArrayMapPrototype::removeHash(int hashcode) {
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
 
   for (int i = 0; i < this->mSize; ++i) {
-    if (p[i].key == hash) {
+    if (p[i].key == hashcode) {
 
       void* result = p[i].value;
 
@@ -182,12 +181,11 @@ void* ArrayMapPrototype::prototypeRemove(Interface& key) {
 }
 
 //-----------------------------------------------------------------------------------------
-void* ArrayMapPrototype::prototypeReplace(Interface& key, void* value) {
-  int hash = key.getObject().hashcode();
+void* ArrayMapPrototype::replaceHash(int hashcode, void* value) {
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
 
   for (int i = 0; i < this->mSize; ++i) {
-    if (p[i].key == hash) {
+    if (p[i].key == hashcode) {
 
       void* result = p[i].value;
       p[i].value = value;
@@ -200,13 +198,13 @@ void* ArrayMapPrototype::prototypeReplace(Interface& key, void* value) {
 }
 
 //-----------------------------------------------------------------------------------------
-void ArrayMapPrototype::prototypeClear(void) {
+void ArrayMapPrototype::clear(void) {
   this->mSize = 0;
   return;
 }
 
 //-----------------------------------------------------------------------------------------
-bool ArrayMapPrototype::prototypeIsEmpty(void) const {
+bool ArrayMapPrototype::isEmpty(void) const {
   if(this->mSize)
     return false;
 
@@ -214,12 +212,12 @@ bool ArrayMapPrototype::prototypeIsEmpty(void) const {
 }
 
 //-----------------------------------------------------------------------------------------
-int ArrayMapPrototype::prototypeSize(void) const {
+int ArrayMapPrototype::size(void) const {
   return this->mSize;
 }
 
 //-----------------------------------------------------------------------------------------
-int ArrayMapPrototype::prototypeLength(void) const {
+int ArrayMapPrototype::length(void) const {
   return (this->mMemory.length() / 8);
 }
 

@@ -92,48 +92,43 @@ class lang::ArrayMap : public lang::ArrayMapPrototype, public lang::Map<V> {
    */
  public:
   virtual bool containsKey(Interface& key) override {
-    return this->prototypeContainsKey(key);
+    return ArrayMapPrototype::containsKeyHash(key.getObject().hashcode());
   }
 
   virtual bool containsValue(void* value) override {
-    return this->prototypeContainsValue(value);
+    return ArrayMapPrototype::containsValue(value);
   }
 
   virtual V* get(Interface& key) override {
-    return static_cast<V*>(this->prototypeGet(key));
+    return static_cast<V*>(ArrayMapPrototype::getHash(key.getObject().hashcode()));
   }
 
   virtual V* put(Interface& key, V* value) override {
-    return static_cast<V*>(this->prototypePut(key, value));
+    return static_cast<V*>(ArrayMapPrototype::putHash(key.getObject().hashcode(), value));
   }
 
   virtual V* remove(Interface& key) override {
-    return static_cast<V*>(this->prototypeRemove(key));
+    return static_cast<V*>(ArrayMapPrototype::removeHash(key.getObject().hashcode()));
   }
 
   virtual V* replace(Interface& key, V* value) override {
-    return static_cast<V*>(this->prototypeReplace(key, value));
+    return static_cast<V*>(ArrayMapPrototype::replaceHash(key.getObject().hashcode(), value));
   }
 
-  virtual void clear(void) override {
-    this->prototypeClear();
+  virtual void clear(void) override{
+    ArrayMapPrototype::clear();
   }
 
-  virtual bool isEmpty(void) const override {
-    return this->prototypeIsEmpty();
+  virtual bool isEmpty(void) const override{
+    return ArrayMapPrototype::isEmpty();
   }
 
-  virtual int size(void) const override {
-    return this->prototypeSize();
+  virtual int size(void) const override{
+    return ArrayMapPrototype::size();
   }
-
   /* **************************************************************************************
    * Public Method
    */
- public:
-  int length(void) {
-    return this->prototypeLength();
-  }
 
   /* **************************************************************************************
    * Protected Method <Static>
