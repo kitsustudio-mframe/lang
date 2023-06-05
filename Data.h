@@ -147,16 +147,6 @@ class lang::Data : public lang::Pointer {
   /**
    * @brief
    *
-   * @return true
-   * @return false
-   */
-  inline bool isEmpty(void) const {
-    return (Data::isNull()) || (Data::length() == 0);
-  }
-
-  /**
-   * @brief
-   *
    * @return int
    */
   inline int length(void) const {

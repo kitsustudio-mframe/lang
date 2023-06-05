@@ -104,11 +104,11 @@ class lang::Strings final : public lang::Memory {
 
   /**
    * @brief 插入字元至尾端
-   * 
+   *
    * @param ch 字元
-   * @return Strings& 
+   * @return Strings&
    */
-  inline Strings& operator+=(const char ch){
+  inline Strings& operator+=(const char ch) {
     return this->append(ch);
   }
 
@@ -215,22 +215,12 @@ class lang::Strings final : public lang::Memory {
    * Public Method <Override> - lang::Object
    */
  public:
-  /**
-   * @brief 返回對象的哈希碼值。支持這種方法是為了散列表，如HashMap提供的那樣。
-   *
-   * @return int 該對象的哈希碼值。
-   */
   virtual int hashcode(void) const override;
 
   /* ****************************************************************************
    * Public Method <Override> - lang::Data
    */
  public:
-  /**
-   * @brief 返回對象的哈希碼值。支持這種方法是為了散列表，如HashMap提供的那樣。
-   *
-   * @return int 該對象的哈希碼值。
-   */
   virtual int hashdata(void) const override;
 
   /* ****************************************************************************
@@ -346,9 +336,9 @@ class lang::Strings final : public lang::Memory {
 
   /**
    * @brief 串接字元
-   * 
+   *
    * @param c 字元
-   * @return Strings& 
+   * @return Strings&
    */
   Strings& append(const char c);
 
@@ -417,6 +407,18 @@ class lang::Strings final : public lang::Memory {
   /* ****************************************************************************
    * Public Method <Inline>
    */
+ public:
+  /**
+   * @brief 如果字串內為空
+   *
+   * 若pointer[0] == 0x00 則返還true
+   *
+   * @return true 空字串
+   * @return false 非空字串
+   */
+  inline bool isEmpty(void) const {
+    return (this->size() == 0);
+  }
 
   /* ****************************************************************************
    * Protected Method <Static>
