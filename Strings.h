@@ -103,9 +103,19 @@ class lang::Strings final : public lang::Memory {
   }
 
   /**
-   * @brief
+   * @brief 插入字元至尾端
+   * 
+   * @param ch 字元
+   * @return Strings& 
+   */
+  inline Strings& operator+=(const char ch){
+    return this->append(ch);
+  }
+
+  /**
+   * @brief 插入字串至尾端
    *
-   * @param str
+   * @param str 字串
    * @return Strings&
    */
   inline Strings& operator+=(const char* str) {
@@ -139,46 +149,6 @@ class lang::Strings final : public lang::Memory {
    * @return Strings&
    */
   inline Strings& operator+=(double d) {
-    return this->append(d);
-  }
-
-  /**
-   * @brief
-   *
-   * @param str
-   * @return Strings&
-   */
-  inline Strings& operator+(const char* str) {
-    return this->append(str);
-  }
-
-  /**
-   * @brief
-   *
-   * @param readBuffer
-   * @return Strings&
-   */
-  inline Strings& operator+(lang::ReadBuffer& readBuffer) {
-    return this->append(readBuffer);
-  }
-
-  /**
-   * @brief
-   *
-   * @param value
-   * @return Strings&
-   */
-  inline Strings& operator+(int i) {
-    return this->append(i);
-  }
-
-  /**
-   * @brief
-   *
-   * @param value
-   * @return Strings&
-   */
-  inline Strings& operator+(double d) {
     return this->append(d);
   }
 
@@ -284,7 +254,7 @@ class lang::Strings final : public lang::Memory {
    * @brief 取的字串原始空間大小
    *
    * 來自於Memory::size
-   * 
+   *
    * @return int 空間大小
    */
   int bufferSize(void);
@@ -375,6 +345,14 @@ class lang::Strings final : public lang::Memory {
   int replace(char oldChar, char newChar);
 
   /**
+   * @brief 串接字元
+   * 
+   * @param c 字元
+   * @return Strings& 
+   */
+  Strings& append(const char c);
+
+  /**
    * @brief
    *
    * @param str
@@ -424,14 +402,14 @@ class lang::Strings final : public lang::Memory {
 
   /**
    * @brief 以全小寫的形式取得哈希碼
-   * 
+   *
    * @return int 哈希碼
    */
   int hashcodeLowerCast(void);
 
   /**
    * @brief 以全大寫的形式取得哈希碼
-   * 
+   *
    * @return int 哈希碼
    */
   int hashcodeUpperCast(void);

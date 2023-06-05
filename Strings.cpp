@@ -290,6 +290,20 @@ int Strings::replace(char oldChar, char newChar) {
 }
 
 //-------------------------------------------------------------------------------
+Strings& Strings::append(const char ch) {
+  if (this->isReadOnly())
+    return *this;
+
+  int start = this->size();
+  if((start+1) >= this->length())
+    return *this;
+
+  this->pointer(Class<char>::cast())[start] = ch;
+  this->pointer(Class<char>::cast())[start+1] = '\0';
+  return *this;
+}
+
+//-------------------------------------------------------------------------------
 Strings& Strings::append(const char* str) {
   if (this->isReadOnly())
     return *this;
