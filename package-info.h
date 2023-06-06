@@ -4,8 +4,8 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-#ifndef MCUF_3149B83B_64A4_41BB_8563_F633EB5C7F1A
-#define MCUF_3149B83B_64A4_41BB_8563_F633EB5C7F1A
+#ifndef LANG_8D681626_8336_4307_ABAC_DC82B0CA9451
+#define LANG_8D681626_8336_4307_ABAC_DC82B0CA9451
 
 /* ****************************************************************************************
  * Include folder
@@ -53,6 +53,8 @@
 #include "Integer.h"
 #include "Integers.h"
 #include "Interface.h"
+#include "Iterable.h"
+#include "Iterator.h"
 #include "Kernel.h"
 #include "Map.h"
 #include "Maths.h"
@@ -94,4 +96,4 @@
  * End of file
  */
 
-#endif /* MCUF_3149B83B_64A4_41BB_8563_F633EB5C7F1A */
+#endif /* LANG_8D681626_8336_4307_ABAC_DC82B0CA9451 */
