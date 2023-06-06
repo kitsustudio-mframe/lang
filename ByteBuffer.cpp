@@ -206,7 +206,7 @@ void ByteBuffer::flip(void) {
 
 //-------------------------------------------------------------------------------
 bool ByteBuffer::put(char const* string) {
-  return ByteBuffer::put(string, static_cast<int>(strlen(string)));
+  return ByteBuffer::put(string, static_cast<int>(Strings::getLength(string)));
 }
 
 //-------------------------------------------------------------------------------

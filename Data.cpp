@@ -15,6 +15,7 @@
 #include "./Data.h"
 
 #include "./HashGen.h"
+#include "./Pointers.h"
 
 /* ******************************************************************************
  * Macro
@@ -85,7 +86,7 @@ void Data::wipe(void* pointer, uint8_t value, int length) {
   if (length <= 0)
     return;
 
-  memset(pointer, value, static_cast<uint32_t>(length));
+  Pointers::wipe(pointer, value, length);
   return;
 }
 
@@ -134,7 +135,7 @@ int Data::wipe(uint8_t value, int start, int length) {
   if ((start + length) > max)
     length = max - start;
 
-  memset(Data::pointer(start), value, static_cast<size_t>(length));
+  Pointers::wipe(Data::pointer(start), value, length);
   return length;
 }
 

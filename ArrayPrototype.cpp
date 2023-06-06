@@ -11,6 +11,7 @@
 
 //-------------------------------------------------------------------------------
 #include "./ArrayPrototype.h"
+#include "./Pointers.h"
 
 /* ******************************************************************************
  * Using
@@ -77,7 +78,7 @@ int ArrayPrototype::indexOf(const void* element) const{
   for(int i=0; i<this->mElementLength; i++){
     const void* dst = &static_cast<uint8_t*>(this->pointer())[i * this->mElementSize];
     
-    if(memcmp(dst, element, static_cast<size_t>(this->mElementSize)) != 0)
+    if(Pointers::compare(dst, element, this->mElementSize) != 0)
       continue;
 
     result = static_cast<int>(i);

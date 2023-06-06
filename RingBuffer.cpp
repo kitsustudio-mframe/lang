@@ -11,6 +11,7 @@
 
 //-------------------------------------------------------------------------------
 #include "./RingBuffer.h"
+#include "./Pointers.h"
 
 /* ******************************************************************************
  * Macro
@@ -168,13 +169,13 @@ int RingBuffer::put(const void *data, int num){
 
   /* Write segment 1 */
   ptr += INDH();
-  memcpy(ptr, data, static_cast<uint32_t>(cnt1));
+  Pointers::copy(ptr, data, static_cast<uint32_t>(cnt1));
   RingBuffer::mHead += static_cast<uint32_t>(cnt1);
 
   /* Write segment 2 */
   ptr = static_cast<uint8_t*>(RingBuffer::pointer()) + INDH();
   data = static_cast<const uint8_t*>(data) + cnt1;
-  memcpy(ptr, data, static_cast<uint32_t>(cnt2));
+  Pointers::copy(ptr, data, static_cast<uint32_t>(cnt2));
   RingBuffer::mHead += static_cast<uint32_t>(cnt2);
 
   return (cnt1 + cnt2);
@@ -283,13 +284,13 @@ int RingBuffer::poll(void* data, int num){
 
   /* Write segment 1 */
   ptr += INDT();
-  memcpy(data, ptr, static_cast<uint32_t>(cnt1));
+  Pointers::copy(data, ptr, static_cast<uint32_t>(cnt1));
   RingBuffer::mTail += static_cast<uint32_t>(cnt1);
 
   /* Write segment 2 */
   ptr = static_cast<uint8_t*>(RingBuffer::pointer()) + INDT();
   data = static_cast<uint8_t*>(data) + cnt1;
-  memcpy(data, ptr, static_cast<uint32_t>(cnt2));
+  Pointers::copy(data, ptr, static_cast<uint32_t>(cnt2));
   RingBuffer::mTail += static_cast<uint32_t>(cnt2);
 
   return cnt1 + cnt2;
