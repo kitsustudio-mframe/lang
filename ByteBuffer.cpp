@@ -9,7 +9,6 @@
  * Include
  */
 
-#include <stdio.h>
 //-------------------------------------------------------------------------------
 #include "./ByteBuffer.h"
 #include "./StringFormat.h"
