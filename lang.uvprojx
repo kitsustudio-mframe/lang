@@ -16,7 +16,7 @@
         <TargetCommonOption>
           <Device>ARMCM0</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.9.0</PackID>
+          <PackID>ARM.CMSIS.5.8.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M0") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -186,7 +186,6 @@
             <RvdsVP>0</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
-            <nBranchProt>0</nBranchProt>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -445,6 +444,11 @@
               <FilePath>.\BiConsumerEvent.h</FilePath>
             </File>
             <File>
+              <FileName>BiConsumerMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\BiConsumerMethod.h</FilePath>
+            </File>
+            <File>
               <FileName>Boolean.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Boolean.cpp</FilePath>
@@ -530,6 +534,11 @@
               <FilePath>.\ConsumerEvent.h</FilePath>
             </File>
             <File>
+              <FileName>ConsumerMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ConsumerMethod.h</FilePath>
+            </File>
+            <File>
               <FileName>Data.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Data.cpp</FilePath>
@@ -575,6 +584,11 @@
               <FilePath>.\ErrorCode.h</FilePath>
             </File>
             <File>
+              <FileName>Executor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Executor.h</FilePath>
+            </File>
+            <File>
               <FileName>Function.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Function.h</FilePath>
@@ -583,6 +597,11 @@
               <FileName>FunctionEvent.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\FunctionEvent.h</FilePath>
+            </File>
+            <File>
+              <FileName>FunctionMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\FunctionMethod.h</FilePath>
             </File>
             <File>
               <FileName>Future.cpp</FileName>
@@ -648,6 +667,16 @@
               <FileName>Interface.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>Iterable.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Iterable.h</FilePath>
+            </File>
+            <File>
+              <FileName>Iterator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Iterator.h</FilePath>
             </File>
             <File>
               <FileName>Kernel.h</FileName>
@@ -820,6 +849,11 @@
               <FilePath>.\RunnableEvent.h</FilePath>
             </File>
             <File>
+              <FileName>RunnableMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RunnableMethod.h</FilePath>
+            </File>
+            <File>
               <FileName>Short.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Short.cpp</FilePath>
@@ -890,6 +924,11 @@
               <FilePath>.\SupplierEvent.h</FilePath>
             </File>
             <File>
+              <FileName>SupplierMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SupplierMethod.h</FilePath>
+            </File>
+            <File>
               <FileName>Svchost.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Svchost.cpp</FilePath>
@@ -953,7 +992,7 @@
         <TargetCommonOption>
           <Device>ARMCM3</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.9.0</PackID>
+          <PackID>ARM.CMSIS.5.8.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M3") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -1123,7 +1162,6 @@
             <RvdsVP>0</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
-            <nBranchProt>0</nBranchProt>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -1382,6 +1420,11 @@
               <FilePath>.\BiConsumerEvent.h</FilePath>
             </File>
             <File>
+              <FileName>BiConsumerMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\BiConsumerMethod.h</FilePath>
+            </File>
+            <File>
               <FileName>Boolean.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Boolean.cpp</FilePath>
@@ -1467,6 +1510,11 @@
               <FilePath>.\ConsumerEvent.h</FilePath>
             </File>
             <File>
+              <FileName>ConsumerMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ConsumerMethod.h</FilePath>
+            </File>
+            <File>
               <FileName>Data.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Data.cpp</FilePath>
@@ -1512,6 +1560,11 @@
               <FilePath>.\ErrorCode.h</FilePath>
             </File>
             <File>
+              <FileName>Executor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Executor.h</FilePath>
+            </File>
+            <File>
               <FileName>Function.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Function.h</FilePath>
@@ -1520,6 +1573,11 @@
               <FileName>FunctionEvent.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\FunctionEvent.h</FilePath>
+            </File>
+            <File>
+              <FileName>FunctionMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\FunctionMethod.h</FilePath>
             </File>
             <File>
               <FileName>Future.cpp</FileName>
@@ -1585,6 +1643,16 @@
               <FileName>Interface.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>Iterable.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Iterable.h</FilePath>
+            </File>
+            <File>
+              <FileName>Iterator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Iterator.h</FilePath>
             </File>
             <File>
               <FileName>Kernel.h</FileName>
@@ -1757,6 +1825,11 @@
               <FilePath>.\RunnableEvent.h</FilePath>
             </File>
             <File>
+              <FileName>RunnableMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RunnableMethod.h</FilePath>
+            </File>
+            <File>
               <FileName>Short.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Short.cpp</FilePath>
@@ -1827,6 +1900,11 @@
               <FilePath>.\SupplierEvent.h</FilePath>
             </File>
             <File>
+              <FileName>SupplierMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SupplierMethod.h</FilePath>
+            </File>
+            <File>
               <FileName>Svchost.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Svchost.cpp</FilePath>
@@ -1890,7 +1968,7 @@
         <TargetCommonOption>
           <Device>ARMCM4_FP</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.9.0</PackID>
+          <PackID>ARM.CMSIS.5.8.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -2060,7 +2138,6 @@
             <RvdsVP>2</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
-            <nBranchProt>0</nBranchProt>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -2319,6 +2396,11 @@
               <FilePath>.\BiConsumerEvent.h</FilePath>
             </File>
             <File>
+              <FileName>BiConsumerMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\BiConsumerMethod.h</FilePath>
+            </File>
+            <File>
               <FileName>Boolean.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Boolean.cpp</FilePath>
@@ -2404,6 +2486,11 @@
               <FilePath>.\ConsumerEvent.h</FilePath>
             </File>
             <File>
+              <FileName>ConsumerMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ConsumerMethod.h</FilePath>
+            </File>
+            <File>
               <FileName>Data.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Data.cpp</FilePath>
@@ -2449,6 +2536,11 @@
               <FilePath>.\ErrorCode.h</FilePath>
             </File>
             <File>
+              <FileName>Executor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Executor.h</FilePath>
+            </File>
+            <File>
               <FileName>Function.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Function.h</FilePath>
@@ -2457,6 +2549,11 @@
               <FileName>FunctionEvent.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\FunctionEvent.h</FilePath>
+            </File>
+            <File>
+              <FileName>FunctionMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\FunctionMethod.h</FilePath>
             </File>
             <File>
               <FileName>Future.cpp</FileName>
@@ -2522,6 +2619,16 @@
               <FileName>Interface.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>Iterable.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Iterable.h</FilePath>
+            </File>
+            <File>
+              <FileName>Iterator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Iterator.h</FilePath>
             </File>
             <File>
               <FileName>Kernel.h</FileName>
@@ -2694,6 +2801,11 @@
               <FilePath>.\RunnableEvent.h</FilePath>
             </File>
             <File>
+              <FileName>RunnableMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RunnableMethod.h</FilePath>
+            </File>
+            <File>
               <FileName>Short.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Short.cpp</FilePath>
@@ -2762,6 +2874,11 @@
               <FileName>SupplierEvent.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\SupplierEvent.h</FilePath>
+            </File>
+            <File>
+              <FileName>SupplierMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SupplierMethod.h</FilePath>
             </File>
             <File>
               <FileName>Svchost.cpp</FileName>

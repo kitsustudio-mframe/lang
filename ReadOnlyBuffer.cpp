@@ -14,6 +14,7 @@
 //-------------------------------------------------------------------------------
 #include "./ReadOnlyBuffer.h"
 #include "./WriteBuffer.h"
+#include "./Class.h"
 //-------------------------------------------------------------------------------
 
 /* ******************************************************************************
@@ -65,6 +66,19 @@ ReadOnlyBuffer::~ReadOnlyBuffer(void) {
  */
 
 /* ******************************************************************************
+ *  Public Method <Override> - lang::Iterable<char>
+ */
+
+//-------------------------------------------------------------------------------
+bool ReadOnlyBuffer::peek(int index, char& result){
+  if(index >= this->avariable())
+    return false;
+
+  result = *(this->pointer((this->mPosition + index), Class<char>::cast()));
+  return true;
+}
+
+/* ******************************************************************************
  * Public Method <Override> - lang::ReadBuffer
  */
 
@@ -73,7 +87,7 @@ int ReadOnlyBuffer::pollByte(char& result) {
   if (this->isEmpty())
     return -1;
 
-  result = *static_cast<char*>(this->pointer(this->mPosition));
+  result = *this->pointer(this->mPosition, Class<char>::cast());
   ++this->mPosition;
 
   return this->avariable();
@@ -86,7 +100,7 @@ int ReadOnlyBuffer::poll(lang::WriteBuffer& writeBuffer) {
 
 //-------------------------------------------------------------------------------
 int ReadOnlyBuffer::poll(lang::WriteBuffer& writeBuffer, int length) {
-  if(length <= 0)
+  if (length <= 0)
     return 0;
 
   if (this->isEmpty())

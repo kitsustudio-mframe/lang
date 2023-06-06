@@ -73,6 +73,12 @@ class lang::EmptyReadBuffer : public lang::Object, public lang::ReadBuffer {
    */
 
   /* ****************************************************************************
+   *  Public Method <Override> - lang::Iterable<char>
+   */
+ public:
+  virtual bool peek(int index, char& result) override;
+
+  /* ****************************************************************************
    * Public Method <Override> - lang::ReadBuffer
    */
  public:

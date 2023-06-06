@@ -40,7 +40,7 @@ struct lang::Iterable {
    * @return true 訪問成功，結果將存放於result
    * @return false 訪問失敗，可能超出上限或是列隊為空
    */
-  bool peek(int index, E& result);
+  virtual bool peek(int index, E& result) abstract;
 };
 
 /* ****************************************************************************************

@@ -72,6 +72,12 @@ class lang::OutputStreamBuffer : public lang::OutputStream,
   /* ****************************************************************************
    * Public Method <Static>
    */
+  
+  /* ****************************************************************************
+   *  Public Method <Override> - lang::Iterable<char>
+   */
+ public:
+  virtual bool peek(int index, char& result) override;
 
   /* ****************************************************************************
    * Public Method <Override> - lang::ReadBuffer

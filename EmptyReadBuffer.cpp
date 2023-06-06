@@ -54,6 +54,15 @@ EmptyReadBuffer::~EmptyReadBuffer(void) {
  */
 
 /* ******************************************************************************
+ *  Public Method <Override> - lang::Iterable<char>
+ */
+
+//-------------------------------------------------------------------------------
+bool peek(int index, char& result){
+  return false;
+}
+
+/* ******************************************************************************
  * Public Method <Override> - lang::ReadBuffer
  */
 

@@ -56,6 +56,18 @@ OutputStreamBuffer::~OutputStreamBuffer(void) {
  * Public Method <Static>
  */
 
+/* ****************************************************************************
+ *  Public Method <Override> - lang::Iterable<char>
+ */
+
+//-------------------------------------------------------------------------------
+bool OutputStreamBuffer::peek(int index, char& result){
+  if (this->mReadBuffer == nullptr)
+    return true;
+
+  return this->mReadBuffer->peek(index, result);
+}
+
 /* ******************************************************************************
  * Public Method <Override> - lang::ReadBuffer
  */

@@ -70,7 +70,9 @@ class lang::Iterator : public lang::Object {
    * @brief Destroy the Iterator object
    * 
    */
-  virtual ~Iterator(void) override;
+  virtual ~Iterator(void) override{
+    return;
+  }
 
   /* **************************************************************************************
    * Operator Method

@@ -304,13 +304,15 @@ class lang::ByteBuffer : public lang::Memory,
   virtual int indexOfData(const void* destination, int destinationLen, int start) const override;
 
   /* ****************************************************************************
+   *  Public Method <Override> - lang::Iterable<char>
+   */
+ public:
+  virtual bool peek(int index, char& result) override;
+
+  /* ****************************************************************************
    *  Public Method <Override> - lang::Buffer
    */
  public:
-  /**
-   * @brief
-   *
-   */
   virtual inline void flush(void) override {
     ByteBuffer::mPosition = 0;
     ByteBuffer::mMark = 0;
