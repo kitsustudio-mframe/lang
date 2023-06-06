@@ -93,16 +93,7 @@ int InputStreamBuffer::putByte(const char data) {
 
 //-------------------------------------------------------------------------------
 int InputStreamBuffer::put(lang::ReadBuffer& readBuffer) {
-  if (this->mWriteBuffer == nullptr)
-    return 0;
-
-  int result = this->mWriteBuffer->put(readBuffer);
-  this->mResult += result;
-
-  if (this->mWriteBuffer->isFull())
-    this->execute();
-
-  return result;
+  return this->put(readBuffer, readBuffer.avariable());
 }
 
 //-------------------------------------------------------------------------------

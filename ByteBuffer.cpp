@@ -81,15 +81,14 @@ int ByteBuffer::pollByte(char& result) {
 
 //-------------------------------------------------------------------------------
 int ByteBuffer::poll(WriteBuffer& writeBuffer) {
-  int len = ByteBuffer::avariable();
-  len = writeBuffer.put(ByteBuffer::pointer(ByteBuffer::mPosition), len);
-  ByteBuffer::position(ByteBuffer::position() + len);
-
-  return len;
+  return this->poll(writeBuffer, writeBuffer.remaining());
 }
 
 //-------------------------------------------------------------------------------
 int ByteBuffer::poll(lang::WriteBuffer& writeBuffer, int length) {
+  if(length <= 0)
+    return 0;
+
   int max = ByteBuffer::avariable();
   if (length > max)
     length = max;
@@ -137,10 +136,7 @@ int ByteBuffer::putByte(const char value) {
 
 //-------------------------------------------------------------------------------
 int ByteBuffer::put(ReadBuffer& readBuffer) {
-  int len = ByteBuffer::remaining();
-  len = readBuffer.poll(ByteBuffer::pointer(ByteBuffer::mPosition), len);
-  ByteBuffer::position(ByteBuffer::position() + len);
-  return len;
+  return this->put(readBuffer, readBuffer.avariable());
 }
 
 //-------------------------------------------------------------------------------

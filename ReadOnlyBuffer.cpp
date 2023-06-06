@@ -86,6 +86,9 @@ int ReadOnlyBuffer::poll(lang::WriteBuffer& writeBuffer) {
 
 //-------------------------------------------------------------------------------
 int ReadOnlyBuffer::poll(lang::WriteBuffer& writeBuffer, int length) {
+  if(length <= 0)
+    return 0;
+
   if (this->isEmpty())
     return 0;
 

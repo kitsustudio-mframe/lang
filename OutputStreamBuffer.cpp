@@ -94,15 +94,7 @@ int OutputStreamBuffer::pollByte(char& result) {
 
 //-------------------------------------------------------------------------------
 int OutputStreamBuffer::poll(lang::WriteBuffer& writeBuffer) {
-  if (this->mReadBuffer == nullptr)
-    return 0;
-
-  int result = this->mReadBuffer->poll(writeBuffer);
-
-  if (this->mReadBuffer->isEmpty())
-    this->execute();
-
-  return result;
+  return this->poll(writeBuffer, writeBuffer.remaining());
 }
 
 //-------------------------------------------------------------------------------
