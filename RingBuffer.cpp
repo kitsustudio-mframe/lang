@@ -121,12 +121,12 @@ int RingBuffer::put(ReadBuffer& outputBuffer, int length){
 
   /* Write segment 1 */
   ptr += INDH();
-  outputBuffer.get(ptr, cnt1);
+  outputBuffer.poll(ptr, cnt1);
   RingBuffer::mHead += static_cast<uint32_t>(cnt1);
 
   /* Write segment 2 */
   ptr = static_cast<uint8_t*>(RingBuffer::pointer()) + INDH();
-  outputBuffer.get(ptr, cnt2);
+  outputBuffer.poll(ptr, cnt2);
   RingBuffer::mHead += static_cast<uint32_t>(cnt2);
 
   return (cnt1 + cnt2);
@@ -185,7 +185,7 @@ int RingBuffer::put(const void *data, int num){
  */
 
 //-------------------------------------------------------------------------------
-int RingBuffer::getByte(char& data){
+int RingBuffer::pollByte(char& data){
   uint8_t *ptr = static_cast<uint8_t*>(RingBuffer::pointer());
 
   /* We cannot pop when queue is empty */
@@ -200,12 +200,12 @@ int RingBuffer::getByte(char& data){
 }
 
 //-------------------------------------------------------------------------------
-int RingBuffer::get(WriteBuffer& inputBuffer){
-  return RingBuffer::get(inputBuffer, inputBuffer.remaining());
+int RingBuffer::poll(WriteBuffer& inputBuffer){
+  return RingBuffer::poll(inputBuffer, inputBuffer.remaining());
 }
 
 //-------------------------------------------------------------------------------
-int RingBuffer::get(lang::WriteBuffer& inputBuffer, int length){
+int RingBuffer::poll(lang::WriteBuffer& inputBuffer, int length){
   if(length <= 0)
     return 0;  
   
@@ -247,7 +247,7 @@ int RingBuffer::get(lang::WriteBuffer& inputBuffer, int length){
 }
 
 //-------------------------------------------------------------------------------
-int RingBuffer::get(void* data, int num){
+int RingBuffer::poll(void* data, int num){
   if(num <= 0)
     return 0;
   

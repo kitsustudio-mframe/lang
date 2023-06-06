@@ -125,13 +125,13 @@ class lang::RingBuffer : public lang::Memory,
     return static_cast<int>(this->mHead - this->mTail);
   }
 
-  virtual int getByte(char& result) override;
+  virtual int pollByte(char& result) override;
 
-  virtual int get(lang::WriteBuffer& writeBuffer) override;
+  virtual int poll(lang::WriteBuffer& writeBuffer) override;
 
-  virtual int get(lang::WriteBuffer& writeBuffer, int length) override;
+  virtual int poll(lang::WriteBuffer& writeBuffer, int length) override;
 
-  virtual int get(void* buffer, int bufferSize) override;
+  virtual int poll(void* buffer, int bufferSize) override;
 
   virtual int skip(int value) override;
 

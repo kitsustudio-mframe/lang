@@ -327,7 +327,7 @@ Strings& Strings::append(lang::ReadBuffer& readBuffer) {
 
   for (; i < max; ++i) {
     char cache;
-    if (readBuffer.getByte(cache) < 0)
+    if (readBuffer.pollByte(cache) < 0)
       break;
 
     if (cache == 0)

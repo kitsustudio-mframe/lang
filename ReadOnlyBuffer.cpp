@@ -69,7 +69,7 @@ ReadOnlyBuffer::~ReadOnlyBuffer(void) {
  */
 
 //-------------------------------------------------------------------------------
-int ReadOnlyBuffer::getByte(char& result) {
+int ReadOnlyBuffer::pollByte(char& result) {
   if (this->isEmpty())
     return -1;
 
@@ -80,12 +80,12 @@ int ReadOnlyBuffer::getByte(char& result) {
 }
 
 //-------------------------------------------------------------------------------
-int ReadOnlyBuffer::get(lang::WriteBuffer& writeBuffer) {
-  return ReadOnlyBuffer::get(writeBuffer, this->avariable());
+int ReadOnlyBuffer::poll(lang::WriteBuffer& writeBuffer) {
+  return ReadOnlyBuffer::poll(writeBuffer, this->avariable());
 }
 
 //-------------------------------------------------------------------------------
-int ReadOnlyBuffer::get(lang::WriteBuffer& writeBuffer, int length) {
+int ReadOnlyBuffer::poll(lang::WriteBuffer& writeBuffer, int length) {
   if (this->isEmpty())
     return 0;
 
@@ -99,7 +99,7 @@ int ReadOnlyBuffer::get(lang::WriteBuffer& writeBuffer, int length) {
 }
 
 //-------------------------------------------------------------------------------
-int ReadOnlyBuffer::get(void* buffer, int bufferSize) {
+int ReadOnlyBuffer::poll(void* buffer, int bufferSize) {
   if (this->isEmpty())
     return 0;
 
@@ -116,7 +116,7 @@ int ReadOnlyBuffer::get(void* buffer, int bufferSize) {
 
 //-------------------------------------------------------------------------------
 int ReadOnlyBuffer::skip(int value) {
-  return this->get(nullptr, value);
+  return this->poll(nullptr, value);
 }
 
 /* ******************************************************************************

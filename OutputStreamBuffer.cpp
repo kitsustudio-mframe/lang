@@ -77,11 +77,11 @@ int OutputStreamBuffer::avariable(void) const {
 }
 
 //-------------------------------------------------------------------------------
-int OutputStreamBuffer::getByte(char& result) {
+int OutputStreamBuffer::pollByte(char& result) {
   if (this->mReadBuffer == nullptr)
     return 0;
 
-  int status = this->mReadBuffer->getByte(result);
+  int status = this->mReadBuffer->pollByte(result);
 
   if (status >= 0)
     ++this->mResult;
@@ -93,11 +93,11 @@ int OutputStreamBuffer::getByte(char& result) {
 }
 
 //-------------------------------------------------------------------------------
-int OutputStreamBuffer::get(lang::WriteBuffer& writeBuffer) {
+int OutputStreamBuffer::poll(lang::WriteBuffer& writeBuffer) {
   if (this->mReadBuffer == nullptr)
     return 0;
 
-  int result = this->mReadBuffer->get(writeBuffer);
+  int result = this->mReadBuffer->poll(writeBuffer);
 
   if (this->mReadBuffer->isEmpty())
     this->execute();
@@ -106,11 +106,11 @@ int OutputStreamBuffer::get(lang::WriteBuffer& writeBuffer) {
 }
 
 //-------------------------------------------------------------------------------
-int OutputStreamBuffer::get(lang::WriteBuffer& writeBuffer, int length) {
+int OutputStreamBuffer::poll(lang::WriteBuffer& writeBuffer, int length) {
   if (this->mReadBuffer == nullptr)
     return 0;
 
-  int result = this->mReadBuffer->get(writeBuffer, length);
+  int result = this->mReadBuffer->poll(writeBuffer, length);
 
   if (this->mReadBuffer->isEmpty())
     this->execute();
@@ -119,11 +119,11 @@ int OutputStreamBuffer::get(lang::WriteBuffer& writeBuffer, int length) {
 }
 
 //-------------------------------------------------------------------------------
-int OutputStreamBuffer::get(void* buffer, int bufferSize) {
+int OutputStreamBuffer::poll(void* buffer, int bufferSize) {
   if (this->mReadBuffer == nullptr)
     return 0;
 
-  int result = this->mReadBuffer->get(buffer, bufferSize);
+  int result = this->mReadBuffer->poll(buffer, bufferSize);
 
   if (this->mReadBuffer->isEmpty())
     this->execute();

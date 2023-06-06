@@ -54,7 +54,7 @@ struct lang::ReadBuffer :public virtual lang::Interface{
    * @param result 
    * @return int 緩衝區剩餘可讀取數量
    */
-  virtual int getByte(char& result) abstract;
+  virtual int pollByte(char& result) abstract;
 
   /**
    * @brief 輸出至WriteBuffer
@@ -62,7 +62,7 @@ struct lang::ReadBuffer :public virtual lang::Interface{
    * @param writeBuffer 輸出目標緩存空間 
    * @return int 輸出至目標的位元組數量
    */
-  virtual int get(lang::WriteBuffer& writeBuffer) abstract;
+  virtual int poll(lang::WriteBuffer& writeBuffer) abstract;
 
   /**
    * @brief 輸出至WriteBuffer
@@ -71,7 +71,7 @@ struct lang::ReadBuffer :public virtual lang::Interface{
    * @param length 指定最大輸出位元組數量
    * @return int 輸出至目標的位元組數量
    */
-  virtual int get(lang::WriteBuffer& writeBuffer, int length) abstract;
+  virtual int poll(lang::WriteBuffer& writeBuffer, int length) abstract;
 
   /**
    * @brief 輸出目標緩存空間
@@ -80,7 +80,7 @@ struct lang::ReadBuffer :public virtual lang::Interface{
    * @param bufferSize 緩衝區大小
    * @return int 複製的位元組數量
    */
-  virtual int get(void* buffer, int bufferSize) abstract;
+  virtual int poll(void* buffer, int bufferSize) abstract;
 
   /**
    * @brief 跳躍數個緩衝區內位元組

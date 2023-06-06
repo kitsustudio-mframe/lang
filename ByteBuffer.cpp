@@ -71,7 +71,7 @@ int ByteBuffer::indexOfData(const void* destination, int destinationLen, int sta
  */
 
 //-------------------------------------------------------------------------------
-int ByteBuffer::getByte(char& result) {
+int ByteBuffer::pollByte(char& result) {
   if (ByteBuffer::mPosition >= ByteBuffer::mLimit)
     return -1;
 
@@ -81,7 +81,7 @@ int ByteBuffer::getByte(char& result) {
 }
 
 //-------------------------------------------------------------------------------
-int ByteBuffer::get(WriteBuffer& writeBuffer) {
+int ByteBuffer::poll(WriteBuffer& writeBuffer) {
   int len = ByteBuffer::avariable();
   len = writeBuffer.put(ByteBuffer::pointer(ByteBuffer::mPosition), len);
   ByteBuffer::position(ByteBuffer::position() + len);
@@ -90,7 +90,7 @@ int ByteBuffer::get(WriteBuffer& writeBuffer) {
 }
 
 //-------------------------------------------------------------------------------
-int ByteBuffer::get(lang::WriteBuffer& writeBuffer, int length) {
+int ByteBuffer::poll(lang::WriteBuffer& writeBuffer, int length) {
   int max = ByteBuffer::avariable();
   if (length > max)
     length = max;
@@ -102,7 +102,7 @@ int ByteBuffer::get(lang::WriteBuffer& writeBuffer, int length) {
 }
 
 //-------------------------------------------------------------------------------
-int ByteBuffer::get(void* buffer, int bufferSize) {
+int ByteBuffer::poll(void* buffer, int bufferSize) {
   int max = ByteBuffer::avariable();
   int pos = ByteBuffer::position();
   if (bufferSize > max)
@@ -139,7 +139,7 @@ int ByteBuffer::putByte(const char value) {
 //-------------------------------------------------------------------------------
 int ByteBuffer::put(ReadBuffer& readBuffer) {
   int len = ByteBuffer::remaining();
-  len = readBuffer.get(ByteBuffer::pointer(ByteBuffer::mPosition), len);
+  len = readBuffer.poll(ByteBuffer::pointer(ByteBuffer::mPosition), len);
   ByteBuffer::position(ByteBuffer::position() + len);
   return len;
 }
@@ -153,7 +153,7 @@ int ByteBuffer::put(ReadBuffer& readBuffer, int length) {
   if (length > max)
     length = max;
 
-  int result = readBuffer.get(ByteBuffer::pointer(ByteBuffer::mPosition), length);
+  int result = readBuffer.poll(ByteBuffer::pointer(ByteBuffer::mPosition), length);
   ByteBuffer::position(ByteBuffer::position() + result);
   return result;
 }
@@ -308,7 +308,7 @@ bool ByteBuffer::putFloatMsb(const float value) {
 }
 
 //-------------------------------------------------------------------------------
-bool ByteBuffer::getShort(short& result) {
+bool ByteBuffer::pollShort(short& result) {
   if ((ByteBuffer::mPosition + 1) >= ByteBuffer::mLimit)
     return false;
 
@@ -319,7 +319,7 @@ bool ByteBuffer::getShort(short& result) {
 }
 
 //-------------------------------------------------------------------------------
-bool ByteBuffer::getShortMsb(short& result) {
+bool ByteBuffer::pollShortMsb(short& result) {
   if ((ByteBuffer::mPosition + 1) >= ByteBuffer::mLimit)
     return false;
 
@@ -333,7 +333,7 @@ bool ByteBuffer::getShortMsb(short& result) {
 }
 
 //-------------------------------------------------------------------------------
-bool ByteBuffer::getInt(int& result) {
+bool ByteBuffer::pollInt(int& result) {
   if ((ByteBuffer::mPosition + 3) >= ByteBuffer::mLimit)
     return false;
 
@@ -344,7 +344,7 @@ bool ByteBuffer::getInt(int& result) {
 }
 
 //-------------------------------------------------------------------------------
-bool ByteBuffer::getIntMsb(int& result) {
+bool ByteBuffer::pollIntMsb(int& result) {
   if ((ByteBuffer::mPosition + 3) >= ByteBuffer::mLimit)
     return false;
 
@@ -360,15 +360,15 @@ bool ByteBuffer::getIntMsb(int& result) {
 }
 
 //-------------------------------------------------------------------------------
-bool ByteBuffer::getFloat(float& result) {
+bool ByteBuffer::pollFloat(float& result) {
   int* r = reinterpret_cast<int*>(&result);
-  return ByteBuffer::getInt(*r);
+  return ByteBuffer::pollInt(*r);
 }
 
 //-------------------------------------------------------------------------------
-bool ByteBuffer::getFloatMsb(float& result) {
+bool ByteBuffer::pollFloatMsb(float& result) {
   int* r = reinterpret_cast<int*>(&result);
-  return ByteBuffer::getIntMsb(*r);
+  return ByteBuffer::pollIntMsb(*r);
 }
 
 /* ******************************************************************************

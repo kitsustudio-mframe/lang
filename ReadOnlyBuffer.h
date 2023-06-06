@@ -82,56 +82,35 @@ public lang::ReadBuffer{
    * Operator Method
    */
   public:
-    /**
-     *
-     */
     inline int operator=(int v){
       this->position(v);
       return this->position();
     }
     
-    /**
-     *
-     */
     inline void operator+=(int shift){
       this->position(this->position() + shift);
     }
     
-    /**
-     *
-     */
     inline void operator-=(int shift){
       this->position(this->position() - shift);
     }
     
-    /**
-     *
-     */
     inline unsigned int operator++(void){
       this->position(this->position() + 1);
       return static_cast<unsigned int>(this->position());
     }
     
-    /**
-     *
-     */
     inline unsigned int operator--(void){
       this->position(this->position() - 1);
       return static_cast<unsigned int>(this->position());
     }
 
-        /**
-     *
-     */
     inline unsigned int operator++(int){
       unsigned int result = static_cast<unsigned int>(this->position());
       this->position(this->position() + 1);
       return result;
     }
     
-    /**
-     *
-     */
     inline unsigned int operator--(int){
       unsigned int result = static_cast<unsigned int>(this->position());
       this->position(this->position() - 1);
@@ -145,65 +124,22 @@ public lang::ReadBuffer{
    * Public Method <Override> - lang::ReadBuffer
    */
   public:
-    /**
-     * @brief 
-     * 
-     * @return true 
-     * @return false 
-     */
     inline virtual bool isEmpty(void) const override{
       return (this->mPosition >= this->length());
     }
 
-    /**
-     * @brief 
-     * 
-     * @return int 
-     */
     inline virtual int avariable(void) const override{
       return (this->length() - this->mPosition);
     }
 
-    /**
-     * @brief pop buffer byte non blocking.
-     * 
-     * @param result 
-     * @return true has data in buffer.
-     * @return false no data in buffer.
-     */
-    virtual int getByte(char& result) override;
+    virtual int pollByte(char& result) override;
 
-    /**
-     * @brief 
-     * 
-     * @param byteBuffer 
-     * @return int 
-     */
-    virtual int get(lang::WriteBuffer& writeBuffer) override;
+    virtual int poll(lang::WriteBuffer& writeBuffer) override;
 
-	  /**
-	   * @brief 
-	   * 
-	   * @param byteBuffer 
-	   * @return int 
-	   */
-	  virtual int get(lang::WriteBuffer& writeBuffer, int length) override;    
+	  virtual int poll(lang::WriteBuffer& writeBuffer, int length) override;    
     
-    /**
-     * @brief 
-     * 
-     * @param buffer 
-     * @param bufferSize 
-     * @return int 
-     */
-    virtual int get(void* buffer, int bufferSize) override;
+    virtual int poll(void* buffer, int bufferSize) override;
 
-    /**
-     * @brief 
-     * 
-     * @param value 
-     * @return int 
-     */
     virtual int skip(int value) override;
 
   /* ****************************************************************************
@@ -233,7 +169,7 @@ public lang::ReadBuffer{
      * 
      */
     virtual void rewind(void){
-      this->mPosition abstract;
+      this->mPosition = 0;
     }
     
 

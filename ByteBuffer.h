@@ -145,7 +145,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return ByteBuffer&
    */
   inline ByteBuffer& operator>>(char& c) {
-    ByteBuffer::getByte(c);
+    ByteBuffer::pollByte(c);
     return *this;
   }
 
@@ -156,7 +156,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return ByteBuffer&
    */
   inline ByteBuffer& operator>>(uint8_t& c) {
-    ByteBuffer::getByte(c);
+    ByteBuffer::pollByte(c);
     return *this;
   }
 
@@ -167,7 +167,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return ByteBuffer&
    */
   inline ByteBuffer& operator>>(short& s) {
-    ByteBuffer::getShort(s);
+    ByteBuffer::pollShort(s);
     return *this;
   }
 
@@ -178,7 +178,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return ByteBuffer&
    */
   inline ByteBuffer& operator>>(uint16_t& s) {
-    ByteBuffer::getShort(s);
+    ByteBuffer::pollShort(s);
     return *this;
   }
 
@@ -189,7 +189,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return ByteBuffer&
    */
   inline ByteBuffer& operator>>(int& v) {
-    ByteBuffer::getInt(v);
+    ByteBuffer::pollInt(v);
     return *this;
   }
 
@@ -200,7 +200,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return ByteBuffer&
    */
   inline ByteBuffer& operator>>(unsigned int& v) {
-    ByteBuffer::getInt(v);
+    ByteBuffer::pollInt(v);
     return *this;
   }
 
@@ -330,13 +330,13 @@ class lang::ByteBuffer : public lang::Memory,
     return (ByteBuffer::mLimit - ByteBuffer::mPosition);
   }
 
-  virtual int getByte(char& result) override;
+  virtual int pollByte(char& result) override;
 
-  virtual int get(lang::WriteBuffer& writeBuffer) override;
+  virtual int poll(lang::WriteBuffer& writeBuffer) override;
 
-  virtual int get(lang::WriteBuffer& writeBuffer, int length) override;
+  virtual int poll(lang::WriteBuffer& writeBuffer, int length) override;
 
-  virtual int get(void* buffer, int bufferSize) override;
+  virtual int poll(void* buffer, int bufferSize) override;
 
   virtual int skip(int value) override;
 
@@ -426,8 +426,8 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  inline bool getByte(uint8_t& result) {
-    return ByteBuffer::getByte(reinterpret_cast<char&>(result));
+  inline bool pollByte(uint8_t& result) {
+    return ByteBuffer::pollByte(reinterpret_cast<char&>(result));
   }
 
   /**
@@ -437,8 +437,8 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  inline bool getShort(uint16_t& result) {
-    return ByteBuffer::getShort(reinterpret_cast<short&>(result));
+  inline bool pollShort(uint16_t& result) {
+    return ByteBuffer::pollShort(reinterpret_cast<short&>(result));
   }
 
   /**
@@ -448,8 +448,8 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  inline bool getShortMsb(uint16_t& result) {
-    return ByteBuffer::getShortMsb(reinterpret_cast<short&>(result));
+  inline bool pollShortMsb(uint16_t& result) {
+    return ByteBuffer::pollShortMsb(reinterpret_cast<short&>(result));
   }
 
   /**
@@ -459,8 +459,8 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  inline bool getInt(unsigned int& result) {
-    return ByteBuffer::getInt(reinterpret_cast<int&>(result));
+  inline bool pollInt(unsigned int& result) {
+    return ByteBuffer::pollInt(reinterpret_cast<int&>(result));
   }
 
   /**
@@ -470,8 +470,8 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  inline bool getIntMsb(unsigned int& result) {
-    return ByteBuffer::getIntMsb(reinterpret_cast<int&>(result));
+  inline bool pollIntMsb(unsigned int& result) {
+    return ByteBuffer::pollIntMsb(reinterpret_cast<int&>(result));
   }
 
   /* ****************************************************************************
@@ -599,7 +599,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  bool getShort(short& result);
+  bool pollShort(short& result);
 
   /**
    * @brief Get the Short Msb object
@@ -608,7 +608,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  bool getShortMsb(short& result);
+  bool pollShortMsb(short& result);
 
   /**
    * @brief Get the Int object
@@ -617,7 +617,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  bool getInt(int& result);
+  bool pollInt(int& result);
 
   /**
    * @brief Get the Int Msb object
@@ -626,7 +626,7 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  bool getIntMsb(int& result);
+  bool pollIntMsb(int& result);
 
   /**
    * @brief Get the Float object
@@ -635,13 +635,13 @@ class lang::ByteBuffer : public lang::Memory,
    * @return true
    * @return false
    */
-  bool getFloat(float& result);
+  bool pollFloat(float& result);
 
   /**
    * @brief
    *
    */
-  bool getFloatMsb(float& result);
+  bool pollFloatMsb(float& result);
 
   /* ****************************************************************************
    *  Protected Method <Static>

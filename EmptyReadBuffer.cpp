@@ -68,22 +68,22 @@ int EmptyReadBuffer::avariable(void) const {
 }
 
 //-------------------------------------------------------------------------------
-int EmptyReadBuffer::getByte(char& result) {
+int EmptyReadBuffer::pollByte(char& result) {
   return 0;
 }
 
 //-------------------------------------------------------------------------------
-int EmptyReadBuffer::get(lang::WriteBuffer& writeBuffer) {
+int EmptyReadBuffer::poll(lang::WriteBuffer& writeBuffer) {
   return 0;
 }
 
 //-------------------------------------------------------------------------------
-int EmptyReadBuffer::get(lang::WriteBuffer& writeBuffer, int length) {
+int EmptyReadBuffer::poll(lang::WriteBuffer& writeBuffer, int length) {
   return 0;
 }
 
 //-------------------------------------------------------------------------------
-int EmptyReadBuffer::get(void* buffer, int bufferSize) {
+int EmptyReadBuffer::poll(void* buffer, int bufferSize) {
   return 0;
 }
 
