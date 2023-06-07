@@ -33,6 +33,8 @@ class lang::Booleans : public lang::Object {
  public:
   static const char* TEXT_TRUE;
   static const char* TEXT_FALSE;
+  static const int TEXT_TRUE_LENGTH;
+  static const int TEXT_FALSE_LENGTH;
 
   /* **************************************************************************************
    * Variable <Protected>
