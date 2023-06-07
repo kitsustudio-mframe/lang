@@ -25,6 +25,7 @@
 #include "BiConsumerEvent.h"
 #include "BiConsumerMethod.h"
 #include "Boolean.h"
+#include "Booleans.h"
 #include "Buffer.h"
 #include "Byte.h"
 #include "ByteBuffer.h"

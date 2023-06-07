@@ -38,6 +38,9 @@ class lang::Boolean final :public lang::Number{
   /* ****************************************************************************
    * valueariable <Public>
    */
+  public:
+    static const bool VALUE_TRUE = true;
+    static const bool VALUE_FALSE = false;
 
   /* ****************************************************************************
    * valueariable <Protected>

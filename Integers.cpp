@@ -15,18 +15,17 @@
 
 //-------------------------------------------------------------------------------
 #include "./Integers.h"
+#include "./Character.h"
 
 /* ******************************************************************************
  * Macro
  */
-
+#define MACRO_IS_NUMB(c) ((c >= '0') && (c <= '9'))
 /* ******************************************************************************
  * Using
  */
 
 //-------------------------------------------------------------------------------
-
-using lang::Integer;
 
 //-------------------------------------------------------------------------------
 using lang::Integers;
@@ -34,20 +33,11 @@ using lang::Integers;
 /* ******************************************************************************
  * Variable <Static>
  */
-
+const char* Integers::TEXT_MAX_VALUE = "2147483647";
+const char* Integers::TEXT_MIN_VALUE = "-2147483648";
 /* ******************************************************************************
  * Construct Method
  */
-
-//-------------------------------------------------------------------------------
-Integers::Integers(void) {
-  return;
-}
-
-//-------------------------------------------------------------------------------
-Integers::~Integers(void) {
-  return;
-}
 
 /* ******************************************************************************
  * Operator Method
@@ -57,9 +47,30 @@ Integers::~Integers(void) {
  * Public Method <Static>
  */
 
+bool Integers::isInt(const char* str) {
+  if (str == nullptr)
+    return false;
+
+  if (!(MACRO_IS_NUMB(str[0]) || (str[0] == '-')))
+    return false;
+
+  int i = 1;
+
+  for (; i < 12; ++i) {
+    if (!MACRO_IS_NUMB(str[i]))
+      break;
+  }
+
+  return Character::isNextSymbol(str[i]);
+}
+
 //-------------------------------------------------------------------------------
-int Integers::valueOf(const char* str) {
-  return atoi(str);
+bool Integers::parseInt(int& result, const char* str) {
+  if (!Integers::isInt(str))
+    return false;
+
+  result = atoi(str);
+  return true;
 }
 
 /* ******************************************************************************

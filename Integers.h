@@ -30,6 +30,9 @@ class lang::Integers final : public lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */
+  public:
+    static const char* TEXT_MAX_VALUE;
+    static const char* TEXT_MIN_VALUE;
 
   /* ****************************************************************************
    * Variable <Protected>
@@ -54,13 +57,12 @@ class lang::Integers final : public lang::Object {
   /**
    *
    */
-  Integers(void);
+  Integers(void) = default;
 
- public:
   /**
    *
    */
-  virtual ~Integers(void) override;
+  virtual ~Integers(void) override = default;
 
   /* ****************************************************************************
    * Operator Method
@@ -93,13 +95,17 @@ class lang::Integers final : public lang::Object {
    * Public Method <Static>
    */
  public:
+  static bool isInt(const char* str);
+
   /**
-   * @brief
-   *
-   * @param str
-   * @return int
+   * @brief 
+   * 
+   * @param result 
+   * @param str 
+   * @return true 
+   * @return false 
    */
-  static int valueOf(const char* str);
+  static bool parseInt(int& result, const char* str);
 
   /* ****************************************************************************
    * Public Method <Override>

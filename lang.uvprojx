@@ -459,6 +459,16 @@
               <FilePath>.\Boolean.h</FilePath>
             </File>
             <File>
+              <FileName>Booleans.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Booleans.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Booleans.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Booleans.h</FilePath>
+            </File>
+            <File>
               <FileName>Buffer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Buffer.h</FilePath>
@@ -1435,6 +1445,16 @@
               <FilePath>.\Boolean.h</FilePath>
             </File>
             <File>
+              <FileName>Booleans.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Booleans.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Booleans.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Booleans.h</FilePath>
+            </File>
+            <File>
               <FileName>Buffer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Buffer.h</FilePath>
@@ -2409,6 +2429,16 @@
               <FileName>Boolean.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boolean.h</FilePath>
+            </File>
+            <File>
+              <FileName>Booleans.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Booleans.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Booleans.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Booleans.h</FilePath>
             </File>
             <File>
               <FileName>Buffer.h</FileName>
