@@ -80,7 +80,7 @@ class lang::Character final : public lang::Object {
    * @return false 
    */
   static bool inline isNextSymbol(char c) {
-    return ((c == '\0') || (c == '\n') || (c == ' ') || (c == '\r'));
+    return ((c == '\0') || (c == '\n') || (c == ' ') || (c == '\r') || (c == '\t'));
   }
   
   /**
