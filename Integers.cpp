@@ -50,18 +50,18 @@ const int Integers::MAX_ASCII_VALUE = static_cast<int>(sizeof("-2147483648"));
 
 
 //-------------------------------------------------------------------------------
-bool Integers::isInt(lang::Iterator<char>& iterator){
+bool Integers::isInteger(lang::Iterator<char>& iterator){
   char cache[Integers::MAX_ASCII_VALUE];
   for(int i=0; i<Integers::MAX_ASCII_VALUE; ++i){
     if(!iterator.next(cache[i]))
       break;
   }
 
-  return Integers::isInt(cache);
+  return Integers::isInteger(cache);
 }
 
 //-------------------------------------------------------------------------------
-bool Integers::isInt(const char* str) {
+bool Integers::isInteger(const char* str) {
   if (str == nullptr)
     return false;
 
@@ -79,19 +79,19 @@ bool Integers::isInt(const char* str) {
 }
 
 //-------------------------------------------------------------------------------
-bool parseInt(int& result, lang::Iterator<char>& iterator){
+bool parseInteger(int& result, lang::Iterator<char>& iterator){
   char cache[Integers::MAX_ASCII_VALUE];
   for(int i=0; i<Integers::MAX_ASCII_VALUE; ++i){
     if(!iterator.next(cache[i]))
       break;
   }
 
-  return Integers::parseInt(result, cache);
+  return Integers::parseInteger(result, cache);
 }
 
 //-------------------------------------------------------------------------------
-bool Integers::parseInt(int& result, const char* str) {
-  if (!Integers::isInt(str))
+bool Integers::parseInteger(int& result, const char* str) {
+  if (!Integers::isInteger(str))
     return false;
 
   result = atoi(str);

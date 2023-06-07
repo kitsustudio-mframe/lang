@@ -104,7 +104,7 @@ class lang::Integers final : public lang::Object {
    * @return true 
    * @return false 
    */
-  static bool isInt(lang::Iterator<char>& iterator);
+  static bool isInteger(lang::Iterator<char>& iterator);
 
   /**
    * @brief 
@@ -113,7 +113,7 @@ class lang::Integers final : public lang::Object {
    * @return true 
    * @return false 
    */
-  static bool isInt(const char* str);
+  static bool isInteger(const char* str);
 
   /**
    * @brief 
@@ -123,7 +123,7 @@ class lang::Integers final : public lang::Object {
    * @return true 
    * @return false 
    */
-  static bool parseInt(int& result, lang::Iterator<char>& iterator);
+  static bool parseInteger(int& result, lang::Iterator<char>& iterator);
 
   /**
    * @brief 
@@ -133,7 +133,7 @@ class lang::Integers final : public lang::Object {
    * @return true 
    * @return false 
    */
-  static bool parseInt(int& result, const char* str);
+  static bool parseInteger(int& result, const char* str);
 
   /* ****************************************************************************
    * Public Method <Override>
