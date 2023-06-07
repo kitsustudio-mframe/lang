@@ -35,6 +35,7 @@ using lang::Integers;
  */
 const char* Integers::TEXT_MAX_VALUE = "2147483647";
 const char* Integers::TEXT_MIN_VALUE = "-2147483648";
+const int Integers::MAX_ASCII_VALUE = static_cast<int>(sizeof("-2147483648"));
 /* ******************************************************************************
  * Construct Method
  */
@@ -47,6 +48,19 @@ const char* Integers::TEXT_MIN_VALUE = "-2147483648";
  * Public Method <Static>
  */
 
+
+//-------------------------------------------------------------------------------
+bool Integers::isInt(lang::Iterator<char>& iterator){
+  char cache[Integers::MAX_ASCII_VALUE];
+  for(int i=0; i<Integers::MAX_ASCII_VALUE; ++i){
+    if(!iterator.next(cache[i]))
+      break;
+  }
+
+  return Integers::isInt(cache);
+}
+
+//-------------------------------------------------------------------------------
 bool Integers::isInt(const char* str) {
   if (str == nullptr)
     return false;
@@ -56,12 +70,23 @@ bool Integers::isInt(const char* str) {
 
   int i = 1;
 
-  for (; i < 12; ++i) {
+  for (; i < Integers::MAX_ASCII_VALUE; ++i) {
     if (!MACRO_IS_NUMB(str[i]))
       break;
   }
 
   return Character::isNextSymbol(str[i]);
+}
+
+//-------------------------------------------------------------------------------
+bool parseInt(int& result, lang::Iterator<char>& iterator){
+  char cache[Integers::MAX_ASCII_VALUE];
+  for(int i=0; i<Integers::MAX_ASCII_VALUE; ++i){
+    if(!iterator.next(cache[i]))
+      break;
+  }
+
+  return Integers::parseInt(result, cache);
 }
 
 //-------------------------------------------------------------------------------

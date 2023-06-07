@@ -14,6 +14,7 @@
 //-------------------------------------------------------------------------------
 #include "./Integer.h"
 #include "./Object.h"
+#include "./Iterator.h"
 //-------------------------------------------------------------------------------
 
 /* ******************************************************************************
@@ -33,6 +34,7 @@ class lang::Integers final : public lang::Object {
   public:
     static const char* TEXT_MAX_VALUE;
     static const char* TEXT_MIN_VALUE;
+    static const int MAX_ASCII_VALUE;
 
   /* ****************************************************************************
    * Variable <Protected>
@@ -95,7 +97,33 @@ class lang::Integers final : public lang::Object {
    * Public Method <Static>
    */
  public:
+  /**
+   * @brief 
+   * 
+   * @param iterator 
+   * @return true 
+   * @return false 
+   */
+  static bool isInt(lang::Iterator<char>& iterator);
+
+  /**
+   * @brief 
+   * 
+   * @param str 
+   * @return true 
+   * @return false 
+   */
   static bool isInt(const char* str);
+
+  /**
+   * @brief 
+   * 
+   * @param result 
+   * @param iterator 
+   * @return true 
+   * @return false 
+   */
+  static bool parseInt(int& result, lang::Iterator<char>& iterator);
 
   /**
    * @brief 
