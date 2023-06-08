@@ -28,57 +28,62 @@ namespace lang {
 /* ******************************************************************************
  * Class/struct/Struct/Enum
  */
+
+/**
+ * @brief 寫入緩衝區 <Interface>
+ * 
+ */
 struct lang::WriteBuffer : public virtual lang::Interface {
   /* ****************************************************************************
    * Method
    */
 
   /**
-   * @brief 取得WriteBuffer是否已滿
+   * @brief 取得WriteBuffer是否已滿。
    *
-   * @return true 已滿
-   * @return false 未滿，仍有空間
+   * @return true 已滿。同remaining()返回0。
+   * @return false 未滿，仍有空間。
    */
   virtual bool isFull(void) const abstract;
 
   /**
-   * @brief 取得WriteBuffer內資料數量
+   * @brief 取得緩衝區剩餘空閒字節數。
    *
-   * @return int WriteBuffer內資料數量
+   * @return int 剩餘的空閒字節數。
    */
   virtual int remaining(void) const abstract;
 
   /**
-   * @brief 將data輸入至WriteBuffer
+   * @brief 將字節輸入至緩衝區。
    *
    * @param data 資料來源
-   * @return int WriteBuffer內資料數量
+   * @return int 實際輸入至緩衝區的字節數。
    */
   virtual int putByte(const char data) abstract;
 
   /**
-   * @brief 將readBuffer內資料輸入至WriteBuffer
+   * @brief 將readBuffer內資料輸入至緩衝區。
    *
-   * @param byteBuffer 資料來源
-   * @return int 移動資料數量(byte)
+   * @param readBuffer 資料來源
+   * @return int 實際輸入至緩衝區的字節數。
    */
   virtual int put(lang::ReadBuffer& readBuffer) abstract;
 
   /**
-   * @brief 將readBuffer內資料輸入至WriteBuffer並指定輸入長度
+   * @brief 將readBuffer內資料輸入至緩衝區，限定最大輸入數量為length。
    *
-   * @param byteBuffer 資料來源
-   * @param length 輸入長度
-   * @return int 移動資料數量(byte)
+   * @param readBuffer 資料來源
+   * @param length 最大輸入字節數
+   * @return int 實際輸入至緩衝區的字節數，最大不超過length。
    */
   virtual int put(lang::ReadBuffer& readBuffer, int length) abstract;
 
   /**
-   * @brief 將buffer內資料輸入至WriteBuffer
+   * @brief 將任一唯獨指針內資料輸入至緩衝區。
    *
    * @param buffer 資料來源
    * @param length 輸入長度
-   * @return int 移動資料數量(byte)
+   * @return int 實際輸入至緩衝區的字節數，最大不超過length。
    */
   virtual int put(const void* buffer, int length) abstract;
 };
