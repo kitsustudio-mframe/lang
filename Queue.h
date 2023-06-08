@@ -28,7 +28,7 @@ namespace lang{
  * Class/Interface/Struct
  */  
 template<typename E>
-  struct lang::Queue :public lang::Collection<E>{
+  struct lang::Queue :public lang::Collection<E*>{
 
   /* ****************************************************************************
    * Method

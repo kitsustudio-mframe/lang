@@ -19,7 +19,7 @@
  * Namespace
  */
 namespace lang {
-  template <class V>
+  template <class K, class V>
   struct Map;
 }
 
@@ -32,8 +32,8 @@ namespace lang {
  *
  * @tparam V Value
  */
-template <class V>
-struct lang::Map : public virtual lang::Interface {
+template <class K, class V>
+struct lang::Map : public virtual lang::Collection<V> {
   /* ****************************************************************************
    * Method
    */
@@ -49,7 +49,7 @@ struct lang::Map : public virtual lang::Interface {
    * @param key 要在此地圖中存在的值要進行測試
    * @return true - 如果該地圖將一個或多個鍵映射到指定的值
    */
-  virtual bool containsKey(Interface& key) abstract;
+  virtual bool containsKey(K& key) const abstract;
 
   /**
    * @brief 如果此映射包含指定鍵的映射，則返回true。
@@ -57,7 +57,7 @@ struct lang::Map : public virtual lang::Interface {
    * @param value 要在此地圖中存在的值要進行測試
    * @return true 如果該地圖將一個或多個鍵映射到指定的值
    */
-  virtual bool containsValue(void* value) abstract;
+  virtual bool containsValue(V* value) const abstract;
 
   /**
    * @brief 將指定的值與該映射中的指定鍵相關聯(可選操作)。
@@ -68,7 +68,7 @@ struct lang::Map : public virtual lang::Interface {
    * @param key 指定值與之關聯的鍵
    * @return V 與指定鍵相關聯的值
    */
-  virtual V* get(Interface& key) abstract;
+  virtual V* get(K& key) const abstract;
 
   /**
    * @brief 將指定的值與該映射中的指定鍵相關聯(可選操作)。
@@ -81,7 +81,7 @@ struct lang::Map : public virtual lang::Interface {
    * @return V* 前一個值與key相關聯，或null，如果沒有key的映射。
    * (A null返回也可以表示該地圖以前關聯的null與key，如果實現支持null的值）
    */
-  virtual V* put(Interface& key, V* value) abstract;
+  virtual V* put(K& key, V* value) abstract;
 
   /**
    * @brief
@@ -89,7 +89,7 @@ struct lang::Map : public virtual lang::Interface {
    * @param key
    * @return V
    */
-  virtual V* remove(Interface& key) abstract;
+  virtual V* remove(K& key) abstract;
 
   /**
    * @brief
@@ -98,32 +98,7 @@ struct lang::Map : public virtual lang::Interface {
    * @param value
    * @return V
    */
-  virtual V* replace(Interface& key, V* value) abstract;
-
-  /**
-   * @brief
-   * 從此集合中刪除所有元素(可選操作)。此方法返回後，集合將為空。
-   *
-   */
-  virtual void clear(void) abstract;
-
-  /**
-   * @brief
-   * 如果此集合不包含元素，則返回true。
-   *
-   * @return
-   * true如果此集合不包含元素
-   */
-  virtual bool isEmpty(void) const abstract;
-
-  /**
-   * @brief
-   * 返回此集合中的元素數。
-   * 如果此收藏包含超過 Integer.MAX_VALUE個元素，則返回Integer.MAX_VALUE。
-   *
-   * @return uint32_t - 此集合中的元素数
-   */
-  virtual int size(void) const abstract;
+  virtual V* replace(K& key, V* value) abstract;
 };
 
 /* *******************************************************************************

@@ -56,8 +56,57 @@ ArrayQueuePrototype::~ArrayQueuePrototype(void){
  */
  
 /* ******************************************************************************
- * Public Method <Override>
+ * Public Method <Override> - lang::Collection<void*>
  */
+
+//-------------------------------------------------------------------------------
+void ArrayQueuePrototype::clear(void){
+  this->mHead = 0;
+  this->mTail = 0;
+  this->mEmpty = true;
+  return;
+}
+
+//-------------------------------------------------------------------------------
+bool ArrayQueuePrototype::isEmpty(void) const{
+  return this->mEmpty;
+}
+
+//-------------------------------------------------------------------------------
+int ArrayQueuePrototype::size(void) const{
+  if(this->mEmpty)
+    return 0;
+  
+  if(this->isFull())
+    return this->mElementLength;
+
+  if(this->mTail > this->mHead)
+    return this->mTail - this->mHead;
+
+  else
+    return (this->mElementLength - this->mHead) + this->mTail;
+}
+
+/* ******************************************************************************
+ * Public Method <Override> - lang::Iterable<void*>
+ */
+
+//-------------------------------------------------------------------------------
+bool ArrayQueuePrototype::peekIndex(int index, void*& result) {
+  if(index >= this->size())
+    return false;
+
+  if(index < 0)
+    return false;
+
+  index += this->mHead;
+  if(index >= this->mElementLength)
+    index -= this->mElementLength;
+
+  result = (*this)[index];
+  
+  return true;
+}
 
 /* ******************************************************************************
  * Public Method
@@ -66,7 +115,7 @@ ArrayQueuePrototype::~ArrayQueuePrototype(void){
 /* ******************************************************************************
  * Protected Method <Static>
  */
- 
+
 /* ******************************************************************************
  * Protected Method <Override>
  */ 
@@ -74,14 +123,6 @@ ArrayQueuePrototype::~ArrayQueuePrototype(void){
 /* ******************************************************************************
  * Protected Method
  */
-  
-//-------------------------------------------------------------------------------
-void ArrayQueuePrototype::clear(void){
-  this->mHead = 0;
-  this->mTail = 0;
-  this->mEmpty = true;
-  return;
-}
 
 //-------------------------------------------------------------------------------
 bool ArrayQueuePrototype::offerPointer(void* pointer){
@@ -124,43 +165,6 @@ void* ArrayQueuePrototype::peekPointer(void){
   void** p = static_cast<void**>(this->Pointer::pointer());
   
   return p[this->mTail];
-}
-
-//-------------------------------------------------------------------------------
-int ArrayQueuePrototype::size(void) const{
-  if(this->mEmpty)
-    return 0;
-  
-  if(this->isFull())
-    return this->mElementLength;
-
-  if(this->mTail > this->mHead)
-    return this->mTail - this->mHead;
-
-  else
-    return (this->mElementLength - this->mHead) + this->mTail;
-}
-
-//-------------------------------------------------------------------------------
-void ArrayQueuePrototype::foreachPrototype(lang::Consumer<void*>& action) const{
-  if(this->isEmpty())
-    return;
-  void** p = static_cast<void**>(this->Pointer::pointer());
-
-  if(this->mHead >= this->mTail){
-		for(int i=this->mHead; i<this->mElementLength; ++i){
-      action.accept(p[i]);
-		}
-		
-		for(int i=0; i<this->mTail; ++i){
-      action.accept(p[i]);
-		}
-
-  }else{
-		for(int i=this->mHead; i<this->mTail; ++i){
-			action.accept(p[i]);
-		}
-  }
 }
 
 /* ******************************************************************************

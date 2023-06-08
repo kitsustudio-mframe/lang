@@ -58,7 +58,7 @@ EmptyReadBuffer::~EmptyReadBuffer(void) {
  */
 
 //-------------------------------------------------------------------------------
-bool peek(int index, char& result){
+bool peekIndex(int index, char& result){
   return false;
 }
 

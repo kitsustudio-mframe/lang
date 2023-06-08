@@ -70,7 +70,7 @@ int ByteBuffer::indexOfData(const void* destination, int destinationLen, int sta
  * Public Method <Override> - lang::Iterable<char>
  */
 //-------------------------------------------------------------------------------
-bool ByteBuffer::peek(int index, char& result){
+bool ByteBuffer::peekIndex(int index, char& result){
   if(index >= this->remaining())
     return false;
   

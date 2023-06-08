@@ -70,7 +70,7 @@ ReadOnlyBuffer::~ReadOnlyBuffer(void) {
  */
 
 //-------------------------------------------------------------------------------
-bool ReadOnlyBuffer::peek(int index, char& result){
+bool ReadOnlyBuffer::peekIndex(int index, char& result){
   if(index >= this->avariable())
     return false;
 

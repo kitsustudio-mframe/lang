@@ -74,7 +74,7 @@ RingBuffer::~RingBuffer(void) {
 /* ******************************************************************************
  *  Public Method <Override> - lang::Iterable<char>
  */
-bool RingBuffer::peek(int index, char& result) {
+bool RingBuffer::peekIndex(int index, char& result) {
   if (index >= this->avariable())
     return false;
 

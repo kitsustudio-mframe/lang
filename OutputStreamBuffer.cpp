@@ -61,11 +61,11 @@ OutputStreamBuffer::~OutputStreamBuffer(void) {
  */
 
 //-------------------------------------------------------------------------------
-bool OutputStreamBuffer::peek(int index, char& result){
+bool OutputStreamBuffer::peekIndex(int index, char& result){
   if (this->mReadBuffer == nullptr)
     return true;
 
-  return this->mReadBuffer->peek(index, result);
+  return this->mReadBuffer->peekIndex(index, result);
 }
 
 /* ******************************************************************************

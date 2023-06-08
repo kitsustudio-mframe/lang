@@ -122,7 +122,7 @@ class lang::ReadOnlyBuffer : public lang::Data,
    *  Public Method <Override> - lang::Iterable<char>
    */
  public:
-  virtual bool peek(int index, char& result) override;
+  virtual bool peekIndex(int index, char& result) override;
 
   /* ****************************************************************************
    * Public Method <Override> - lang::ReadBuffer

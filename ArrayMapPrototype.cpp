@@ -70,28 +70,52 @@ ArrayMapPrototype::~ArrayMapPrototype(void) {
  */
 
 /* ****************************************************************************************
- * Public Method <Override>
+ * Public Method <Override> - lang::Iterable<E>
  */
+//-----------------------------------------------------------------------------------------
+bool ArrayMapPrototype::peekIndex(int index, void*& result){
+  if(index < 0)
+    return false;
+
+  if(index >= this->size())
+    return false;
+  
+  array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
+  result = p[index].value;
+  return true;
+}
 
 /* ****************************************************************************************
- * Public Method
- */
-
-/* ****************************************************************************************
- * Protected Method <Static>
- */
-
-/* ****************************************************************************************
- * Protected Method <Override>
- */
-
-/* ****************************************************************************************
- * Protected Method
+ * Public Method <Override> - lang::Collection<E>
  */
 
 //-----------------------------------------------------------------------------------------
-bool ArrayMapPrototype::containsKeyHash(int hashcode) {
+void ArrayMapPrototype::clear(void) {
+  this->mSize = 0;
+  return;
+}
+
+//-----------------------------------------------------------------------------------------
+bool ArrayMapPrototype::isEmpty(void) const {
+  if (this->mSize)
+    return false;
+
+  return true;
+}
+
+//-----------------------------------------------------------------------------------------
+int ArrayMapPrototype::size(void) const {
+  return this->mSize;
+}
+
+/* ****************************************************************************************
+ * Public Method <Override> - lang::Map<V>
+ */
+
+//-----------------------------------------------------------------------------------------
+bool ArrayMapPrototype::containsKey(Interface& key) const {
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
+  int hashcode = key.getObject().hashcode();
 
   for (int i = 0; i < this->mSize; ++i) {
     if (p[i].key) {
@@ -104,8 +128,8 @@ bool ArrayMapPrototype::containsKeyHash(int hashcode) {
 }
 
 //-----------------------------------------------------------------------------------------
-bool ArrayMapPrototype::containsValue(void* value) {
-  if(value == nullptr)
+bool ArrayMapPrototype::containsValue(void** value) const {
+  if (value == nullptr)
     return false;
 
   int len = this->size();
@@ -122,13 +146,14 @@ bool ArrayMapPrototype::containsValue(void* value) {
 }
 
 //-----------------------------------------------------------------------------------------
-void* ArrayMapPrototype::getHash(int hashcode) {
+void** ArrayMapPrototype::get(Interface& key) const {
+  int hashcode = key.getObject().hashcode();
   int len = this->size();
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
 
   for (int i = 0; i < len; ++i) {
     if (p[i].key == hashcode) {
-      return p[i].value;
+      return static_cast<void**>(p[i].value);
     }
   }
 
@@ -136,7 +161,8 @@ void* ArrayMapPrototype::getHash(int hashcode) {
 }
 
 //-----------------------------------------------------------------------------------------
-void* ArrayMapPrototype::putHash(int hashcode, void* value) {
+void** ArrayMapPrototype::put(Interface& key, void** value) {
+  int hashcode = key.getObject().hashcode();
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
 
   for (int i = 0; i < this->mSize; ++i) {
@@ -144,36 +170,36 @@ void* ArrayMapPrototype::putHash(int hashcode, void* value) {
       void* result = p[i].value;
       p[i].value = value;
 
-      return result;
+      return static_cast<void**>(result);
     }
   }
-  
-  if(this->mSize >= this->length()){// over length
+
+  if (this->mSize >= this->length()) {  // over length
     bool status = this->mMemory.resize(8 + static_cast<int>(this->mMemory.length() * 1.5));
-    if(!status)
+    if (!status)
       return value;
   }
 
   p[this->mSize].key = hashcode;
   p[this->mSize].value = value;
-  
+
   ++this->mSize;
   return nullptr;
 }
 
 //-----------------------------------------------------------------------------------------
-void* ArrayMapPrototype::removeHash(int hashcode) {
+void** ArrayMapPrototype::remove(Interface& key) {
+  int hashcode = key.getObject().hashcode();
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
 
   for (int i = 0; i < this->mSize; ++i) {
     if (p[i].key == hashcode) {
-
       void* result = p[i].value;
 
-      p[i] = p[this->mSize -1];
+      p[i] = p[this->mSize - 1];
       this->mSize--;
-      
-      return result;
+
+      return static_cast<void**>(result);
     }
   }
 
@@ -181,45 +207,42 @@ void* ArrayMapPrototype::removeHash(int hashcode) {
 }
 
 //-----------------------------------------------------------------------------------------
-void* ArrayMapPrototype::replaceHash(int hashcode, void* value) {
+void** ArrayMapPrototype::replace(Interface& key, void** value) {
+  int hashcode = key.getObject().hashcode();
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
 
   for (int i = 0; i < this->mSize; ++i) {
     if (p[i].key == hashcode) {
-
       void* result = p[i].value;
       p[i].value = value;
 
-      return result;
+      return static_cast<void**>(result);
     }
   }
 
   return nullptr;
 }
 
-//-----------------------------------------------------------------------------------------
-void ArrayMapPrototype::clear(void) {
-  this->mSize = 0;
-  return;
-}
-
-//-----------------------------------------------------------------------------------------
-bool ArrayMapPrototype::isEmpty(void) const {
-  if(this->mSize)
-    return false;
-
-  return true;
-}
-
-//-----------------------------------------------------------------------------------------
-int ArrayMapPrototype::size(void) const {
-  return this->mSize;
-}
+/* ****************************************************************************************
+ * Public Method
+ */
 
 //-----------------------------------------------------------------------------------------
 int ArrayMapPrototype::length(void) const {
   return (this->mMemory.length() / 8);
 }
+
+/* ****************************************************************************************
+ * Protected Method <Static>
+ */
+
+/* ****************************************************************************************
+ * Protected Method <Override>
+ */
+
+/* ****************************************************************************************
+ * Protected Method
+ */
 
 /* ****************************************************************************************
  * Private Method

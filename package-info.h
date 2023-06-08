@@ -4,8 +4,8 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_8D681626_8336_4307_ABAC_DC82B0CA9451
-#define LANG_8D681626_8336_4307_ABAC_DC82B0CA9451
+#ifndef LANG_94F503AA_E11C_455B_A11B_F3C6D0EE6606
+#define LANG_94F503AA_E11C_455B_A11B_F3C6D0EE6606
 
 /* ****************************************************************************************
  * Include folder
@@ -39,6 +39,7 @@
 #include "ConsumerEvent.h"
 #include "ConsumerMethod.h"
 #include "Data.h"
+#include "Echoable.h"
 #include "EmptyReadBuffer.h"
 #include "EmptyWriteBuffer.h"
 #include "EntryPoint.h"
@@ -48,6 +49,7 @@
 #include "FunctionEvent.h"
 #include "FunctionMethod.h"
 #include "Future.h"
+#include "Hashcode.h"
 #include "HashGen.h"
 #include "InputStream.h"
 #include "InputStreamBuffer.h"
@@ -97,4 +99,4 @@
  * End of file
  */
 
-#endif /* LANG_8D681626_8336_4307_ABAC_DC82B0CA9451 */
+#endif /* LANG_94F503AA_E11C_455B_A11B_F3C6D0EE6606 */

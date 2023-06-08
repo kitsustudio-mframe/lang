@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
@@ -10,7 +10,7 @@
 
 /* ******************************************************************************
  * Include
- */  
+ */
 
 //-------------------------------------------------------------------------------
 
@@ -21,18 +21,18 @@
 
 /* ******************************************************************************
  * Namespace
- */  
-namespace lang{
-  template<typename E> class ArrayQueue;
+ */
+namespace lang {
+  template <class E>
+  class ArrayQueue;
 }
 
 /* ******************************************************************************
  * Class/Interface/Struct
- */  
-template<typename E>
-class lang::ArrayQueue :public lang::ArrayQueuePrototype , 
-  public lang::Queue<E>{
-
+ */
+template <class E>
+class lang::ArrayQueue : public lang::ArrayQueuePrototype,
+                         public lang::Queue<E> {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -57,33 +57,32 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
    * Construct Method
    */
 
-  public: 
-  
-    /**
-     * @brief Construct a new Array Queue object
-     * 
-     * @param memory 
-     */
-    ArrayQueue(const Memory& memory) : lang::ArrayQueuePrototype(memory){
-      return;
-    }
+ public:
+  /**
+   * @brief Construct a new Array Queue object
+   *
+   * @param memory
+   */
+  ArrayQueue(const Memory& memory) : lang::ArrayQueuePrototype(memory) {
+    return;
+  }
 
-    /**
-     * @brief Construct a new Array Queue object
-     * 
-     * @param length 
-     */
-    ArrayQueue(uint32_t length) : lang::ArrayQueuePrototype(length){
-      return;
-    }
+  /**
+   * @brief Construct a new Array Queue object
+   *
+   * @param length
+   */
+  ArrayQueue(uint32_t length) : lang::ArrayQueuePrototype(length) {
+    return;
+  }
 
-    /**
-     * @brief Destroy the Array Queue object
-     * 
-     */
-    virtual ~ArrayQueue(void) override {
-      return;
-    }
+  /**
+   * @brief Destroy the Array Queue object
+   *
+   */
+  virtual ~ArrayQueue(void) override {
+    return;
+  }
 
   /* ****************************************************************************
    * Operator Method
@@ -96,34 +95,47 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
   /* ****************************************************************************
    * Public Method <Override> - lang::Queue<E>
    */
-  public: 
-    virtual bool offer(E* e) override{
-      return this->ArrayQueuePrototype::offerPointer(e);
-    }
+ public:
+  virtual bool offer(E* e) override {
+    return this->ArrayQueuePrototype::offerPointer(e);
+  }
 
-    virtual E* poll(void) override{
-      return static_cast<E*>(this->ArrayQueuePrototype::pollPointer());
-    }
+  virtual E* poll(void) override {
+    return static_cast<E*>(this->ArrayQueuePrototype::pollPointer());
+  }
 
-    virtual E* peek(void) override{
-      return static_cast<E*>(this->ArrayQueuePrototype::peekPointer());
-    }
-  
+  virtual E* peek(void) override {
+    return static_cast<E*>(this->ArrayQueuePrototype::peekPointer());
+  }
+
   /* ****************************************************************************
    * Public Method <Override> - lang::Collection<E>
-   */  
-  public:
-    virtual void clear(void) override{
-      return this->ArrayQueuePrototype::clear();
-    }
+   */
+ public:
+  virtual void clear(void) override {
+    return this->ArrayQueuePrototype::clear();
+  }
 
-    virtual bool isEmpty(void) const override{
-      return this->ArrayQueuePrototype::isEmpty();
-    }
+  virtual bool isEmpty(void) const override {
+    return this->ArrayQueuePrototype::isEmpty();
+  }
+
+  virtual int size(void) const override {
+    return this->ArrayQueuePrototype::size();
+  }
+
+  /* ****************************************************************************
+   * Public Method <Override> - lang::Iteraable<E>
+   */
+ public:
+  virtual bool peekIndex(int index, E*& result) override {
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wundefined-reinterpret-cast"
     
-    virtual int size(void) const override{
-      return this->ArrayQueuePrototype::size();
-    }
+    return ArrayQueuePrototype::peekIndex(index, reinterpret_cast<void*&>(result));
+    
+    #pragma clang diagnostic pop
+  }
 
   /* ****************************************************************************
    * Public Method
@@ -148,15 +160,20 @@ class lang::ArrayQueue :public lang::ArrayQueuePrototype ,
   /* ****************************************************************************
    * Private Method <Override>
    */
-   
+
   /* ****************************************************************************
    * Private Method
-   */  
-
+   */
+ private:
+  using ArrayQueuePrototype::clear;
+  using ArrayQueuePrototype::isEmpty;
+  using ArrayQueuePrototype::size;
+  using ArrayQueuePrototype::peekIndex;
+  
 };
 
 /* *******************************************************************************
  * End of file
- */ 
+ */
 
 #endif /* LANG_EABFB0E9_4CE7_4009_A990_B20F60799B41 */

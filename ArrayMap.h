@@ -20,15 +20,15 @@
  * Namespace
  */
 namespace lang {
-  template <class V>
+  template <class K, class V>
   class ArrayMap;
 }
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
-template <class V>
-class lang::ArrayMap : public lang::ArrayMapPrototype, public lang::Map<V> {
+template <class K, class V>
+class lang::ArrayMap : public lang::ArrayMapPrototype, public lang::Map<K, V> {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -88,44 +88,57 @@ class lang::ArrayMap : public lang::ArrayMapPrototype, public lang::Map<V> {
    */
 
   /* **************************************************************************************
-   * Public Method <Override> - lang::Map
+   * Public Method <Override> - lang::Iterable<E>
    */
  public:
-  virtual bool containsKey(Interface& key) override {
-    return ArrayMapPrototype::containsKeyHash(key.getObject().hashcode());
+  virtual bool peekIndex(int index, V& result) override{
+    return ArrayMapPrototype::peekIndex(index, reinterpret_cast<void*&>(result));
   }
 
-  virtual bool containsValue(void* value) override {
-    return ArrayMapPrototype::containsValue(value);
-  }
-
-  virtual V* get(Interface& key) override {
-    return static_cast<V*>(ArrayMapPrototype::getHash(key.getObject().hashcode()));
-  }
-
-  virtual V* put(Interface& key, V* value) override {
-    return static_cast<V*>(ArrayMapPrototype::putHash(key.getObject().hashcode(), value));
-  }
-
-  virtual V* remove(Interface& key) override {
-    return static_cast<V*>(ArrayMapPrototype::removeHash(key.getObject().hashcode()));
-  }
-
-  virtual V* replace(Interface& key, V* value) override {
-    return static_cast<V*>(ArrayMapPrototype::replaceHash(key.getObject().hashcode(), value));
-  }
-
-  virtual void clear(void) override{
+  /* **************************************************************************************
+   * Public Method <Override> - lang::Collection<E>
+   */
+ public:
+  virtual void clear(void) override {
     ArrayMapPrototype::clear();
   }
 
-  virtual bool isEmpty(void) const override{
+  virtual bool isEmpty(void) const override {
     return ArrayMapPrototype::isEmpty();
   }
 
-  virtual int size(void) const override{
+  virtual int size(void) const override {
     return ArrayMapPrototype::size();
   }
+
+  /* **************************************************************************************
+   * Public Method <Override> - lang::Map<V>
+   */
+ public:
+  virtual bool containsKey(K& key) const override {
+    return ArrayMapPrototype::containsKey(key);
+  }
+
+  virtual bool containsValue(V* value) const override {
+    return ArrayMapPrototype::containsValue(reinterpret_cast<void**>(value));
+  }
+
+  virtual V* get(K& key) const override {
+    return reinterpret_cast<V*>(ArrayMapPrototype::get(key));
+  }
+
+  virtual V* put(K& key, V* value) override {
+    return reinterpret_cast<V*>(ArrayMapPrototype::put(key, reinterpret_cast<void**>(value)));
+  }
+
+  virtual V* remove(K& key) override {
+    return reinterpret_cast<V*>(ArrayMapPrototype::remove(key));
+  }
+
+  virtual V* replace(K& key, V* value) override {
+    return reinterpret_cast<V*>(ArrayMapPrototype::replace(key, reinterpret_cast<void**>(value)));
+  }
+
   /* **************************************************************************************
    * Public Method
    */
@@ -153,6 +166,14 @@ class lang::ArrayMap : public lang::ArrayMapPrototype, public lang::Map<V> {
   /* **************************************************************************************
    * Private Method
    */
+ private:
+  using lang::ArrayMapPrototype::containsKey;
+  using lang::ArrayMapPrototype::containsValue;
+  using lang::ArrayMapPrototype::get;
+  using lang::ArrayMapPrototype::put;
+  using lang::ArrayMapPrototype::remove;
+  using lang::ArrayMapPrototype::replace;
+  using lang::ArrayMapPrototype::peekIndex;
 };
 
 /* ****************************************************************************************

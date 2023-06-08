@@ -16,20 +16,21 @@
 
 //-------------------------------------------------------------------------------
 #include "./Interface.h"
+#include "./Iterable.h"
 
 /* ******************************************************************************
  * Namespace
  */
 namespace lang {
-  template <typename T>
+  template <class T>
   struct Collection;
 }
 
 /* ******************************************************************************
  * Class/Interface/Struct
  */
-template <typename T>
-struct lang::Collection : public virtual lang::Interface {
+template <class T>
+struct lang::Collection : public virtual lang::Iterable<T> {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -47,15 +48,13 @@ struct lang::Collection : public virtual lang::Interface {
    */
 
   /**
-   * @brief
-   * 從此集合中刪除所有元素(可選操作)。此方法返回後，集合將為空。
+   * @brief 從此集合中刪除所有元素(可選操作)。此方法返回後，集合將為空。
    *
    */
   virtual void clear(void) abstract;
 
   /**
-   * @brief
-   * 如果此集合不包含元素，則返回true。
+   * @brief 如果此集合不包含元素，則返回true。
    *
    * @return
    * true如果此集合不包含元素
@@ -63,8 +62,8 @@ struct lang::Collection : public virtual lang::Interface {
   virtual bool isEmpty(void) const abstract;
 
   /**
-   * @brief
-   * 返回此集合中的元素數。
+   * @brief 返回此集合中的元素數。
+   * 
    * 如果此收藏包含超過 Integer.MAX_VALUE個元素，則返回Integer.MAX_VALUE。
    *
    * @return uint32_t - 此集合中的元素数

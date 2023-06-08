@@ -322,7 +322,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>3</wLevel>
+            <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
@@ -559,6 +559,11 @@
               <FilePath>.\Data.h</FilePath>
             </File>
             <File>
+              <FileName>Echoable.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Echoable.h</FilePath>
+            </File>
+            <File>
               <FileName>EmptyReadBuffer.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\EmptyReadBuffer.cpp</FilePath>
@@ -622,6 +627,16 @@
               <FileName>Future.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Future.h</FilePath>
+            </File>
+            <File>
+              <FileName>Hashcode.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Hashcode.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Hashcode.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hashcode.h</FilePath>
             </File>
             <File>
               <FileName>HashGen.cpp</FileName>
@@ -1545,6 +1560,11 @@
               <FilePath>.\Data.h</FilePath>
             </File>
             <File>
+              <FileName>Echoable.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Echoable.h</FilePath>
+            </File>
+            <File>
               <FileName>EmptyReadBuffer.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\EmptyReadBuffer.cpp</FilePath>
@@ -1608,6 +1628,16 @@
               <FileName>Future.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Future.h</FilePath>
+            </File>
+            <File>
+              <FileName>Hashcode.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Hashcode.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Hashcode.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hashcode.h</FilePath>
             </File>
             <File>
               <FileName>HashGen.cpp</FileName>
@@ -2531,6 +2561,11 @@
               <FilePath>.\Data.h</FilePath>
             </File>
             <File>
+              <FileName>Echoable.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Echoable.h</FilePath>
+            </File>
+            <File>
               <FileName>EmptyReadBuffer.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\EmptyReadBuffer.cpp</FilePath>
@@ -2594,6 +2629,16 @@
               <FileName>Future.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Future.h</FilePath>
+            </File>
+            <File>
+              <FileName>Hashcode.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Hashcode.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Hashcode.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hashcode.h</FilePath>
             </File>
             <File>
               <FileName>HashGen.cpp</FileName>

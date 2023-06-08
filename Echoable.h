@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- *
+ * 
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_11DE2BBA_4823_4E3F_884E_9A333C00AD9F
-#define LANG_11DE2BBA_4823_4E3F_884E_9A333C00AD9F
+#ifndef LANG_222C3DA5_0CEC_43AE_8CBE_04BF7A36FE4C
+#define LANG_222C3DA5_0CEC_43AE_8CBE_04BF7A36FE4C
 
 /* ****************************************************************************************
  * Include
@@ -18,33 +18,34 @@
 /* ****************************************************************************************
  * Namespace
  */
-namespace lang {
-  template <class E>
-  struct Iterable;
+namespace lang{
+  struct Echoable;
+  struct WriteBuffer;
 }
+
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
-template <class E>
-struct lang::Iterable {
+struct lang::Echoable : public virtual lang::Interface{
+
   /* **************************************************************************************
    * Method
    */
 
   /**
-   * @brief 檢索但不刪除此隊列的值，如果訪問此列隊位置為空，則返回false。
+   * @brief 啟用或停用echo模式
    * 
-   * @param index 位置
-   * @param result 結果
-   * @return true 訪問成功，結果將存放於result
-   * @return false 訪問失敗，可能超出上限或是列隊為空
+   * @param enable 
+   * @return true 啟用echo
+   * @return false 停用echo
    */
-  virtual bool peekIndex(int index, E& result) abstract;
+  virtual bool echo(bool enable) abstract;
+
 };
 
 /* ****************************************************************************************
  * End of file
  */
 
-#endif /* LANG_11DE2BBA_4823_4E3F_884E_9A333C00AD9F */
+#endif /* LANG_222C3DA5_0CEC_43AE_8CBE_04BF7A36FE4C */

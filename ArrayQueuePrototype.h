@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
@@ -10,27 +10,27 @@
 
 /* ******************************************************************************
  * Include
- */  
+ */
 
 //-------------------------------------------------------------------------------
 #include "./Consumer.h"
 
 //-------------------------------------------------------------------------------
 #include "./Array.h"
-
+#include "./Collection.h"
 
 /* ******************************************************************************
  * Namespace
- */  
-namespace lang{
+ */
+namespace lang {
   class ArrayQueuePrototype;
 }
 
 /* ******************************************************************************
  * Class Object
- */  
-class lang::ArrayQueuePrototype :public lang::Array<void*>{
-
+ */
+class lang::ArrayQueuePrototype : public lang::Array<void*>,
+                                  public lang::Collection<void*> {
   /* ****************************************************************************
    * Subclass
    */
@@ -42,11 +42,11 @@ class lang::ArrayQueuePrototype :public lang::Array<void*>{
   /* ****************************************************************************
    * Variable <Protected>
    */
-  protected: 
-    uint16_t mHead;
-    uint16_t mTail;
-    bool mEmpty;
-  
+ protected:
+  uint16_t mHead;
+  uint16_t mTail;
+  bool mEmpty;
+
   /* ****************************************************************************
    * Variable <Private>
    */
@@ -62,27 +62,26 @@ class lang::ArrayQueuePrototype :public lang::Array<void*>{
   /* ****************************************************************************
    * Construct Method
    */
-  public:
-    
-    /**
-     * @brief Construct a new Array Queue Prototype object
-     * 
-     * @param memory 
-     */
-    ArrayQueuePrototype(const lang::Memory& memory);
-  
-    /**
-     * @brief Construct a new Array Queue Prototype object
-     * 
-     * @param size
-     */
-    ArrayQueuePrototype(uint32_t size);
+ public:
+  /**
+   * @brief Construct a new Array Queue Prototype object
+   *
+   * @param memory
+   */
+  ArrayQueuePrototype(const lang::Memory& memory);
 
-    /**
-     * @brief Destroy the Array Queue Prototype object
-     * 
-     */
-    virtual ~ArrayQueuePrototype(void) override;
+  /**
+   * @brief Construct a new Array Queue Prototype object
+   *
+   * @param size
+   */
+  ArrayQueuePrototype(uint32_t size);
+
+  /**
+   * @brief Destroy the Array Queue Prototype object
+   *
+   */
+  virtual ~ArrayQueuePrototype(void) override;
 
   /* ****************************************************************************
    * Operator Method
@@ -93,8 +92,21 @@ class lang::ArrayQueuePrototype :public lang::Array<void*>{
    */
 
   /* ****************************************************************************
-   * Public Method <Override>
+   * Public Method <Override> - lang::Collection<void*>
    */
+ public:
+
+  virtual void clear(void) override;
+
+  virtual bool isEmpty(void) const override;
+
+  virtual int size(void) const override;
+
+  /* ****************************************************************************
+   * Public Method <Override> - lang::Iterable<void*>
+   */
+ public:
+  virtual bool peekIndex(int index, void*& result) override;
 
   /* ****************************************************************************
    * Public Method
@@ -103,27 +115,18 @@ class lang::ArrayQueuePrototype :public lang::Array<void*>{
   /* ****************************************************************************
    * Public Method <Inline>
    */
-  public: 
-    /**
-     * @brief 
-     * 
-     * @return true 
-     * @return false 
-     */
-    inline bool isEmpty(void) const{
-      return this->mEmpty;
-    }
+ public:
 
-    /**
-     * @brief 
-     * 
-     * @return true 
-     * @return false 
-     */
-    inline bool isFull(void) const{
-      return ((this->mHead == this->mTail) && (!this->mEmpty));
-    }
-   
+  /**
+   * @brief
+   *
+   * @return true
+   * @return false
+   */
+  inline bool isFull(void) const {
+    return ((this->mHead == this->mTail) && (!this->mEmpty));
+  }
+
   /* ****************************************************************************
    * Protected Method <Static>
    */
@@ -131,55 +134,41 @@ class lang::ArrayQueuePrototype :public lang::Array<void*>{
   /* ****************************************************************************
    * Protected Method <Override> - lang::Memroy
    */
-  
+
   /* ****************************************************************************
    * Protected Method
    */
-  protected:
-    
-    /**
-     * @brief 
-     * 
-     */
-    void clear(void);
-  
-    /**
-     * @brief 
-     * 
-     * @param pointer 
-     * @return true 
-     * @return false 
-     */
-    bool offerPointer(void* pointer);
+ protected:
+  /**
+   * @brief
+   *
+   * @param pointer
+   * @return true
+   * @return false
+   */
+  bool offerPointer(void* pointer);
 
-    /**
-     * @brief 
-     * 
-     * @return void* 
-     */
-    void* pollPointer(void);  
-    
-    /**
-     * @brief 
-     * 
-     * @return void* 
-     */
-    void* peekPointer(void);    
-    
-    /**
-     * @brief 
-     * 
-     * @return int 
-     */
-    int size(void) const;
+  /**
+   * @brief
+   *
+   * @return void*
+   */
+  void* pollPointer(void);
 
-    /**
-     * @brief 
-     * 
-     * @param attachment 
-     * @param action 
-     */
-    void foreachPrototype(lang::Consumer<void*>& action) const;
+  /**
+   * @brief
+   *
+   * @return void*
+   */
+  void* peekPointer(void);
+
+  /**
+   * @brief
+   *
+   * @param attachment
+   * @param action
+   */
+  void foreachPrototype(lang::Consumer<void*>& action) const;
 
   /* ****************************************************************************
    * Private Method <Static>
@@ -188,15 +177,14 @@ class lang::ArrayQueuePrototype :public lang::Array<void*>{
   /* ****************************************************************************
    * Private Method <Override>
    */
-   
+
   /* ****************************************************************************
    * Private Method
-   */  
-
+   */
 };
 
 /* *******************************************************************************
  * End of file
- */ 
+ */
 
 #endif /* LANG_BBEA45DB_2443_4AD0_8532_619E2BDE4831 */
