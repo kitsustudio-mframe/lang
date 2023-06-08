@@ -88,7 +88,7 @@ class lang::ArrayMapPrototype : public lang::Object,
    * Public Method <Override> - lang::Iterable<void*>
    */
  public:
-  virtual bool peekIndex(int index, void*& result) override;
+  virtual bool peekIndex(int index, void**& result) override;
 
   /* **************************************************************************************
    * Public Method <Override> - lang::Collection<void*>

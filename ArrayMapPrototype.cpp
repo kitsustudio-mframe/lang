@@ -73,7 +73,7 @@ ArrayMapPrototype::~ArrayMapPrototype(void) {
  * Public Method <Override> - lang::Iterable<E>
  */
 //-----------------------------------------------------------------------------------------
-bool ArrayMapPrototype::peekIndex(int index, void*& result){
+bool ArrayMapPrototype::peekIndex(int index, void**& result){
   if(index < 0)
     return false;
 
@@ -81,7 +81,7 @@ bool ArrayMapPrototype::peekIndex(int index, void*& result){
     return false;
   
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
-  result = p[index].value;
+  result = static_cast<void**>(p[index].value);
   return true;
 }
 

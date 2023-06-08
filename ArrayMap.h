@@ -91,8 +91,13 @@ class lang::ArrayMap : public lang::ArrayMapPrototype, public lang::Map<K, V> {
    * Public Method <Override> - lang::Iterable<E>
    */
  public:
-  virtual bool peekIndex(int index, V& result) override{
-    return ArrayMapPrototype::peekIndex(index, reinterpret_cast<void*&>(result));
+  virtual bool peekIndex(int index, V*& result) override{
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wundefined-reinterpret-cast"
+    
+    return ArrayMapPrototype::peekIndex(index, reinterpret_cast<void**&>(result));
+    
+    #pragma clang diagnostic pop
   }
 
   /* **************************************************************************************

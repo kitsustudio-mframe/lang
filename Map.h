@@ -33,7 +33,7 @@ namespace lang {
  * @tparam V Value
  */
 template <class K, class V>
-struct lang::Map : public virtual lang::Collection<V> {
+struct lang::Map : public virtual lang::Collection<V*> {
   /* ****************************************************************************
    * Method
    */
