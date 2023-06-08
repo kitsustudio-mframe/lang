@@ -141,9 +141,9 @@ class lang::Iterator : public lang::Object, public lang::Iterable<E> {
    * @brief 重設此迭代器，將指針歸零可從同重新訪問
    *
    */
-  virtual void reset(void) {
+  virtual Iterator<E>& reset(void) {
     this->mIndex = 0;
-    return;
+    return *this;
   }
 
   /* **************************************************************************************
