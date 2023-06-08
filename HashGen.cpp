@@ -13,6 +13,7 @@
 
 //-------------------------------------------------------------------------------
 #include "./HashGen.h"
+#include "./Character.h"
 
 /* ******************************************************************************
  * Macro
@@ -74,13 +75,10 @@ int HashGen::getHashcode(const char* src) {
 //-------------------------------------------------------------------------------
 int HashGen::getHashcodeUpperCast(const char* src){
   int result = 0;
+  char c;
   for (int i = 0; src[i] != 0; ++i){
-    
-    if((src[i] >= 'a') && (src[i] >= 'z')){
-      result = 31 * result + (reinterpret_cast<const unsigned char*>(src)[i] - ('a' - 'A'));
-    }else{
-      result = 31 * result + reinterpret_cast<const unsigned char*>(src)[i];
-    }
+    c = Character::toUpperCase(src[i]);
+    result = 31 * result + static_cast<const unsigned char>(c);
   }
     
   return result;
@@ -89,13 +87,10 @@ int HashGen::getHashcodeUpperCast(const char* src){
 //-------------------------------------------------------------------------------
 int HashGen::getHashcodeLowerCast(const char* src){
   int result = 0;
+  char c;
   for (int i = 0; src[i] != 0; ++i){
-    
-    if((src[i] >= 'A') && (src[i] >= 'Z')){
-      result = 31 * result + (reinterpret_cast<const unsigned char*>(src)[i] + ('a' - 'A'));
-    }else{
-      result = 31 * result + reinterpret_cast<const unsigned char*>(src)[i];
-    }
+    c = Character::toLowerCase(src[i]);
+    result = 31 * result + static_cast<const unsigned char>(c);
   }
     
   return result;
