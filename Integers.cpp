@@ -79,7 +79,7 @@ bool Integers::isInteger(const char* str) {
 }
 
 //-------------------------------------------------------------------------------
-bool parseInteger(int& result, lang::Iterator<char>& iterator){
+bool Integers::parseInteger(int& result, lang::Iterator<char>& iterator){
   char cache[Integers::MAX_ASCII_VALUE];
   for(int i=0; i<Integers::MAX_ASCII_VALUE; ++i){
     if(!iterator.next(cache[i]))
