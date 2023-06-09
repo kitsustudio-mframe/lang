@@ -94,7 +94,7 @@ bool Integers::parseInteger(int& result, const char* str) {
   if (!Integers::isInteger(str))
     return false;
 
-  result = atoi(str);
+  result = strtol(str, nullptr, 0);
   return true;
 }
 
