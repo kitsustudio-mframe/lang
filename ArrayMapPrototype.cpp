@@ -73,7 +73,7 @@ ArrayMapPrototype::~ArrayMapPrototype(void) {
  * Public Method <Override> - lang::Iterable<E>
  */
 //-----------------------------------------------------------------------------------------
-bool ArrayMapPrototype::peekIndex(int index, void**& result){
+bool ArrayMapPrototype::peekIndex(int index, void*& result){
   if(index < 0)
     return false;
 
@@ -81,7 +81,7 @@ bool ArrayMapPrototype::peekIndex(int index, void**& result){
     return false;
   
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
-  result = static_cast<void**>(p[index].value);
+  result = static_cast<void*>(p[index].value);
   return true;
 }
 
@@ -113,7 +113,7 @@ int ArrayMapPrototype::size(void) const {
  */
 
 //-----------------------------------------------------------------------------------------
-bool ArrayMapPrototype::containsKey(Interface& key) const {
+bool ArrayMapPrototype::prototypeContainsKey(Interface& key) const {
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
   int hashcode = key.getObject().hashcode();
 
@@ -128,7 +128,7 @@ bool ArrayMapPrototype::containsKey(Interface& key) const {
 }
 
 //-----------------------------------------------------------------------------------------
-bool ArrayMapPrototype::containsValue(void** value) const {
+bool ArrayMapPrototype::prototypeContainsValue(void* value) const {
   if (value == nullptr)
     return false;
 
@@ -146,7 +146,7 @@ bool ArrayMapPrototype::containsValue(void** value) const {
 }
 
 //-----------------------------------------------------------------------------------------
-void** ArrayMapPrototype::get(Interface& key) const {
+void* ArrayMapPrototype::prototypeGet(Interface& key) const {
   int hashcode = key.getObject().hashcode();
   int len = this->size();
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
@@ -161,7 +161,7 @@ void** ArrayMapPrototype::get(Interface& key) const {
 }
 
 //-----------------------------------------------------------------------------------------
-void** ArrayMapPrototype::put(Interface& key, void** value) {
+void* ArrayMapPrototype::prototypePut(Interface& key, void* value) {
   int hashcode = key.getObject().hashcode();
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
 
@@ -188,7 +188,7 @@ void** ArrayMapPrototype::put(Interface& key, void** value) {
 }
 
 //-----------------------------------------------------------------------------------------
-void** ArrayMapPrototype::remove(Interface& key) {
+void* ArrayMapPrototype::prototypeRemove(Interface& key) {
   int hashcode = key.getObject().hashcode();
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
 
@@ -199,7 +199,7 @@ void** ArrayMapPrototype::remove(Interface& key) {
       p[i] = p[this->mSize - 1];
       this->mSize--;
 
-      return static_cast<void**>(result);
+      return result;
     }
   }
 
@@ -207,7 +207,7 @@ void** ArrayMapPrototype::remove(Interface& key) {
 }
 
 //-----------------------------------------------------------------------------------------
-void** ArrayMapPrototype::replace(Interface& key, void** value) {
+void* ArrayMapPrototype::prototypeReplace(Interface& key, void* value) {
   int hashcode = key.getObject().hashcode();
   array_map_prototype_t* p = this->mMemory.pointer(Class<array_map_prototype_t>::cast());
 
@@ -216,7 +216,7 @@ void** ArrayMapPrototype::replace(Interface& key, void** value) {
       void* result = p[i].value;
       p[i].value = value;
 
-      return static_cast<void**>(result);
+      return result;
     }
   }
 

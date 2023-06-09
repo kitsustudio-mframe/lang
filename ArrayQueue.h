@@ -30,7 +30,7 @@ namespace lang {
 /* ******************************************************************************
  * Class/Interface/Struct
  */
-template <class E>
+template <class E = lang::Interface>
 class lang::ArrayQueue : public lang::ArrayQueuePrototype,
                          public lang::Queue<E> {
   /* ****************************************************************************

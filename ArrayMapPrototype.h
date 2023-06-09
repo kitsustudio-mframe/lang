@@ -28,7 +28,7 @@ namespace lang {
  * Class/Interface/Struct/Enum
  */
 class lang::ArrayMapPrototype : public lang::Object,
-                                public lang::Map<lang::Interface, void*> {
+                                public lang::Collection<void*> {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -55,7 +55,7 @@ class lang::ArrayMapPrototype : public lang::Object,
   /* **************************************************************************************
    * Construct Method
    */
- public:
+ protected:
   /**
    * @brief Construct a new Array Map Prototype object
    *
@@ -88,7 +88,7 @@ class lang::ArrayMapPrototype : public lang::Object,
    * Public Method <Override> - lang::Iterable<void*>
    */
  public:
-  virtual bool peekIndex(int index, void**& result) override;
+  virtual bool peekIndex(int index, void*& result) override;
 
   /* **************************************************************************************
    * Public Method <Override> - lang::Collection<void*>
@@ -99,22 +99,6 @@ class lang::ArrayMapPrototype : public lang::Object,
   virtual bool isEmpty(void) const override;
 
   virtual int size(void) const override;
-
-  /* **************************************************************************************
-   * Public Method - lang::Map<void*>
-   */
- public:
-  virtual bool containsKey(Interface& key) const override;
-
-  virtual bool containsValue(void** value) const override;
-
-  virtual void** get(Interface& key) const override;
-
-  virtual void** put(Interface& key, void** value) override;
-
-  virtual void** remove(Interface& key) override;
-
-  virtual void** replace(Interface& key, void** value) override;
 
   /* **************************************************************************************
    * Public Method
@@ -137,7 +121,18 @@ class lang::ArrayMapPrototype : public lang::Object,
   /* **************************************************************************************
    * Protected Method
    */
+ protected:
+  bool prototypeContainsKey(Interface& key) const;
 
+  bool prototypeContainsValue(void* value) const;
+
+  void* prototypeGet(Interface& key) const;
+
+  void* prototypePut(Interface& key, void* value);
+
+  void* prototypeRemove(Interface& key);
+
+  void* prototypeReplace(Interface& key, void* value);
   /* **************************************************************************************
    * Private Method <Static>
    */

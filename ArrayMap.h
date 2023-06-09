@@ -27,7 +27,7 @@ namespace lang {
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
-template <class K, class V>
+template <class K = lang::Interface, class V = lang::Interface>
 class lang::ArrayMap : public lang::ArrayMapPrototype, public lang::Map<K, V> {
   /* **************************************************************************************
    * Variable <Public>
@@ -95,7 +95,7 @@ class lang::ArrayMap : public lang::ArrayMapPrototype, public lang::Map<K, V> {
     #pragma clang diagnostic push
     #pragma clang diagnostic ignored "-Wundefined-reinterpret-cast"
     
-    return ArrayMapPrototype::peekIndex(index, reinterpret_cast<void**&>(result));
+    return ArrayMapPrototype::peekIndex(index, reinterpret_cast<void*&>(result));
     
     #pragma clang diagnostic pop
   }
@@ -121,27 +121,27 @@ class lang::ArrayMap : public lang::ArrayMapPrototype, public lang::Map<K, V> {
    */
  public:
   virtual bool containsKey(K& key) const override {
-    return ArrayMapPrototype::containsKey(key);
+    return ArrayMapPrototype::prototypeContainsKey(key);
   }
 
   virtual bool containsValue(V* value) const override {
-    return ArrayMapPrototype::containsValue(reinterpret_cast<void**>(value));
+    return ArrayMapPrototype::prototypeContainsValue(value);
   }
 
   virtual V* get(K& key) const override {
-    return reinterpret_cast<V*>(ArrayMapPrototype::get(key));
+    return reinterpret_cast<V*>(ArrayMapPrototype::prototypeGet(key));
   }
 
   virtual V* put(K& key, V* value) override {
-    return reinterpret_cast<V*>(ArrayMapPrototype::put(key, reinterpret_cast<void**>(value)));
+    return reinterpret_cast<V*>(ArrayMapPrototype::prototypePut(key, value));
   }
 
   virtual V* remove(K& key) override {
-    return reinterpret_cast<V*>(ArrayMapPrototype::remove(key));
+    return reinterpret_cast<V*>(ArrayMapPrototype::prototypeRemove(key));
   }
 
   virtual V* replace(K& key, V* value) override {
-    return reinterpret_cast<V*>(ArrayMapPrototype::replace(key, reinterpret_cast<void**>(value)));
+    return reinterpret_cast<V*>(ArrayMapPrototype::prototypeReplace(key, value));
   }
 
   /* **************************************************************************************
@@ -172,12 +172,6 @@ class lang::ArrayMap : public lang::ArrayMapPrototype, public lang::Map<K, V> {
    * Private Method
    */
  private:
-  using lang::ArrayMapPrototype::containsKey;
-  using lang::ArrayMapPrototype::containsValue;
-  using lang::ArrayMapPrototype::get;
-  using lang::ArrayMapPrototype::put;
-  using lang::ArrayMapPrototype::remove;
-  using lang::ArrayMapPrototype::replace;
   using lang::ArrayMapPrototype::peekIndex;
 };
 
