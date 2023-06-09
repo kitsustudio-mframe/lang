@@ -30,7 +30,7 @@ namespace lang {
  */
 
 /**
- * @brief 寫入緩衝區 <Interface>
+ * @brief 寫緩衝區 <Interface>
  * 
  */
 struct lang::WriteBuffer : public virtual lang::Interface {

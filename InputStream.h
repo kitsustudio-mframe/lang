@@ -30,6 +30,13 @@ namespace lang {
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
  */
+
+/**
+ * @brief 輸入串流 <Protected Class>
+ *
+ * 此類別無法被直接建構，須被繼承後並實現字節輸入至寫緩衝區
+ *
+ */
 class lang::InputStream : public lang::Object,
                           public lang::Runnable {
   /* ****************************************************************************
@@ -110,33 +117,41 @@ class lang::InputStream : public lang::Object,
   virtual bool readBusy(void);
 
   /**
-   * @brief
+   * @brief 阻塞式讀取。從輸入串流中讀取一些字節數，並將他們存到寫入緩衝區writeBuffer。
    *
-   * @param readBuffer
-   * @return int
+   * 當寫緩衝區滿或是超時返回。
+   *
+   * @param writeBuffer 寫緩衝區。
+   * @param timeout 超時，單位毫秒。
+   * @return true 操作成功或讀取超時。
+   * @return false 操作失敗，輸入串流正在忙碌。
    */
   virtual bool read(lang::WriteBuffer& writeBuffer, int timeout);
 
   /**
-   * @brief nonblocking
+   * @brief 非同步讀取。從輸入串流中讀取一些字節數，並將他們存到寫入緩衝區writeBuffer。
    *
-   * @param writeBuffer
-   * @param attachment
-   * @param handler
-   * @return true successful.
-   * @return false fail.
+   * 當寫緩衝區滿時將調用handler進行非同步事件。
+   *
+   * tips. 此方法調用後不論狀態將立即返回。
+   *
+   * @param writeBuffer 寫緩衝區。
+   * @param attachment 使用者參數，將再調用handler時傳入。
+   * @param handler 事件處理器。
+   * @return true 建立非同步讀取成功。
+   * @return false 建立非同步讀取失敗，輸入串流正在忙碌。
    */
   virtual bool read(lang::WriteBuffer& writeBuffer,
                     void* attachment,
                     lang::CompletionHandler<int, void*>* handler);
 
   /**
-   * @brief
+   * @brief 非阻塞讀取。從輸入串流中讀取一些字節數，並將他們存到寫入緩衝區writeBuffer。
    *
-   * @param writeBuffer
-   * @param future
-   * @return true
-   * @return false
+   * @param writeBuffer 寫緩衝區。
+   * @param future 未來的計算結果。
+   * @return true 建立非阻塞讀取成功。
+   * @return false 建立非阻塞讀取失敗，輸入串流正在忙碌。
    */
   virtual bool read(lang::WriteBuffer& writeBuffer, lang::Future& future);
 
@@ -153,15 +168,16 @@ class lang::InputStream : public lang::Object,
    */
  protected:
   /**
-   * @brief
+   * @brief 處理事件，當讀取串流事件完成時呼叫此方法，完成非同步，非阻塞事件更新。
    *
+   * 重寫此方法將改變處理方法。
    */
   virtual void execute(void);
 
   /**
-   * @brief 讀取事件
+   * @brief 當read被調用後且成功建立讀取事件，將呼叫此方法。
    *
-   * 當成功建立讀取時呼叫此
+   * 重寫此方法將改變處理方法。
    */
   virtual void onReadEvent(void);
 
