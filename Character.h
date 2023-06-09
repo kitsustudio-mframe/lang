@@ -47,7 +47,7 @@ class lang::Character final : public lang::Object {
   static const char CHAR_CR = 0x0D;   ///< CR (字元)
   static const char CHAR_SO = 0x0E;   ///< 取消變換（Shift out）
   static const char CHAR_SI = 0x0F;   ///< 啟用變換（Shift in）
-  static const char CHAR_DEL = 0x10;  ///< 跳出資料通訊
+  static const char CHAR_DLE = 0x10;  ///< 跳出資料通訊
   static const char CHAR_DC1 = 0x11;  ///< 裝置控制一（XON 啟用軟體速度控制）
   static const char CHAR_DC2 = 0x12;  ///< 裝置控制二
   static const char CHAR_DC3 = 0x13;  ///< 裝置控制三（XOFF 停用軟體速度控制）
