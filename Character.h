@@ -30,6 +30,40 @@ class lang::Character final : public lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */
+ public:
+  static const char CHAR_NUL = 0x00;  ///< 空字元（Null）
+  static const char CHAR_SOH = 0x01;  ///< 標題開始
+  static const char CHAR_STX = 0x02;  ///< 本文開始
+  static const char CHAR_ETX = 0x03;  ///< 本文結束
+  static const char CHAR_EOT = 0x04;  ///< 傳輸結束
+  static const char CHAR_ENQ = 0x05;  ///< 請求
+  static const char CHAR_ACK = 0x06;  ///< 確認回應
+  static const char CHAR_BEL = 0x07;  ///< 響鈴
+  static const char CHAR_BS = 0x08;   ///< 退格
+  static const char CHAR_HT = 0x09;   ///< 水平定位符號
+  static const char CHAR_LF = 0x0A;   ///< 換行鍵
+  static const char CHAR_VT = 0x0B;   ///< 垂直定位符號
+  static const char CHAR_FF = 0x0C;   ///< 換頁鍵
+  static const char CHAR_CR = 0x0D;   ///< CR (字元)
+  static const char CHAR_SO = 0x0E;   ///< 取消變換（Shift out）
+  static const char CHAR_SI = 0x0F;   ///< 啟用變換（Shift in）
+  static const char CHAR_DEL = 0x10;  ///< 跳出資料通訊
+  static const char CHAR_DC1 = 0x11;  ///< 裝置控制一（XON 啟用軟體速度控制）
+  static const char CHAR_DC2 = 0x12;  ///< 裝置控制二
+  static const char CHAR_DC3 = 0x13;  ///< 裝置控制三（XOFF 停用軟體速度控制）
+  static const char CHAR_DC4 = 0x14;  ///< 裝置控制四
+  static const char CHAR_NAK = 0x15;  ///< 確認失敗回應
+  static const char CHAR_SYN = 0x16;  ///< 同步用暫停
+  static const char CHAR_ETB = 0x17;  ///< 區塊傳輸結束
+  static const char CHAR_CAN = 0x18;  ///< 取消
+  static const char CHAR_EM = 0x19;   ///< 連線媒介中斷
+  static const char CHAR_SUB = 0x1A;  ///< 替換
+  static const char CHAR_ESC = 0x1B;  ///< 登出鍵
+  static const char CHAR_FS = 0x1C;   ///< 檔案分割符
+  static const char CHAR_GS = 0x1D;   ///< 群組分隔符
+  static const char CHAR_RS = 0x1E;   ///< 記錄分隔符
+  static const char CHAR_US = 0x1F;   ///< 單元分隔符
+  static const char CHAR_DEL = 0x7F;  ///< Delete字元
 
   /* ****************************************************************************
    * Variable <Protected>
@@ -73,22 +107,22 @@ class lang::Character final : public lang::Object {
    */
  public:
   /**
-   * @brief 
-   * 
-   * @param c 
-   * @return true 
-   * @return false 
+   * @brief
+   *
+   * @param c
+   * @return true
+   * @return false
    */
   static bool inline isNextSymbol(char c) {
     return ((c == '\0') || (c == '\n') || (c == ' ') || (c == '\r') || (c == '\t'));
   }
-  
+
   /**
-   * @brief 
-   * 
-   * @param c 
-   * @return true 
-   * @return false 
+   * @brief
+   *
+   * @param c
+   * @return true
+   * @return false
    */
   static bool inline isNextLineSymbol(char c) {
     return ((c == '\0') || (c == '\n') || (c == '\r'));
