@@ -4,8 +4,8 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_5F596881_5E43_4F42_97D0_4B6E1F7ED311
-#define LANG_5F596881_5E43_4F42_97D0_4B6E1F7ED311
+#ifndef MFRAME_5F596881_5E43_4F42_97D0_4B6E1F7ED311
+#define MFRAME_5F596881_5E43_4F42_97D0_4B6E1F7ED311
 
 /* ******************************************************************************
  * Include
@@ -16,7 +16,7 @@
 //-------------------------------------------------------------------------------
 #include "./Memory.h"
 #include "./Object.h"
-#include "./WriteBuffer.h"
+#include "./../io/WriteBuffer.h"
 
 /* ******************************************************************************
  * Namespace
@@ -96,7 +96,7 @@ class lang::StringFormat final : public lang::Object {
    * @param arg
    * @return int
    */
-  static int writeBufferVa(lang::WriteBuffer& writeBuffer, const char* format, va_list args);
+  static int writeBufferVa(io::WriteBuffer& writeBuffer, const char* format, va_list args);
 
   /**
    * @brief
@@ -127,7 +127,7 @@ class lang::StringFormat final : public lang::Object {
    * @param ...
    * @return int
    */
-  static int writeBuffer(lang::WriteBuffer& writeBuffer, const char* format, ...);
+  static int writeBuffer(io::WriteBuffer& writeBuffer, const char* format, ...);
 
   /**
    * @brief
@@ -185,4 +185,4 @@ class lang::StringFormat final : public lang::Object {
  * End of file
  */
 
-#endif /* LANG_5F596881_5E43_4F42_97D0_4B6E1F7ED311 */
+#endif /* MFRAME_5F596881_5E43_4F42_97D0_4B6E1F7ED311 */

@@ -1,23 +1,33 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 
 /* ******************************************************************************
  * Include
- */  
+ */
+#include "./HashGenerator.h"
 
 //-------------------------------------------------------------------------------
-#include "./ArrayPrototype.h"
-#include "./Pointers.h"
+#include "mframe_lang.h"
+
+//-------------------------------------------------------------------------------
+
+
+/* ******************************************************************************
+ * Macro
+ */
 
 /* ******************************************************************************
  * Using
- */  
-using lang::ArrayPrototype;
-using lang::Memory;
+ */
+
+//-------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------
+using lang::HashGenerator;
 
 /* ******************************************************************************
  * Variable <Static>
@@ -27,32 +37,65 @@ using lang::Memory;
  * Construct Method
  */
 
+//-------------------------------------------------------------------------------
+HashGenerator::HashGenerator(void) {
+  return;
+}
+
+//-------------------------------------------------------------------------------
+HashGenerator::~HashGenerator(void) {
+  return;
+}
+
 /* ******************************************************************************
  * Operator Method
  */
 
-//-------------------------------------------------------------------------------
-ArrayPrototype::ArrayPrototype(const Memory& memory, size_t elementSize) : Memory(memory){
-  this->mElementSize = static_cast<int>(elementSize);
-  this->mElementLength = (this->length() / this->mElementSize); 
-  return;
-}
-
-//-------------------------------------------------------------------------------
-ArrayPrototype::ArrayPrototype(size_t length, size_t elementSize) : Memory(length * elementSize){
-  this->mElementSize = static_cast<int>(elementSize);
-  this->mElementLength = this->length() / static_cast<int>(elementSize);
-}
-
-//-------------------------------------------------------------------------------
-ArrayPrototype::~ArrayPrototype(void){
-  return;
-}
-
 /* ******************************************************************************
  * Public Method <Static>
  */
- 
+
+//-------------------------------------------------------------------------------
+int HashGenerator::getHashcode(const void* src, int len) {
+  int result = 0;
+  for (int i = 0; i < len; ++i)
+    result = 31 * result + reinterpret_cast<const unsigned char*>(src)[i];
+
+  return result;
+}
+
+//-------------------------------------------------------------------------------
+int HashGenerator::getHashcode(const char* src) {
+  int result = 0;
+  for (int i = 0; src[i] != 0; ++i)
+    result = 31 * result + reinterpret_cast<const unsigned char*>(src)[i];
+
+  return result;
+}
+
+//-------------------------------------------------------------------------------
+int HashGenerator::getHashcodeUpperCast(const char* src){
+  int result = 0;
+  char c;
+  for (int i = 0; src[i] != 0; ++i){
+    c = Character::toUpperCase(src[i]);
+    result = 31 * result + static_cast<const unsigned char>(c);
+  }
+    
+  return result;
+}
+
+//-------------------------------------------------------------------------------
+int HashGenerator::getHashcodeLowerCast(const char* src){
+  int result = 0;
+  char c;
+  for (int i = 0; src[i] != 0; ++i){
+    c = Character::toLowerCase(src[i]);
+    result = 31 * result + static_cast<const unsigned char>(c);
+  }
+    
+  return result;
+}
 /* ******************************************************************************
  * Public Method <Override>
  */
@@ -61,40 +104,13 @@ ArrayPrototype::~ArrayPrototype(void){
  * Public Method
  */
 
-//-------------------------------------------------------------------------------
-int ArrayPrototype::getElementLength(void) const{
-  return this->mElementLength;
-}
-
-//-------------------------------------------------------------------------------
-int ArrayPrototype::getElementSize(void) const{
-  return this->mElementSize;
-}
-
-//-------------------------------------------------------------------------------
-int ArrayPrototype::indexOf(const void* element) const{
-  int result = -1;
-  
-  for(int i=0; i<this->mElementLength; i++){
-    const void* dst = &static_cast<uint8_t*>(this->pointer())[i * this->mElementSize];
-    
-    if(Pointers::compare(dst, element, this->mElementSize) != 0)
-      continue;
-
-    result = static_cast<int>(i);
-    break;
-  }
-
-  return result;
-}
-
 /* ******************************************************************************
  * Protected Method <Static>
  */
- 
+
 /* ******************************************************************************
  * Protected Method <Override>
- */ 
+ */
 
 /* ******************************************************************************
  * Protected Method
@@ -103,7 +119,7 @@ int ArrayPrototype::indexOf(const void* element) const{
 /* ******************************************************************************
  * Private Method
  */
- 
+
 /* ******************************************************************************
  * End of file
- */ 
+ */

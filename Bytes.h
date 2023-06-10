@@ -4,8 +4,8 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_CAD6C6BA_43F2_4CE1_9A81_D130881FE7E6
-#define LANG_CAD6C6BA_43F2_4CE1_9A81_D130881FE7E6
+#ifndef MFRAME_CAD6C6BA_43F2_4CE1_9A81_D130881FE7E6
+#define MFRAME_CAD6C6BA_43F2_4CE1_9A81_D130881FE7E6
 
 /* ******************************************************************************
  * Include
@@ -139,4 +139,4 @@ class lang::Bytes final : public lang::Object {
  * End of file
  */
 
-#endif /* LANG_CAD6C6BA_43F2_4CE1_9A81_D130881FE7E6 */
+#endif /* MFRAME_CAD6C6BA_43F2_4CE1_9A81_D130881FE7E6 */

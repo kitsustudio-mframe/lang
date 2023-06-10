@@ -4,8 +4,8 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_FF6FBB65_4795_467C_8D77_53255923274A
-#define LANG_FF6FBB65_4795_467C_8D77_53255923274A
+#ifndef MFRAME_FF6FBB65_4795_467C_8D77_53255923274A
+#define MFRAME_FF6FBB65_4795_467C_8D77_53255923274A
 
 /* ******************************************************************************
  * Include
@@ -74,4 +74,4 @@ enum struct lang::ThreadState : char {
  * End of file
  */
 
-#endif /* LANG_FF6FBB65_4795_467C_8D77_53255923274A */
+#endif /* MFRAME_FF6FBB65_4795_467C_8D77_53255923274A */

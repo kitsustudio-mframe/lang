@@ -5,24 +5,22 @@
  * SPDX-License-Identifier: MIT
  */
 
-#ifndef LANG_DB2618AE_F498_4792_900C_A4BD1DC2E35C
-#define LANG_DB2618AE_F498_4792_900C_A4BD1DC2E35C
+#ifndef MFRAME_DB2618AE_F498_4792_900C_A4BD1DC2E35C
+#define MFRAME_DB2618AE_F498_4792_900C_A4BD1DC2E35C
 
 /* ******************************************************************************
  * Include
  */
 
 //-------------------------------------------------------------------------------
-#include "./Object.h"
-
-//-------------------------------------------------------------------------------
-#include "./ErrorCode.h"
-#include "./Kernel.h"
-#include "./PrintBuffer.h"
-#include "./RingBuffer.h"
-#include "./Runnable.h"
-#include "./Svchost.h"
-#include "./Thread.h"
+#include "./../io/PrintBuffer.h"
+#include "./../io/RingBuffer.h"
+#include "./../lang/ErrorCode.h"
+#include "./../lang/Object.h"
+#include "./../lang/Runnable.h"
+#include "./../lang/Thread.h"
+#include "./../lang/managerment/Kernel.h"
+#include "./../lang/managerment/Svchost.h"
 
 /* ******************************************************************************
  * Namespace
@@ -49,7 +47,7 @@ class lang::System final : public lang::Object {
    * Variable <Private>
    */
  private:
-  static lang::Svchost* mSvchost;
+  static lang::managerment::Svchost* mSvchost;
   /* ****************************************************************************
    * Abstract method <Public>
    */
@@ -85,12 +83,12 @@ class lang::System final : public lang::Object {
   /**
    *
    */
-  static lang::PrintBuffer& out(void);
+  static io::PrintBuffer& out(void);
 
   /**
    *
    */
-  static lang::ReadBuffer& in(void);
+  static io::ReadBuffer& in(void);
 
   /**
    * @brief 設備重新啟動
@@ -102,13 +100,13 @@ class lang::System final : public lang::Object {
    * @brief
    *
    */
-  static void setup(lang::Kernel& kernel);
+  static void setup(lang::managerment::Kernel& kernel);
 
   /**
    * @brief
    *
    */
-  static void setup(lang::Kernel& kernel, uint32_t outSize, uint32_t inSize);
+  static void setup(lang::managerment::Kernel& kernel, uint32_t outSize, uint32_t inSize);
 
   /**
    * @brief 系統初始化核心
@@ -337,4 +335,4 @@ class lang::System final : public lang::Object {
  * End of file
  */
 
-#endif /* LANG_DB2618AE_F498_4792_900C_A4BD1DC2E35C */
+#endif /* MFRAME_DB2618AE_F498_4792_900C_A4BD1DC2E35C */

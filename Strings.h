@@ -5,8 +5,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-#ifndef LANG_F115800B_0B0A_4795_ABFB_A37BD1DE2055
-#define LANG_F115800B_0B0A_4795_ABFB_A37BD1DE2055
+#ifndef MFRAME_F115800B_0B0A_4795_ABFB_A37BD1DE2055
+#define MFRAME_F115800B_0B0A_4795_ABFB_A37BD1DE2055
 
 /* ******************************************************************************
  * Include
@@ -16,8 +16,8 @@
 
 //-------------------------------------------------------------------------------
 #include "./Memory.h"
-#include "./ReadBuffer.h"
-#include "./WriteBuffer.h"
+#include "./../io/ReadBuffer.h"
+#include "./../io/WriteBuffer.h"
 
 /* ******************************************************************************
  * Namespace
@@ -128,7 +128,7 @@ class lang::Strings final : public lang::Memory {
    * @param WriteBuffer
    * @return Strings&
    */
-  inline Strings& operator+=(lang::ReadBuffer& readBuffer) {
+  inline Strings& operator+=(io::ReadBuffer& readBuffer) {
     return this->append(readBuffer);
   }
 
@@ -356,7 +356,7 @@ class lang::Strings final : public lang::Memory {
    * @param readBuffer
    * @return String&
    */
-  Strings& append(lang::ReadBuffer& readBuffer);
+  Strings& append(io::ReadBuffer& readBuffer);
 
   /**
    * @brief
@@ -449,4 +449,4 @@ class lang::Strings final : public lang::Memory {
  * End of file
  */
 
-#endif /* LANG_F115800B_0B0A_4795_ABFB_A37BD1DE2055 */
+#endif /* MFRAME_F115800B_0B0A_4795_ABFB_A37BD1DE2055 */

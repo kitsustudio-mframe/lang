@@ -4,33 +4,31 @@
  *
  * SPDX-License-Identifier: MIT
  */
-
-#ifndef LANG_B4E61D80_F9A1_469D_84FD_FBB3D8FC11E4
-#define LANG_B4E61D80_F9A1_469D_84FD_FBB3D8FC11E4
+#ifndef MFRAME_E8463782_967B_46FF_930C_98A3EB2CAF31
+#define MFRAME_E8463782_967B_46FF_930C_98A3EB2CAF31
 
 /* ******************************************************************************
  * Include
  */
 
 //-------------------------------------------------------------------------------
+#include "./../../lang/Object.h"
+#include "./../../lang/Thread.h"
 
 //-------------------------------------------------------------------------------
-#include "./Interface.h"
-#include "./Iterable.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
-  template <class T>
-  struct Collection;
+namespace lang::managerment {
+  class EntryPoint;
 }
 
 /* ******************************************************************************
- * Class/Interface/Struct
+ * Class/Interface/Struct/Enum
  */
-template <class T>
-struct lang::Collection : public virtual lang::Iterable<T> {
+class lang::managerment::EntryPoint : public lang::Object,
+                                      public lang::Runnable {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -42,33 +40,13 @@ struct lang::Collection : public virtual lang::Iterable<T> {
   /* ****************************************************************************
    * Variable <Private>
    */
+ private:
+  void (*mSetup)(lang::Thread*);
+  void (*mLoop)(lang::Thread*);
 
   /* ****************************************************************************
    * Abstract method <Public>
    */
-
-  /**
-   * @brief 從此集合中刪除所有元素(可選操作)。此方法返回後，集合將為空。
-   *
-   */
-  virtual void clear(void) abstract;
-
-  /**
-   * @brief 如果此集合不包含元素，則返回true。
-   *
-   * @return
-   * true如果此集合不包含元素
-   */
-  virtual bool isEmpty(void) const abstract;
-
-  /**
-   * @brief 返回此集合中的元素數。
-   * 
-   * 如果此收藏包含超過 Integer.MAX_VALUE個元素，則返回Integer.MAX_VALUE。
-   *
-   * @return uint32_t - 此集合中的元素数
-   */
-  virtual int size(void) const abstract;
 
   /* ****************************************************************************
    * Abstract method <Protected>
@@ -77,6 +55,16 @@ struct lang::Collection : public virtual lang::Iterable<T> {
   /* ****************************************************************************
    * Construct Method
    */
+ public:
+  /**
+   *
+   */
+  EntryPoint(void (*setup)(lang::Thread*), void (*loop)(lang::Thread*));
+
+  /**
+   *
+   */
+  virtual ~EntryPoint(void) override;
 
   /* ****************************************************************************
    * Operator Method
@@ -87,8 +75,13 @@ struct lang::Collection : public virtual lang::Iterable<T> {
    */
 
   /* ****************************************************************************
-   * Public Method <Override>
+   * Public Method <Override>- lang::Runnable
    */
+ public:
+  /**
+   *
+   */
+  virtual void run(void) override;
 
   /* ****************************************************************************
    * Public Method
@@ -119,8 +112,8 @@ struct lang::Collection : public virtual lang::Iterable<T> {
    */
 };
 
-/* *******************************************************************************
+/* ******************************************************************************
  * End of file
  */
 
-#endif /* LANG_.B4E61D80_F9A1_469D_84FD_FBB3D8FC11E4 */
+#endif /* MFRAME_E8463782_967B_46FF_930C_98A3EB2CAF31 */

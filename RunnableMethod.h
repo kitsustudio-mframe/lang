@@ -4,8 +4,8 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_3B92E2D6_6975_43AB_9A11_1A8EE738C26B
-#define LANG_3B92E2D6_6975_43AB_9A11_1A8EE738C26B
+#ifndef MFRAME_3B92E2D6_6975_43AB_9A11_1A8EE738C26B
+#define MFRAME_3B92E2D6_6975_43AB_9A11_1A8EE738C26B
 
 /* ****************************************************************************************
  * Include
@@ -126,4 +126,4 @@ class lang::RunnableMethod : public lang::Object,
  * End of file
  */
 
-#endif /* LANG_3B92E2D6_6975_43AB_9A11_1A8EE738C26B */
+#endif /* MFRAME_3B92E2D6_6975_43AB_9A11_1A8EE738C26B */

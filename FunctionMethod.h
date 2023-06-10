@@ -4,8 +4,8 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_744A7D50_87F7_4559_993A_9FA307345979
-#define LANG_744A7D50_87F7_4559_993A_9FA307345979
+#ifndef MFRAME_744A7D50_87F7_4559_993A_9FA307345979
+#define MFRAME_744A7D50_87F7_4559_993A_9FA307345979
 
 /* ****************************************************************************************
  * Include
@@ -128,4 +128,4 @@ class lang::FunctionMethod : public lang::Object, public lang::Function<T, R> {
  * End of file
  */
 
-#endif /* LANG_744A7D50_87F7_4559_993A_9FA307345979 */
+#endif /* MFRAME_744A7D50_87F7_4559_993A_9FA307345979 */

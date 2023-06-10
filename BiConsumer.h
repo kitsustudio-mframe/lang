@@ -4,8 +4,8 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_CE48C601_AB18_4B36_8C89_8ACA733118B1
-#define LANG_CE48C601_AB18_4B36_8C89_8ACA733118B1
+#ifndef MFRAME_CE48C601_AB18_4B36_8C89_8ACA733118B1
+#define MFRAME_CE48C601_AB18_4B36_8C89_8ACA733118B1
 
 /* ******************************************************************************
  * Include
@@ -46,4 +46,4 @@ struct lang::BiConsumer : public virtual lang::Interface {
  * End of file
  */
 
-#endif /* LANG_CE48C601_AB18_4B36_8C89_8ACA733118B1 */
+#endif /* MFRAME_CE48C601_AB18_4B36_8C89_8ACA733118B1 */

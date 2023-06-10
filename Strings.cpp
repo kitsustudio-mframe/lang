@@ -11,13 +11,12 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "./Strings.h"
 //-------------------------------------------------------------------------------
+#include "mframe_lang.h"
 
 //-------------------------------------------------------------------------------
-#include "./Class.h"
-#include "./HashGen.h"
-#include "./Strings.h"
-#include "./System.h"
+
 
 /* ******************************************************************************
  * Macro
@@ -113,7 +112,7 @@ int Strings::indexOfData(const void* destination, int destinationLen, int start)
 
 //-------------------------------------------------------------------------------
 int Strings::hashcode(void) const {
-  return lang::HashGen::getHashcode(this->pointer(Class<const char>::cast()));
+  return lang::HashGenerator::getHashcode(this->pointer(Class<const char>::cast()));
 }
 
 /* ******************************************************************************
@@ -122,7 +121,7 @@ int Strings::hashcode(void) const {
 
 //-------------------------------------------------------------------------------
 int Strings::hashdata(void) const {
-  return lang::HashGen::getHashcode(this->pointer(Class<const char>::cast()));
+  return lang::HashGenerator::getHashcode(this->pointer(Class<const char>::cast()));
 }
 
 /* ******************************************************************************
@@ -317,7 +316,7 @@ Strings& Strings::append(const char* str) {
 }
 
 //-------------------------------------------------------------------------------
-Strings& Strings::append(lang::ReadBuffer& readBuffer) {
+Strings& Strings::append(io::ReadBuffer& readBuffer) {
   if (this->isReadOnly())
     return *this;
 
@@ -382,12 +381,12 @@ Strings& Strings::set(const char* str) {
 
 //-------------------------------------------------------------------------------
 int Strings::hashcodeLowerCast(void){
-  return lang::HashGen::getHashcodeLowerCast(this->pointer(Class<const char>::cast()));
+  return lang::HashGenerator::getHashcodeLowerCast(this->pointer(Class<const char>::cast()));
 }
 
 //-------------------------------------------------------------------------------
 int Strings::hashcodeUpperCast(void){
-  return lang::HashGen::getHashcodeUpperCast(this->pointer(Class<const char>::cast()));
+  return lang::HashGenerator::getHashcodeUpperCast(this->pointer(Class<const char>::cast()));
 }
 
 /* ******************************************************************************

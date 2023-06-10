@@ -10,12 +10,12 @@
  */
 
 #include <stdlib.h>
-
-//-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
-#include "./Svchost.h"
 #include "./System.h"
+
+//-------------------------------------------------------------------------------
+#include "mframe_lang.h"
+
+//-------------------------------------------------------------------------------
 
 /* ******************************************************************************
  * Namespace
@@ -28,7 +28,16 @@
 /* ******************************************************************************
  * Using
  */
+ 
 using lang::System;
+
+//-------------------------------------------------------------------------------
+using io::PrintBuffer;
+using lang::managerment::Svchost;
+using lang::managerment::Kernel;
+
+//-------------------------------------------------------------------------------
+
 
 /* ******************************************************************************
  * Global Operator
@@ -37,7 +46,7 @@ using lang::System;
 /* ******************************************************************************
  * Static Variable
  */
-lang::Svchost* System::mSvchost;
+Svchost* System::mSvchost;
 
 /* ******************************************************************************
  * Construct Method
@@ -62,12 +71,12 @@ System::~System(void) {
  */
 
 //-------------------------------------------------------------------------------
-lang::PrintBuffer& System::out(void) {
+PrintBuffer& System::out(void) {
   return System::mSvchost->mPrintBuffer;
 }
 
 //-------------------------------------------------------------------------------
-lang::ReadBuffer& System::in(void) {
+io::ReadBuffer& System::in(void) {
   return System::mSvchost->mRingBuffer;
 }
 
@@ -78,13 +87,13 @@ void System::reboot(void) {
 }
 
 //-------------------------------------------------------------------------------
-void System::setup(lang::Kernel& kernel) {
+void System::setup(Kernel& kernel) {
   System::setup(kernel, 128, 128);
 }
 
 //-------------------------------------------------------------------------------
-void System::setup(lang::Kernel& kernel, uint32_t outSize, uint32_t inSize) {
-  System::mSvchost = new lang::Svchost(kernel, outSize, inSize, 32);
+void System::setup(Kernel& kernel, uint32_t outSize, uint32_t inSize) {
+  System::mSvchost = new Svchost(kernel, outSize, inSize, 32);
   if (System::mSvchost->mKernel.kernelInitialize() == false)
     System::error("SYSTEM", lang::ErrorCode::SYSTEM_ERROR);
 

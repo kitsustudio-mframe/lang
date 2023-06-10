@@ -4,31 +4,34 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_E8463782_967B_46FF_930C_98A3EB2CAF31
-#define LANG_E8463782_967B_46FF_930C_98A3EB2CAF31
+
+#ifndef MFRAME_C045F3C4_B727_4170_9124_44EFD0DADB46
+#define MFRAME_C045F3C4_B727_4170_9124_44EFD0DADB46
 
 /* ******************************************************************************
  * Include
  */
 
 //-------------------------------------------------------------------------------
-#include "./Object.h"
-#include "./Thread.h"
+#include "./../../lang/Memory.h"
+#include "./../../lang/managerment/Allocator.h"
+#include "./../../util/Collection.h"
 
 //-------------------------------------------------------------------------------
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
-  class EntryPoint;
+namespace lang::managerment {
+  class Stacker;
 }
 
 /* ******************************************************************************
- * Class/Interface/Struct/Enum
+ * Class/Interface/Struct
  */
-class lang::EntryPoint : public lang::Object,
-                         public lang::Runnable {
+class lang::managerment::Stacker : public lang::Memory,
+                                   public util::Collection<lang::Memory>,
+                                   public lang::managerment::Allocator {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -36,13 +39,12 @@ class lang::EntryPoint : public lang::Object,
   /* ****************************************************************************
    * Variable <Protected>
    */
+ protected:
+  uint8_t* mStackPointer;
 
   /* ****************************************************************************
    * Variable <Private>
    */
- private:
-  void (*mSetup)(lang::Thread*);
-  void (*mLoop)(lang::Thread*);
 
   /* ****************************************************************************
    * Abstract method <Public>
@@ -57,14 +59,25 @@ class lang::EntryPoint : public lang::Object,
    */
  public:
   /**
+   * @brief Construct a new Stacker object
    *
+   * @param buffer
+   * @param size
    */
-  EntryPoint(void (*setup)(lang::Thread*), void (*loop)(lang::Thread*));
+  Stacker(void* buffer, uint32_t size);
 
   /**
+   * @brief Construct a new Stacker object
+   *
+   * @param memory
+   */
+  Stacker(const lang::Memory& memory);
+
+  /**
+   * @brief Destroy the Stacker object
    *
    */
-  virtual ~EntryPoint(void) override;
+  virtual ~Stacker(void) override;
 
   /* ****************************************************************************
    * Operator Method
@@ -75,17 +88,78 @@ class lang::EntryPoint : public lang::Object,
    */
 
   /* ****************************************************************************
-   * Public Method <Override>- lang::Runnable
+   * Public Method <Override> util::Collection<lang::Memory>
    */
  public:
-  /**
-   *
+
+  virtual void clear(void) override;
+
+  virtual bool isEmpty(void) const override;
+
+  virtual int size(void) const override;
+
+  /* ****************************************************************************
+   * Public Method <Override> lang::managerment::Allocator
    */
-  virtual void run(void) override;
+ public:
+
+  virtual void* alloc(uint32_t size) override;
+
+  virtual bool free(void* ptr) override;
+
+  virtual bool free(void* ptr, uint32_t size) override;
 
   /* ****************************************************************************
    * Public Method
    */
+ public:
+ 
+  /**
+   * @brief Get the Free object
+   *
+   * @return uint32_t
+   */
+  virtual uint32_t getFree(void);
+
+  /**
+   * @brief
+   *
+   * @param size
+   * @return void*
+   */
+  virtual void* allocAlignment32(uint32_t size);
+
+  /**
+   * @brief
+   *
+   * @param size
+   * @return void*
+   */
+  virtual void* allocAlignment64(uint32_t size);
+
+  /**
+   * @brief
+   *
+   * @param size
+   * @return lang::Memory
+   */
+  virtual lang::Memory allocMemory(uint32_t size);
+
+  /**
+   * @brief
+   *
+   * @param size
+   * @return lang::Memory
+   */
+  virtual lang::Memory allocMemoryAlignment32(uint32_t size);
+
+  /**
+   * @brief
+   *
+   * @param size
+   * @return lang::Memory
+   */
+  virtual lang::Memory allocMemoryAlignment64(uint32_t size);
 
   /* ****************************************************************************
    * Protected Method <Static>
@@ -112,8 +186,8 @@ class lang::EntryPoint : public lang::Object,
    */
 };
 
-/* ******************************************************************************
+/* *******************************************************************************
  * End of file
  */
 
-#endif /* LANG_E8463782_967B_46FF_930C_98A3EB2CAF31 */
+#endif /* MFRAME_C045F3C4_B727_4170_9124_44EFD0DADB46 */

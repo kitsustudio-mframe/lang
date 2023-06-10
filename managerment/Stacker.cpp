@@ -8,54 +8,40 @@
 /* ******************************************************************************
  * Include
  */
+#include "./Stacker.h"
 
 //-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
-#include "./PrintBuffer.h"
-
-#include "./StringFormat.h"
-
-/* ******************************************************************************
- * Macro
- */
 
 /* ******************************************************************************
  * Using
  */
+using lang::managerment::Stacker;
 
 //-------------------------------------------------------------------------------
+using lang::Memory;
 
 //-------------------------------------------------------------------------------
-using lang::PrintBuffer;
-using lang::RingBuffer;
-using lang::StringFormat;
-
-/* ******************************************************************************
- * Variable <Static>
- */
 
 /* ******************************************************************************
  * Construct Method
  */
 
 //-------------------------------------------------------------------------------
-PrintBuffer::PrintBuffer(void* buffer, uint32_t bufferSize) : RingBuffer(buffer, bufferSize) {
+Stacker::Stacker(void* buffer, uint32_t size) : Memory(buffer, size) {
+  this->clear();
   return;
 }
 
 //-------------------------------------------------------------------------------
-PrintBuffer::PrintBuffer(const lang::Memory& memory) : RingBuffer(memory) {
+Stacker::Stacker(const Memory& memory) : Memory(memory) {
+  this->clear();
   return;
 }
 
 //-------------------------------------------------------------------------------
-PrintBuffer::PrintBuffer(uint32_t length) : RingBuffer(length) {
-  return;
-}
-
-//-------------------------------------------------------------------------------
-PrintBuffer::~PrintBuffer(void) {
+Stacker::~Stacker(void) {
   return;
 }
 
@@ -68,112 +54,109 @@ PrintBuffer::~PrintBuffer(void) {
  */
 
 /* ******************************************************************************
+ * Public Method <Override> util::Collection<lang::Memory>
+ */
+
+//-------------------------------------------------------------------------------
+void Stacker::clear(void) {
+  this->mStackPointer = static_cast<uint8_t*>(this->Memory::pointer());
+  this->Memory::wipe();
+}
+
+//-------------------------------------------------------------------------------
+bool Stacker::isEmpty(void) const {
+  return (this->mStackPointer == this->Memory::pointer());
+}
+
+//-------------------------------------------------------------------------------
+int Stacker::size(void) const {
+  return static_cast<int>((reinterpret_cast<uint32_t>(this->mStackPointer) -
+                           reinterpret_cast<uint32_t>(this->Memory::pointer())));
+}
+
+/* ******************************************************************************
+ * Public Method <Override> lang::managerment::Allocator
+ */
+
+//-------------------------------------------------------------------------------
+void* Stacker::alloc(uint32_t size) {
+  if (static_cast<uint32_t>(this->getFree()) < size)
+    return nullptr;
+
+  void* result = this->mStackPointer;
+  this->mStackPointer += size;
+
+  return result;
+}
+
+//-------------------------------------------------------------------------------
+bool Stacker::free(void* ptr) {
+  return false;
+}
+
+//-------------------------------------------------------------------------------
+bool Stacker::free(void* ptr, uint32_t size) {
+  return false;
+}
+
+/* ******************************************************************************
  * Public Method
  */
 
 //-------------------------------------------------------------------------------
-PrintBuffer& PrintBuffer::print(bool b, bool newLine) {
-  if (b)
-    this->put("True", 4);
-
-  else
-    this->put("False", 5);
-
-  if (newLine)
-    this->putByte('\n');
-
-  return *this;
+uint32_t Stacker::getFree(void) {
+  return (static_cast<uint32_t>(this->length() - this->size()));
 }
 
 //-------------------------------------------------------------------------------
-PrintBuffer& PrintBuffer::print(char c, bool newLine) {
-  this->putByte(c);
+void* Stacker::allocAlignment32(uint32_t size) {
+  uint32_t alignment = (reinterpret_cast<uint32_t>(this->mStackPointer) & 0x00000003);
 
-  if (newLine)
-    this->putByte('\n');
+  if (alignment) {
+    if (this->alloc(0x00000004 - alignment) == nullptr)
+      return nullptr;
+  }
 
-  return *this;
+  return this->alloc(size);
 }
 
 //-------------------------------------------------------------------------------
-PrintBuffer& PrintBuffer::print(double d, bool newLine) {
-  lang::StringFormat::writeBuffer(*this, "%f", d);
+void* Stacker::allocAlignment64(uint32_t size) {
+  uint32_t alignment = (reinterpret_cast<uint32_t>(this->mStackPointer) & 0x00000007);
 
-  if (newLine)
-    this->putByte('\n');
+  if (alignment) {
+    if (this->alloc(0x00000008 - alignment) == nullptr)
+      return nullptr;
+  }
 
-  return *this;
+  return this->alloc(size);
 }
 
 //-------------------------------------------------------------------------------
-PrintBuffer& PrintBuffer::print(float f, bool newLine) {
-  lang::StringFormat::writeBuffer(*this, "%f", static_cast<double>(f));
+Memory Stacker::allocMemory(uint32_t size) {
+  void* result = this->alloc(size);
+  if (result == nullptr)
+    return Memory::nullMemory();
 
-  if (newLine)
-    this->putByte('\n');
-
-  return *this;
+  return Memory(result, size);
 }
 
 //-------------------------------------------------------------------------------
-PrintBuffer& PrintBuffer::print(int i, bool newLine, bool unsign) {
-  if (unsign)
-    lang::StringFormat::writeBuffer(*this, "%d", static_cast<unsigned int>(i));
+Memory Stacker::allocMemoryAlignment32(uint32_t size) {
+  void* result = this->allocAlignment32(size);
+  if (result == nullptr)
+    return Memory::nullMemory();
 
-  else
-    lang::StringFormat::writeBuffer(*this, "%d", i);
-
-  if (newLine)
-    this->putByte('\n');
-
-  return *this;
+  return Memory(result, size);
 }
 
 //-------------------------------------------------------------------------------
-PrintBuffer& PrintBuffer::print(const lang::Strings& string, bool newLine) {
-  this->put(string, string.size());
+Memory Stacker::allocMemoryAlignment64(uint32_t size) {
+  void* result = this->allocAlignment64(size);
+  if (result == nullptr)
+    return Memory::nullMemory();
 
-  if (newLine)
-    this->putByte('\n');
-
-  return *this;
-}
-
-//-------------------------------------------------------------------------------
-PrintBuffer& PrintBuffer::print(const char* string, bool newLine) {
-  this->put(string, Strings::getLength(string));
-
-  if (newLine)
-    this->putByte('\n');
-
-  return *this;
-}
-
-//-------------------------------------------------------------------------------
-PrintBuffer& PrintBuffer::print(ReadBuffer& readBuffer, bool newLine) {
-  this->put(readBuffer);
-
-  if (newLine)
-    this->putByte('\n');
-
-  return *this;
-}
-
-//-------------------------------------------------------------------------------
-PrintBuffer& PrintBuffer::println(void) {
-  this->putByte('\n');
-
-  return *this;
-}
-
-//-------------------------------------------------------------------------------
-PrintBuffer& PrintBuffer::format(const char* format, ...) {
-  va_list args;
-  va_start(args, format);
-  StringFormat::writeBufferVa(*this, format, args);
-  va_end(args);
-
-  return *this;
+  return Memory(result, size);
 }
 
 /* ******************************************************************************

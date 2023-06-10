@@ -9,12 +9,11 @@
  * Include
  */
 
+#include "./EntryPoint.h"
 //-------------------------------------------------------------------------------
 
+#include "mframe_lang.h"
 //-------------------------------------------------------------------------------
-#include "./InputStreamBuffer.h"
-
-#include "./System.h"
 
 /* ******************************************************************************
  * Macro
@@ -23,11 +22,12 @@
 /* ******************************************************************************
  * Using
  */
+using lang::managerment::EntryPoint;
 
 //-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
-using lang::InputStreamBuffer;
+
 
 /* ******************************************************************************
  * Variable <Static>
@@ -38,12 +38,14 @@ using lang::InputStreamBuffer;
  */
 
 //-------------------------------------------------------------------------------
-InputStreamBuffer::InputStreamBuffer(void) {
+EntryPoint::EntryPoint(void (*setup)(lang::Thread*), void (*loop)(lang::Thread*)) {
+  this->mLoop = loop;
+  this->mSetup = setup;
   return;
 }
 
 //-------------------------------------------------------------------------------
-InputStreamBuffer::~InputStreamBuffer(void) {
+EntryPoint::~EntryPoint(void) {
   return;
 }
 
@@ -56,77 +58,18 @@ InputStreamBuffer::~InputStreamBuffer(void) {
  */
 
 /* ******************************************************************************
- * Public Method <Override> - lang::WriteBuffer
+ * Public Method <Override> - lang::Runnable
  */
 
 //-------------------------------------------------------------------------------
-bool InputStreamBuffer::isFull(void) const {
-  if (this->mWriteBuffer == nullptr)
-    return true;
+void EntryPoint::run(void) {
+  Thread* thread = this->currentThread();
+  this->mSetup(thread);
 
-  return this->mWriteBuffer->isFull();
+  while (true) {
+    this->mLoop(thread);
+  }
 }
-
-//-------------------------------------------------------------------------------
-int InputStreamBuffer::remaining(void) const {
-  if (this->mWriteBuffer == nullptr)
-    return 0;
-
-  return this->mWriteBuffer->remaining();
-}
-
-//-------------------------------------------------------------------------------
-int InputStreamBuffer::putByte(const char data) {
-  if (this->mWriteBuffer == nullptr)
-    return -1;
-
-  int status = this->mWriteBuffer->putByte(data);
-
-  if (status >= 0)
-    ++this->mResult;
-
-  if (status <= 0)
-    this->execute();
-
-  return status;
-}
-
-//-------------------------------------------------------------------------------
-int InputStreamBuffer::put(lang::ReadBuffer& readBuffer) {
-  return this->put(readBuffer, readBuffer.avariable());
-}
-
-//-------------------------------------------------------------------------------
-int InputStreamBuffer::put(lang::ReadBuffer& readBuffer, int length) {
-  if (this->mWriteBuffer == nullptr)
-    return 0;
-
-  int result = this->mWriteBuffer->put(readBuffer, length);
-  this->mResult += result;
-
-  if (this->mWriteBuffer->isFull())
-    this->execute();
-
-  return result;
-}
-
-//-------------------------------------------------------------------------------
-int InputStreamBuffer::put(const void* buffer, int length) {
-  if (this->mWriteBuffer == nullptr)
-    return 0;
-
-  int result = this->mWriteBuffer->put(buffer, length);
-  this->mResult += result;
-
-  if (this->mWriteBuffer->isFull())
-    this->execute();
-
-  return result;
-}
-
-/* ******************************************************************************
- * Public Method <Override>
- */
 
 /* ******************************************************************************
  * Public Method

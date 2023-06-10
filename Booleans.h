@@ -4,16 +4,17 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_90D9B92C_CB56_4072_B34E_C233A3D5684D
-#define LANG_90D9B92C_CB56_4072_B34E_C233A3D5684D
+#ifndef MFRAME_90D9B92C_CB56_4072_B34E_C233A3D5684D
+#define MFRAME_90D9B92C_CB56_4072_B34E_C233A3D5684D
 
 /* ****************************************************************************************
  * Include
  */
 
 //-----------------------------------------------------------------------------------------
-#include "./Object.h"
-#include "./Iterator.h"
+#include "./../lang/Object.h"
+#include "./../util/Iterator.h"
+
 //-----------------------------------------------------------------------------------------
 
 /* ****************************************************************************************
@@ -70,11 +71,11 @@ class lang::Booleans : public lang::Object {
   public:
     static bool isBoolean(const char* str);
 
-    static bool isBoolean(lang::Iterator<char>& iterator);
+    static bool isBoolean(util::Iterator<char>& iterator);
 
     static bool parseBoolean(bool& result, const char* str);
     
-    static bool parseBoolean(bool& result, lang::Iterator<char>& iterable);
+    static bool parseBoolean(bool& result, util::Iterator<char>& iterable);
 
   /* **************************************************************************************
    * Public Method <Override>
@@ -113,4 +114,4 @@ class lang::Booleans : public lang::Object {
  * End of file
  */
 
-#endif /* LANG_90D9B92C_CB56_4072_B34E_C233A3D5684D */
+#endif /* MFRAME_90D9B92C_CB56_4072_B34E_C233A3D5684D */

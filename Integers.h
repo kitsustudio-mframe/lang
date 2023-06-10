@@ -4,17 +4,17 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_E2DC1ED1_7C31_4A99_AF60_2B859E6190C9
-#define LANG_E2DC1ED1_7C31_4A99_AF60_2B859E6190C9
+#ifndef MFRAME_E2DC1ED1_7C31_4A99_AF60_2B859E6190C9
+#define MFRAME_E2DC1ED1_7C31_4A99_AF60_2B859E6190C9
 
 /* ******************************************************************************
  * Include
  */
 
 //-------------------------------------------------------------------------------
-#include "./Integer.h"
-#include "./Object.h"
-#include "./Iterator.h"
+#include "./../lang/Integer.h"
+#include "./../lang/Object.h"
+#include "./../util/Iterator.h"
 //-------------------------------------------------------------------------------
 
 /* ******************************************************************************
@@ -104,7 +104,7 @@ class lang::Integers final : public lang::Object {
    * @return true 
    * @return false 
    */
-  static bool isInteger(lang::Iterator<char>& iterator);
+  static bool isInteger(util::Iterator<char>& iterator);
 
   /**
    * @brief 
@@ -123,7 +123,7 @@ class lang::Integers final : public lang::Object {
    * @return true 
    * @return false 
    */
-  static bool parseInteger(int& result, lang::Iterator<char>& iterator);
+  static bool parseInteger(int& result, util::Iterator<char>& iterator);
 
   /**
    * @brief 
@@ -172,4 +172,4 @@ class lang::Integers final : public lang::Object {
  * End of file
  */
 
-#endif /* LANG_E2DC1ED1_7C31_4A99_AF60_2B859E6190C9 */
+#endif /* MFRAME_E2DC1ED1_7C31_4A99_AF60_2B859E6190C9 */

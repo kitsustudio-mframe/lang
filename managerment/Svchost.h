@@ -4,45 +4,45 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_90F75476_6982_4BDD_B9ED_0A250FE9C324
-#define LANG_90F75476_6982_4BDD_B9ED_0A250FE9C324
+#ifndef MFRAME_90F75476_6982_4BDD_B9ED_0A250FE9C324
+#define MFRAME_90F75476_6982_4BDD_B9ED_0A250FE9C324
 
 /* ******************************************************************************
  * Include
  */
 
 //-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
-#include "./ArrayQueue.h"
-#include "./Data.h"
-#include "./Future.h"
-#include "./Kernel.h"
-#include "./Object.h"
-#include "./PrintBuffer.h"
-#include "./RingBuffer.h"
-#include "./Runnable.h"
-#include "./Thread.h"
+#include "./../../io/PrintBuffer.h"
+#include "./../../io/RingBuffer.h"
+#include "./../../lang/Data.h"
+#include "./../../util/Future.h"
+#include "./../../lang/Object.h"
+#include "./../../lang/Runnable.h"
+#include "./../../lang/Thread.h"
+#include "./../../lang/managerment/Kernel.h"
+#include "./../../util/ArrayQueue.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace lang::managerment {
   class Svchost;
 }
 
 /* ******************************************************************************
  * Class/struct/Struct/Enum
  */
-class lang::Svchost : public lang::Object, public lang::Runnable, lang::CompletionHandler<int, void*> {
+class lang::managerment::Svchost : public lang::Object,
+                                   public lang::Runnable,
+                                   public io::CompletionHandler<int, void*> {
   /* ****************************************************************************
    * Variable <Public>
    */
  public:
-  lang::Kernel& mKernel;
-  lang::PrintBuffer mPrintBuffer;
-  lang::RingBuffer mRingBuffer;
-  lang::ArrayQueue<lang::Runnable> mArrayQueue;
+  lang::managerment::Kernel& mKernel;
+  io::PrintBuffer mPrintBuffer;
+  io::RingBuffer mRingBuffer;
+  util::ArrayQueue<lang::Runnable> mArrayQueue;
 
   /* ****************************************************************************
    * Variable <Protected>
@@ -71,9 +71,14 @@ class lang::Svchost : public lang::Object, public lang::Runnable, lang::Completi
    */
  public:
   /**
-   *
+   * @brief Construct a new Svchost object
+   * 
+   * @param kernel 
+   * @param outSize 
+   * @param inSize 
+   * @param taskQuanity 
    */
-  Svchost(lang::Kernel& kernel, uint32_t outSize, uint32_t inSize, uint32_t taskQuanity);
+  Svchost(lang::managerment::Kernel& kernel, uint32_t outSize, uint32_t inSize, uint32_t taskQuanity);
 
   /**
    *
@@ -162,4 +167,4 @@ class lang::Svchost : public lang::Object, public lang::Runnable, lang::Completi
  * End of file
  */
 
-#endif /* LANG_90F75476_6982_4BDD_B9ED_0A250FE9C324 */
+#endif /* MFRAME_90F75476_6982_4BDD_B9ED_0A250FE9C324 */

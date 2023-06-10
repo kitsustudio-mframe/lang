@@ -8,13 +8,12 @@
 /* ******************************************************************************
  * Include
  */
-
-//-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
 #include "./Svchost.h"
 
-#include "./System.h"
+//-------------------------------------------------------------------------------
+#include "mframe_lang.h"
+
+//-------------------------------------------------------------------------------
 
 /* ******************************************************************************
  * Macro
@@ -23,14 +22,13 @@
 /* ******************************************************************************
  * Using
  */
+using lang::managerment::Svchost;
 
 //-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
-using lang::InputStream;
-using lang::OutputStream;
+using io::InputStream;
+using io::OutputStream;
 using lang::Runnable;
-using lang::Svchost;
+using lang::managerment::Kernel;
 
 /* ******************************************************************************
  * Variable <Static>
@@ -41,10 +39,13 @@ using lang::Svchost;
  */
 
 //-------------------------------------------------------------------------------
-Svchost::Svchost(lang::Kernel& kernel, uint32_t outSize, uint32_t inSize, uint32_t taskQuanity) : mKernel(kernel),
-                                                                                                  mPrintBuffer(outSize),
-                                                                                                  mRingBuffer(inSize),
-                                                                                                  mArrayQueue(taskQuanity) {
+Svchost::Svchost(Kernel& kernel,
+                 uint32_t outSize,
+                 uint32_t inSize,
+                 uint32_t taskQuanity) : mKernel(kernel),
+                                         mPrintBuffer(outSize),
+                                         mRingBuffer(inSize),
+                                         mArrayQueue(taskQuanity) {
   this->mUserThread = nullptr;
   this->mThread = nullptr;
   return;

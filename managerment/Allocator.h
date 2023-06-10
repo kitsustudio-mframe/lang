@@ -5,54 +5,62 @@
  * SPDX-License-Identifier: MIT
  */
 
-#ifndef LANG_F628179A_5A6B_4572_99A4_3338D77AED7B
-#define LANG_F628179A_5A6B_4572_99A4_3338D77AED7B
+#ifndef MFRAME_A640D444_DED9_463A_8F4A_E407A682DBAC
+#define MFRAME_A640D444_DED9_463A_8F4A_E407A682DBAC
 
 /* ******************************************************************************
  * Include
  */
 
 //-------------------------------------------------------------------------------
+#include "./../../lang/Interface.h"
 
 //-------------------------------------------------------------------------------
-#include "./Interface.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
-  template <typename V, typename A>
-  struct CompletionHandler;
+namespace lang::managerment {
+  struct Allocator;
 }
 
 /* ******************************************************************************
- * Class/struct/Struct
+ * Class/Interface/Struct
  */
-template <typename V, typename A>
-struct lang::CompletionHandler : public virtual lang::Interface {
+struct lang::managerment::Allocator : public virtual lang::Interface {
   /* ****************************************************************************
-   *  Method
+   * Method
    */
 
   /**
    * @brief
    *
-   * @param result
-   * @param attachment
+   * @param size
    */
-  virtual void completed(V result, A attachment) abstract;
+  virtual void* alloc(uint32_t size) abstract;
 
   /**
    * @brief
    *
-   * @param exc
-   * @param attachment
+   * @param ptr
+   * @return true
+   * @return false
    */
-  virtual void failed(void* exc, A attachment) abstract;
+  virtual bool free(void* ptr) abstract;
+
+  /**
+   * @brief
+   *
+   * @param ptr
+   * @param size
+   * @return true
+   * @return false
+   */
+  virtual bool free(void* ptr, uint32_t size) abstract;
 };
 
 /* *******************************************************************************
- *    End of file
+ * End of file
  */
 
-#endif /* LANG_F628179A_5A6B_4572_99A4_3338D77AED7B */
+#endif /* MFRAME_A640D444_DED9_463A_8F4A_E407A682DBAC */

@@ -5,8 +5,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-#ifndef LANG_EE4E0BE6_E1E0_43B2_B9D2_2CE26334D212
-#define LANG_EE4E0BE6_E1E0_43B2_B9D2_2CE26334D212
+#ifndef MFRAME_EE4E0BE6_E1E0_43B2_B9D2_2CE26334D212
+#define MFRAME_EE4E0BE6_E1E0_43B2_B9D2_2CE26334D212
 
 /* ******************************************************************************
  * Include
@@ -45,4 +45,4 @@ enum struct lang::ErrorCode : int {
  * End of file
  */
 
-#endif /* LANG_EE4E0BE6_E1E0_43B2_B9D2_2CE26334D212 */
+#endif /* MFRAME_EE4E0BE6_E1E0_43B2_B9D2_2CE26334D212 */

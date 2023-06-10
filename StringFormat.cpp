@@ -61,7 +61,7 @@ int StringFormat::memoryVa(const lang::Memory& memory, const char* format, va_li
 }
 
 //-------------------------------------------------------------------------------
-int StringFormat::writeBufferVa(lang::WriteBuffer& writeBuffer, const char* format, va_list args) {
+int StringFormat::writeBufferVa(io::WriteBuffer& writeBuffer, const char* format, va_list args) {
   lang::System::lock();
   int result = vsnprintf(StringFormat::mFormatBuffer, sizeof(StringFormat::mFormatBuffer), format, args);
   result = writeBuffer.put(StringFormat::mFormatBuffer, result);
@@ -91,7 +91,7 @@ int StringFormat::memory(const lang::Memory& memory, const char* format, ...) {
 }
 
 //-------------------------------------------------------------------------------
-int StringFormat::writeBuffer(lang::WriteBuffer& writeBuffer, const char* format, ...) {
+int StringFormat::writeBuffer(io::WriteBuffer& writeBuffer, const char* format, ...) {
   va_list args;
   va_start(args, format);
   lang::System::lock();

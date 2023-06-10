@@ -4,8 +4,8 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_A4ED407B_D298_46DA_B209_AEF00726AA6F
-#define LANG_A4ED407B_D298_46DA_B209_AEF00726AA6F
+#ifndef MFRAME_A4ED407B_D298_46DA_B209_AEF00726AA6F
+#define MFRAME_A4ED407B_D298_46DA_B209_AEF00726AA6F
 
 /* ******************************************************************************
  * Include
@@ -83,4 +83,4 @@ enum struct lang::ThreadPriority : int {
  * End of file
  */
 
-#endif /* LANG_A4ED407B_D298_46DA_B209_AEF00726AA6F */
+#endif /* MFRAME_A4ED407B_D298_46DA_B209_AEF00726AA6F */

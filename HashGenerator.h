@@ -4,43 +4,29 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_858D7963_BBA9_4496_8D4B_B2D77E1330CC
-#define LANG_858D7963_BBA9_4496_8D4B_B2D77E1330CC
+#ifndef MFRAME_21696933_3B6B_4512_922C_4B04E4B28F72
+#define MFRAME_21696933_3B6B_4512_922C_4B04E4B28F72
 
 /* ******************************************************************************
  * Include
  */
 
 //-------------------------------------------------------------------------------
+#include "./Object.h"
 
 //-------------------------------------------------------------------------------
-#include "./CompletionHandler.h"
-#include "./Object.h"
-#include "./Thread.h"
 
 /* ******************************************************************************
  * Namespace
  */
 namespace lang {
-  class Future;
+  class HashGenerator;
 }
 
 /* ******************************************************************************
- * Class/struct/Struct/Enum
+ * Class/Interface/Struct/Enum
  */
-class lang::Future : public lang::Object,
-                     public CompletionHandler<int, void*> {
-  /* ****************************************************************************
-   * Enum
-   */
- public:
-  enum struct Status : uint32_t {
-    IDLE,
-    WAIT,
-    DONE_COMPLETED,
-    DONE_FAILED
-  };
-
+class lang::HashGenerator final : public lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -52,10 +38,6 @@ class lang::Future : public lang::Object,
   /* ****************************************************************************
    * Variable <Private>
    */
- private:
-  Status mStatus;
-  lang::Thread* mThread;
-  int mResult;
 
   /* ****************************************************************************
    * Abstract method <Public>
@@ -68,18 +50,17 @@ class lang::Future : public lang::Object,
   /* ****************************************************************************
    * Construct Method
    */
+ private:
+  /**
+   *
+   */
+  HashGenerator(void);
+
  public:
   /**
-   * @brief Construct a new Future object
    *
    */
-  Future(void);
-
-  /**
-   * @brief Destroy the Future object
-   *
-   */
-  virtual ~Future(void) override;
+  virtual ~HashGenerator(void) override;
 
   /* ****************************************************************************
    * Operator Method
@@ -88,112 +69,47 @@ class lang::Future : public lang::Object,
   /* ****************************************************************************
    * Public Method <Static>
    */
-
-  /* ****************************************************************************
-   * Public Method <Override> - lang::CompletionHandler<int ,void*>
-   */
  public:
   /**
-   * @brief
-   *
-   * @param result
-   * @param attachment
+   * @brief Get the Hashcode object
+   * 
+   * @param src 來源
+   * @param len 長度
+   * @return int hashcode
    */
-  virtual void completed(int result, void* attachment) override;
+  static int getHashcode(const void* src, int len);
 
   /**
-   * @brief
-   *
-   * @param exc
-   * @param attachment
+   * @brief Get the Hashcode object
+   * 
+   * @param src 來源
+   * @return int hashcode
    */
-  virtual void failed(void* exc, void* attachment) override;
+  static int getHashcode(const char* src);
+
+  /**
+   * @brief Get the Hashcode Upper Cast object
+   * 
+   * @param src 來源
+   * @return int hashcode
+   */
+  static int getHashcodeUpperCast(const char* src);
+
+  /**
+   * @brief Get the Hashcode Lower Cast object
+   * 
+   * @param src 來源
+   * @return int hashcode
+   */
+  static int getHashcodeLowerCast(const char* src);
+
+  /* ****************************************************************************
+   * Public Method <Override>
+   */
 
   /* ****************************************************************************
    * Public Method
    */
- public:
-  /**
-   * @brief
-   *
-   * @return true
-   * @return false
-   */
-  bool setWait(void);
-
-  /**
-   * @brief
-   *
-   */
-  void waitDone(void);
-
-  /**
-   * @brief
-   *
-   * @param timeout
-   */
-  void waitDone(int timeout);
-
-  /**
-   * @brief
-   *
-   * @return int
-   */
-  bool get(int& result);
-
-  /**
-   * @brief
-   *
-   * @param timeout
-   * @return int
-   */
-  bool get(int& result, int timeout);
-
-  /**
-   * @brief
-   *
-   */
-  void clear(void);
-
-  /**
-   * @brief
-   *
-   * @return true
-   * @return false
-   */
-  bool isDone(void);
-
-  /**
-   * @brief
-   *
-   * @return true
-   * @return false
-   */
-  bool isCompleted(void);
-
-  /**
-   * @brief
-   *
-   * @return true
-   * @return false
-   */
-  bool isFailed(void);
-
-  /**
-   * @brief
-   *
-   * @return true
-   * @return false
-   */
-  bool isIdle(void);
-
-  /**
-   * @brief
-   *
-   * @return true
-   * @return false
-   */
-  bool isBusy(void);
 
   /* ****************************************************************************
    * Protected Method <Static>
@@ -224,4 +140,4 @@ class lang::Future : public lang::Object,
  * End of file
  */
 
-#endif /* LANG_858D7963_BBA9_4496_8D4B_B2D77E1330CC */
+#endif /* MFRAME_21696933_3B6B_4512_922C_4B04E4B28F72 */

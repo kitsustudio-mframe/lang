@@ -5,8 +5,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-#ifndef LANG_ECCE32BB_1A96_496A_95AD_A35907FC3343
-#define LANG_ECCE32BB_1A96_496A_95AD_A35907FC3343
+#ifndef MFRAME_ECCE32BB_1A96_496A_95AD_A35907FC3343
+#define MFRAME_ECCE32BB_1A96_496A_95AD_A35907FC3343
 
 /* ******************************************************************************
  * Include
@@ -127,4 +127,4 @@ class lang::SupplierEvent : public lang::Object,
  * End of file
  */
 
-#endif /* LANG_ECCE32BB_1A96_496A_95AD_A35907FC3343 */
+#endif /* MFRAME_ECCE32BB_1A96_496A_95AD_A35907FC3343 */

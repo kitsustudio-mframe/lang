@@ -24,11 +24,10 @@
 /* ******************************************************************************
  * Using
  */
-
-//-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
 using lang::Integers;
+
+//-------------------------------------------------------------------------------
+using util::Iterator;
 
 /* ******************************************************************************
  * Variable <Static>
@@ -50,7 +49,7 @@ const int Integers::MAX_ASCII_VALUE = static_cast<int>(sizeof("-2147483648"));
 
 
 //-------------------------------------------------------------------------------
-bool Integers::isInteger(lang::Iterator<char>& iterator){
+bool Integers::isInteger(util::Iterator<char>& iterator){
   char cache[Integers::MAX_ASCII_VALUE];
   for(int i=0; i<Integers::MAX_ASCII_VALUE; ++i){
     if(!iterator.next(cache[i]))
@@ -79,7 +78,7 @@ bool Integers::isInteger(const char* str) {
 }
 
 //-------------------------------------------------------------------------------
-bool Integers::parseInteger(int& result, lang::Iterator<char>& iterator){
+bool Integers::parseInteger(int& result, util::Iterator<char>& iterator){
   char cache[Integers::MAX_ASCII_VALUE];
   for(int i=0; i<Integers::MAX_ASCII_VALUE; ++i){
     if(!iterator.next(cache[i]))

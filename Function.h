@@ -4,8 +4,8 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_B1264AE8_03E1_49A5_9EE7_8C4B88B06CFE
-#define LANG_B1264AE8_03E1_49A5_9EE7_8C4B88B06CFE
+#ifndef MFRAME_B1264AE8_03E1_49A5_9EE7_8C4B88B06CFE
+#define MFRAME_B1264AE8_03E1_49A5_9EE7_8C4B88B06CFE
 
 /* ******************************************************************************
  * Include
@@ -46,4 +46,4 @@ struct lang::Function : public virtual lang::Interface {
  * End of file
  */
 
-#endif /* LANG_B1264AE8_03E1_49A5_9EE7_8C4B88B06CFE */
+#endif /* MFRAME_B1264AE8_03E1_49A5_9EE7_8C4B88B06CFE */

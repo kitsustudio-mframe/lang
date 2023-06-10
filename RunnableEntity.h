@@ -7,8 +7,8 @@
 
 #ifndef CORE_B21E95F1_A4B3_4BBD_96AA_E98F66338E8B
 #define CORE_B21E95F1_A4B3_4BBD_96AA_E98F66338E8B
-#ifndef LANG_03ECECB0_EFC6_464A_A4FB_833247AF27AB
-#define LANG_03ECECB0_EFC6_464A_A4FB_833247AF27AB
+#ifndef MFRAME_03ECECB0_EFC6_464A_A4FB_833247AF27AB
+#define MFRAME_03ECECB0_EFC6_464A_A4FB_833247AF27AB
 
 /* ******************************************************************************
  * Include
@@ -144,6 +144,6 @@ class lang::RunnableEntity final : public lang::Object,
  * End of file
  */
 
-#endif /* LANG_03ECECB0_EFC6_464A_A4FB_833247AF27AB */
+#endif /* MFRAME_03ECECB0_EFC6_464A_A4FB_833247AF27AB */
 
 #endif /* CORE_B21E95F1_A4B3_4BBD_96AA_E98F66338E8B */

@@ -4,8 +4,8 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_11DE2BBA_4823_4E3F_884E_9A333C00AD9F
-#define LANG_11DE2BBA_4823_4E3F_884E_9A333C00AD9F
+#ifndef MFRAME_11DE2BBA_4823_4E3F_884E_9A333C00AD9F
+#define MFRAME_11DE2BBA_4823_4E3F_884E_9A333C00AD9F
 
 /* ****************************************************************************************
  * Include
@@ -47,4 +47,4 @@ struct lang::Iterable {
  * End of file
  */
 
-#endif /* LANG_11DE2BBA_4823_4E3F_884E_9A333C00AD9F */
+#endif /* MFRAME_11DE2BBA_4823_4E3F_884E_9A333C00AD9F */

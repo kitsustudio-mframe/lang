@@ -4,8 +4,8 @@
  * 
  * SPDX-License-Identifier: MIT
  */
-#ifndef LANG_EEC25F8B_68C8_45FC_A820_3773DB4D7EF7
-#define LANG_EEC25F8B_68C8_45FC_A820_3773DB4D7EF7
+#ifndef MFRAME_EEC25F8B_68C8_45FC_A820_3773DB4D7EF7
+#define MFRAME_EEC25F8B_68C8_45FC_A820_3773DB4D7EF7
 
 /* ******************************************************************************
  * Include
@@ -430,4 +430,4 @@ class lang::Maths final : public lang::Object{
  */ 
 
 
-#endif /* LANG_EEC25F8B_68C8_45FC_A820_3773DB4D7EF7 */
+#endif /* MFRAME_EEC25F8B_68C8_45FC_A820_3773DB4D7EF7 */

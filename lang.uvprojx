@@ -384,56 +384,6 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
-              <FileName>Allocator.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Allocator.h</FilePath>
-            </File>
-            <File>
-              <FileName>Array.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Array.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayMap.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayMap.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayMapPrototype.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ArrayMapPrototype.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayMapPrototype.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayMapPrototype.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayPrototype.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ArrayPrototype.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayPrototype.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayPrototype.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayQueue.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayQueue.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayQueuePrototype.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ArrayQueuePrototype.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayQueuePrototype.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayQueuePrototype.h</FilePath>
-            </File>
-            <File>
               <FileName>BiConsumer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\BiConsumer.h</FilePath>
@@ -469,11 +419,6 @@
               <FilePath>.\Booleans.h</FilePath>
             </File>
             <File>
-              <FileName>Buffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Buffer.h</FilePath>
-            </File>
-            <File>
               <FileName>Byte.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Byte.cpp</FilePath>
@@ -482,16 +427,6 @@
               <FileName>Byte.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Byte.h</FilePath>
-            </File>
-            <File>
-              <FileName>ByteBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ByteBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ByteBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ByteBuffer.h</FilePath>
             </File>
             <File>
               <FileName>Bytes.cpp</FileName>
@@ -519,21 +454,6 @@
               <FilePath>.\Class.h</FilePath>
             </File>
             <File>
-              <FileName>Closeable.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Closeable.h</FilePath>
-            </File>
-            <File>
-              <FileName>Collection.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Collection.h</FilePath>
-            </File>
-            <File>
-              <FileName>CompletionHandler.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\CompletionHandler.h</FilePath>
-            </File>
-            <File>
               <FileName>Consumer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Consumer.h</FilePath>
@@ -557,41 +477,6 @@
               <FileName>Data.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Data.h</FilePath>
-            </File>
-            <File>
-              <FileName>Echoable.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Echoable.h</FilePath>
-            </File>
-            <File>
-              <FileName>EmptyReadBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\EmptyReadBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>EmptyReadBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\EmptyReadBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>EmptyWriteBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\EmptyWriteBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>EmptyWriteBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\EmptyWriteBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>EntryPoint.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\EntryPoint.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>EntryPoint.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\EntryPoint.h</FilePath>
             </File>
             <File>
               <FileName>ErrorCode.h</FileName>
@@ -619,16 +504,6 @@
               <FilePath>.\FunctionMethod.h</FilePath>
             </File>
             <File>
-              <FileName>Future.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Future.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Future.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Future.h</FilePath>
-            </File>
-            <File>
               <FileName>Hashcode.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Hashcode.cpp</FilePath>
@@ -637,36 +512,6 @@
               <FileName>Hashcode.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Hashcode.h</FilePath>
-            </File>
-            <File>
-              <FileName>HashGen.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\HashGen.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>HashGen.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\HashGen.h</FilePath>
-            </File>
-            <File>
-              <FileName>InputStream.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\InputStream.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>InputStream.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\InputStream.h</FilePath>
-            </File>
-            <File>
-              <FileName>InputStreamBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\InputStreamBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>InputStreamBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\InputStreamBuffer.h</FilePath>
             </File>
             <File>
               <FileName>Integer.cpp</FileName>
@@ -697,21 +542,6 @@
               <FileName>Iterable.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Iterable.h</FilePath>
-            </File>
-            <File>
-              <FileName>Iterator.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Iterator.h</FilePath>
-            </File>
-            <File>
-              <FileName>Kernel.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Kernel.h</FilePath>
-            </File>
-            <File>
-              <FileName>Map.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Map.h</FilePath>
             </File>
             <File>
               <FileName>Maths.cpp</FileName>
@@ -754,26 +584,6 @@
               <FilePath>.\Object.h</FilePath>
             </File>
             <File>
-              <FileName>OutputStream.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\OutputStream.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>OutputStream.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\OutputStream.h</FilePath>
-            </File>
-            <File>
-              <FileName>OutputStreamBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\OutputStreamBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>OutputStreamBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\OutputStreamBuffer.h</FilePath>
-            </File>
-            <File>
               <FileName>package-info.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\package-info.h</FilePath>
@@ -797,56 +607,6 @@
               <FileName>Pointers.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Pointers.h</FilePath>
-            </File>
-            <File>
-              <FileName>Pool.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Pool.h</FilePath>
-            </File>
-            <File>
-              <FileName>PrintBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\PrintBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PrintBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\PrintBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>Queue.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Queue.h</FilePath>
-            </File>
-            <File>
-              <FileName>ReadBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ReadBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>README.md</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\README.md</FilePath>
-            </File>
-            <File>
-              <FileName>ReadOnlyBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ReadOnlyBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ReadOnlyBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ReadOnlyBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>RingBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\RingBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>RingBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\RingBuffer.h</FilePath>
             </File>
             <File>
               <FileName>Runnable.h</FileName>
@@ -899,26 +659,6 @@
               <FilePath>.\Shorts.h</FilePath>
             </File>
             <File>
-              <FileName>Stacker.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Stacker.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Stacker.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Stacker.h</FilePath>
-            </File>
-            <File>
-              <FileName>StreamSkipper.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\StreamSkipper.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>StreamSkipper.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\StreamSkipper.h</FilePath>
-            </File>
-            <File>
               <FileName>StringFormat.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\StringFormat.cpp</FilePath>
@@ -954,16 +694,6 @@
               <FilePath>.\SupplierMethod.h</FilePath>
             </File>
             <File>
-              <FileName>Svchost.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Svchost.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Svchost.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Svchost.h</FilePath>
-            </File>
-            <File>
               <FileName>System.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\System.cpp</FilePath>
@@ -994,14 +724,64 @@
               <FilePath>.\ThreadState.h</FilePath>
             </File>
             <File>
-              <FileName>Updater.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Updater.h</FilePath>
+              <FileName>HashGenerator.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\HashGenerator.cpp</FilePath>
             </File>
             <File>
-              <FileName>WriteBuffer.h</FileName>
+              <FileName>HashGenerator.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\WriteBuffer.h</FilePath>
+              <FilePath>.\HashGenerator.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>src/managerment</GroupName>
+          <Files>
+            <File>
+              <FileName>Allocator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\Allocator.h</FilePath>
+            </File>
+            <File>
+              <FileName>EntryPoint.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\managerment\EntryPoint.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EntryPoint.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\EntryPoint.h</FilePath>
+            </File>
+            <File>
+              <FileName>Kernel.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\Kernel.h</FilePath>
+            </File>
+            <File>
+              <FileName>package-info.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\package-info.h</FilePath>
+            </File>
+            <File>
+              <FileName>Stacker.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\managerment\Stacker.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Stacker.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\Stacker.h</FilePath>
+            </File>
+            <File>
+              <FileName>Svchost.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\managerment\Svchost.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Svchost.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\Svchost.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1385,56 +1165,6 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
-              <FileName>Allocator.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Allocator.h</FilePath>
-            </File>
-            <File>
-              <FileName>Array.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Array.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayMap.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayMap.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayMapPrototype.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ArrayMapPrototype.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayMapPrototype.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayMapPrototype.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayPrototype.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ArrayPrototype.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayPrototype.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayPrototype.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayQueue.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayQueue.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayQueuePrototype.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ArrayQueuePrototype.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayQueuePrototype.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayQueuePrototype.h</FilePath>
-            </File>
-            <File>
               <FileName>BiConsumer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\BiConsumer.h</FilePath>
@@ -1470,11 +1200,6 @@
               <FilePath>.\Booleans.h</FilePath>
             </File>
             <File>
-              <FileName>Buffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Buffer.h</FilePath>
-            </File>
-            <File>
               <FileName>Byte.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Byte.cpp</FilePath>
@@ -1483,16 +1208,6 @@
               <FileName>Byte.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Byte.h</FilePath>
-            </File>
-            <File>
-              <FileName>ByteBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ByteBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ByteBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ByteBuffer.h</FilePath>
             </File>
             <File>
               <FileName>Bytes.cpp</FileName>
@@ -1520,21 +1235,6 @@
               <FilePath>.\Class.h</FilePath>
             </File>
             <File>
-              <FileName>Closeable.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Closeable.h</FilePath>
-            </File>
-            <File>
-              <FileName>Collection.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Collection.h</FilePath>
-            </File>
-            <File>
-              <FileName>CompletionHandler.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\CompletionHandler.h</FilePath>
-            </File>
-            <File>
               <FileName>Consumer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Consumer.h</FilePath>
@@ -1558,41 +1258,6 @@
               <FileName>Data.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Data.h</FilePath>
-            </File>
-            <File>
-              <FileName>Echoable.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Echoable.h</FilePath>
-            </File>
-            <File>
-              <FileName>EmptyReadBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\EmptyReadBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>EmptyReadBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\EmptyReadBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>EmptyWriteBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\EmptyWriteBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>EmptyWriteBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\EmptyWriteBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>EntryPoint.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\EntryPoint.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>EntryPoint.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\EntryPoint.h</FilePath>
             </File>
             <File>
               <FileName>ErrorCode.h</FileName>
@@ -1620,16 +1285,6 @@
               <FilePath>.\FunctionMethod.h</FilePath>
             </File>
             <File>
-              <FileName>Future.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Future.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Future.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Future.h</FilePath>
-            </File>
-            <File>
               <FileName>Hashcode.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Hashcode.cpp</FilePath>
@@ -1638,36 +1293,6 @@
               <FileName>Hashcode.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Hashcode.h</FilePath>
-            </File>
-            <File>
-              <FileName>HashGen.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\HashGen.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>HashGen.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\HashGen.h</FilePath>
-            </File>
-            <File>
-              <FileName>InputStream.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\InputStream.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>InputStream.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\InputStream.h</FilePath>
-            </File>
-            <File>
-              <FileName>InputStreamBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\InputStreamBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>InputStreamBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\InputStreamBuffer.h</FilePath>
             </File>
             <File>
               <FileName>Integer.cpp</FileName>
@@ -1698,21 +1323,6 @@
               <FileName>Iterable.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Iterable.h</FilePath>
-            </File>
-            <File>
-              <FileName>Iterator.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Iterator.h</FilePath>
-            </File>
-            <File>
-              <FileName>Kernel.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Kernel.h</FilePath>
-            </File>
-            <File>
-              <FileName>Map.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Map.h</FilePath>
             </File>
             <File>
               <FileName>Maths.cpp</FileName>
@@ -1755,26 +1365,6 @@
               <FilePath>.\Object.h</FilePath>
             </File>
             <File>
-              <FileName>OutputStream.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\OutputStream.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>OutputStream.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\OutputStream.h</FilePath>
-            </File>
-            <File>
-              <FileName>OutputStreamBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\OutputStreamBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>OutputStreamBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\OutputStreamBuffer.h</FilePath>
-            </File>
-            <File>
               <FileName>package-info.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\package-info.h</FilePath>
@@ -1798,56 +1388,6 @@
               <FileName>Pointers.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Pointers.h</FilePath>
-            </File>
-            <File>
-              <FileName>Pool.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Pool.h</FilePath>
-            </File>
-            <File>
-              <FileName>PrintBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\PrintBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PrintBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\PrintBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>Queue.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Queue.h</FilePath>
-            </File>
-            <File>
-              <FileName>ReadBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ReadBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>README.md</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\README.md</FilePath>
-            </File>
-            <File>
-              <FileName>ReadOnlyBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ReadOnlyBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ReadOnlyBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ReadOnlyBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>RingBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\RingBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>RingBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\RingBuffer.h</FilePath>
             </File>
             <File>
               <FileName>Runnable.h</FileName>
@@ -1900,26 +1440,6 @@
               <FilePath>.\Shorts.h</FilePath>
             </File>
             <File>
-              <FileName>Stacker.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Stacker.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Stacker.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Stacker.h</FilePath>
-            </File>
-            <File>
-              <FileName>StreamSkipper.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\StreamSkipper.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>StreamSkipper.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\StreamSkipper.h</FilePath>
-            </File>
-            <File>
               <FileName>StringFormat.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\StringFormat.cpp</FilePath>
@@ -1955,16 +1475,6 @@
               <FilePath>.\SupplierMethod.h</FilePath>
             </File>
             <File>
-              <FileName>Svchost.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Svchost.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Svchost.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Svchost.h</FilePath>
-            </File>
-            <File>
               <FileName>System.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\System.cpp</FilePath>
@@ -1995,14 +1505,64 @@
               <FilePath>.\ThreadState.h</FilePath>
             </File>
             <File>
-              <FileName>Updater.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Updater.h</FilePath>
+              <FileName>HashGenerator.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\HashGenerator.cpp</FilePath>
             </File>
             <File>
-              <FileName>WriteBuffer.h</FileName>
+              <FileName>HashGenerator.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\WriteBuffer.h</FilePath>
+              <FilePath>.\HashGenerator.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>src/managerment</GroupName>
+          <Files>
+            <File>
+              <FileName>Allocator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\Allocator.h</FilePath>
+            </File>
+            <File>
+              <FileName>EntryPoint.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\managerment\EntryPoint.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EntryPoint.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\EntryPoint.h</FilePath>
+            </File>
+            <File>
+              <FileName>Kernel.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\Kernel.h</FilePath>
+            </File>
+            <File>
+              <FileName>package-info.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\package-info.h</FilePath>
+            </File>
+            <File>
+              <FileName>Stacker.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\managerment\Stacker.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Stacker.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\Stacker.h</FilePath>
+            </File>
+            <File>
+              <FileName>Svchost.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\managerment\Svchost.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Svchost.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\Svchost.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2324,7 +1884,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>3</wLevel>
+            <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
@@ -2386,56 +1946,6 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
-              <FileName>Allocator.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Allocator.h</FilePath>
-            </File>
-            <File>
-              <FileName>Array.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Array.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayMap.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayMap.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayMapPrototype.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ArrayMapPrototype.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayMapPrototype.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayMapPrototype.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayPrototype.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ArrayPrototype.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayPrototype.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayPrototype.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayQueue.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayQueue.h</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayQueuePrototype.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ArrayQueuePrototype.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ArrayQueuePrototype.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ArrayQueuePrototype.h</FilePath>
-            </File>
-            <File>
               <FileName>BiConsumer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\BiConsumer.h</FilePath>
@@ -2471,11 +1981,6 @@
               <FilePath>.\Booleans.h</FilePath>
             </File>
             <File>
-              <FileName>Buffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Buffer.h</FilePath>
-            </File>
-            <File>
               <FileName>Byte.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Byte.cpp</FilePath>
@@ -2484,16 +1989,6 @@
               <FileName>Byte.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Byte.h</FilePath>
-            </File>
-            <File>
-              <FileName>ByteBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ByteBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ByteBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ByteBuffer.h</FilePath>
             </File>
             <File>
               <FileName>Bytes.cpp</FileName>
@@ -2521,21 +2016,6 @@
               <FilePath>.\Class.h</FilePath>
             </File>
             <File>
-              <FileName>Closeable.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Closeable.h</FilePath>
-            </File>
-            <File>
-              <FileName>Collection.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Collection.h</FilePath>
-            </File>
-            <File>
-              <FileName>CompletionHandler.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\CompletionHandler.h</FilePath>
-            </File>
-            <File>
               <FileName>Consumer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Consumer.h</FilePath>
@@ -2559,41 +2039,6 @@
               <FileName>Data.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Data.h</FilePath>
-            </File>
-            <File>
-              <FileName>Echoable.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Echoable.h</FilePath>
-            </File>
-            <File>
-              <FileName>EmptyReadBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\EmptyReadBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>EmptyReadBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\EmptyReadBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>EmptyWriteBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\EmptyWriteBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>EmptyWriteBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\EmptyWriteBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>EntryPoint.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\EntryPoint.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>EntryPoint.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\EntryPoint.h</FilePath>
             </File>
             <File>
               <FileName>ErrorCode.h</FileName>
@@ -2621,16 +2066,6 @@
               <FilePath>.\FunctionMethod.h</FilePath>
             </File>
             <File>
-              <FileName>Future.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Future.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Future.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Future.h</FilePath>
-            </File>
-            <File>
               <FileName>Hashcode.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Hashcode.cpp</FilePath>
@@ -2639,36 +2074,6 @@
               <FileName>Hashcode.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Hashcode.h</FilePath>
-            </File>
-            <File>
-              <FileName>HashGen.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\HashGen.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>HashGen.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\HashGen.h</FilePath>
-            </File>
-            <File>
-              <FileName>InputStream.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\InputStream.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>InputStream.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\InputStream.h</FilePath>
-            </File>
-            <File>
-              <FileName>InputStreamBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\InputStreamBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>InputStreamBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\InputStreamBuffer.h</FilePath>
             </File>
             <File>
               <FileName>Integer.cpp</FileName>
@@ -2699,21 +2104,6 @@
               <FileName>Iterable.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Iterable.h</FilePath>
-            </File>
-            <File>
-              <FileName>Iterator.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Iterator.h</FilePath>
-            </File>
-            <File>
-              <FileName>Kernel.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Kernel.h</FilePath>
-            </File>
-            <File>
-              <FileName>Map.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Map.h</FilePath>
             </File>
             <File>
               <FileName>Maths.cpp</FileName>
@@ -2756,26 +2146,6 @@
               <FilePath>.\Object.h</FilePath>
             </File>
             <File>
-              <FileName>OutputStream.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\OutputStream.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>OutputStream.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\OutputStream.h</FilePath>
-            </File>
-            <File>
-              <FileName>OutputStreamBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\OutputStreamBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>OutputStreamBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\OutputStreamBuffer.h</FilePath>
-            </File>
-            <File>
               <FileName>package-info.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\package-info.h</FilePath>
@@ -2799,56 +2169,6 @@
               <FileName>Pointers.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Pointers.h</FilePath>
-            </File>
-            <File>
-              <FileName>Pool.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Pool.h</FilePath>
-            </File>
-            <File>
-              <FileName>PrintBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\PrintBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PrintBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\PrintBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>Queue.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Queue.h</FilePath>
-            </File>
-            <File>
-              <FileName>ReadBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ReadBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>README.md</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\README.md</FilePath>
-            </File>
-            <File>
-              <FileName>ReadOnlyBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\ReadOnlyBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ReadOnlyBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ReadOnlyBuffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>RingBuffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\RingBuffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>RingBuffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\RingBuffer.h</FilePath>
             </File>
             <File>
               <FileName>Runnable.h</FileName>
@@ -2901,26 +2221,6 @@
               <FilePath>.\Shorts.h</FilePath>
             </File>
             <File>
-              <FileName>Stacker.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Stacker.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Stacker.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Stacker.h</FilePath>
-            </File>
-            <File>
-              <FileName>StreamSkipper.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\StreamSkipper.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>StreamSkipper.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\StreamSkipper.h</FilePath>
-            </File>
-            <File>
               <FileName>StringFormat.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\StringFormat.cpp</FilePath>
@@ -2956,16 +2256,6 @@
               <FilePath>.\SupplierMethod.h</FilePath>
             </File>
             <File>
-              <FileName>Svchost.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Svchost.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Svchost.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Svchost.h</FilePath>
-            </File>
-            <File>
               <FileName>System.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\System.cpp</FilePath>
@@ -2996,14 +2286,64 @@
               <FilePath>.\ThreadState.h</FilePath>
             </File>
             <File>
-              <FileName>Updater.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Updater.h</FilePath>
+              <FileName>HashGenerator.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\HashGenerator.cpp</FilePath>
             </File>
             <File>
-              <FileName>WriteBuffer.h</FileName>
+              <FileName>HashGenerator.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\WriteBuffer.h</FilePath>
+              <FilePath>.\HashGenerator.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>src/managerment</GroupName>
+          <Files>
+            <File>
+              <FileName>Allocator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\Allocator.h</FilePath>
+            </File>
+            <File>
+              <FileName>EntryPoint.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\managerment\EntryPoint.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>EntryPoint.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\EntryPoint.h</FilePath>
+            </File>
+            <File>
+              <FileName>Kernel.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\Kernel.h</FilePath>
+            </File>
+            <File>
+              <FileName>package-info.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\package-info.h</FilePath>
+            </File>
+            <File>
+              <FileName>Stacker.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\managerment\Stacker.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Stacker.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\Stacker.h</FilePath>
+            </File>
+            <File>
+              <FileName>Svchost.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\managerment\Svchost.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Svchost.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\managerment\Svchost.h</FilePath>
             </File>
           </Files>
         </Group>
