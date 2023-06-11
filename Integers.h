@@ -15,26 +15,25 @@
 #include "./../lang/Integer.h"
 #include "./../lang/Object.h"
 #include "./../util/Iterator.h"
-//-------------------------------------------------------------------------------
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class Integers;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
  */
-class lang::Integers final : public lang::Object {
+class mframe::lang::Integers final : public mframe::lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */
-  public:
-    static const char* TEXT_MAX_VALUE;
-    static const char* TEXT_MIN_VALUE;
-    static const int MAX_ASCII_VALUE;
+ public:
+  static const char* TEXT_MAX_VALUE;
+  static const char* TEXT_MIN_VALUE;
+  static const int MAX_ASCII_VALUE;
 
   /* ****************************************************************************
    * Variable <Protected>
@@ -98,40 +97,40 @@ class lang::Integers final : public lang::Object {
    */
  public:
   /**
-   * @brief 
-   * 
-   * @param iterator 
-   * @return true 
-   * @return false 
+   * @brief
+   *
+   * @param iterator
+   * @return true
+   * @return false
    */
-  static bool isInteger(util::Iterator<char>& iterator);
+  static bool isInteger(mframe::util::Iterator<char>& iterator);
 
   /**
-   * @brief 
-   * 
-   * @param str 
-   * @return true 
-   * @return false 
+   * @brief
+   *
+   * @param str
+   * @return true
+   * @return false
    */
   static bool isInteger(const char* str);
 
   /**
-   * @brief 
-   * 
-   * @param result 
-   * @param iterator 
-   * @return true 
-   * @return false 
+   * @brief
+   *
+   * @param result
+   * @param iterator
+   * @return true
+   * @return false
    */
-  static bool parseInteger(int& result, util::Iterator<char>& iterator);
+  static bool parseInteger(int& result, mframe::util::Iterator<char>& iterator);
 
   /**
-   * @brief 
-   * 
-   * @param result 
-   * @param str 
-   * @return true 
-   * @return false 
+   * @brief
+   *
+   * @param result
+   * @param str
+   * @return true
+   * @return false
    */
   static bool parseInteger(int& result, const char* str);
 

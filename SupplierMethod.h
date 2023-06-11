@@ -12,24 +12,23 @@
  */
 
 //-----------------------------------------------------------------------------------------
-#include "./Object.h"
-#include "./Supplier.h"
-//-----------------------------------------------------------------------------------------
+#include "./../lang/Object.h"
+#include "./../lang/Supplier.h"
 
 /* ****************************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   template <class C, class R>
   class SupplierMethod;
-}
+}  // namespace mframe::lang
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
 template <class C, class R>
-class lang::SupplierMethod : public lang::Object,
-                             public lang::Supplier<R> {
+class mframe::lang::SupplierMethod : public mframe::lang::Object,
+                                     public mframe::lang::Supplier<R> {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -43,7 +42,7 @@ class lang::SupplierMethod : public lang::Object,
    */
  private:
   C& mClass;
-  R (C::*mMethod)
+  R(C::*mMethod)
   (void);
 
   /* **************************************************************************************
@@ -76,7 +75,7 @@ class lang::SupplierMethod : public lang::Object,
    */
 
   /* **************************************************************************************
-   * Public Method <Override> - lang::Supplier
+   * Public Method <Override> - mframe::lang::Supplier
    */
  public:
   virtual R get(void) override {

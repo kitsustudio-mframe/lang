@@ -12,25 +12,23 @@
  */
 
 //-------------------------------------------------------------------------------
-#include "./Object.h"
-
-//-------------------------------------------------------------------------------
-#include "./Function.h"
+#include "./../lang/Function.h"
+#include "./../lang/Object.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   template <typename T, typename R>
   class FunctionEvent;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct
  */
 template <typename T, typename R>
-class lang::FunctionEvent : public lang::Object,
-                            public lang::Function<T, R> {
+class mframe::lang::FunctionEvent : public mframe::lang::Object,
+                                    public mframe::lang::Function<T, R> {
   /* ****************************************************************************
    * Variable <Public>
    */

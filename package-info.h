@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 #ifndef MFRAME_84666AC4_AA62_4D64_91F7_7045CAF3EBCA
@@ -33,8 +33,8 @@
 #include "./Function.h"
 #include "./FunctionEvent.h"
 #include "./FunctionMethod.h"
-#include "./Hashcode.h"
 #include "./HashGenerator.h"
+#include "./Hashcode.h"
 #include "./Integer.h"
 #include "./Integers.h"
 #include "./Interface.h"

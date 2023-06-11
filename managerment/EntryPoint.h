@@ -20,15 +20,15 @@
 /* ******************************************************************************
  * Namespace
  */
-namespace lang::managerment {
+namespace mframe::lang::managerment {
   class EntryPoint;
 }
 
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
  */
-class lang::managerment::EntryPoint : public lang::Object,
-                                      public lang::Runnable {
+class mframe::lang::managerment::EntryPoint : public mframe::lang::Object,
+                                              public mframe::lang::Runnable {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -41,8 +41,8 @@ class lang::managerment::EntryPoint : public lang::Object,
    * Variable <Private>
    */
  private:
-  void (*mSetup)(lang::Thread*);
-  void (*mLoop)(lang::Thread*);
+  void (*mSetup)(mframe::lang::Thread*);
+  void (*mLoop)(mframe::lang::Thread*);
 
   /* ****************************************************************************
    * Abstract method <Public>
@@ -59,7 +59,7 @@ class lang::managerment::EntryPoint : public lang::Object,
   /**
    *
    */
-  EntryPoint(void (*setup)(lang::Thread*), void (*loop)(lang::Thread*));
+  EntryPoint(void (*setup)(mframe::lang::Thread*), void (*loop)(mframe::lang::Thread*));
 
   /**
    *
@@ -75,7 +75,7 @@ class lang::managerment::EntryPoint : public lang::Object,
    */
 
   /* ****************************************************************************
-   * Public Method <Override>- lang::Runnable
+   * Public Method <Override>- mframe::lang::Runnable
    */
  public:
   /**

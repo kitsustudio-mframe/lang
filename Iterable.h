@@ -12,29 +12,28 @@
  */
 
 //-----------------------------------------------------------------------------------------
-#include "./Interface.h"
-//-----------------------------------------------------------------------------------------
+#include "./../lang/Interface.h"
 
 /* ****************************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   template <class E>
   struct Iterable;
-}
+}  // namespace mframe::lang
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
 template <class E>
-struct lang::Iterable {
+struct mframe::lang::Iterable {
   /* **************************************************************************************
    * Method
    */
 
   /**
    * @brief 檢索但不刪除此隊列的值，如果訪問此列隊位置為空，則返回false。
-   * 
+   *
    * @param index 位置
    * @param result 結果
    * @return true 訪問成功，結果將存放於result

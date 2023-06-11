@@ -13,9 +13,6 @@
 //-------------------------------------------------------------------------------
 #include "mframe.h"
 
-//-------------------------------------------------------------------------------
-
-
 /* ******************************************************************************
  * Macro
  */
@@ -23,11 +20,9 @@
 /* ******************************************************************************
  * Using
  */
+using mframe::lang::HashGenerator;
 
 //-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
-using lang::HashGenerator;
 
 /* ******************************************************************************
  * Variable <Static>
@@ -74,26 +69,26 @@ int HashGenerator::getHashcode(const char* src) {
 }
 
 //-------------------------------------------------------------------------------
-int HashGenerator::getHashcodeUpperCast(const char* src){
+int HashGenerator::getHashcodeUpperCast(const char* src) {
   int result = 0;
   char c;
-  for (int i = 0; src[i] != 0; ++i){
+  for (int i = 0; src[i] != 0; ++i) {
     c = Character::toUpperCase(src[i]);
     result = 31 * result + static_cast<const unsigned char>(c);
   }
-    
+
   return result;
 }
 
 //-------------------------------------------------------------------------------
-int HashGenerator::getHashcodeLowerCast(const char* src){
+int HashGenerator::getHashcodeLowerCast(const char* src) {
   int result = 0;
   char c;
-  for (int i = 0; src[i] != 0; ++i){
+  for (int i = 0; src[i] != 0; ++i) {
     c = Character::toLowerCase(src[i]);
     result = 31 * result + static_cast<const unsigned char>(c);
   }
-    
+
   return result;
 }
 /* ******************************************************************************

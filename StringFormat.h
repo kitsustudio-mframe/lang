@@ -12,23 +12,21 @@
  */
 
 //-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
-#include "./Memory.h"
-#include "./Object.h"
 #include "./../io/WriteBuffer.h"
+#include "./../lang/Memory.h"
+#include "./../lang/Object.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class StringFormat;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
  */
-class lang::StringFormat final : public lang::Object {
+class mframe::lang::StringFormat final : public mframe::lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -86,7 +84,7 @@ class lang::StringFormat final : public lang::Object {
    * @param arg
    * @return int
    */
-  static int memoryVa(const lang::Memory& memory, const char* format, va_list args);
+  static int memoryVa(const mframe::lang::Memory& memory, const char* format, va_list args);
 
   /**
    * @brief
@@ -96,7 +94,7 @@ class lang::StringFormat final : public lang::Object {
    * @param arg
    * @return int
    */
-  static int writeBufferVa(io::WriteBuffer& writeBuffer, const char* format, va_list args);
+  static int writeBufferVa(mframe::io::WriteBuffer& writeBuffer, const char* format, va_list args);
 
   /**
    * @brief
@@ -117,7 +115,7 @@ class lang::StringFormat final : public lang::Object {
    * @param ...
    * @return int
    */
-  static int memory(const lang::Memory& memory, const char* format, ...);
+  static int memory(const mframe::lang::Memory& memory, const char* format, ...);
 
   /**
    * @brief
@@ -127,7 +125,7 @@ class lang::StringFormat final : public lang::Object {
    * @param ...
    * @return int
    */
-  static int writeBuffer(io::WriteBuffer& writeBuffer, const char* format, ...);
+  static int writeBuffer(mframe::io::WriteBuffer& writeBuffer, const char* format, ...);
 
   /**
    * @brief

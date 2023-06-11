@@ -13,24 +13,20 @@
  */
 
 //-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
-#include "./Interface.h"
-
-using size_t = unsigned int;
+#include "./../lang/Interface.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class Object;
   class Thread;
-}  // namespace lang
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct
  */
-class lang::Object : virtual public lang::Interface {
+class mframe::lang::Object : virtual public mframe::lang::Interface {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -290,13 +286,13 @@ class lang::Object : virtual public lang::Interface {
   virtual int hashcode(void) const;
 
   /* ****************************************************************************
-   * Public Method <Override> - lang::Interface
+   * Public Method <Override> - mframe::lang::Interface
    */
  public:
   /**
    *
    */
-  lang::Object& getObject(void) override;
+  mframe::lang::Object& getObject(void) override;
 
   /* ****************************************************************************
    * Public Method <Inline>

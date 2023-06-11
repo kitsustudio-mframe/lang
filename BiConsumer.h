@@ -12,23 +12,21 @@
  */
 
 //-------------------------------------------------------------------------------
-#include "./Interface.h"
-
-//-------------------------------------------------------------------------------
+#include "./../lang/Interface.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   template <class T, class U>
   struct BiConsumer;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct
  */
 template <class T, class U>
-struct lang::BiConsumer : public virtual lang::Interface {
+struct mframe::lang::BiConsumer : public virtual mframe::lang::Interface {
   /* ****************************************************************************
    * Method
    */

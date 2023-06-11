@@ -14,23 +14,22 @@
 
 //-------------------------------------------------------------------------------
 
-//-------------------------------------------------------------------------------
-#include "./Object.h"
-#include "./Runnable.h"
-#include "./ThreadPriority.h"
-#include "./ThreadState.h"
+#include "./../lang/Object.h"
+#include "./../lang/Runnable.h"
+#include "./../lang/ThreadPriority.h"
+#include "./../lang/ThreadState.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class Thread;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct
  */
-class lang::Thread : public lang::Object {
+class mframe::lang::Thread : public mframe::lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -87,16 +86,16 @@ class lang::Thread : public lang::Object {
   /**
    * @brief Get the Priority object
    *
-   * @return lang::ThreadPriority
+   * @return mframe::lang::ThreadPriority
    */
-  virtual lang::ThreadPriority getPriority(void) const abstract;
+  virtual mframe::lang::ThreadPriority getPriority(void) const abstract;
 
   /**
    * @brief Get the State object
    *
-   * @return lang::ThreadState
+   * @return mframe::lang::ThreadState
    */
-  virtual lang::ThreadState getState(void) const abstract;
+  virtual mframe::lang::ThreadState getState(void) const abstract;
 
   /**
    * @brief Get the Stack Size object
@@ -112,7 +111,7 @@ class lang::Thread : public lang::Object {
    * @return true
    * @return false
    */
-  virtual bool start(const char* name, lang::ThreadPriority priority) abstract;
+  virtual bool start(const char* name, mframe::lang::ThreadPriority priority) abstract;
 
   /**
    * @brief
@@ -127,7 +126,7 @@ class lang::Thread : public lang::Object {
    * @return true
    * @return false
    */
-  virtual bool setPriority(lang::ThreadPriority priority) abstract;
+  virtual bool setPriority(mframe::lang::ThreadPriority priority) abstract;
 
   /* ****************************************************************************
    * Public Method

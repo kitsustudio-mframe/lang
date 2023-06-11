@@ -12,23 +12,21 @@
  */
 
 //-------------------------------------------------------------------------------
-#include "./Object.h"
-
-//-------------------------------------------------------------------------------
+#include "./../lang/Object.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   template <class T>
   class Class;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
  */
 template <class T>
-class lang::Class : public lang::Object {
+class mframe::lang::Class : public mframe::lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */

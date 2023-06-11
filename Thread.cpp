@@ -8,11 +8,10 @@
 /* ******************************************************************************
  * Include
  */
-
-//-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
 #include "./Thread.h"
+//-------------------------------------------------------------------------------
+
+#include "mframe.h"
 
 /* ******************************************************************************
  * Macro
@@ -21,11 +20,9 @@
 /* ******************************************************************************
  * Using
  */
+using mframe::lang::Thread;
 
 //-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
-using lang::Thread;
 
 /* ******************************************************************************
  * Variable <Static>
@@ -63,22 +60,22 @@ Thread::~Thread(void) {
 
 //-------------------------------------------------------------------------------
 bool Thread::start(const char* name) {
-  return this->start(name, lang::ThreadPriority::NORMAL);
+  return this->start(name, mframe::lang::ThreadPriority::NORMAL);
 }
 
 //-------------------------------------------------------------------------------
 bool Thread::isActive(void) {
-  lang::ThreadState state = this->getState();
+  mframe::lang::ThreadState state = this->getState();
 
   switch (state) {
-    case lang::ThreadState::INACTIVE:
-    case lang::ThreadState::ERROR:
+    case mframe::lang::ThreadState::INACTIVE:
+    case mframe::lang::ThreadState::ERROR:
       return false;
 
-    case lang::ThreadState::BLOCKED:
-    case lang::ThreadState::READY:
-    case lang::ThreadState::RUNNING:
-    case lang::ThreadState::TERMINATED:
+    case mframe::lang::ThreadState::BLOCKED:
+    case mframe::lang::ThreadState::READY:
+    case mframe::lang::ThreadState::RUNNING:
+    case mframe::lang::ThreadState::TERMINATED:
       return true;
   }
 }

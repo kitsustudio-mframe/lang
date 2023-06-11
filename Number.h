@@ -5,29 +5,27 @@
  * SPDX-License-Identifier: MIT
  */
 
-#ifndef MCUF_C6CF2DB4_1F61_4562_8698_C0C22D0C69FA
-#define MCUF_C6CF2DB4_1F61_4562_8698_C0C22D0C69FA
+#ifndef MFRAME_C6CF2DB4_1F61_4562_8698_C0C22D0C69FA
+#define MFRAME_C6CF2DB4_1F61_4562_8698_C0C22D0C69FA
 
 /* ******************************************************************************
  * Include
  */
 
 //-------------------------------------------------------------------------------
-#include "./Object.h"
-
-//-------------------------------------------------------------------------------
+#include "./../lang/Object.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class Number;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class Integer
  */
-class lang::Number : public lang::Object {
+class mframe::lang::Number : public mframe::lang::Object {
   /* ****************************************************************************
    * Subclass
    */
@@ -100,7 +98,7 @@ class lang::Number : public lang::Object {
    */
 
   /* ****************************************************************************
-   * Public Method <Override> - lang::Object
+   * Public Method <Override> - mframe::lang::Object
    */
  public:
   /**
@@ -142,4 +140,4 @@ class lang::Number : public lang::Object {
  *  End of file
  */
 
-#endif /* MCUF_C6CF2DB4_1F61_4562_8698_C0C22D0C69FA */
+#endif /* MFRAME_C6CF2DB4_1F61_4562_8698_C0C22D0C69FA */

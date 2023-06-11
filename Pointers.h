@@ -12,22 +12,20 @@
  */
 
 //-------------------------------------------------------------------------------
-#include "./Object.h"
-#include "./Pointer.h"
-
-//-------------------------------------------------------------------------------
+#include "./../lang/Object.h"
+#include "./../lang/Pointer.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class Pointers;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
  */
-class lang::Pointers {
+class mframe::lang::Pointers {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -134,7 +132,7 @@ class lang::Pointers {
    *
    * @return Pointer
    */
-  static lang::Pointer nullPointer(void);
+  static mframe::lang::Pointer nullPointer(void);
 
   /**
    * @brief Copies the values of num bytes from the location pointed to by source
@@ -200,7 +198,7 @@ class lang::Pointers {
 
   /**
    * @brief 複製字符 c（一個無符號字符）到參數 str 所指向的字符串的前 n 個字符。
-   * 
+   *
    * @param src 指向要填充的內存塊。
    * @param value 要被設置的值。該值以 int 形式傳遞，但是函數在填充內存塊時是使用該值的無符號字符形式。
    * @param length 要被設置為該值的字符數。
@@ -209,11 +207,11 @@ class lang::Pointers {
 
   /**
    * @brief 複製字符0x00到參數str所指向的字符串的前length個字符。
-   * 
+   *
    * @param src 指向要填充的內存塊。
    * @param length 要被設置為該值的字符數。
    */
-  static void wipe(void* src, int length);  
+  static void wipe(void* src, int length);
 
   /* ****************************************************************************
    * Public Method <Override>

@@ -12,21 +12,19 @@
  */
 
 //-------------------------------------------------------------------------------
-#include "./Object.h"
-
-//-------------------------------------------------------------------------------
+#include "./../lang/Object.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class Bytes;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
  */
-class lang::Bytes final : public lang::Object {
+class mframe::lang::Bytes final : public mframe::lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */

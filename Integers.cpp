@@ -8,26 +8,25 @@
 /* ******************************************************************************
  * Include
  */
+#include "./Integers.h"
 
+//-------------------------------------------------------------------------------
 #include <stdlib.h>
 
-//-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
-#include "./Integers.h"
-#include "./Character.h"
+#include "mframe.h"
 
 /* ******************************************************************************
  * Macro
  */
 #define MACRO_IS_NUMB(c) ((c >= '0') && (c <= '9'))
+
 /* ******************************************************************************
  * Using
  */
-using lang::Integers;
+using mframe::lang::Integers;
 
 //-------------------------------------------------------------------------------
-using util::Iterator;
+using mframe::util::Iterator;
 
 /* ******************************************************************************
  * Variable <Static>
@@ -47,12 +46,11 @@ const int Integers::MAX_ASCII_VALUE = static_cast<int>(sizeof("-2147483648"));
  * Public Method <Static>
  */
 
-
 //-------------------------------------------------------------------------------
-bool Integers::isInteger(util::Iterator<char>& iterator){
+bool Integers::isInteger(mframe::util::Iterator<char>& iterator) {
   char cache[Integers::MAX_ASCII_VALUE];
-  for(int i=0; i<Integers::MAX_ASCII_VALUE; ++i){
-    if(!iterator.next(cache[i]))
+  for (int i = 0; i < Integers::MAX_ASCII_VALUE; ++i) {
+    if (!iterator.next(cache[i]))
       break;
   }
 
@@ -78,10 +76,10 @@ bool Integers::isInteger(const char* str) {
 }
 
 //-------------------------------------------------------------------------------
-bool Integers::parseInteger(int& result, util::Iterator<char>& iterator){
+bool Integers::parseInteger(int& result, mframe::util::Iterator<char>& iterator) {
   char cache[Integers::MAX_ASCII_VALUE];
-  for(int i=0; i<Integers::MAX_ASCII_VALUE; ++i){
-    if(!iterator.next(cache[i]))
+  for (int i = 0; i < Integers::MAX_ASCII_VALUE; ++i) {
+    if (!iterator.next(cache[i]))
       break;
   }
 

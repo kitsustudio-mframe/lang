@@ -9,13 +9,11 @@
  * Include
  */
 
-#include <string.h>
-//-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
 #include "./Character.h"
-#include "./Integer.h"
-#include "./Strings.h"
+//-------------------------------------------------------------------------------
+#include <string.h>
+
+#include "mframe.h"
 
 /* ******************************************************************************
  * Macro
@@ -30,7 +28,7 @@
 //-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
-using lang::Character;
+using mframe::lang::Character;
 
 /* ******************************************************************************
  * Variable <Static>
@@ -156,13 +154,12 @@ bool Character::compareIgnoreCast(char src, char dst) {
 }
 
 //-------------------------------------------------------------------------------
-bool Character::compareIgnoreCast(const char* src1, char const* src2){
+bool Character::compareIgnoreCast(const char* src1, char const* src2) {
   return (strcasecmp(src1, src2) == 0);
 }
 
-
 //-------------------------------------------------------------------------------
-bool Character::compareIgnoreCast(const char* src1, char const* src2, int length){
+bool Character::compareIgnoreCast(const char* src1, char const* src2, int length) {
   return (strncasecmp(src1, src2, static_cast<size_t>(length)) == 0);
 }
 

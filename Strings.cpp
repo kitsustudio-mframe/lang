@@ -9,14 +9,13 @@
  * Include
  */
 
+#include "./Strings.h"
+
+//-------------------------------------------------------------------------------
 #include <stdio.h>
 #include <string.h>
-#include "./Strings.h"
-//-------------------------------------------------------------------------------
+
 #include "mframe.h"
-
-//-------------------------------------------------------------------------------
-
 
 /* ******************************************************************************
  * Macro
@@ -25,9 +24,9 @@
 /* ******************************************************************************
  * Using
  */
-using lang::Class;
-using lang::Memory;
-using lang::Strings;
+using mframe::lang::Class;
+using mframe::lang::Memory;
+using mframe::lang::Strings;
 
 /* ******************************************************************************
  * Variable
@@ -98,7 +97,7 @@ int Strings::getLength(const char* src) {
 }
 
 /* ******************************************************************************
- * Public Method <Override> - lang::Memory
+ * Public Method <Override> - mframe::lang::Memory
  */
 
 //-------------------------------------------------------------------------------
@@ -107,21 +106,21 @@ int Strings::indexOfData(const void* destination, int destinationLen, int start)
 }
 
 /* ******************************************************************************
- * Public Method <Override> - lang::Object
+ * Public Method <Override> - mframe::lang::Object
  */
 
 //-------------------------------------------------------------------------------
 int Strings::hashcode(void) const {
-  return lang::HashGenerator::getHashcode(this->pointer(Class<const char>::cast()));
+  return mframe::lang::HashGenerator::getHashcode(this->pointer(Class<const char>::cast()));
 }
 
 /* ******************************************************************************
- * Public Method <Override> - lang::Object
+ * Public Method <Override> - mframe::lang::Object
  */
 
 //-------------------------------------------------------------------------------
 int Strings::hashdata(void) const {
-  return lang::HashGenerator::getHashcode(this->pointer(Class<const char>::cast()));
+  return mframe::lang::HashGenerator::getHashcode(this->pointer(Class<const char>::cast()));
 }
 
 /* ******************************************************************************
@@ -294,11 +293,11 @@ Strings& Strings::append(const char ch) {
     return *this;
 
   int start = this->size();
-  if((start+1) >= this->length())
+  if ((start + 1) >= this->length())
     return *this;
 
   this->pointer(Class<char>::cast())[start] = ch;
-  this->pointer(Class<char>::cast())[start+1] = '\0';
+  this->pointer(Class<char>::cast())[start + 1] = '\0';
   return *this;
 }
 
@@ -316,7 +315,7 @@ Strings& Strings::append(const char* str) {
 }
 
 //-------------------------------------------------------------------------------
-Strings& Strings::append(io::ReadBuffer& readBuffer) {
+Strings& Strings::append(mframe::io::ReadBuffer& readBuffer) {
   if (this->isReadOnly())
     return *this;
 
@@ -380,13 +379,13 @@ Strings& Strings::set(const char* str) {
 }
 
 //-------------------------------------------------------------------------------
-int Strings::hashcodeLowerCast(void){
-  return lang::HashGenerator::getHashcodeLowerCast(this->pointer(Class<const char>::cast()));
+int Strings::hashcodeLowerCast(void) {
+  return mframe::lang::HashGenerator::getHashcodeLowerCast(this->pointer(Class<const char>::cast()));
 }
 
 //-------------------------------------------------------------------------------
-int Strings::hashcodeUpperCast(void){
-  return lang::HashGenerator::getHashcodeUpperCast(this->pointer(Class<const char>::cast()));
+int Strings::hashcodeUpperCast(void) {
+  return mframe::lang::HashGenerator::getHashcodeUpperCast(this->pointer(Class<const char>::cast()));
 }
 
 /* ******************************************************************************

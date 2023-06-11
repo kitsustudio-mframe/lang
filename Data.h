@@ -12,22 +12,20 @@
  */
 
 //-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
-#include "./Pointer.h"
+#include "./../lang/Pointer.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class Data;
   class Memory;
-}  // namespace lang
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct/Enum
  */
-class lang::Data : public lang::Pointer {
+class mframe::lang::Data : public mframe::lang::Pointer {
   friend Memory;
   /* ****************************************************************************
    * Variable <Public>
@@ -116,7 +114,7 @@ class lang::Data : public lang::Pointer {
   static void wipe(void* pointer, int length);
 
   /* ****************************************************************************
-   * Public Method <Override> - lang::Pointer
+   * Public Method <Override> - mframe::lang::Pointer
    */
  public:
   /**
@@ -217,11 +215,11 @@ class lang::Data : public lang::Pointer {
 
   /**
    * @brief 插入陣列至Data
-   * 
+   *
    * @param source 來源
-   * @param start 
-   * @param length 
-   * @return int 
+   * @param start
+   * @param length
+   * @return int
    */
   inline int insertArray(const void* source, int start, int length) {
     return Data::insertArray(source, 0, start, length);
@@ -279,15 +277,15 @@ class lang::Data : public lang::Pointer {
    *
    * @param beginIndex
    * @param length
-   * @return lang::Memory
+   * @return mframe::lang::Memory
    */
-  virtual lang::Data subData(uint32_t beginIndex, uint32_t length) const;
+  virtual mframe::lang::Data subData(uint32_t beginIndex, uint32_t length) const;
 
   /**
    * @brief 複製陣列至Data
    *
    * @param source 來源
-   * @param shift 
+   * @param shift
    * @param start
    * @param length
    * @return int32_t

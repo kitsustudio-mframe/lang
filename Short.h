@@ -5,29 +5,27 @@
  * SPDX-License-Identifier: MIT
  */
 
-#ifndef MCUF_A35B63D2_8288_4C2E_ACB8_69DAC9906340
-#define MCUF_A35B63D2_8288_4C2E_ACB8_69DAC9906340
+#ifndef MFRAME_A35B63D2_8288_4C2E_ACB8_69DAC9906340
+#define MFRAME_A35B63D2_8288_4C2E_ACB8_69DAC9906340
 
 /* ******************************************************************************
  * Include
  */
 
+#include "./../lang/Number.h"
 //-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
-#include "./Number.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class Short;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class Short
  */
-class lang::Short final : public lang::Number {
+class mframe::lang::Short final : public mframe::lang::Number {
   /* ****************************************************************************
    * Subclass
    */
@@ -247,4 +245,4 @@ class lang::Short final : public lang::Number {
  * End of file
  */
 
-#endif /* MCUF_A35B63D2_8288_4C2E_ACB8_69DAC9906340 */
+#endif /* MFRAME_A35B63D2_8288_4C2E_ACB8_69DAC9906340 */

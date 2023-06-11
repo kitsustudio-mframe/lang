@@ -12,21 +12,19 @@
  */
 
 //-----------------------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------------------
-#include "./Object.h"
+#include "./../lang/Object.h"
 
 /* ****************************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class Hashcode;
-}
+}  // namespace mframe::lang
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
-class lang::Hashcode : public lang::Object {
+class mframe::lang::Hashcode : public mframe::lang::Object {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -38,8 +36,8 @@ class lang::Hashcode : public lang::Object {
   /* **************************************************************************************
    * Variable <Private>
    */
-  private:
-    int mHahscode;
+ private:
+  int mHahscode;
 
   /* **************************************************************************************
    * Abstract method <Public>
@@ -53,8 +51,8 @@ class lang::Hashcode : public lang::Object {
    * Construct Method
    */
  public:
-  Hashcode(lang::Interface& interface);
-  
+  Hashcode(mframe::lang::Interface& interface);
+
   Hashcode(int hashcode);
 
   virtual ~Hashcode(void) override;
@@ -68,10 +66,10 @@ class lang::Hashcode : public lang::Object {
    */
 
   /* **************************************************************************************
-   * Public Method <Override> - lang::Object
+   * Public Method <Override> - mframe::lang::Object
    */
-  public:
-    virtual int hashcode(void) const override;
+ public:
+  virtual int hashcode(void) const override;
 
   /* **************************************************************************************
    * Public Method

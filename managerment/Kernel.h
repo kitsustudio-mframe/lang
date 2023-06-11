@@ -20,14 +20,14 @@
 /* ******************************************************************************
  * Namespace
  */
-namespace lang::managerment {
+namespace mframe::lang::managerment {
   struct Kernel;
 }
 
 /* ******************************************************************************
  * Class/struct/Struct/Enum
  */
-struct lang::managerment::Kernel : public virtual lang::Interface {
+struct mframe::lang::managerment::Kernel : public virtual mframe::lang::Interface {
   /* ****************************************************************************
    * Method
    */
@@ -46,7 +46,7 @@ struct lang::managerment::Kernel : public virtual lang::Interface {
    * @param runnable 主執行緒事件
    * @param stackSize 主執行緒記憶體堆疊大小
    */
-  virtual void kernelStart(lang::Runnable& runnable, uint32_t stackSize) abstract;
+  virtual void kernelStart(mframe::lang::Runnable& runnable, uint32_t stackSize) abstract;
 
   /**
    * @brief 核心鎖定，在調用kernelUnlock以前將不會進行context switch
@@ -107,7 +107,7 @@ struct lang::managerment::Kernel : public virtual lang::Interface {
    * @return null 建立失敗
    * @return Thread 建立成功
    */
-  virtual Thread* kernelAllocThread(lang::Runnable& task, lang::Data& stackMemory) abstract;
+  virtual Thread* kernelAllocThread(mframe::lang::Runnable& task, mframe::lang::Data& stackMemory) abstract;
 
   /**
    * @brief 建立一個執行緒，限定堆疊大小
@@ -117,7 +117,7 @@ struct lang::managerment::Kernel : public virtual lang::Interface {
    * @return null 建立失敗
    * @return Thread 建立成功
    */
-  virtual Thread* kernelAllocThread(lang::Runnable& task, uint32_t stackSize) abstract;
+  virtual Thread* kernelAllocThread(mframe::lang::Runnable& task, uint32_t stackSize) abstract;
 
   /**
    * @brief 取得當前執行緒
@@ -125,21 +125,21 @@ struct lang::managerment::Kernel : public virtual lang::Interface {
    * @return null 可能為核心尚未啟動、當前正在中斷事件
    * @return Thread 獲取成功
    */
-  virtual lang::Thread* kernelGetCurrentThread(void) abstract;
+  virtual mframe::lang::Thread* kernelGetCurrentThread(void) abstract;
 
   /**
    * @brief
    *
    * @return
    */
-  virtual io::OutputStream* kernelGetOutputStream(void) abstract;
+  virtual mframe::io::OutputStream* kernelGetOutputStream(void) abstract;
 
   /**
    * @brief
    *
    * @return
    */
-  virtual io::InputStream* kernelGetInputStream(void) abstract;
+  virtual mframe::io::InputStream* kernelGetInputStream(void) abstract;
 
   /**
    * @brief 取得核心運作頻率

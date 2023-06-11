@@ -17,10 +17,10 @@
 /* ******************************************************************************
  * Using
  */
-using lang::managerment::Stacker;
+using mframe::lang::managerment::Stacker;
 
 //-------------------------------------------------------------------------------
-using lang::Memory;
+using mframe::lang::Memory;
 
 //-------------------------------------------------------------------------------
 
@@ -54,7 +54,7 @@ Stacker::~Stacker(void) {
  */
 
 /* ******************************************************************************
- * Public Method <Override> util::Collection<lang::Memory>
+ * Public Method <Override> mframe::util::Collection<mframe::lang::Memory>
  */
 
 //-------------------------------------------------------------------------------
@@ -75,7 +75,7 @@ int Stacker::size(void) const {
 }
 
 /* ******************************************************************************
- * Public Method <Override> lang::managerment::Allocator
+ * Public Method <Override> mframe::lang::managerment::Allocator
  */
 
 //-------------------------------------------------------------------------------

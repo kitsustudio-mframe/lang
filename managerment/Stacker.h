@@ -22,16 +22,16 @@
 /* ******************************************************************************
  * Namespace
  */
-namespace lang::managerment {
+namespace mframe::lang::managerment {
   class Stacker;
 }
 
 /* ******************************************************************************
  * Class/Interface/Struct
  */
-class lang::managerment::Stacker : public lang::Memory,
-                                   public util::Collection<lang::Memory>,
-                                   public lang::managerment::Allocator {
+class mframe::lang::managerment::Stacker : public mframe::lang::Memory,
+                                           public mframe::util::Collection<mframe::lang::Memory>,
+                                           public mframe::lang::managerment::Allocator {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -71,7 +71,7 @@ class lang::managerment::Stacker : public lang::Memory,
    *
    * @param memory
    */
-  Stacker(const lang::Memory& memory);
+  Stacker(const mframe::lang::Memory& memory);
 
   /**
    * @brief Destroy the Stacker object
@@ -88,10 +88,9 @@ class lang::managerment::Stacker : public lang::Memory,
    */
 
   /* ****************************************************************************
-   * Public Method <Override> util::Collection<lang::Memory>
+   * Public Method <Override> mframe::util::Collection<mframe::lang::Memory>
    */
  public:
-
   virtual void clear(void) override;
 
   virtual bool isEmpty(void) const override;
@@ -99,10 +98,9 @@ class lang::managerment::Stacker : public lang::Memory,
   virtual int size(void) const override;
 
   /* ****************************************************************************
-   * Public Method <Override> lang::managerment::Allocator
+   * Public Method <Override> mframe::lang::managerment::Allocator
    */
  public:
-
   virtual void* alloc(uint32_t size) override;
 
   virtual bool free(void* ptr) override;
@@ -113,7 +111,6 @@ class lang::managerment::Stacker : public lang::Memory,
    * Public Method
    */
  public:
- 
   /**
    * @brief Get the Free object
    *
@@ -141,25 +138,25 @@ class lang::managerment::Stacker : public lang::Memory,
    * @brief
    *
    * @param size
-   * @return lang::Memory
+   * @return mframe::lang::Memory
    */
-  virtual lang::Memory allocMemory(uint32_t size);
+  virtual mframe::lang::Memory allocMemory(uint32_t size);
 
   /**
    * @brief
    *
    * @param size
-   * @return lang::Memory
+   * @return mframe::lang::Memory
    */
-  virtual lang::Memory allocMemoryAlignment32(uint32_t size);
+  virtual mframe::lang::Memory allocMemoryAlignment32(uint32_t size);
 
   /**
    * @brief
    *
    * @param size
-   * @return lang::Memory
+   * @return mframe::lang::Memory
    */
-  virtual lang::Memory allocMemoryAlignment64(uint32_t size);
+  virtual mframe::lang::Memory allocMemoryAlignment64(uint32_t size);
 
   /* ****************************************************************************
    * Protected Method <Static>

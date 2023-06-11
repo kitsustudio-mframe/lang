@@ -12,23 +12,21 @@
  */
 
 //-------------------------------------------------------------------------------
-#include "./Interface.h"
-
-//-------------------------------------------------------------------------------
+#include "./../lang/Interface.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   template <typename T, typename R>
   struct Function;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct
  */
 template <typename T, typename R>
-struct lang::Function : public virtual lang::Interface {
+struct mframe::lang::Function : public virtual mframe::lang::Interface {
   /* ****************************************************************************
    * Method
    */

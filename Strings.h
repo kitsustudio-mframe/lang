@@ -13,23 +13,21 @@
  */
 
 //-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
-#include "./Memory.h"
 #include "./../io/ReadBuffer.h"
 #include "./../io/WriteBuffer.h"
+#include "./../lang/Memory.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class Strings;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/Interface/Struct
  */
-class lang::Strings final : public lang::Memory {
+class mframe::lang::Strings final : public mframe::lang::Memory {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -74,7 +72,7 @@ class lang::Strings final : public lang::Memory {
    *
    * @param memory
    */
-  Strings(const lang::Memory& memory);
+  Strings(const mframe::lang::Memory& memory);
 
   /**
    * @brief Construct a new Strings object
@@ -128,7 +126,7 @@ class lang::Strings final : public lang::Memory {
    * @param WriteBuffer
    * @return Strings&
    */
-  inline Strings& operator+=(io::ReadBuffer& readBuffer) {
+  inline Strings& operator+=(mframe::io::ReadBuffer& readBuffer) {
     return this->append(readBuffer);
   }
 
@@ -197,7 +195,7 @@ class lang::Strings final : public lang::Memory {
   static int getHashcode(const char* src);
 
   /* ****************************************************************************
-   * Public Method <Override> - lang::Memory
+   * Public Method <Override> - mframe::lang::Memory
    */
  public:
   /**
@@ -212,13 +210,13 @@ class lang::Strings final : public lang::Memory {
   virtual int indexOfData(const void* destination, int destinationLen, int start) const override;
 
   /* ****************************************************************************
-   * Public Method <Override> - lang::Object
+   * Public Method <Override> - mframe::lang::Object
    */
  public:
   virtual int hashcode(void) const override;
 
   /* ****************************************************************************
-   * Public Method <Override> - lang::Data
+   * Public Method <Override> - mframe::lang::Data
    */
  public:
   virtual int hashdata(void) const override;
@@ -356,7 +354,7 @@ class lang::Strings final : public lang::Memory {
    * @param readBuffer
    * @return String&
    */
-  Strings& append(io::ReadBuffer& readBuffer);
+  Strings& append(mframe::io::ReadBuffer& readBuffer);
 
   /**
    * @brief

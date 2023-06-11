@@ -8,7 +8,7 @@
 #define MFRAME_242D7CFC_C83D_4A29_8BC7_A6FF9CCEDD5D
 
 /* ******************************************************************************
- * Include
+ * Macro
  */
 
 #pragma clang diagnostic ignored "-Wnon-virtual-dtor"
@@ -36,26 +36,28 @@
   enum_operator(e, t, |)         \
       enum_operator(e, t, &)
 
-//-------------------------------------------------------------------------------
+using size_t = unsigned int;
+
+/* ******************************************************************************
+ * Include
+ */
 #include <stdarg.h>
 #include <stdint.h>
-
-//-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   struct Interface;
   class Object;
-}  // namespace lang
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct/Enum
  */
-struct lang::Interface {
+struct mframe::lang::Interface {
   /* ****************************************************************************
    * Method
    */
@@ -69,12 +71,12 @@ struct lang::Interface {
   /**
    *
    */
-  virtual lang::Object &getObject(void) abstract;
+  virtual mframe::lang::Object &getObject(void) abstract;
 };
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wheader-hygiene"
-using namespace lang;
+using namespace mframe::lang;
 #pragma clang diagnostic pop
 
 /* ******************************************************************************

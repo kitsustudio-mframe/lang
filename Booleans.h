@@ -15,19 +15,17 @@
 #include "./../lang/Object.h"
 #include "./../util/Iterator.h"
 
-//-----------------------------------------------------------------------------------------
-
 /* ****************************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class Booleans;
-}
+}  // namespace mframe::lang
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
-class lang::Booleans : public lang::Object {
+class mframe::lang::Booleans : public mframe::lang::Object {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -68,14 +66,14 @@ class lang::Booleans : public lang::Object {
   /* **************************************************************************************
    * Public Method <Static>
    */
-  public:
-    static bool isBoolean(const char* str);
+ public:
+  static bool isBoolean(const char* str);
 
-    static bool isBoolean(util::Iterator<char>& iterator);
+  static bool isBoolean(mframe::util::Iterator<char>& iterator);
 
-    static bool parseBoolean(bool& result, const char* str);
-    
-    static bool parseBoolean(bool& result, util::Iterator<char>& iterable);
+  static bool parseBoolean(bool& result, const char* str);
+
+  static bool parseBoolean(bool& result, mframe::util::Iterator<char>& iterable);
 
   /* **************************************************************************************
    * Public Method <Override>

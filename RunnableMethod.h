@@ -12,25 +12,23 @@
  */
 
 //-----------------------------------------------------------------------------------------
-#include "./Object.h"
-#include "./Runnable.h"
-
-//-----------------------------------------------------------------------------------------
+#include "./../lang/Object.h"
+#include "./../lang/Runnable.h"
 
 /* ****************************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   template <class C>
   class RunnableMethod;
-}
+}  // namespace mframe::lang
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
 template <class C>
-class lang::RunnableMethod : public lang::Object,
-                             public lang::Runnable {
+class mframe::lang::RunnableMethod : public mframe::lang::Object,
+                                     public mframe::lang::Runnable {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -86,7 +84,7 @@ class lang::RunnableMethod : public lang::Object,
    */
 
   /* **************************************************************************************
-   * Public Method <Override> - lang::Runnable
+   * Public Method <Override> - mframe::lang::Runnable
    */
  public:
   virtual void run(void) override {

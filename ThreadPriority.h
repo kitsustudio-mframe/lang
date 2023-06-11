@@ -12,21 +12,19 @@
  */
 
 //-------------------------------------------------------------------------------
-#include "./Interface.h"
-
-//-------------------------------------------------------------------------------
+#include "./../lang/Interface.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   enum struct ThreadPriority : int;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct
  */
-enum struct lang::ThreadPriority : int {
+enum struct mframe::lang::ThreadPriority : int {
   LOW = 8,                 ///< PRIORITY_: low
   LOW1 = 8 + 1,            ///< PRIORITY_: low + 1
   LOW2 = 8 + 2,            ///< PRIORITY_: low + 2

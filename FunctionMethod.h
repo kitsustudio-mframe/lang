@@ -12,31 +12,30 @@
  */
 
 //-----------------------------------------------------------------------------------------
-#include "./Function.h"
-#include "./Object.h"
-//-----------------------------------------------------------------------------------------
+#include "./../lang/Function.h"
+#include "./../lang/Object.h"
 
 /* ****************************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   template <class T, class U, class E>
   class FunctionMethod;
-}
+}  // namespace mframe::lang
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
 
 /**
- * @brief 
- * 
+ * @brief
+ *
  * @tparam T 輸入類型
  * @tparam R 返回類型
  * @tparam C 類別類型
  */
 template <class C, class T, class R>
-class lang::FunctionMethod : public lang::Object, public lang::Function<T, R> {
+class mframe::lang::FunctionMethod : public mframe::lang::Object, public mframe::lang::Function<T, R> {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -48,9 +47,10 @@ class lang::FunctionMethod : public lang::Object, public lang::Function<T, R> {
   /* **************************************************************************************
    * Variable <Private>
    */
-  private:
-    C& mClass;
-    R (C::*mMethod)(T);
+ private:
+  C& mClass;
+  R(C::*mMethod)
+  (T);
 
   /* **************************************************************************************
    * Abstract method <Public>
@@ -64,12 +64,12 @@ class lang::FunctionMethod : public lang::Object, public lang::Function<T, R> {
    * Construct Method
    */
  public:
-  FunctionMethod(C& c, R (C::*method)(T)) : mClass(c){
+  FunctionMethod(C& c, R (C::*method)(T)) : mClass(c) {
     this->mMethod = method;
     return;
   }
 
-  virtual ~FunctionMethod(void) override{
+  virtual ~FunctionMethod(void) override {
     return;
   }
 
@@ -91,7 +91,7 @@ class lang::FunctionMethod : public lang::Object, public lang::Function<T, R> {
    * @param t
    * @return R
    */
-  virtual R apply(T t) override{
+  virtual R apply(T t) override {
     return (this->mClass.*this->mMethod)(t);
   }
 

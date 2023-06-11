@@ -12,21 +12,19 @@
  */
 
 //-------------------------------------------------------------------------------
-#include "./Object.h"
-
-//-------------------------------------------------------------------------------
+#include "./../lang/Object.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class HashGenerator;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
  */
-class lang::HashGenerator final : public lang::Object {
+class mframe::lang::HashGenerator final : public mframe::lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -72,7 +70,7 @@ class lang::HashGenerator final : public lang::Object {
  public:
   /**
    * @brief Get the Hashcode object
-   * 
+   *
    * @param src 來源
    * @param len 長度
    * @return int hashcode
@@ -81,7 +79,7 @@ class lang::HashGenerator final : public lang::Object {
 
   /**
    * @brief Get the Hashcode object
-   * 
+   *
    * @param src 來源
    * @return int hashcode
    */
@@ -89,7 +87,7 @@ class lang::HashGenerator final : public lang::Object {
 
   /**
    * @brief Get the Hashcode Upper Cast object
-   * 
+   *
    * @param src 來源
    * @return int hashcode
    */
@@ -97,7 +95,7 @@ class lang::HashGenerator final : public lang::Object {
 
   /**
    * @brief Get the Hashcode Lower Cast object
-   * 
+   *
    * @param src 來源
    * @return int hashcode
    */

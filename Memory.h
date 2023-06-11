@@ -13,22 +13,20 @@
  */
 
 //-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
-#include "./Data.h"
+#include "./../lang/Data.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class Memory;
   class String;
-}  // namespace lang
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct
  */
-class lang::Memory : public lang::Data {
+class mframe::lang::Memory : public mframe::lang::Data {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -109,9 +107,9 @@ class lang::Memory : public lang::Data {
   /**
    * @brief
    *
-   * @return lang::Memory
+   * @return mframe::lang::Memory
    */
-  static lang::Memory nullMemory(void);
+  static mframe::lang::Memory nullMemory(void);
 
   /* ****************************************************************************
    * Public Method <Inline>

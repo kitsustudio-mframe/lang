@@ -13,25 +13,23 @@
  */
 
 //-------------------------------------------------------------------------------
-#include "./Object.h"
-
-//-------------------------------------------------------------------------------
-#include "./Supplier.h"
+#include "./../lang/Object.h"
+#include "./../lang/Supplier.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   template <typename T>
   class SupplierEvent;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct
  */
 template <typename T>
-class lang::SupplierEvent : public lang::Object,
-                            public lang::Supplier<T> {
+class mframe::lang::SupplierEvent : public mframe::lang::Object,
+                                    public mframe::lang::Supplier<T> {
   typedef T (*Method)(void);
   /* ****************************************************************************
    * Variable <Public>

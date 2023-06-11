@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2020 ZxyKira
  * All rights reserved.
- * 
+ *
  * SPDX-License-Identifier: MIT
  */
 #ifndef MFRAME_A54036B2_950E_4F06_9CD4_6FD23597926A
@@ -9,39 +9,35 @@
 
 /* ******************************************************************************
  * Include
- */  
+ */
 
 //-------------------------------------------------------------------------------
-#include "./Interface.h"
-
-//-------------------------------------------------------------------------------
+#include "./../lang/Interface.h"
 
 /* ******************************************************************************
  * Namespace
- */  
-namespace lang{
+ */
+namespace mframe::lang {
   struct Runnable;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct
- */  
-struct lang::Runnable : public virtual lang::Interface{
-
+ */
+struct mframe::lang::Runnable : public virtual mframe::lang::Interface {
   /* ****************************************************************************
    * Method
    */
 
   /**
-   * @brief 
-   * 
+   * @brief
+   *
    */
   virtual void run(void) abstract;
-  
 };
 
 /* *******************************************************************************
  * End of file
- */ 
+ */
 
 #endif /* MFRAME_A54036B2_950E_4F06_9CD4_6FD23597926A */

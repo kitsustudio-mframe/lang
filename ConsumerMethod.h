@@ -12,25 +12,23 @@
  */
 
 //-----------------------------------------------------------------------------------------
-#include "./Consumer.h"
-#include "./Object.h"
-
-//-----------------------------------------------------------------------------------------
+#include "./../lang/Consumer.h"
+#include "./../lang/Object.h"
 
 /* ****************************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   template <class C, class T>
   class ConsumerMethod;
-}
+}  // namespace mframe::lang
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
 template <class C, class T>
-class lang::ConsumerMethod : public lang::Object,
-                             public lang::Consumer<T> {
+class mframe::lang::ConsumerMethod : public mframe::lang::Object,
+                                     public mframe::lang::Consumer<T> {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -42,9 +40,9 @@ class lang::ConsumerMethod : public lang::Object,
   /* **************************************************************************************
    * Variable <Private>
    */
-  private:
-    C& mClass;
-    void (C::*mMethod)(T);
+ private:
+  C& mClass;
+  void (C::*mMethod)(T);
 
   /* **************************************************************************************
    * Abstract method <Public>
@@ -60,20 +58,20 @@ class lang::ConsumerMethod : public lang::Object,
  public:
   /**
    * @brief Construct a new Consumer Method object
-   * 
-   * @param c 
-   * @param method 
+   *
+   * @param c
+   * @param method
    */
-  ConsumerMethod(C& c, void (C::*method)(T)) : mClass(c){
+  ConsumerMethod(C& c, void (C::*method)(T)) : mClass(c) {
     this->mMethod = method;
     return;
   }
 
   /**
    * @brief Destroy the Consumer Method object
-   * 
+   *
    */
-  virtual ~ConsumerMethod(void) override{
+  virtual ~ConsumerMethod(void) override {
     return;
   }
 
@@ -86,13 +84,13 @@ class lang::ConsumerMethod : public lang::Object,
    */
 
   /* **************************************************************************************
-   * Public Method <Override> - lang::Consumer
+   * Public Method <Override> - mframe::lang::Consumer
    */
-  public:
-    virtual void accept(T t) override{
-      (this->mClass.*this->mMethod)(t);
-      return;
-    }
+ public:
+  virtual void accept(T t) override {
+    (this->mClass.*this->mMethod)(t);
+    return;
+  }
 
   /* **************************************************************************************
    * Public Method

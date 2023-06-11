@@ -25,14 +25,14 @@
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class System;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct
  */
-class lang::System final : public lang::Object {
+class mframe::lang::System final : public mframe::lang::Object {
   friend Object;
 
   /* ****************************************************************************
@@ -47,7 +47,7 @@ class lang::System final : public lang::Object {
    * Variable <Private>
    */
  private:
-  static lang::managerment::Svchost* mSvchost;
+  static mframe::lang::managerment::Svchost* mSvchost;
   /* ****************************************************************************
    * Abstract method <Public>
    */
@@ -83,12 +83,12 @@ class lang::System final : public lang::Object {
   /**
    *
    */
-  static io::PrintBuffer& out(void);
+  static mframe::io::PrintBuffer& out(void);
 
   /**
    *
    */
-  static io::ReadBuffer& in(void);
+  static mframe::io::ReadBuffer& in(void);
 
   /**
    * @brief 設備重新啟動
@@ -100,20 +100,20 @@ class lang::System final : public lang::Object {
    * @brief
    *
    */
-  static void setup(lang::managerment::Kernel& kernel);
+  static void setup(mframe::lang::managerment::Kernel& kernel);
 
   /**
    * @brief
    *
    */
-  static void setup(lang::managerment::Kernel& kernel, uint32_t outSize, uint32_t inSize);
+  static void setup(mframe::lang::managerment::Kernel& kernel, uint32_t outSize, uint32_t inSize);
 
   /**
    * @brief 系統初始化核心
    *
    * @param kernel 核心方法，建議使用CMSIS-RTOS2
    */
-  static void start(lang::Runnable& task, uint32_t stackSize, uint32_t svchostStackSize);
+  static void start(mframe::lang::Runnable& task, uint32_t stackSize, uint32_t svchostStackSize);
 
   /**
    * @brief 核心啟動
@@ -273,7 +273,7 @@ class lang::System final : public lang::Object {
    * @return null 執行緒取得失敗，可能正在執行中斷事件或是系統並未啟動
    * @return Thread 當前執行緒
    */
-  static lang::Thread* currentThread(void);
+  static mframe::lang::Thread* currentThread(void);
 
   /**
    * @brief
@@ -282,17 +282,17 @@ class lang::System final : public lang::Object {
    * @return true
    * @return false
    */
-  static void execute(lang::Runnable& runnable);
+  static void execute(mframe::lang::Runnable& runnable);
 
   /**
    *
    */
-  static lang::Thread& allocThread(lang::Runnable& runnable, uint32_t stackSize);
+  static mframe::lang::Thread& allocThread(mframe::lang::Runnable& runnable, uint32_t stackSize);
 
   /**
    *
    */
-  static lang::Thread& allocThread(lang::Runnable& runnable, lang::Data& stackMemory);
+  static mframe::lang::Thread& allocThread(mframe::lang::Runnable& runnable, mframe::lang::Data& stackMemory);
 
   /* ****************************************************************************
    * Public Method <Inline Static>

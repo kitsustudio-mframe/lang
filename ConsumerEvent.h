@@ -12,25 +12,23 @@
  */
 
 //-------------------------------------------------------------------------------
-#include "./Object.h"
-
-//-------------------------------------------------------------------------------
-#include "./Consumer.h"
+#include "./../lang/Consumer.h"
+#include "./../lang/Object.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   template <typename T>
   class ConsumerEvent;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct
  */
 template <typename T>
-class lang::ConsumerEvent : public lang::Object,
-                            public lang::Consumer<T> {
+class mframe::lang::ConsumerEvent : public mframe::lang::Object,
+                                    public mframe::lang::Consumer<T> {
   typedef void (*Method)(T);
   /* ****************************************************************************
    * Variable <Public>

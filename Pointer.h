@@ -13,22 +13,20 @@
  */
 
 //-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
-#include "./Object.h"
+#include "./../lang/Object.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class Pointer;
   class Memory;
-}  // namespace lang
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct
  */
-class lang::Pointer : public lang::Object {
+class mframe::lang::Pointer : public mframe::lang::Object {
   friend Memory;
   /* ****************************************************************************
    * Subclass

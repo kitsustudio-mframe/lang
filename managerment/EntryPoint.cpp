@@ -22,12 +22,11 @@
 /* ******************************************************************************
  * Using
  */
-using lang::managerment::EntryPoint;
+using mframe::lang::managerment::EntryPoint;
 
 //-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
-
 
 /* ******************************************************************************
  * Variable <Static>
@@ -38,7 +37,7 @@ using lang::managerment::EntryPoint;
  */
 
 //-------------------------------------------------------------------------------
-EntryPoint::EntryPoint(void (*setup)(lang::Thread*), void (*loop)(lang::Thread*)) {
+EntryPoint::EntryPoint(void (*setup)(mframe::lang::Thread*), void (*loop)(mframe::lang::Thread*)) {
   this->mLoop = loop;
   this->mSetup = setup;
   return;
@@ -58,7 +57,7 @@ EntryPoint::~EntryPoint(void) {
  */
 
 /* ******************************************************************************
- * Public Method <Override> - lang::Runnable
+ * Public Method <Override> - mframe::lang::Runnable
  */
 
 //-------------------------------------------------------------------------------

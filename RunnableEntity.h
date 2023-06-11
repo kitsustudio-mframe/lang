@@ -15,24 +15,22 @@
  */
 
 //-------------------------------------------------------------------------------
-#include "./Object.h"
-
-//-------------------------------------------------------------------------------
-#include "./Runnable.h"
-#include "./RunnableEvent.h"
+#include "./../lang/Object.h"
+#include "./../lang/Runnable.h"
+#include "./../lang/RunnableEvent.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class RunnableEntity;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct/Enum
  */
-class lang::RunnableEntity final : public lang::Object,
-                                   public lang::Runnable {
+class mframe::lang::RunnableEntity final : public mframe::lang::Object,
+                                           public mframe::lang::Runnable {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -45,8 +43,8 @@ class lang::RunnableEntity final : public lang::Object,
    * Variable <Private>
    */
  private:
-  lang::RunnableEvent mRunnableEvent;
-  lang::Runnable* mRunnable;
+  mframe::lang::RunnableEvent mRunnableEvent;
+  mframe::lang::Runnable* mRunnable;
 
   /* ****************************************************************************
    * Abstract method <Public>
@@ -71,7 +69,7 @@ class lang::RunnableEntity final : public lang::Object,
    *
    * @param runnable
    */
-  RunnableEntity(lang::Runnable& runnable);
+  RunnableEntity(mframe::lang::Runnable& runnable);
 
   /**
    * @brief Construct a new Runnable Entity object
@@ -102,7 +100,7 @@ class lang::RunnableEntity final : public lang::Object,
    */
 
   /* ****************************************************************************
-   * Public Method <Override> - lang::Runnable
+   * Public Method <Override> - mframe::lang::Runnable
    */
  public:
   /**

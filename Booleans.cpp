@@ -8,15 +8,10 @@
 /* ****************************************************************************************
  * Include
  */
-
-//-----------------------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------------------
 #include "./Booleans.h"
 
-#include "./Character.h"
-#include "./Pointers.h"
-#include "./Strings.h"
+//-----------------------------------------------------------------------------------------
+#include "mframe.h"
 
 /* ****************************************************************************************
  * Macro
@@ -26,11 +21,10 @@
 /* ****************************************************************************************
  * Using
  */
-using lang::Booleans;
+using mframe::lang::Booleans;
 
 //-----------------------------------------------------------------------------------------
-using util::Iterator;
-
+using mframe::util::Iterator;
 
 /* ****************************************************************************************
  * Variable <Static>
@@ -57,7 +51,7 @@ bool Booleans::isBoolean(const char* str) {
 }
 
 //-----------------------------------------------------------------------------------------
-bool Booleans::isBoolean(util::Iterator<char>& iterator) {
+bool Booleans::isBoolean(mframe::util::Iterator<char>& iterator) {
   bool result;
   return Booleans::parseBoolean(result, iterator);
 }
@@ -87,7 +81,7 @@ bool Booleans::parseBoolean(bool& result, const char* str) {
 }
 
 //-----------------------------------------------------------------------------------------
-bool Booleans::parseBoolean(bool& result, util::Iterator<char>& iterator) {
+bool Booleans::parseBoolean(bool& result, mframe::util::Iterator<char>& iterator) {
   char cache[Booleans::TEXT_FALSE_LENGTH + 1];
   for (int i = 0; i < (Booleans::TEXT_FALSE_LENGTH + 1); ++i) {
     if (!iterator.next(cache[i]))

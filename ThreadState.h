@@ -12,21 +12,19 @@
  */
 
 //-------------------------------------------------------------------------------
-#include "./Interface.h"
-
-//-------------------------------------------------------------------------------
+#include "./../lang/Interface.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   enum struct ThreadState : char;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/struct/Struct
  */
-enum struct lang::ThreadState : char {
+enum struct mframe::lang::ThreadState : char {
   /**
    * @brief Inactive.
    *        The thread is created but not actively used, or has been terminated

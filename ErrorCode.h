@@ -4,7 +4,6 @@
  *
  * SPDX-License-Identifier: MIT
  */
-
 #ifndef MFRAME_EE4E0BE6_E1E0_43B2_B9D2_2CE26334D212
 #define MFRAME_EE4E0BE6_E1E0_43B2_B9D2_2CE26334D212
 
@@ -13,21 +12,19 @@
  */
 
 //-------------------------------------------------------------------------------
-#include "./Interface.h"
-
-//-------------------------------------------------------------------------------
+#include "./../lang/Interface.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   enum struct ErrorCode : int;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class Object
  */
-enum struct lang::ErrorCode : int {
+enum struct mframe::lang::ErrorCode : int {
   NONE = 0x00000000 + 0,      ///< 預設無異常
   HARD_FAULT,                 ///< 硬體錯誤
   SYSTEM_ERROR,               ///< 系統錯誤

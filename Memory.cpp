@@ -8,75 +8,51 @@
 /* ******************************************************************************
  * Include
  */
-
-#include <string.h>
-//-------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------
-#include "./Maths.h"
 #include "./Memory.h"
-#include "./Pointer.h"
-#include "./Pointers.h"
-#include "./System.h"
+
+//-------------------------------------------------------------------------------
+#include <string.h>
+
+#include "mframe.h"
 
 /* ******************************************************************************
  * Using
  */
-using lang::Maths;
-using lang::Memory;
-using lang::Pointer;
+using mframe::lang::Memory;
+
+//-------------------------------------------------------------------------------
+using mframe::lang::Maths;
+using mframe::lang::Pointer;
 
 /* ******************************************************************************
  * Construct Method
  */
 
-/**
- * @brief Construct a new Memory object
- *
- * @param data
- */
+//-------------------------------------------------------------------------------
 Memory::Memory(const Data& data) : Data(data) {
   Memory::mNext = nullptr;
   return;
 }
 
-/**
- * @brief Construct a new Memory:: Memory object
- *
- * @param pointer
- * @param length
- */
+//-------------------------------------------------------------------------------
 Memory::Memory(const void* pointer, size_t length) : Data(const_cast<void*>(pointer), length) {
   Memory::mNext = nullptr;
   return;
 }
 
-/**
- * @brief Construct a new Memory:: Memory object
- *
- * @param pointer
- * @param length
- */
+//-------------------------------------------------------------------------------
 Memory::Memory(void* pointer, size_t length) : Data(const_cast<void*>(pointer), length) {
   Memory::mNext = nullptr;
   return;
 }
 
-/**
- * @brief Destroy the Memory:: Memory object
- *
- * @param length
- */
+//-------------------------------------------------------------------------------
 Memory::Memory(size_t length) : Data(new uint8_t[(length & 0x7FFFFFFF)], (length & 0x7FFFFFFF)) {
   Memory::mNext = this;
   return;
 }
 
-/**
- * @brief Construct a new Memory:: Memory object
- *
- * @param other
- */
+//-------------------------------------------------------------------------------
 Memory::Memory(const Memory& other) {
   *this = other;
   if (Memory::mNext != nullptr)
@@ -85,10 +61,7 @@ Memory::Memory(const Memory& other) {
   return;
 }
 
-/**
- * @brief Destroy the Memory:: Memory object
- *
- */
+//-------------------------------------------------------------------------------
 Memory::~Memory(void) {
   if (Memory::mNext == nullptr)
     return;
@@ -100,7 +73,7 @@ Memory::~Memory(void) {
 
     while (true) {
       if (next->mNext == nullptr)
-        System::error(this, lang::ErrorCode::NULL_POINTER);
+        System::error(this, mframe::lang::ErrorCode::NULL_POINTER);
 
       if (next->mNext == this) {
         next->mNext = Memory::mNext;
@@ -123,11 +96,7 @@ Memory::~Memory(void) {
  * Public Method <Static>
  */
 
-/**
- * @brief
- *
- * @return Memory
- */
+//-------------------------------------------------------------------------------
 Memory Memory::nullMemory(void) {
   return Memory(static_cast<const void*>(nullptr), 0);
 }
@@ -136,13 +105,7 @@ Memory Memory::nullMemory(void) {
  * Public Method
  */
 
-/**
- * @brief
- *
- * @param size
- * @return true
- * @return false
- */
+//-------------------------------------------------------------------------------
 bool Memory::resize(int size) {
   if (size <= 0)
     return false;
@@ -169,7 +132,7 @@ bool Memory::resize(int size) {
   }
 
   delete[] oldPointer;
-  
+
   this->unlock();
   return true;
 }

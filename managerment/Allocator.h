@@ -20,14 +20,14 @@
 /* ******************************************************************************
  * Namespace
  */
-namespace lang::managerment {
+namespace mframe::lang::managerment {
   struct Allocator;
 }
 
 /* ******************************************************************************
  * Class/Interface/Struct
  */
-struct lang::managerment::Allocator : public virtual lang::Interface {
+struct mframe::lang::managerment::Allocator : public virtual mframe::lang::Interface {
   /* ****************************************************************************
    * Method
    */

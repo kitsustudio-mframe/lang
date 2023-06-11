@@ -4,29 +4,27 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef MCUF_5098703C_A1D7_4D60_9E2D_E5F648A0C629
-#define MCUF_5098703C_A1D7_4D60_9E2D_E5F648A0C629
+#ifndef MFRAME_5098703C_A1D7_4D60_9E2D_E5F648A0C629
+#define MFRAME_5098703C_A1D7_4D60_9E2D_E5F648A0C629
 
 /* ******************************************************************************
  * Include
  */
 
 //-------------------------------------------------------------------------------
-#include "./Object.h"
-
-//-------------------------------------------------------------------------------
+#include "./../lang/Object.h"
 
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   class Character;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
  */
-class lang::Character final : public lang::Object {
+class mframe::lang::Character final : public mframe::lang::Object {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -305,4 +303,4 @@ class lang::Character final : public lang::Object {
  * End of file
  */
 
-#endif /* MCUF_5098703C_A1D7_4D60_9E2D_E5F648A0C629 */
+#endif /* MFRAME_5098703C_A1D7_4D60_9E2D_E5F648A0C629 */

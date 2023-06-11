@@ -12,25 +12,23 @@
  */
 
 //-----------------------------------------------------------------------------------------
-#include "./BiConsumer.h"
-#include "./Object.h"
-
-//-----------------------------------------------------------------------------------------
+#include "./../lang/BiConsumer.h"
+#include "./../lang/Object.h"
 
 /* ****************************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   template <class C, class T, class U>
   class BiConsumerMethod;
-}
+}  // namespace mframe::lang
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
 template <class C, class T, class U>
-class lang::BiConsumerMethod : public lang::Object,
-                               public lang::BiConsumer<T, U> {
+class mframe::lang::BiConsumerMethod : public mframe::lang::Object,
+                                       public mframe::lang::BiConsumer<T, U> {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -86,10 +84,9 @@ class lang::BiConsumerMethod : public lang::Object,
    */
 
   /* **************************************************************************************
-   * Public Method <Override> - lang::BiConsumer
+   * Public Method <Override> - mframe::lang::BiConsumer
    */
  public:
- 
   virtual void accept(T t, U u) override {
     (this->mClass.*this->mMethod)(t, u);
     return;
