@@ -325,7 +325,7 @@ Strings& Strings::append(mframe::io::ReadBuffer& readBuffer) {
 
   for (; i < max; ++i) {
     char cache;
-    if (readBuffer.pollByte(cache) < 0)
+    if (readBuffer.pollByte(cache, false) < 0)
       break;
 
     if (cache == 0)
