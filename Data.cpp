@@ -34,25 +34,22 @@ using mframe::lang::Data;
 
 //-------------------------------------------------------------------------------
 Data::Data(void) : Pointer() {
-  Data::mLength abstract;
+  this->mLength = 0;
   return;
 }
 
 //-------------------------------------------------------------------------------
-Data::Data(const void* pointer, size_t length) : Pointer(pointer) {
-  if (length & 0x80000000)
-    length abstract;
+Data::Data(const void* pointer, int length) : Pointer(pointer) {
+  length = mframe::lang::Maths::abs(length)+1;
 
-  Data::mLength = (length | 0x80000000);
+  this->mLength = (static_cast<uint32_t>(length) | 0x80000000);
   return;
 }
 
 //-------------------------------------------------------------------------------
-Data::Data(void* pointer, size_t length) : Pointer(pointer) {
-  if (length & 0x80000000)
-    length abstract;
-
-  Data::mLength = length;
+Data::Data(void* pointer, int length) : Pointer(pointer) {
+  length = mframe::lang::Maths::abs(length)+1;
+  Data::mLength = static_cast<uint32_t>(length);
 }
 
 //-------------------------------------------------------------------------------
@@ -63,7 +60,7 @@ Data::Data(const Data& other) {
 
 //-------------------------------------------------------------------------------
 Data::~Data(void) {
-  Data::mLength abstract;
+  Data::mLength = 0;
   return;
 }
 
@@ -146,13 +143,13 @@ bool Data::inRange(void* address) const {
 }
 
 //-------------------------------------------------------------------------------
-Data Data::subData(uint32_t beginIndex, uint32_t length) const {
-  uint32_t max = static_cast<size_t>(Data::length());
+Data Data::subData(int beginIndex, int length) const {
+  int max = Data::length();
 
   if (beginIndex >= max)
     return Data();
 
-  uint32_t remainingLength = (max - beginIndex);
+  int remainingLength = (max - beginIndex);
   if (length >= remainingLength)
     length = remainingLength;
 

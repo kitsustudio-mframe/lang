@@ -58,7 +58,7 @@ class mframe::lang::Strings final : public mframe::lang::Memory {
    * @param pointer
    * @param size
    */
-  Strings(void* pointer, unsigned int size);
+  Strings(void* pointer, int size);
 
   /**
    * @brief Construct a new Strings object
@@ -79,7 +79,7 @@ class mframe::lang::Strings final : public mframe::lang::Memory {
    *
    * @param length
    */
-  Strings(size_t length);
+  Strings(int length);
 
   /**
    * @brief Destroy the Strings object

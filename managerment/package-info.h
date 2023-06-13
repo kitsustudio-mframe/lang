@@ -14,11 +14,12 @@
 /* ****************************************************************************************
  * Include
  */
-#include "Allocator.h"
-#include "EntryPoint.h"
-#include "Kernel.h"
-#include "Stacker.h"
-#include "Svchost.h"
+#include "./Allocator.h"
+#include "./EntryPoint.h"
+#include "./HardwareInfo.h"
+#include "./Kernel.h"
+#include "./Stacker.h"
+#include "./Svchost.h"
 
 /* ****************************************************************************************
  * End of file

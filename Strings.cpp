@@ -37,17 +37,17 @@ using mframe::lang::Strings;
  */
 
 //-------------------------------------------------------------------------------
-Strings::Strings(void* pointer, uint32_t size) : Memory(pointer, size) {
+Strings::Strings(void* pointer, int size) : Memory(pointer, size) {
   return;
 }
 
 //-------------------------------------------------------------------------------
-Strings::Strings(const char* str) : Memory(str, strlen(str) + 1) {
+Strings::Strings(const char* str) : Memory(str, static_cast<int>(strlen(str)) + 1) {
   return;
 }
 
 //-------------------------------------------------------------------------------
-Strings::Strings(size_t length) : Memory(length) {
+Strings::Strings(int length) : Memory(length) {
   return;
 }
 
@@ -71,7 +71,7 @@ Strings::~Strings(void) {
 
 //-------------------------------------------------------------------------------
 Strings Strings::format(int bufferSize, const char* format, ...) {
-  Strings buffer = Strings(static_cast<size_t>(bufferSize));
+  Strings buffer = Strings(bufferSize);
 
   va_list args;
   va_start(args, format);
@@ -81,7 +81,7 @@ Strings Strings::format(int bufferSize, const char* format, ...) {
   if (buffer.size() >= static_cast<int>((static_cast<float>(buffer.length()) * 0.9f)))
     return buffer;
 
-  Strings result = Strings(static_cast<uint32_t>(buffer.size()));
+  Strings result = Strings(buffer.size());
   result.copy(buffer, static_cast<int>(result.length()));
   return result;
 }
@@ -195,7 +195,7 @@ void Strings::convertLower(void) {
 //-------------------------------------------------------------------------------
 Strings Strings::toUpper(void) const {
   int max = this->size();
-  Strings result = Strings(static_cast<uint32_t>(max + 1));
+  Strings result = Strings(max + 1);
 
   const char* src = static_cast<char*>(this->pointer());
   char* dst = static_cast<char*>(result.pointer());
@@ -214,7 +214,7 @@ Strings Strings::toUpper(void) const {
 //-------------------------------------------------------------------------------
 Strings Strings::toLower(void) const {
   int max = this->size();
-  Strings result = Strings(static_cast<uint32_t>(max + 1));
+  Strings result = Strings(max + 1);
 
   const char* src = static_cast<char*>(this->pointer());
   char* dst = static_cast<char*>(result.pointer());
@@ -253,7 +253,7 @@ Strings Strings::clone(int offset, int length) const {
   if (length > size)
     length = size;
 
-  Strings result = Strings(static_cast<size_t>(length + 1));
+  Strings result = Strings(length + 1);
   result.copy(this->pointer(offset), static_cast<int>(length));
   result[length] = 0x00;
   return result;

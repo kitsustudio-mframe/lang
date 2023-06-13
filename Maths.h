@@ -257,7 +257,7 @@ class mframe::lang::Maths final : public mframe::lang::Object {
    * @return the absolute value of the argument.
    */
   static inline int abs(int a) {
-    if (a)
+    if (a < 0)
       return ~a;
 
     return a;

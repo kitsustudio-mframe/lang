@@ -29,6 +29,7 @@ using mframe::io::InputStream;
 using mframe::io::OutputStream;
 using mframe::lang::Runnable;
 using mframe::lang::managerment::Kernel;
+using mframe::lang::managerment::SystemConfig;
 
 /* ******************************************************************************
  * Variable <Static>
@@ -39,15 +40,19 @@ using mframe::lang::managerment::Kernel;
  */
 
 //-------------------------------------------------------------------------------
-Svchost::Svchost(Kernel& kernel,
-                 uint32_t outSize,
-                 uint32_t inSize,
-                 uint32_t taskQuanity) : mKernel(kernel),
-                                         mPrintBuffer(outSize),
-                                         mRingBuffer(inSize),
-                                         mArrayQueue(taskQuanity) {
+Svchost::Svchost(SystemConfig& config) : mOutputStream(*config.console.outputStream),
+                                         mInputStream(*config.console.inputStream),
+                                         mPrintBuffer(config.console.sizePrintBiffer),
+                                         mRingBuffer(config.console.sizeScanner),
+                                         mArrayQueue(config.svchost.taskQuantity) {
   this->mUserThread = nullptr;
-  this->mThread = nullptr;
+  this->mThread = &System::allocThread(*this, config.svchost.stackSize);
+
+  if (this->mThread == nullptr)
+    MFRAME_THROW("svchost thread alloc fail.", ErrorCode::NULL_POINTER);
+  
+  this->mStart = false;
+
   return;
 }
 
@@ -70,19 +75,20 @@ Svchost::~Svchost(void) {
 
 //-------------------------------------------------------------------------------
 void Svchost::run(void) {
-  if (this->mThread)
+  if (this->mStart)
     return;
 
-  this->mThread = this->currentThread();
   this->mStart = true;
   this->mAction = false;
   this->mStream = false;
 
   this->mUserThread->start("explorer");
+  if (this->mUserThread == nullptr)
+    MFRAME_THROW("explorer thread alloc fail.", ErrorCode::NULL_POINTER);
 
   while (this->mStart) {
     this->action();
-    this->wait(20);
+    this->wait(100);
   }
 }
 
@@ -94,12 +100,14 @@ void Svchost::run(void) {
 void Svchost::completed(int result, void* attachment) {
   this->mStream = false;
   this->mThread->notify();
+  return;
 }
 
 //-------------------------------------------------------------------------------
 void Svchost::failed(void* exc, void* attachment) {
   this->mStream = false;
   this->mThread->notify();
+  return;
 }
 
 /* ******************************************************************************
@@ -109,6 +117,7 @@ void Svchost::failed(void* exc, void* attachment) {
 //-------------------------------------------------------------------------------
 void Svchost::stop(void) {
   this->mStart = false;
+  return;
 }
 
 //-------------------------------------------------------------------------------
@@ -116,7 +125,6 @@ bool Svchost::execute(Runnable& task) {
   if (!this->mArrayQueue.offer(&task))
     return false;
 
-  this->mThread->notify();
   return true;
 }
 
@@ -145,11 +153,17 @@ bool Svchost::action(void) {
 }
 
 //-------------------------------------------------------------------------------
-bool Svchost::start(Runnable& task, uint32_t stackSize) {
+bool Svchost::start(Runnable& task, int stackSize) {
   if (this->mUserThread)
     return false;
 
-  this->mUserThread = &mframe::lang::System::allocThread(task, stackSize);
+  this->mThread->start("svchost");
+
+  this->mUserThread = &System::allocThread(task, stackSize);
+
+  if (this->mUserThread == nullptr)
+    MFRAME_THROW("explorer thread alloc fail.", ErrorCode::NULL_POINTER);
+
   return true;
 }
 
@@ -174,11 +188,7 @@ bool Svchost::checkOutputStream(void) {
   if (this->mPrintBuffer.isEmpty())
     return false;
 
-  OutputStream* o = this->mKernel.kernelGetOutputStream();
-  if (o == nullptr)
-    return false;
-
-  return o->write(this->mPrintBuffer, this, this);
+  return this->mOutputStream.write(this->mPrintBuffer, this, this);
 }
 
 //-------------------------------------------------------------------------------
@@ -186,11 +196,7 @@ bool Svchost::checkInputStream(void) {
   if (this->mRingBuffer.isFull())
     return false;
 
-  InputStream* i = this->mKernel.kernelGetInputStream();
-  if (i == nullptr)
-    return false;
-
-  return i->read(this->mRingBuffer, this, this);
+  return this->mInputStream.read(this->mRingBuffer, this, this);
 }
 
 /* ******************************************************************************

@@ -35,19 +35,19 @@ Memory::Memory(const Data& data) : Data(data) {
 }
 
 //-------------------------------------------------------------------------------
-Memory::Memory(const void* pointer, size_t length) : Data(const_cast<void*>(pointer), length) {
+Memory::Memory(const void* pointer, int length) : Data(const_cast<void*>(pointer), length) {
   Memory::mNext = nullptr;
   return;
 }
 
 //-------------------------------------------------------------------------------
-Memory::Memory(void* pointer, size_t length) : Data(const_cast<void*>(pointer), length) {
+Memory::Memory(void* pointer, int length) : Data(const_cast<void*>(pointer), length) {
   Memory::mNext = nullptr;
   return;
 }
 
 //-------------------------------------------------------------------------------
-Memory::Memory(size_t length) : Data(new uint8_t[(length & 0x7FFFFFFF)], (length & 0x7FFFFFFF)) {
+Memory::Memory(int length) : Data(new uint8_t[length], length) {
   Memory::mNext = this;
   return;
 }

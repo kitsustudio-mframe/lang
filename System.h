@@ -21,7 +21,16 @@
 #include "./../lang/Thread.h"
 #include "./../lang/managerment/Kernel.h"
 #include "./../lang/managerment/Svchost.h"
+#include "./../lang/managerment/SystemConfig.h"
 
+/* ******************************************************************************
+ * Macro
+ */
+#ifdef MFRAME_DEBUG
+#define MFRAME_THROW(message, code) mframe::lang::System::throwError(message, __PRETTY_FUNCTION__, code)
+#else
+#define MFRAME_THROW(message, code) mframe::lang::System::throwError("", "", code)
+#endif
 /* ******************************************************************************
  * Namespace
  */
@@ -46,8 +55,7 @@ class mframe::lang::System final : public mframe::lang::Object {
   /* ****************************************************************************
    * Variable <Private>
    */
- private:
-  static mframe::lang::managerment::Svchost* mSvchost;
+
   /* ****************************************************************************
    * Abstract method <Public>
    */
@@ -81,12 +89,16 @@ class mframe::lang::System final : public mframe::lang::Object {
    */
  public:
   /**
-   *
+   * @brief 
+   * 
+   * @return mframe::io::PrintBuffer& 
    */
   static mframe::io::PrintBuffer& out(void);
 
   /**
-   *
+   * @brief 
+   * 
+   * @return mframe::io::ReadBuffer& 
    */
   static mframe::io::ReadBuffer& in(void);
 
@@ -97,26 +109,21 @@ class mframe::lang::System final : public mframe::lang::Object {
   static void reboot(void);
 
   /**
-   * @brief
-   *
+   * @brief 
+   * 
+   * @param systemConfig 
    */
-  static void setup(mframe::lang::managerment::Kernel& kernel);
-
-  /**
-   * @brief
-   *
-   */
-  static void setup(mframe::lang::managerment::Kernel& kernel, uint32_t outSize, uint32_t inSize);
+  static void setup(mframe::lang::managerment::SystemConfig& systemConfig);
 
   /**
    * @brief 系統初始化核心
    *
    * @param kernel 核心方法，建議使用CMSIS-RTOS2
    */
-  static void start(mframe::lang::Runnable& task, uint32_t stackSize, uint32_t svchostStackSize);
+  static void start(mframe::lang::Runnable& task, int stackSize);
 
   /**
-   * @brief 核心啟動
+   * @brief 錯誤拋出
    *
    * @param address
    * @param code
@@ -124,11 +131,20 @@ class mframe::lang::System final : public mframe::lang::Object {
   static void error(const void* address, ErrorCode code);
 
   /**
+   * @brief 拋出錯誤
+   * 
+   * @param message 錯誤訊息
+   * @param path 方法路徑
+   * @param code 異常碼
+   */
+  static void throwError(const char* message, const char* path, ErrorCode code);
+
+  /**
    * @brief Get the Core Clock object
    *
    * @return uint32_t
    */
-  static uint32_t getCoreClock(void);
+  static int getCoreClock(void);
 
   /**
    * @brief
@@ -285,14 +301,29 @@ class mframe::lang::System final : public mframe::lang::Object {
   static void execute(mframe::lang::Runnable& runnable);
 
   /**
-   *
+   * @brief 
+   * 
+   * @param runnable 
+   * @param stackSize 
+   * @return mframe::lang::Thread& 
    */
-  static mframe::lang::Thread& allocThread(mframe::lang::Runnable& runnable, uint32_t stackSize);
+  static mframe::lang::Thread& allocThread(mframe::lang::Runnable& runnable, int stackSize);
 
   /**
-   *
+   * @brief 
+   * 
+   * @param runnable 
+   * @param stackMemory 
+   * @return mframe::lang::Thread& 
    */
   static mframe::lang::Thread& allocThread(mframe::lang::Runnable& runnable, mframe::lang::Data& stackMemory);
+  
+  /**
+   * @brief Get the Allocator object
+   * 
+   * @return mframe::lang::managerment::Allocator& 
+   */
+  static mframe::lang::managerment::Allocator* getAllocator(void);
 
   /* ****************************************************************************
    * Public Method <Inline Static>

@@ -18,6 +18,12 @@
 /* ******************************************************************************
  * Namespace
  */
+namespace mframe::lang {
+  static mframe::lang::managerment::Kernel* mKernel = nullptr;
+  static mframe::lang::managerment::HardwareInfo* mHardwareInfo = nullptr;
+  static mframe::lang::managerment::Allocator* mAllocator = nullptr;
+  static mframe::lang::managerment::Svchost* mSvchost = nullptr;
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Extern
@@ -29,6 +35,7 @@
 using mframe::lang::System;
 
 //-------------------------------------------------------------------------------
+using namespace mframe::lang;
 using mframe::io::PrintBuffer;
 using mframe::lang::managerment::Kernel;
 using mframe::lang::managerment::Svchost;
@@ -36,11 +43,36 @@ using mframe::lang::managerment::Svchost;
 /* ******************************************************************************
  * Global Operator
  */
+//-------------------------------------------------------------------------------
+void* operator new(size_t n) {
+  if (mAllocator)
+    return mAllocator->allocAlignment64(static_cast<int>(n));
+
+  else
+    return malloc(n);
+}
+
+//-------------------------------------------------------------------------------
+void* operator new[](size_t n) {
+  if (mAllocator)
+    return mAllocator->allocAlignment64(static_cast<int>(n));
+
+  else
+    return malloc(n);
+}
+
+//-------------------------------------------------------------------------------
+void operator delete(void* p) {
+  if (mAllocator)
+    mAllocator->free(p);
+
+  else
+    free(p);
+}
 
 /* ******************************************************************************
  * Static Variable
  */
-Svchost* System::mSvchost;
 
 /* ******************************************************************************
  * Construct Method
@@ -66,38 +98,41 @@ System::~System(void) {
 
 //-------------------------------------------------------------------------------
 PrintBuffer& System::out(void) {
-  return System::mSvchost->mPrintBuffer;
+  return mSvchost->mPrintBuffer;
 }
 
 //-------------------------------------------------------------------------------
 mframe::io::ReadBuffer& System::in(void) {
-  return System::mSvchost->mRingBuffer;
+  return mSvchost->mRingBuffer;
 }
 
 //-------------------------------------------------------------------------------
 void System::reboot(void) {
-  System::mSvchost->mKernel.kernelReboot();
+  mKernel->kernelReboot();
   return;
 }
 
 //-------------------------------------------------------------------------------
-void System::setup(Kernel& kernel) {
-  System::setup(kernel, 128, 128);
-}
+void System::setup(mframe::lang::managerment::SystemConfig& systemConfig) {
+  if (mSvchost)
+    return;
 
-//-------------------------------------------------------------------------------
-void System::setup(Kernel& kernel, uint32_t outSize, uint32_t inSize) {
-  System::mSvchost = new Svchost(kernel, outSize, inSize, 32);
-  if (System::mSvchost->mKernel.kernelInitialize() == false)
+  mKernel = systemConfig.system.kernel;
+  mAllocator = systemConfig.system.allocator;
+  mHardwareInfo = systemConfig.system.hardwareInfo;
+
+  if (mKernel->kernelInitialize() == false)
     System::error("SYSTEM", mframe::lang::ErrorCode::SYSTEM_ERROR);
 
+  mSvchost = new Svchost(systemConfig);
   return;
 }
 
 //-------------------------------------------------------------------------------
-void System::start(mframe::lang::Runnable& task, uint32_t stackSize, uint32_t svchostStackSize) {
-  System::mSvchost->start(task, stackSize);
-  System::mSvchost->mKernel.kernelStart(*System::mSvchost, svchostStackSize);
+void System::start(mframe::lang::Runnable& task, int stackSize) {
+  if(mSvchost->start(task, stackSize))
+    mKernel->kernelStart();
+    
   return;
 }
 
@@ -117,13 +152,23 @@ void System::error(const void* address, ErrorCode code) {
 }
 
 //-------------------------------------------------------------------------------
-uint32_t System::getCoreClock(void) {
-  return System::mSvchost->mKernel.kernelGetCoreClock();
+void System::throwError(const char* message, const char* path, ErrorCode code) {
+  while (1)
+    ;
+}
+
+//-------------------------------------------------------------------------------
+int System::getCoreClock(void) {
+  if(mHardwareInfo)
+    return mHardwareInfo->systemClock();
+
+  else
+    return -1;
 }
 
 //-------------------------------------------------------------------------------
 void System::execute(mframe::lang::Runnable& runnable) {
-  if (System::mSvchost->execute(runnable))
+  if (mSvchost->execute(runnable))
     return;
 
   runnable.run();
@@ -131,8 +176,8 @@ void System::execute(mframe::lang::Runnable& runnable) {
 }
 
 //-------------------------------------------------------------------------------
-mframe::lang::Thread& System::allocThread(mframe::lang::Runnable& runnable, uint32_t stackSize) {
-  mframe::lang::Thread* result = System::mSvchost->mKernel.kernelAllocThread(runnable, stackSize);
+mframe::lang::Thread& System::allocThread(mframe::lang::Runnable& runnable, int stackSize) {
+  mframe::lang::Thread* result = mKernel->kernelAllocThread(runnable, stackSize);
 
   if (result == nullptr)
     System::error("SYSTEM", mframe::lang::ErrorCode::SYSTEM_ERROR);
@@ -142,7 +187,7 @@ mframe::lang::Thread& System::allocThread(mframe::lang::Runnable& runnable, uint
 
 //-------------------------------------------------------------------------------
 mframe::lang::Thread& System::allocThread(mframe::lang::Runnable& runnable, mframe::lang::Data& stackMemory) {
-  mframe::lang::Thread* result = System::mSvchost->mKernel.kernelAllocThread(runnable, stackMemory);
+  mframe::lang::Thread* result = mKernel->kernelAllocThread(runnable, stackMemory);
 
   if (result == nullptr)
     System::error("SYSTEM", mframe::lang::ErrorCode::SYSTEM_ERROR);
@@ -161,7 +206,7 @@ void System::lowerDelay(uint32_t times) {
 
 //-------------------------------------------------------------------------------
 bool System::delay(int milliseconds) {
-  return System::mSvchost->mKernel.kernelDelay(static_cast<uint32_t>(milliseconds));
+  return mKernel->kernelDelay(static_cast<uint32_t>(milliseconds));
 }
 
 //-------------------------------------------------------------------------------
@@ -171,27 +216,32 @@ void System::wait(void) {
 
 //-------------------------------------------------------------------------------
 bool System::wait(int timeout) {
-  return System::mSvchost->mKernel.kernelWait(static_cast<uint32_t>(timeout));
+  return mKernel->kernelWait(static_cast<uint32_t>(timeout));
 }
 
 //-------------------------------------------------------------------------------
 bool System::yield(void) {
-  return System::mSvchost->mKernel.kenrelYield();
+  return mKernel->kenrelYield();
 }
 
 //-------------------------------------------------------------------------------
 mframe::lang::Thread* System::currentThread(void) {
-  return System::mSvchost->mKernel.kernelGetCurrentThread();
+  return mKernel->kernelGetCurrentThread();
 }
 
 //-------------------------------------------------------------------------------
 int System::lock(void) {
-  return System::mSvchost->mKernel.kernelLock();
+  return mKernel->kernelLock();
 }
 
 //-------------------------------------------------------------------------------
 int System::unlock(void) {
-  return System::mSvchost->mKernel.kernelUnlock();
+  return mKernel->kernelUnlock();
+}
+
+//-------------------------------------------------------------------------------
+mframe::lang::managerment::Allocator* System::getAllocator(void) {
+  return mAllocator;
 }
 
 /* ******************************************************************************

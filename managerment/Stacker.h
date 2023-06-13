@@ -30,7 +30,7 @@ namespace mframe::lang::managerment {
  * Class/Interface/Struct
  */
 class mframe::lang::managerment::Stacker : public mframe::lang::Memory,
-                                           public mframe::util::Collection<mframe::lang::Memory>,
+                                           public mframe::util::Collection<void*>,
                                            public mframe::lang::managerment::Allocator {
   /* ****************************************************************************
    * Variable <Public>
@@ -64,7 +64,7 @@ class mframe::lang::managerment::Stacker : public mframe::lang::Memory,
    * @param buffer
    * @param size
    */
-  Stacker(void* buffer, uint32_t size);
+  Stacker(void* buffer, int size);
 
   /**
    * @brief Construct a new Stacker object
@@ -86,6 +86,11 @@ class mframe::lang::managerment::Stacker : public mframe::lang::Memory,
   /* ****************************************************************************
    * Public Method <Static>
    */
+  /* ****************************************************************************
+   * Public Method <Override> mframe::util::Iterable<mframe::lang::Data*>
+   */
+ public:
+  virtual bool peekIndex(int index, void*& result) override;
 
   /* ****************************************************************************
    * Public Method <Override> mframe::util::Collection<mframe::lang::Memory>
@@ -101,38 +106,30 @@ class mframe::lang::managerment::Stacker : public mframe::lang::Memory,
    * Public Method <Override> mframe::lang::managerment::Allocator
    */
  public:
-  virtual void* alloc(uint32_t size) override;
+  virtual void* alloc(int size) override;
 
   virtual bool free(void* ptr) override;
 
-  virtual bool free(void* ptr, uint32_t size) override;
+  virtual bool free(void* ptr, int size) override;
 
+  virtual void* allocAlignment32(int size) override;
+
+  virtual void* allocAlignment64(int size) override;
+ 
+  virtual int getFree(void) override;
+
+ 
   /* ****************************************************************************
    * Public Method
    */
  public:
   /**
-   * @brief Get the Free object
-   *
-   * @return uint32_t
-   */
-  virtual uint32_t getFree(void);
-
-  /**
    * @brief
    *
    * @param size
-   * @return void*
+   * @return mframe::lang::Memory
    */
-  virtual void* allocAlignment32(uint32_t size);
-
-  /**
-   * @brief
-   *
-   * @param size
-   * @return void*
-   */
-  virtual void* allocAlignment64(uint32_t size);
+  virtual mframe::lang::Memory allocMemory(int size);
 
   /**
    * @brief
@@ -140,7 +137,7 @@ class mframe::lang::managerment::Stacker : public mframe::lang::Memory,
    * @param size
    * @return mframe::lang::Memory
    */
-  virtual mframe::lang::Memory allocMemory(uint32_t size);
+  virtual mframe::lang::Memory allocMemoryAlignment32(int size);
 
   /**
    * @brief
@@ -148,15 +145,7 @@ class mframe::lang::managerment::Stacker : public mframe::lang::Memory,
    * @param size
    * @return mframe::lang::Memory
    */
-  virtual mframe::lang::Memory allocMemoryAlignment32(uint32_t size);
-
-  /**
-   * @brief
-   *
-   * @param size
-   * @return mframe::lang::Memory
-   */
-  virtual mframe::lang::Memory allocMemoryAlignment64(uint32_t size);
+  virtual mframe::lang::Memory allocMemoryAlignment64(int size);
 
   /* ****************************************************************************
    * Protected Method <Static>

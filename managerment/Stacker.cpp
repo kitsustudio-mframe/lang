@@ -12,8 +12,6 @@
 
 //-------------------------------------------------------------------------------
 
-//-------------------------------------------------------------------------------
-
 /* ******************************************************************************
  * Using
  */
@@ -22,14 +20,12 @@ using mframe::lang::managerment::Stacker;
 //-------------------------------------------------------------------------------
 using mframe::lang::Memory;
 
-//-------------------------------------------------------------------------------
-
 /* ******************************************************************************
  * Construct Method
  */
 
 //-------------------------------------------------------------------------------
-Stacker::Stacker(void* buffer, uint32_t size) : Memory(buffer, size) {
+Stacker::Stacker(void* buffer, int size) : Memory(buffer, size) {
   this->clear();
   return;
 }
@@ -52,6 +48,13 @@ Stacker::~Stacker(void) {
 /* ******************************************************************************
  * Public Method <Static>
  */
+
+/* ****************************************************************************
+ * Public Method <Override> mframe::util::Iterable<mframe::lang::Data*>
+ */
+bool Stacker::peekIndex(int index, void*& result){
+  return false;
+}
 
 /* ******************************************************************************
  * Public Method <Override> mframe::util::Collection<mframe::lang::Memory>
@@ -79,8 +82,8 @@ int Stacker::size(void) const {
  */
 
 //-------------------------------------------------------------------------------
-void* Stacker::alloc(uint32_t size) {
-  if (static_cast<uint32_t>(this->getFree()) < size)
+void* Stacker::alloc(int size) {
+  if (this->getFree() < size)
     return nullptr;
 
   void* result = this->mStackPointer;
@@ -90,27 +93,8 @@ void* Stacker::alloc(uint32_t size) {
 }
 
 //-------------------------------------------------------------------------------
-bool Stacker::free(void* ptr) {
-  return false;
-}
-
-//-------------------------------------------------------------------------------
-bool Stacker::free(void* ptr, uint32_t size) {
-  return false;
-}
-
-/* ******************************************************************************
- * Public Method
- */
-
-//-------------------------------------------------------------------------------
-uint32_t Stacker::getFree(void) {
-  return (static_cast<uint32_t>(this->length() - this->size()));
-}
-
-//-------------------------------------------------------------------------------
-void* Stacker::allocAlignment32(uint32_t size) {
-  uint32_t alignment = (reinterpret_cast<uint32_t>(this->mStackPointer) & 0x00000003);
+void* Stacker::allocAlignment32(int size) {
+  int alignment = (reinterpret_cast<int>(this->mStackPointer) & 0x00000003);
 
   if (alignment) {
     if (this->alloc(0x00000004 - alignment) == nullptr)
@@ -121,8 +105,8 @@ void* Stacker::allocAlignment32(uint32_t size) {
 }
 
 //-------------------------------------------------------------------------------
-void* Stacker::allocAlignment64(uint32_t size) {
-  uint32_t alignment = (reinterpret_cast<uint32_t>(this->mStackPointer) & 0x00000007);
+void* Stacker::allocAlignment64(int size) {
+  int alignment = (reinterpret_cast<int>(this->mStackPointer) & 0x00000007);
 
   if (alignment) {
     if (this->alloc(0x00000008 - alignment) == nullptr)
@@ -133,7 +117,26 @@ void* Stacker::allocAlignment64(uint32_t size) {
 }
 
 //-------------------------------------------------------------------------------
-Memory Stacker::allocMemory(uint32_t size) {
+bool Stacker::free(void* ptr) {
+  return false;
+}
+
+//-------------------------------------------------------------------------------
+bool Stacker::free(void* ptr, int size) {
+  return false;
+}
+
+//-------------------------------------------------------------------------------
+int Stacker::getFree(void) {
+  return (this->length() - this->size());
+}
+
+/* ******************************************************************************
+ * Public Method
+ */
+
+//-------------------------------------------------------------------------------
+Memory Stacker::allocMemory(int size) {
   void* result = this->alloc(size);
   if (result == nullptr)
     return Memory::nullMemory();
@@ -142,7 +145,7 @@ Memory Stacker::allocMemory(uint32_t size) {
 }
 
 //-------------------------------------------------------------------------------
-Memory Stacker::allocMemoryAlignment32(uint32_t size) {
+Memory Stacker::allocMemoryAlignment32(int size) {
   void* result = this->allocAlignment32(size);
   if (result == nullptr)
     return Memory::nullMemory();
@@ -151,7 +154,7 @@ Memory Stacker::allocMemoryAlignment32(uint32_t size) {
 }
 
 //-------------------------------------------------------------------------------
-Memory Stacker::allocMemoryAlignment64(uint32_t size) {
+Memory Stacker::allocMemoryAlignment64(int size) {
   void* result = this->allocAlignment64(size);
   if (result == nullptr)
     return Memory::nullMemory();

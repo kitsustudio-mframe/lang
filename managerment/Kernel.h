@@ -42,11 +42,9 @@ struct mframe::lang::managerment::Kernel : public virtual mframe::lang::Interfac
 
   /**
    * @brief 核心啟動，作業系統開始
-   *
-   * @param runnable 主執行緒事件
-   * @param stackSize 主執行緒記憶體堆疊大小
+   * 
    */
-  virtual void kernelStart(mframe::lang::Runnable& runnable, uint32_t stackSize) abstract;
+  virtual void kernelStart(void) abstract;
 
   /**
    * @brief 核心鎖定，在調用kernelUnlock以前將不會進行context switch
@@ -117,7 +115,7 @@ struct mframe::lang::managerment::Kernel : public virtual mframe::lang::Interfac
    * @return null 建立失敗
    * @return Thread 建立成功
    */
-  virtual Thread* kernelAllocThread(mframe::lang::Runnable& task, uint32_t stackSize) abstract;
+  virtual Thread* kernelAllocThread(mframe::lang::Runnable& task, int stackSize) abstract;
 
   /**
    * @brief 取得當前執行緒
@@ -126,28 +124,7 @@ struct mframe::lang::managerment::Kernel : public virtual mframe::lang::Interfac
    * @return Thread 獲取成功
    */
   virtual mframe::lang::Thread* kernelGetCurrentThread(void) abstract;
-
-  /**
-   * @brief
-   *
-   * @return
-   */
-  virtual mframe::io::OutputStream* kernelGetOutputStream(void) abstract;
-
-  /**
-   * @brief
-   *
-   * @return
-   */
-  virtual mframe::io::InputStream* kernelGetInputStream(void) abstract;
-
-  /**
-   * @brief 取得核心運作頻率
-   *
-   * @return
-   */
-  virtual uint32_t kernelGetCoreClock(void) abstract;
-
+  
   /**
    * @brief 該函數將控制權傳遞給處於 READY 狀態且具有相同優先級的下一個線程。
    *        如果在READY狀態下沒有其他優先級相同的線程，則當前線程繼續執行，不會發生線程切換。

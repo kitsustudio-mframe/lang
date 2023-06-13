@@ -65,7 +65,7 @@ class mframe::lang::Data : public mframe::lang::Pointer {
    * @param pointer
    * @param length
    */
-  Data(const void* pointer, size_t length);
+  Data(const void* pointer, int length);
 
   /**
    * @brief Construct a new Memory object
@@ -73,7 +73,7 @@ class mframe::lang::Data : public mframe::lang::Pointer {
    * @param pointer
    * @param length
    */
-  Data(void* pointer, size_t length);
+  Data(void* pointer, int length);
 
   /**
    * @brief Construct a new Data object
@@ -139,7 +139,7 @@ class mframe::lang::Data : public mframe::lang::Pointer {
    * @return false
    */
   inline bool isReadOnly(void) const {
-    return (Data::mLength & 0x80000000);
+    return (static_cast<uint32_t>(this->mLength) & 0x80000000);
   }
 
   /**
@@ -148,7 +148,7 @@ class mframe::lang::Data : public mframe::lang::Pointer {
    * @return int
    */
   inline int length(void) const {
-    return static_cast<int>(Data::mLength & 0x7FFFFFFF);
+    return static_cast<int>(this->mLength & 0x7FFFFFFF);
   }
 
   /**
@@ -157,7 +157,7 @@ class mframe::lang::Data : public mframe::lang::Pointer {
    * @return int
    */
   inline unsigned int lengthUnsigned(void) const {
-    return (Data::mLength & 0x7FFFFFFF);
+    return (this->mLength & 0x7FFFFFFF);
   }
 
   /**
@@ -279,7 +279,7 @@ class mframe::lang::Data : public mframe::lang::Pointer {
    * @param length
    * @return mframe::lang::Memory
    */
-  virtual mframe::lang::Data subData(uint32_t beginIndex, uint32_t length) const;
+  virtual mframe::lang::Data subData(int beginIndex, int length) const;
 
   /**
    * @brief 複製陣列至Data

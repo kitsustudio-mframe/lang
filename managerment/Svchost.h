@@ -18,7 +18,9 @@
 #include "./../../lang/Object.h"
 #include "./../../lang/Runnable.h"
 #include "./../../lang/Thread.h"
+#include "./../../lang/managerment/Allocator.h"
 #include "./../../lang/managerment/Kernel.h"
+#include "./../../lang/managerment/SystemConfig.h"
 #include "./../../util/ArrayQueue.h"
 #include "./../../util/Future.h"
 
@@ -39,10 +41,10 @@ class mframe::lang::managerment::Svchost : public mframe::lang::Object,
    * Variable <Public>
    */
  public:
-  mframe::lang::managerment::Kernel& mKernel;
+  mframe::io::OutputStream& mOutputStream;
+  mframe::io::InputStream& mInputStream;
   mframe::io::PrintBuffer mPrintBuffer;
   mframe::io::RingBuffer mRingBuffer;
-  mframe::util::ArrayQueue<mframe::lang::Runnable> mArrayQueue;
 
   /* ****************************************************************************
    * Variable <Protected>
@@ -52,6 +54,7 @@ class mframe::lang::managerment::Svchost : public mframe::lang::Object,
    * Variable <Private>
    */
  private:
+  mframe::util::ArrayQueue<mframe::lang::Runnable> mArrayQueue;
   mframe::lang::Thread* mThread;
   mframe::lang::Thread* mUserThread;
   bool mStart;
@@ -73,12 +76,9 @@ class mframe::lang::managerment::Svchost : public mframe::lang::Object,
   /**
    * @brief Construct a new Svchost object
    *
-   * @param kernel
-   * @param outSize
-   * @param inSize
-   * @param taskQuanity
+   * @param systemConfig
    */
-  Svchost(mframe::lang::managerment::Kernel& kernel, uint32_t outSize, uint32_t inSize, uint32_t taskQuanity);
+  Svchost(mframe::lang::managerment::SystemConfig& systemConfig);
 
   /**
    *
@@ -104,6 +104,7 @@ class mframe::lang::managerment::Svchost : public mframe::lang::Object,
    */
  public:
   virtual void completed(int result, void* attachment) override;
+
   virtual void failed(void* exc, void* attachment) override;
 
   /* ****************************************************************************
@@ -113,7 +114,7 @@ class mframe::lang::managerment::Svchost : public mframe::lang::Object,
   /**
    *
    */
-  bool start(mframe::lang::Runnable& task, uint32_t stackSize);
+  bool start(mframe::lang::Runnable& task, int stackSize);
 
   /**
    * @brief 停止執行svchost
@@ -131,7 +132,10 @@ class mframe::lang::managerment::Svchost : public mframe::lang::Object,
   bool execute(mframe::lang::Runnable& task);
 
   /**
+   * @brief
    *
+   * @return true
+   * @return false
    */
   bool action(void);
 

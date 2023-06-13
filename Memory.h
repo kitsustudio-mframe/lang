@@ -66,7 +66,7 @@ class mframe::lang::Memory : public mframe::lang::Data {
    * @param pointer
    * @param length
    */
-  Memory(const void* pointer, size_t length);
+  Memory(const void* pointer, int length);
 
   /**
    * @brief Construct a new Memory object
@@ -74,14 +74,14 @@ class mframe::lang::Memory : public mframe::lang::Data {
    * @param pointer
    * @param length
    */
-  Memory(void* pointer, size_t length);
+  Memory(void* pointer, int length);
 
   /**
    * @brief Construct a new Memory object
    *
    * @param length
    */
-  Memory(size_t length);
+  Memory(int length);
 
   /**
    * @brief 淺層克隆建構子
