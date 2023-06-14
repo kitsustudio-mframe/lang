@@ -40,7 +40,8 @@ Data::Data(void) : Pointer() {
 
 //-------------------------------------------------------------------------------
 Data::Data(const void* pointer, int length) : Pointer(pointer) {
-  length = mframe::lang::Maths::abs(length)+1;
+  if(length < 0)
+  length = 0;
 
   this->mLength = (static_cast<uint32_t>(length) | 0x80000000);
   return;
@@ -48,7 +49,9 @@ Data::Data(const void* pointer, int length) : Pointer(pointer) {
 
 //-------------------------------------------------------------------------------
 Data::Data(void* pointer, int length) : Pointer(pointer) {
-  length = mframe::lang::Maths::abs(length)+1;
+  if(length < 0)
+  length = 0;
+  
   Data::mLength = static_cast<uint32_t>(length);
 }
 
