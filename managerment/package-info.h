@@ -15,11 +15,14 @@
  * Include
  */
 #include "./Allocator.h"
+#include "./DefaultAllocator.h"
 #include "./EntryPoint.h"
 #include "./HardwareInfo.h"
 #include "./Kernel.h"
 #include "./Stacker.h"
 #include "./Svchost.h"
+#include "./SystemConfig.h"
+#include "./SystemControl.h"
 
 /* ****************************************************************************************
  * End of file

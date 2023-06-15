@@ -22,6 +22,7 @@
 #include "./../lang/managerment/Kernel.h"
 #include "./../lang/managerment/Svchost.h"
 #include "./../lang/managerment/SystemConfig.h"
+#include "./../lang/managerment/SystemControl.h"
 
 /* ******************************************************************************
  * Macro
@@ -324,6 +325,13 @@ class mframe::lang::System final : public mframe::lang::Object {
    * @return mframe::lang::managerment::Allocator& 
    */
   static mframe::lang::managerment::Allocator* getAllocator(void);
+
+  /**
+   * @brief 取得系統層控制項目。
+   * 
+   * @return mframe::lang::managerment::SystemControl& 控制項
+   */
+  static mframe::lang::managerment::SystemControl& getControl(void);
 
   /* ****************************************************************************
    * Public Method <Inline Static>

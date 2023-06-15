@@ -115,10 +115,9 @@ class mframe::lang::managerment::Stacker : public mframe::lang::Memory,
   virtual void* allocAlignment32(int size) override;
 
   virtual void* allocAlignment64(int size) override;
- 
+
   virtual int getFree(void) override;
 
- 
   /* ****************************************************************************
    * Public Method
    */

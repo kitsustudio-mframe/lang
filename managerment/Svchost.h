@@ -21,6 +21,7 @@
 #include "./../../lang/managerment/Allocator.h"
 #include "./../../lang/managerment/Kernel.h"
 #include "./../../lang/managerment/SystemConfig.h"
+#include "./../../lang/managerment/SystemControl.h"
 #include "./../../util/ArrayQueue.h"
 #include "./../../util/Future.h"
 
@@ -36,7 +37,8 @@ namespace mframe::lang::managerment {
  */
 class mframe::lang::managerment::Svchost : public mframe::lang::Object,
                                            public mframe::lang::Runnable,
-                                           public mframe::io::CompletionHandler<int, void*> {
+                                           public mframe::io::CompletionHandler<int, void*>,
+                                           public mframe::lang::managerment::SystemControl {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -57,6 +59,8 @@ class mframe::lang::managerment::Svchost : public mframe::lang::Object,
   mframe::util::ArrayQueue<mframe::lang::Runnable> mArrayQueue;
   mframe::lang::Thread* mThread;
   mframe::lang::Thread* mUserThread;
+  mframe::io::ReadBuffer* mCustomReadBuffer;
+  mframe::io::WriteBuffer* mCustomWriteBuffer;
   bool mStart;
   bool mAction;
   bool mStream;
@@ -106,6 +110,14 @@ class mframe::lang::managerment::Svchost : public mframe::lang::Object,
   virtual void completed(int result, void* attachment) override;
 
   virtual void failed(void* exc, void* attachment) override;
+
+  /* ****************************************************************************
+   * Public Method <Override> - mframe::lang::managerment::SystemControl
+   */
+ public:
+  virtual void setCustomReadBuffer(mframe::io::ReadBuffer* readBuffer) override;
+
+  virtual void setCustomWriteBuffer(mframe::io::WriteBuffer* writeBuffer) override;
 
   /* ****************************************************************************
    * Public Method

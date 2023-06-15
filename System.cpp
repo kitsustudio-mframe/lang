@@ -130,9 +130,9 @@ void System::setup(mframe::lang::managerment::SystemConfig& systemConfig) {
 
 //-------------------------------------------------------------------------------
 void System::start(mframe::lang::Runnable& task, int stackSize) {
-  if(mSvchost->start(task, stackSize))
+  if (mSvchost->start(task, stackSize))
     mKernel->kernelStart();
-    
+
   return;
 }
 
@@ -159,7 +159,7 @@ void System::throwError(const char* message, const char* path, ErrorCode code) {
 
 //-------------------------------------------------------------------------------
 int System::getCoreClock(void) {
-  if(mHardwareInfo)
+  if (mHardwareInfo)
     return mHardwareInfo->systemClock();
 
   else
@@ -242,6 +242,11 @@ int System::unlock(void) {
 //-------------------------------------------------------------------------------
 mframe::lang::managerment::Allocator* System::getAllocator(void) {
   return mAllocator;
+}
+
+//-------------------------------------------------------------------------------
+mframe::lang::managerment::SystemControl& System::getControl(void){
+  return *mSvchost;
 }
 
 /* ******************************************************************************

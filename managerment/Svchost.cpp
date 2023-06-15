@@ -27,6 +27,8 @@ using mframe::lang::managerment::Svchost;
 //-------------------------------------------------------------------------------
 using mframe::io::InputStream;
 using mframe::io::OutputStream;
+using mframe::io::ReadBuffer;
+using mframe::io::WriteBuffer;
 using mframe::lang::Runnable;
 using mframe::lang::managerment::Kernel;
 using mframe::lang::managerment::SystemConfig;
@@ -46,11 +48,13 @@ Svchost::Svchost(SystemConfig& config) : mOutputStream(*config.console.outputStr
                                          mRingBuffer(config.console.sizeScanner),
                                          mArrayQueue(config.svchost.taskQuantity) {
   this->mUserThread = nullptr;
+  this->mCustomReadBuffer = nullptr;
+  this->mCustomWriteBuffer = nullptr;
   this->mThread = &System::allocThread(*this, config.svchost.stackSize);
 
   if (this->mThread == nullptr)
     MFRAME_THROW("svchost thread alloc fail.", ErrorCode::NULL_POINTER);
-  
+
   this->mStart = false;
 
   return;
@@ -68,6 +72,24 @@ Svchost::~Svchost(void) {
 /* ******************************************************************************
  * Public Method <Static>
  */
+
+/* ******************************************************************************
+ * Public Method <Override> - mframe::lang::managerment::SystemControl
+ */
+
+//-------------------------------------------------------------------------------
+void Svchost::setCustomReadBuffer(mframe::io::ReadBuffer* readBuffer) {
+  this->mOutputStream.abortWrite();
+  this->mCustomReadBuffer = readBuffer;
+  this->checkOutputStream();
+}
+
+//-------------------------------------------------------------------------------
+void Svchost::setCustomWriteBuffer(mframe::io::WriteBuffer* writeBuffer) {
+  this->mInputStream.abortRead();
+  this->mCustomWriteBuffer = writeBuffer;
+  this->checkInputStream();
+}
 
 /* ******************************************************************************
  * Public Method <Override> mframe::lang::Runnable
@@ -185,18 +207,26 @@ bool Svchost::start(Runnable& task, int stackSize) {
 
 //-------------------------------------------------------------------------------
 bool Svchost::checkOutputStream(void) {
-  if (this->mPrintBuffer.isEmpty())
+  ReadBuffer* rb = &this->mPrintBuffer;
+  if (this->mCustomReadBuffer)
+    return rb = this->mCustomReadBuffer;
+
+  if(rb->isEmpty())
     return false;
 
-  return this->mOutputStream.write(this->mPrintBuffer, this, this);
+  return this->mOutputStream.write(*rb, this, this);
 }
 
 //-------------------------------------------------------------------------------
 bool Svchost::checkInputStream(void) {
-  if (this->mRingBuffer.isFull())
+  WriteBuffer* rb = &this->mRingBuffer;
+  if (this->mCustomWriteBuffer) 
+    rb = this->mCustomWriteBuffer;
+
+  if(rb->isFull())
     return false;
 
-  return this->mInputStream.read(this->mRingBuffer, this, this);
+  return this->mInputStream.read(*rb, this, this);
 }
 
 /* ******************************************************************************
