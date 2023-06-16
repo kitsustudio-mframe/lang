@@ -13,6 +13,8 @@
 
 //-------------------------------------------------------------------------------
 #include "./../lang/Object.h"
+#include "./../lang/Strings.h"
+#include "./../util/Iterator.h"
 
 /* ******************************************************************************
  * Namespace
@@ -127,10 +129,30 @@ class mframe::lang::Character final : public mframe::lang::Object {
   }
 
   /**
-   * @brief
+   * @brief 判斷字元是否滿足Hex字元區間。
+   * 
+   * @param c 字元。
+   * @return true 為Hex字元。
+   * @return false 非Hex字元。
+   */
+  static bool inline isHexChar(char c) {
+    if ((c >= '0') && (c <= '9'))
+      return true;
+
+    if ((c >= 'a') && (c <= 'f'))
+      return true;
+
+    if ((c >= 'A') && (c <= 'F'))
+      return true;
+
+    return false;
+  }
+
+  /**
+   * @brief 將字元轉換為大寫
    *
-   * @param ch
-   * @return char
+   * @param ch 輸入
+   * @return char 輸出
    */
   static char toUpperCase(char ch);
 
@@ -154,29 +176,29 @@ class mframe::lang::Character final : public mframe::lang::Object {
   static int toUpperCase(const char* src, char* dst, int length);
 
   /**
-   * @brief
+   * @brief 將字元轉換為小寫。
    *
-   * @param ch
-   * @return char
+   * @param ch 輸入。
+   * @return char 輸出。
    */
   static char toLowerCase(char ch);
 
   /**
    * @brief 將字串轉換為小寫，當遇到'\0'時停止。
    *
-   * @param src 來源
-   * @param dst 目標
-   * @return int 經過轉換的字符數量
+   * @param src 來源。
+   * @param dst 目標。
+   * @return int 經過轉換的字符數量。
    */
   static int toLowerCase(const char* src, char* dst);
 
   /**
    * @brief 將字串轉換為小寫，當遇到'\0'或滿足最大轉換長度時停止。
    *
-   * @param src 來源
-   * @param dst 目標
+   * @param src 來源。
+   * @param dst 目標。
    * @param length 最大轉換長度，若為0則將忽略最大轉換長度，直到發現'\0'為止。
-   * @return int 經過轉換的字符數量
+   * @return int 經過轉換的字符數量。
    */
   static int toLowerCase(const char* src, char* dst, int length);
 
@@ -264,7 +286,15 @@ class mframe::lang::Character final : public mframe::lang::Object {
    * @param src 來源
    * @return int 字符串長度
    */
-  static int length(const char* src);
+  static int length(const void* src);
+
+  static bool isHexString(const void* src);
+
+  static bool isHexString(mframe::util::Iterator<char>& iterator);
+
+  static bool parseHexString(void* result, const void* src);
+
+  static bool parseHexString(void* result, mframe::util::Iterator<char>& iterator);
 
   /* ****************************************************************************
    * Public Method <Override>

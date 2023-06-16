@@ -164,8 +164,65 @@ bool Character::compareIgnoreCast(const char* src1, char const* src2, int length
 }
 
 //-------------------------------------------------------------------------------
-int Character::length(const char* src) {
-  return static_cast<int>(strlen(src));
+int Character::length(const void* src) {
+  return static_cast<int>(strlen(static_cast<const char*>(src)));
+}
+
+//-------------------------------------------------------------------------------
+bool Character::isHexString(const void* src) {
+  mframe::io::ReadOnlyBuffer readOnlyBuffer = mframe::io::ReadOnlyBuffer(static_cast<const char*>(src));
+  mframe::util::Iterator<char> iterator = mframe::util::Iterator<char>(readOnlyBuffer);
+  return Character::isHexString(iterator);
+}
+
+//-------------------------------------------------------------------------------
+bool Character::isHexString(mframe::util::Iterator<char>& iterator) {
+  bool result = false;
+  char cache;
+  if (iterator.next(cache))
+    return false;
+
+  if (Character::isHexChar(cache))
+    result = true;
+
+  while (result) {
+    if (iterator.next(cache))
+      break;
+
+    if (Character::isNextLineSymbol(cache))
+      break;
+
+    result = Character::isHexChar(cache);
+  }
+
+  return result;
+}
+
+//-------------------------------------------------------------------------------
+bool Character::parseHexString(void* result, const void* src) {
+  mframe::io::ReadOnlyBuffer readOnlyBuffer = mframe::io::ReadOnlyBuffer(static_cast<const char*>(src));
+  mframe::util::Iterator<char> iterator = mframe::util::Iterator<char>(readOnlyBuffer);
+  return Character::parseHexString(result, iterator);
+}
+
+//-------------------------------------------------------------------------------
+bool Character::parseHexString(void* result, mframe::util::Iterator<char>& iterator) {
+  if(!Character::isHexString(iterator))
+    return false;
+  
+  int shift = 0;
+  char* str = static_cast<char*>(result);
+  while(true){
+    char chHigh = '0';
+    iterator.next(chHigh);
+    char chLow = '0';
+    iterator.next(chLow);
+    str[shift] = Character::hexCharToChar(chHigh, chLow);
+    if(!iterator.hasNext())
+      break;
+  }
+
+  return true;
 }
 
 /* ******************************************************************************
