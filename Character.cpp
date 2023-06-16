@@ -179,14 +179,14 @@ bool Character::isHexString(const void* src) {
 bool Character::isHexString(mframe::util::Iterator<char>& iterator) {
   bool result = false;
   char cache;
-  if (iterator.next(cache))
+  if (!iterator.next(cache))
     return false;
 
   if (Character::isHexChar(cache))
     result = true;
 
   while (result) {
-    if (iterator.next(cache))
+    if (!iterator.next(cache))
       break;
 
     if (Character::isNextLineSymbol(cache))
@@ -207,17 +207,20 @@ bool Character::parseHexString(void* result, const void* src) {
 
 //-------------------------------------------------------------------------------
 bool Character::parseHexString(void* result, mframe::util::Iterator<char>& iterator) {
-  if(!Character::isHexString(iterator))
+  if(!Character::isHexString(iterator.mark()))
     return false;
   
+  iterator.reset();
   int shift = 0;
   char* str = static_cast<char*>(result);
+  
   while(true){
     char chHigh = '0';
     iterator.next(chHigh);
     char chLow = '0';
     iterator.next(chLow);
     str[shift] = Character::hexCharToChar(chHigh, chLow);
+    ++shift;
     if(!iterator.hasNext())
       break;
   }
